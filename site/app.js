@@ -10,6 +10,7 @@ async function loadSiteData() {
 }
 
 function formatPercent(value) {
+  if (value == null || Number.isNaN(Number(value))) return "N/A";
   return `${(value * 100).toFixed(1)}%`;
 }
 
@@ -67,16 +68,15 @@ function movementMarkup(card) {
 
 function renderHero(data) {
   const { hero, meta } = data;
+  if (!hero || !meta) return;
   const currentMode = (data.season_modes ?? []).find((mode) => mode.slug === meta.current_forecast_season);
-  document.getElementById("hero-eyebrow").textContent = `${meta.current_ceremony_year} Best Picture Forecast`;
-  document.getElementById("hero-title").textContent = hero.title;
-  document.getElementById("hero-summary").textContent =
-    `Current front-runner for the ${meta.current_ceremony_year} Oscars, based on the latest TMDb-first contender board and a walk-forward historical model.`;
+  document.getElementById("hero-eyebrow").textContent = `${meta.current_ceremony_year ?? ""} Best Picture Forecast`;
+  document.getElementById("hero-title").textContent = hero.title ?? "";
   document.getElementById("hero-probability").textContent = formatPercent(hero.probability);
   document.getElementById("hero-release").textContent = formatDate(hero.release_date);
-  document.getElementById("hero-model").textContent = meta.model.toUpperCase();
+  document.getElementById("hero-model").textContent = meta.model ? meta.model.toUpperCase() : "Unknown";
   document.getElementById("hero-season").textContent = formatSeason(meta.current_forecast_season);
-  document.getElementById("hero-film-name").textContent = hero.title;
+  document.getElementById("hero-film-name").textContent = hero.title ?? "";
   document.getElementById("hero-film-genres").textContent = hero.genres || "Genre mix pending";
   document.getElementById("hero-film-overview").textContent = hero.overview || "No synopsis available yet.";
   document.getElementById("hero-summary").textContent =

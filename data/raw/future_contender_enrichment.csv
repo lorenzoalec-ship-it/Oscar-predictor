@@ -1,0 +1,66 @@
+year_film,film,release_month,metacritic_score,cannes_flag,venice_flag,tiff_flag,telluride_flag,sundance_flag,sxsw_flag,manual_contender_flag,notes,wikipedia_title
+2015,Bridge of Spies,10,81.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Bridge_of_Spies_(film),Bridge_of_Spies_(film)
+2015,Brooklyn,11,88.0,0,0,1,0,1,0,0,Auto-refreshed from Wikipedia page Brooklyn_(film),Brooklyn_(film)
+2015,Mad Max: Fury Road,5,90.0,1,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Mad_Max:_Fury_Road,Mad_Max:_Fury_Road
+2015,Room,10,86.0,0,0,1,1,0,0,0,Auto-refreshed from Wikipedia page Room_(2015_film),Room_(2015_film)
+2015,Spotlight,11,93.0,0,1,1,1,0,0,0,Auto-refreshed from Wikipedia page Spotlight_(film),Spotlight_(film)
+2015,The Big Short,12,81.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page The_Big_Short_(film),The_Big_Short_(film)
+2015,The Martian,10,80.0,1,0,1,0,0,0,0,Auto-refreshed from Wikipedia page The_Martian_(film),The_Martian_(film)
+2015,The Revenant,12,76.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page The_Revenant_(2015_film),The_Revenant_(2015_film)
+2016,Arrival,11,81.0,0,1,1,1,0,0,0,Auto-refreshed from Wikipedia page Arrival_(film),Arrival_(film)
+2016,Fences,12,79.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Fences_(film),Fences_(film)
+2016,Hacksaw Ridge,11,71.0,0,1,0,0,0,0,0,Auto-refreshed from Wikipedia page Hacksaw_Ridge,Hacksaw_Ridge
+2016,Hell or High Water,8,88.0,1,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Hell_or_High_Water_(film),Hell_or_High_Water_(film)
+2016,Hidden Figures,12,74.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Hidden_Figures,Hidden_Figures
+2016,La La Land,12,94.0,0,1,1,1,1,0,0,Auto-refreshed from Wikipedia page La_La_Land_(film),La_La_Land_(film)
+2016,Lion,11,69.0,0,0,1,0,0,0,0,Auto-refreshed from Wikipedia page Lion_(2016_film),Lion_(2016_film)
+2016,Manchester by the Sea,11,96.0,0,0,1,1,1,0,0,Auto-refreshed from Wikipedia page Manchester_by_the_Sea_(film),Manchester_by_the_Sea_(film)
+2016,Moonlight,10,99.0,0,0,1,1,0,1,0,Auto-refreshed from Wikipedia page Moonlight_(2016_film),Moonlight_(2016_film)
+2017,Call Me by Your Name,11,94.0,0,0,1,0,1,0,0,Auto-refreshed from Wikipedia page Call_Me_by_Your_Name_(film),Call_Me_by_Your_Name_(film)
+2017,Darkest Hour,11,75.0,0,0,0,1,0,0,0,Auto-refreshed from Wikipedia page Darkest_Hour_(film),Darkest_Hour_(film)
+2017,Dunkirk,7,94.0,0,0,1,0,0,0,0,Auto-refreshed from Wikipedia page Dunkirk_(2017_film),Dunkirk_(2017_film)
+2017,Get Out,2,85.0,0,0,0,0,1,0,0,Auto-refreshed from Wikipedia page Get_Out,Get_Out
+2017,Lady Bird,11,93.0,0,0,1,1,0,0,0,Auto-refreshed from Wikipedia page Lady_Bird_(film),Lady_Bird_(film)
+2017,Phantom Thread,12,90.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Phantom_Thread,Phantom_Thread
+2017,The Post,12,83.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page The_Post_(film),The_Post_(film)
+2017,The Shape of Water,12,87.0,0,1,1,1,0,0,0,Auto-refreshed from Wikipedia page The_Shape_of_Water,The_Shape_of_Water
+2017,"Three Billboards outside Ebbing, Missouri",11,88.0,0,1,1,0,0,0,0,"Auto-refreshed from Wikipedia page Three_Billboards_Outside_Ebbing,_Missouri","Three_Billboards_Outside_Ebbing,_Missouri"
+2018,A Star Is Born,10,88.0,0,1,1,0,0,0,0,Auto-refreshed from Wikipedia page A_Star_Is_Born_(2018_film),A_Star_Is_Born_(2018_film)
+2018,BlacKkKlansman,8,83.0,1,0,0,0,0,0,0,Auto-refreshed from Wikipedia page BlacKkKlansman,BlacKkKlansman
+2018,Black Panther,2,88.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Black_Panther_(film),Black_Panther_(film)
+2018,Bohemian Rhapsody,11,49.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Bohemian_Rhapsody_(film),Bohemian_Rhapsody_(film)
+2018,Green Book,11,69.0,0,0,1,0,0,0,0,Auto-refreshed from Wikipedia page Green_Book_(film),Green_Book_(film)
+2018,Roma,11,96.0,0,1,1,1,0,0,0,Auto-refreshed from Wikipedia page Roma_(2018_film),Roma_(2018_film)
+2018,The Favourite,11,91.0,0,1,0,1,0,0,0,Auto-refreshed from Wikipedia page The_Favourite_(2018_film),The_Favourite_(2018_film)
+2018,Vice,12,61.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Vice_(2018_film),Vice_(2018_film)
+2019,1917,12,78.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page 1917_(2019_film),1917_(2019_film)
+2019,Ford v Ferrari,11,81.0,0,0,1,1,0,0,0,Auto-refreshed from Wikipedia page Ford_v_Ferrari,Ford_v_Ferrari
+2019,Jojo Rabbit,10,58.0,0,0,1,0,0,0,0,Auto-refreshed from Wikipedia page Jojo_Rabbit,Jojo_Rabbit
+2019,Joker,10,59.0,0,1,1,0,0,0,0,Auto-refreshed from Wikipedia page Joker_(2019_film),Joker_(2019_film)
+2019,Little Women,12,91.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Little_Women_(2019_film),Little_Women_(2019_film)
+2019,Marriage Story,11,94.0,0,1,1,1,0,0,0,Auto-refreshed from Wikipedia page Marriage_Story,Marriage_Story
+2019,Once upon a Time...in Hollywood,7,84.0,1,0,0,0,0,0,0,Auto-refreshed from Wikipedia page Once_Upon_a_Time_in_Hollywood,Once_Upon_a_Time_in_Hollywood
+2019,Parasite,11,97.0,1,0,1,0,0,0,0,Auto-refreshed from Wikipedia page Parasite_(2019_film),Parasite_(2019_film)
+2019,The Irishman,11,94.0,0,0,0,0,0,0,0,Auto-refreshed from Wikipedia page The_Irishman,The_Irishman
+2025,After the Hunt,10,52.0,0,1,0,0,0,0,1,Auto-refreshed from Wikipedia page After_the_Hunt,After_the_Hunt
+2025,Ballad of a Small Player,10,46.0,0,0,1,1,0,0,1,Auto-refreshed from Wikipedia page Ballad_of_a_Small_Player,Ballad_of_a_Small_Player
+2025,Blue Moon,10,78.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page Blue_Moon_(2025_film),Blue_Moon_(2025_film)
+2025,Bugonia,10,,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page Bugonia,Bugonia
+2025,Frankenstein,10,78.0,0,1,1,0,0,0,1,Auto-refreshed from Wikipedia page Frankenstein_(2025_film),Frankenstein_(2025_film)
+2025,Hamnet,11,84.0,0,0,1,1,0,0,1,Auto-refreshed from Wikipedia page Hamnet_(film),Hamnet_(film)
+2025,It Was Just an Accident,10,91.0,1,1,1,0,0,0,1,Auto-refreshed from Wikipedia page It_Was_Just_an_Accident,It_Was_Just_an_Accident
+2025,Jay Kelly,11,67.0,0,1,0,0,0,0,1,Auto-refreshed from Wikipedia page Jay_Kelly,Jay_Kelly
+2025,Marty Supreme,12,89.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page Marty_Supreme,Marty_Supreme
+2025,No Other Choice,9,86.0,1,1,1,0,0,0,1,Auto-refreshed from Wikipedia page No_Other_Choice,No_Other_Choice
+2025,One Battle After Another,9,95.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page One_Battle_After_Another,One_Battle_After_Another
+2025,Sentimental Value,11,86.0,1,0,0,0,0,0,1,Auto-refreshed from Wikipedia page Sentimental_Value,Sentimental_Value
+2025,Sinners,4,84.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page Sinners_(2025_film),Sinners_(2025_film)
+2025,The Secret Agent,11,91.0,1,1,1,1,0,0,1,Auto-refreshed from Wikipedia page The_Secret_Agent_(2025_film),The_Secret_Agent_(2025_film)
+2025,Train Dreams,11,88.0,0,0,0,0,1,0,1,Auto-refreshed from Wikipedia page Train_Dreams_(film),Train_Dreams_(film)
+2025,Wake Up Dead Man: A Knives Out Mystery,11,80.0,0,0,1,0,0,0,1,Auto-refreshed from Wikipedia page Wake_Up_Dead_Man:_A_Knives_Out_Mystery,Wake_Up_Dead_Man:_A_Knives_Out_Mystery
+2025,Wicked: For Good,11,58.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page Wicked:_For_Good,Wicked:_For_Good
+2026,People We Meet on Vacation,1,50.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page People_We_Meet_on_Vacation_(film),People_We_Meet_on_Vacation_(film)
+2026,Project Hail Mary,3,77.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page Project_Hail_Mary_(film),Project_Hail_Mary_(film)
+2026,The Bride!,3,55.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page The_Bride!,The_Bride!
+2026,The Rip,1,63.0,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page The_Rip_(film),The_Rip_(film)
+2026,The Wrecking Crew,1,,0,0,0,0,0,0,1,Auto-refreshed from Wikipedia page The_Wrecking_Crew_(film),The_Wrecking_Crew_(film)

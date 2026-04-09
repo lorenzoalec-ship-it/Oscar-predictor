@@ -1,0 +1,26 @@
+{
+  "year": 2027,
+  "started_at": "2026-04-09T18:26:25.749693+00:00",
+  "finished_at": "2026-04-09T18:27:25.798131+00:00",
+  "skip_tmdb": false,
+  "skip_source_refresh": true,
+  "external_refresh_report": {},
+  "synced_agent_updates": [
+    "data/raw/rotten_tomatoes_recent_summary.csv",
+    "data/raw/festival_metacritic_summary.csv",
+    "data/raw/future_contender_enrichment.csv"
+  ],
+  "missing_agent_updates": [
+    "data/agent_updates/golden_globe_recent_summary.csv",
+    "data/agent_updates/sag_recent_summary.csv",
+    "data/agent_updates/bafta_recent_summary.csv",
+    "data/agent_updates/pga_recent_summary.csv",
+    "data/agent_updates/dga_recent_summary.csv",
+    "data/agent_updates/critics_choice_recent_summary.csv"
+  ],
+  "tmdb_pool_path": "data/raw/tmdb_movies_2027.csv",
+  "forecast_output_path": "output/future_best_picture_predictions_2027.csv",
+  "site_data_path": "site/data/site_data.json",
+  "publish_pages": false,
+  "publish_report": {}
+}

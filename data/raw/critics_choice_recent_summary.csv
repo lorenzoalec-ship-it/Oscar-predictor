@@ -1,0 +1,189 @@
+year_film,film,critics_choice_nom_count,critics_choice_win_count
+2005,Brokeback Mountain,1,1
+2005,Capote,1,0
+2005,Crash,1,0
+2005,"Good Night, and Good Luck.",1,0
+2006,Babel,1,0
+2006,Letters from Iwo Jima,1,0
+2006,Little Miss Sunshine,1,0
+2006,The Departed,1,1
+2006,The Queen,1,0
+2007,Atonement,1,0
+2007,Juno,1,0
+2007,Michael Clayton,1,0
+2007,No Country for Old Men,1,1
+2007,There Will Be Blood,1,0
+2008,Frost/Nixon,1,0
+2008,Milk,1,0
+2008,Slumdog Millionaire,1,1
+2008,The Curious Case of Benjamin Button,1,0
+2008,The Reader,1,0
+2009,An Education,1,0
+2009,Avatar,1,0
+2009,Inglourious Basterds,1,0
+2009,"Precious: Based on the Novel 'Push' by Sapphire",1,0
+2009,The Hurt Locker,1,1
+2009,Up,1,0
+2009,Up in the Air,1,0
+2010,The Social Network,1,1
+2010,127 Hours,1,0
+2010,Black Swan,1,0
+2010,The Fighter,1,0
+2010,Inception,1,0
+2010,The King's Speech,1,0
+2010,The Town,1,0
+2010,Toy Story 3,1,0
+2010,True Grit,1,0
+2010,Winter's Bone,1,0
+2011,The Artist,1,1
+2011,The Descendants,1,0
+2011,Drive,1,0
+2011,Extremely Loud & Incredibly Close,1,0
+2011,The Help,1,0
+2011,Hugo,1,0
+2011,Midnight in Paris,1,0
+2011,Moneyball,1,0
+2011,The Tree of Life,1,0
+2011,War Horse,1,0
+2012,Argo,1,1
+2012,Beasts of the Southern Wild,1,0
+2012,Django Unchained,1,0
+2012,Les Misérables,1,0
+2012,Life of Pi,1,0
+2012,Lincoln,1,0
+2012,The Master,1,0
+2012,Moonrise Kingdom,1,0
+2012,Silver Linings Playbook,1,0
+2012,Zero Dark Thirty,1,0
+2013,12 Years a Slave,1,1
+2013,American Hustle,1,0
+2013,Captain Phillips,1,0
+2013,Dallas Buyers Club,1,0
+2013,Gravity,1,0
+2013,Her,1,0
+2013,Inside Llewyn Davis,1,0
+2013,Nebraska,1,0
+2013,Saving Mr. Banks,1,0
+2013,The Wolf of Wall Street,1,0
+2014,Boyhood,1,1
+2014,Birdman,1,0
+2014,Gone Girl,1,0
+2014,The Grand Budapest Hotel,1,0
+2014,The Imitation Game,1,0
+2014,Nightcrawler,1,0
+2014,Selma,1,0
+2014,The Theory of Everything,1,0
+2014,Unbroken,1,0
+2014,Whiplash,1,0
+2015,Spotlight,1,1
+2015,The Big Short,1,0
+2015,Bridge of Spies,1,0
+2015,Brooklyn,1,0
+2015,Carol,1,0
+2015,Mad Max: Fury Road,1,0
+2015,The Martian,1,0
+2015,The Revenant,1,0
+2015,Room,1,0
+2015,Sicario,1,0
+2015,Star Wars: The Force Awakens,1,0
+2016,La La Land,1,1
+2016,Arrival,1,0
+2016,Fences,1,0
+2016,Hacksaw Ridge,1,0
+2016,Hell or High Water,1,0
+2016,Lion,1,0
+2016,Loving,1,0
+2016,Manchester by the Sea,1,0
+2016,Moonlight,1,0
+2016,Sully,1,0
+2017,The Shape of Water,1,1
+2017,The Big Sick,1,0
+2017,Call Me by Your Name,1,0
+2017,Darkest Hour,1,0
+2017,Dunkirk,1,0
+2017,The Florida Project,1,0
+2017,Get Out,1,0
+2017,Lady Bird,1,0
+2017,The Post,1,0
+2017,"Three Billboards Outside Ebbing, Missouri",1,0
+2018,Roma,1,1
+2018,BlacKkKlansman,1,0
+2018,Black Panther,1,0
+2018,The Favourite,1,0
+2018,First Man,1,0
+2018,Green Book,1,0
+2018,If Beale Street Could Talk,1,0
+2018,Mary Poppins Returns,1,0
+2018,A Star Is Born,1,0
+2018,Vice,1,0
+2019,Once Upon a Time in Hollywood,1,1
+2019,1917,1,0
+2019,Ford v Ferrari,1,0
+2019,The Irishman,1,0
+2019,Jojo Rabbit,1,0
+2019,Joker,1,0
+2019,Little Women,1,0
+2019,Marriage Story,1,0
+2019,Parasite,1,0
+2019,Uncut Gems,1,0
+2020,Nomadland,1,1
+2020,Da 5 Bloods,1,0
+2020,Ma Rainey's Black Bottom,1,0
+2020,Mank,1,0
+2020,Minari,1,0
+2020,News of the World,1,0
+2020,One Night in Miami...,1,0
+2020,Promising Young Woman,1,0
+2020,Sound of Metal,1,0
+2020,The Trial of the Chicago 7,1,0
+2021,The Power of the Dog,1,1
+2021,Belfast,1,0
+2021,CODA,1,0
+2021,Don't Look Up,1,0
+2021,Dune,1,0
+2021,King Richard,1,0
+2021,Licorice Pizza,1,0
+2021,Nightmare Alley,1,0
+2021,"tick, tick... BOOM!",1,0
+2021,West Side Story,1,0
+2022,Everything Everywhere All at Once,1,1
+2022,Avatar: The Way of Water,1,0
+2022,Babylon,1,0
+2022,The Banshees of Inisherin,1,0
+2022,Elvis,1,0
+2022,The Fabelmans,1,0
+2022,Glass Onion: A Knives Out Mystery,1,0
+2022,RRR,1,0
+2022,Tár,1,0
+2022,Top Gun: Maverick,1,0
+2022,Women Talking,1,0
+2023,Oppenheimer,1,1
+2023,American Fiction,1,0
+2023,Barbie,1,0
+2023,The Color Purple,1,0
+2023,The Holdovers,1,0
+2023,Killers of the Flower Moon,1,0
+2023,Maestro,1,0
+2023,Past Lives,1,0
+2023,Poor Things,1,0
+2023,Saltburn,1,0
+2024,Anora,1,1
+2024,A Complete Unknown,1,0
+2024,The Brutalist,1,0
+2024,Conclave,1,0
+2024,Dune: Part Two,1,0
+2024,Emilia Pérez,1,0
+2024,Nickel Boys,1,0
+2024,Sing Sing,1,0
+2024,The Substance,1,0
+2024,Wicked,1,0
+2025,One Battle After Another,1,1
+2025,Bugonia,1,0
+2025,Frankenstein,1,0
+2025,Hamnet,1,0
+2025,Jay Kelly,1,0
+2025,Marty Supreme,1,0
+2025,Sentimental Value,1,0
+2025,Sinners,1,0
+2025,Train Dreams,1,0
+2025,Wicked: For Good,1,0

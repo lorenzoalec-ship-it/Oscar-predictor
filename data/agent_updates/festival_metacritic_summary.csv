@@ -1,0 +1,66 @@
+year_film,film,metacritic_score,cannes_flag,venice_flag,tiff_flag,telluride_flag,sundance_flag,sxsw_flag
+2015,Bridge of Spies,81.0,0,0,0,0,0,0
+2015,Brooklyn,88.0,0,0,1,0,1,0
+2015,Mad Max: Fury Road,90.0,1,0,0,0,0,0
+2015,Room,86.0,0,0,1,1,0,0
+2015,Spotlight,93.0,0,1,1,1,0,0
+2015,The Big Short,81.0,0,0,0,0,0,0
+2015,The Martian,80.0,1,0,1,0,0,0
+2015,The Revenant,76.0,0,0,0,0,0,0
+2016,Arrival,81.0,0,1,1,1,0,0
+2016,Fences,79.0,0,0,0,0,0,0
+2016,Hacksaw Ridge,71.0,0,1,0,0,0,0
+2016,Hell or High Water,88.0,1,0,0,0,0,0
+2016,Hidden Figures,74.0,0,0,0,0,0,0
+2016,La La Land,94.0,0,1,1,1,1,0
+2016,Lion,69.0,0,0,1,0,0,0
+2016,Manchester by the Sea,96.0,0,0,1,1,1,0
+2016,Moonlight,99.0,0,0,1,1,0,1
+2017,Call Me by Your Name,94.0,0,0,1,0,1,0
+2017,Darkest Hour,75.0,0,0,0,1,0,0
+2017,Dunkirk,94.0,0,0,1,0,0,0
+2017,Get Out,85.0,0,0,0,0,1,0
+2017,Lady Bird,93.0,0,0,1,1,0,0
+2017,Phantom Thread,90.0,0,0,0,0,0,0
+2017,The Post,83.0,0,0,0,0,0,0
+2017,The Shape of Water,87.0,0,1,1,1,0,0
+2017,"Three Billboards outside Ebbing, Missouri",88.0,0,1,1,0,0,0
+2018,A Star Is Born,88.0,0,1,1,0,0,0
+2018,BlacKkKlansman,83.0,1,0,0,0,0,0
+2018,Black Panther,88.0,0,0,0,0,0,0
+2018,Bohemian Rhapsody,49.0,0,0,0,0,0,0
+2018,Green Book,69.0,0,0,1,0,0,0
+2018,Roma,96.0,0,1,1,1,0,0
+2018,The Favourite,91.0,0,1,0,1,0,0
+2018,Vice,61.0,0,0,0,0,0,0
+2019,1917,78.0,0,0,0,0,0,0
+2019,Ford v Ferrari,81.0,0,0,1,1,0,0
+2019,Jojo Rabbit,58.0,0,0,1,0,0,0
+2019,Joker,59.0,0,1,1,0,0,0
+2019,Little Women,91.0,0,0,0,0,0,0
+2019,Marriage Story,94.0,0,1,1,1,0,0
+2019,Once upon a Time...in Hollywood,84.0,1,0,0,0,0,0
+2019,Parasite,97.0,1,0,1,0,0,0
+2019,The Irishman,94.0,0,0,0,0,0,0
+2025,After the Hunt,52.0,0,1,0,0,0,0
+2025,Ballad of a Small Player,46.0,0,0,1,1,0,0
+2025,Blue Moon,78.0,0,0,0,0,0,0
+2025,Bugonia,,0,0,0,0,0,0
+2025,Frankenstein,78.0,0,1,1,0,0,0
+2025,Hamnet,84.0,0,0,1,1,0,0
+2025,It Was Just an Accident,91.0,1,1,1,0,0,0
+2025,Jay Kelly,67.0,0,1,0,0,0,0
+2025,Marty Supreme,89.0,0,0,0,0,0,0
+2025,No Other Choice,86.0,1,1,1,0,0,0
+2025,One Battle After Another,95.0,0,0,0,0,0,0
+2025,Sentimental Value,86.0,1,0,0,0,0,0
+2025,Sinners,84.0,0,0,0,0,0,0
+2025,The Secret Agent,91.0,1,1,1,1,0,0
+2025,Train Dreams,88.0,0,0,0,0,1,0
+2025,Wake Up Dead Man: A Knives Out Mystery,80.0,0,0,1,0,0,0
+2025,Wicked: For Good,58.0,0,0,0,0,0,0
+2026,People We Meet on Vacation,50.0,0,0,0,0,0,0
+2026,Project Hail Mary,77.0,0,0,0,0,0,0
+2026,The Bride!,55.0,0,0,0,0,0,0
+2026,The Rip,63.0,0,0,0,0,0,0
+2026,The Wrecking Crew,,0,0,0,0,0,0

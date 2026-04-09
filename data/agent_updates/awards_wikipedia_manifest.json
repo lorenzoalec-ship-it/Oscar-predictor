@@ -1,0 +1,25 @@
+[
+  {"award": "golden_globe", "year_film": 2019, "url": "https://en.wikipedia.org/wiki/77th_Golden_Globe_Awards"},
+  {"award": "golden_globe", "year_film": 2020, "url": "https://en.wikipedia.org/wiki/78th_Golden_Globe_Awards"},
+  {"award": "golden_globe", "year_film": 2021, "url": "https://en.wikipedia.org/wiki/79th_Golden_Globe_Awards"},
+  {"award": "golden_globe", "year_film": 2022, "url": "https://en.wikipedia.org/wiki/80th_Golden_Globe_Awards"},
+  {"award": "golden_globe", "year_film": 2023, "url": "https://en.wikipedia.org/wiki/81st_Golden_Globe_Awards"},
+  {"award": "golden_globe", "year_film": 2024, "url": "https://en.wikipedia.org/wiki/82nd_Golden_Globe_Awards"},
+  {"award": "golden_globe", "year_film": 2025, "url": "https://en.wikipedia.org/wiki/83rd_Golden_Globe_Awards"},
+
+  {"award": "sag", "year_film": 2019, "url": "https://en.wikipedia.org/wiki/26th_Screen_Actors_Guild_Awards"},
+  {"award": "sag", "year_film": 2020, "url": "https://en.wikipedia.org/wiki/27th_Screen_Actors_Guild_Awards"},
+  {"award": "sag", "year_film": 2021, "url": "https://en.wikipedia.org/wiki/28th_Screen_Actors_Guild_Awards"},
+  {"award": "sag", "year_film": 2022, "url": "https://en.wikipedia.org/wiki/29th_Screen_Actors_Guild_Awards"},
+  {"award": "sag", "year_film": 2023, "url": "https://en.wikipedia.org/wiki/30th_Screen_Actors_Guild_Awards"},
+  {"award": "sag", "year_film": 2024, "url": "https://en.wikipedia.org/wiki/31st_Screen_Actors_Guild_Awards"},
+  {"award": "sag", "year_film": 2025, "url": "https://en.wikipedia.org/wiki/32nd_Actor_Awards"},
+
+  {"award": "bafta", "year_film": 2019, "url": "https://en.wikipedia.org/wiki/73rd_British_Academy_Film_Awards"},
+  {"award": "bafta", "year_film": 2020, "url": "https://en.wikipedia.org/wiki/74th_British_Academy_Film_Awards"},
+  {"award": "bafta", "year_film": 2021, "url": "https://en.wikipedia.org/wiki/75th_British_Academy_Film_Awards"},
+  {"award": "bafta", "year_film": 2022, "url": "https://en.wikipedia.org/wiki/76th_British_Academy_Film_Awards"},
+  {"award": "bafta", "year_film": 2023, "url": "https://en.wikipedia.org/wiki/77th_British_Academy_Film_Awards"},
+  {"award": "bafta", "year_film": 2024, "url": "https://en.wikipedia.org/wiki/78th_British_Academy_Film_Awards"},
+  {"award": "bafta", "year_film": 2025, "url": "https://en.wikipedia.org/wiki/79th_British_Academy_Film_Awards"}
+]
