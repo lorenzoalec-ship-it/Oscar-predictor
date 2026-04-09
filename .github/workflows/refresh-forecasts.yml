@@ -28,8 +28,16 @@ jobs:
 
       - name: Determine eligibility year
         run: |
-          # Oscar eligibility year = current calendar year (films releasing this year compete next year)
-          echo "ELIGIBILITY_YEAR=$(date +%Y)" >> $GITHUB_ENV
+          # Oscar ceremony is in March. Films from the prior calendar year are still
+          # in the race through March, so Jan-Mar we track the previous year's films.
+          MONTH=$(date +%-m)
+          YEAR=$(date +%Y)
+          if [ "$MONTH" -le 3 ]; then
+            ELIGIBILITY_YEAR=$((YEAR - 1))
+          else
+            ELIGIBILITY_YEAR=$YEAR
+          fi
+          echo "ELIGIBILITY_YEAR=$ELIGIBILITY_YEAR" >> $GITHUB_ENV
 
       - name: Pull latest TMDb contenders
         env:
