@@ -61,6 +61,7 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore: weekly forecast refresh [skip ci]"
+            git pull --rebase
             git push
           fi
 
