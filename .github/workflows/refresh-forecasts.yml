@@ -42,12 +42,12 @@ jobs:
       - name: Pull latest TMDb contenders
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        run: python src/pull_future_movies.py --year ${{ env.ELIGIBILITY_YEAR }}
+        run: python src/pull_future_movies.py --year $ELIGIBILITY_YEAR
 
       - name: Score future contenders
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        run: python src/future_best_picture.py --year ${{ env.ELIGIBILITY_YEAR }}
+        run: python src/future_best_picture.py --year $ELIGIBILITY_YEAR
 
       - name: Rebuild site data
         run: python src/build_site_data.py
