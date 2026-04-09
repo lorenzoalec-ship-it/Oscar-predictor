@@ -64,14 +64,4 @@ jobs:
             git push
           fi
 
-      - name: Trigger Pages deploy
-        if: success()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'deploy-pages.yml',
-              ref: 'main',
-            });
+      # Pages deploy triggers automatically via deploy-pages.yml on push to main
