@@ -26,15 +26,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Determine eligibility year
+        run: |
+          # Oscar eligibility year = current calendar year (films releasing this year compete next year)
+          echo "ELIGIBILITY_YEAR=$(date +%Y)" >> $GITHUB_ENV
+
       - name: Pull latest TMDb contenders
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        run: python src/pull_future_movies.py --year 2026
+        run: python src/pull_future_movies.py --year ${{ env.ELIGIBILITY_YEAR }}
 
       - name: Score future contenders
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        run: python src/future_best_picture.py --year 2026
+        run: python src/future_best_picture.py --year ${{ env.ELIGIBILITY_YEAR }}
 
       - name: Rebuild site data
         run: python src/build_site_data.py
