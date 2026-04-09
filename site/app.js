@@ -130,9 +130,14 @@ function renderMetrics(data) {
       body: "Simple rule: most precursor wins, then precursor nominations, Oscar nominations, Metacritic, and Rotten Tomatoes.",
     },
     {
+      label: "Confidence Calibration",
+      value: `${metrics.extended_top_pick_brier_calibrated.toFixed(3)} Brier`,
+      body: `Top-pick confidence is shrunk toward prior walk-forward accuracy. Extended-window Brier improved from ${metrics.extended_top_pick_brier_raw.toFixed(3)} to ${metrics.extended_top_pick_brier_calibrated.toFixed(3)}.`,
+    },
+    {
       label: `Latest Holdout ${metrics.holdout_year}`,
       value: formatPercent(metrics.holdout_accuracy),
-      body: `Predicted ${metrics.holdout_predicted_winner} over ${metrics.holdout_runner_up ?? "the field"} with ${formatConfidence(metrics.holdout_confidence_label)} confidence.`,
+      body: `Predicted ${metrics.holdout_predicted_winner} over ${metrics.holdout_runner_up ?? "the field"} with ${formatConfidence(metrics.holdout_confidence_label)} confidence (${formatPercent(metrics.holdout_confidence_probability ?? 0)}).`,
     },
     {
       label: "Trained On",
@@ -166,7 +171,7 @@ function renderRecentRaces(races) {
           <h3>${race.predicted_winner}</h3>
           <p>Trained on ${race.train_start}-${race.train_end}. Predicted winner with ${formatPercent(race.predicted_probability)} win share.</p>
           <p>Runner-up: <strong>${race.runner_up ?? "Unknown"}</strong> at ${formatPercent(race.runner_up_probability ?? 0)}. Margin: ${formatPercent(race.leader_margin)}.</p>
-          <p>Confidence: <strong>${formatConfidence(race.confidence_label)}</strong>. Baseline picked <strong>${race.baseline_predicted_winner ?? "Unknown"}</strong>.</p>
+          <p>Confidence: <strong>${formatConfidence(race.confidence_label)}</strong> (${formatPercent(race.confidence_probability ?? 0)}). Baseline picked <strong>${race.baseline_predicted_winner ?? "Unknown"}</strong>.</p>
           <p>Actual winner: <strong>${race.actual_winner}</strong></p>
           <span class="result ${race.correct ? "correct" : "miss"}">
             ${race.correct ? "Correct Call" : "Missed Call"}
@@ -245,7 +250,7 @@ function renderHistoricalYear(data, year) {
     summary.innerHTML = `
       Trained on <strong>${selected.train_start}-${selected.train_end}</strong>. 
       Predicted winner: <strong>${predicted.film}</strong> over <strong>${selected.rows[1]?.film ?? "the field"}</strong> by <strong>${formatPercent(predicted.margin_to_next ?? 0)}</strong>. 
-      Confidence: <strong>${formatConfidence(predicted.confidence_label)}</strong>. 
+      Confidence: <strong>${formatConfidence(selected.top_pick_confidence_label ?? predicted.confidence_label)}</strong> (${formatPercent(selected.top_pick_confidence ?? predicted.confidence_probability ?? 0)}). 
       Actual winner: <strong>${actual ? actual.film : "Unknown"}</strong>.
     `;
   }
