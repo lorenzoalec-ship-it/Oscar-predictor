@@ -444,6 +444,7 @@ function renderMethodology(methodology) {
 function renderHistoricalYearControls(data) {
   const select = document.getElementById("year-select");
   const years = [...data.historical_years]
+    .filter((item) => item.year_film >= 2015 || item.is_future_forecast)
     .sort((a, b) => b.year_film - a.year_film);
 
   if (!years.length) {
