@@ -2,6 +2,7 @@ venv/
 __pycache__/
 *.pyc
 .DS_Store
+.claude/
 
 # Local server / editor noise
 .vscode/
@@ -11,3 +12,4 @@ output/history/
 
 # Exceeds GitHub's 100MB file size limit
 data/raw/rotten_tomatoes_critic_reviews_old.csv
+.claude/
