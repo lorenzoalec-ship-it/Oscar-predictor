@@ -9,6 +9,9 @@ async function loadSiteData() {
   return response.json();
 }
 
+const BRAND_NAME = "RedCarpet Signals";
+const BRAND_DESCRIPTOR = "Signals shaping the awards race, starting with Best Picture.";
+
 function formatPercent(value) {
   if (value == null || Number.isNaN(Number(value))) return "N/A";
   return `${(value * 100).toFixed(1)}%`;
@@ -70,7 +73,10 @@ function renderHero(data) {
   const { hero, meta } = data;
   if (!hero || !meta) return;
   const currentMode = (data.season_modes ?? []).find((mode) => mode.slug === meta.current_forecast_season);
-  document.getElementById("hero-eyebrow").textContent = `${meta.current_ceremony_year ?? ""} Best Picture Forecast`;
+  document.title = `${BRAND_NAME} | Best Picture Board`;
+  document.getElementById("hero-eyebrow").textContent = meta.current_ceremony_year
+    ? `${BRAND_NAME} · ${meta.current_ceremony_year} Best Picture Board`
+    : `${BRAND_NAME} · Best Picture Board`;
   document.getElementById("hero-title").textContent = hero.title ?? "";
   document.getElementById("hero-probability").textContent = formatPercent(hero.probability);
   document.getElementById("hero-release").textContent = formatDate(hero.release_date);
@@ -81,8 +87,8 @@ function renderHero(data) {
   document.getElementById("hero-film-overview").textContent = hero.overview || "No synopsis available yet.";
   document.getElementById("hero-summary").textContent =
     currentMode
-      ? `Current front-runner for the ${meta.current_ceremony_year} Oscars in ${formatSeason(meta.current_forecast_season).toLowerCase()} mode. This board leans most on ${currentMode.leans_on}.`
-      : `Current front-runner for the ${meta.current_ceremony_year} Oscars in ${formatSeason(meta.current_forecast_season).toLowerCase()} mode, blending TMDb contender tracking with a walk-forward historical model.`;
+      ? `${BRAND_DESCRIPTOR} The live ${meta.current_ceremony_year} Best Picture board is running in ${formatSeason(meta.current_forecast_season).toLowerCase()} mode and currently leans most on ${currentMode.leans_on}.`
+      : `${BRAND_DESCRIPTOR} This Best Picture board blends TMDb contender tracking with a walk-forward historical model.`;
   document.getElementById("hero-film-card").insertAdjacentHTML("beforeend", movementMarkup(hero));
 }
 
@@ -226,7 +232,7 @@ function renderMetrics(data) {
     {
       label: `Production Walk-Forward (${metrics.production_training_start}+ train)`,
       value: formatPercent(metrics.production_walk_forward_winner_accuracy),
-      body: `The headline accuracy number. Trained only on films from ${metrics.production_training_start} onward — the modern Oscar era where precursor awards and streaming distributors exist. Each year is scored using only data from prior years, so no future information leaks in. Scored across ${metrics.production_first_scored_year}–${metrics.production_last_scored_year}.`,
+      body: `The headline accuracy number. Trained only on films from ${metrics.production_training_start} onward — the modern awards era where precursor signals and streaming distributors exist. Each year is scored using only data from prior years, so no future information leaks in. Scored across ${metrics.production_first_scored_year}–${metrics.production_last_scored_year}.`,
     },
     {
       label: `Extended Validation (${metrics.extended_training_start}+ train)`,
@@ -251,7 +257,7 @@ function renderMetrics(data) {
     {
       label: "Trained On",
       value: `${metrics.feature_count} Signals`,
-      body: "Oscar nominations, precursor awards, critic scores, release timing, distributor, genre, festival, and director-history features.",
+      body: "Nomination totals, precursor awards, critic scores, release timing, distributor, genre, festival, and director-history features.",
       hasDropdown: true,
     },
   ];
@@ -435,7 +441,10 @@ function renderHistory(rows) {
 }
 
 function renderMethodology(methodology) {
-  document.getElementById("method-headline").textContent = methodology.headline;
+  const headline = methodology.headline
+    ? methodology.headline.replace(/^The site uses/, `${BRAND_NAME} uses`)
+    : "";
+  document.getElementById("method-headline").textContent = headline;
   document.getElementById("method-list").innerHTML = methodology.bullets
     .map((bullet) => `<li>${bullet}</li>`)
     .join("");
@@ -476,7 +485,7 @@ function renderHistoricalYear(data, year) {
   const actual = selected.rows.find((row) => row.actual_winner);
   if (selected.is_future_forecast) {
     summary.innerHTML = `
-      Future forecast for the <strong>${selected.year_film + 1}</strong> Oscars in <strong>${formatSeason(selected.forecast_season)}</strong> mode. 
+      Future Best Picture board for <strong>${selected.year_film + 1}</strong> in <strong>${formatSeason(selected.forecast_season)}</strong> mode. 
       ${selected.forecast_mode_summary ? `${selected.forecast_mode_summary} ` : ""}
       ${selected.forecast_mode_leans_on ? `This mode leans most on <strong>${selected.forecast_mode_leans_on}</strong>. ` : ""}
       Current projected winner: <strong>${predicted.film}</strong>.
