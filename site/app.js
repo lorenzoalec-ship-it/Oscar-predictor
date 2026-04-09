@@ -13,6 +13,14 @@ function formatPercent(value) {
   return `${(value * 100).toFixed(1)}%`;
 }
 
+function formatConfidence(value) {
+  if (!value) return "Low";
+  return value
+    .split("_")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
 function formatDate(value) {
   if (!value) return "Unknown";
   const date = new Date(value);
@@ -107,24 +115,29 @@ function renderMetrics(data) {
   const stack = document.getElementById("metric-stack");
   const items = [
     {
-      label: "Walk-Forward Winner Accuracy",
-      value: formatPercent(metrics.walk_forward_winner_accuracy),
-      body: "The strongest honest measure of how often the model picked the eventual Best Picture winner year by year.",
+      label: `Production Walk-Forward (${metrics.production_training_start}+ train)`,
+      value: formatPercent(metrics.production_walk_forward_winner_accuracy),
+      body: `Retrained year by year on prior film years only, scoring ${metrics.production_first_scored_year}-${metrics.production_last_scored_year}.`,
+    },
+    {
+      label: `Extended Validation (${metrics.extended_training_start}+ train)`,
+      value: formatPercent(metrics.extended_walk_forward_winner_accuracy),
+      body: `Same walk-forward setup across ${metrics.extended_scored_years} scored years from ${metrics.extended_first_scored_year}-${metrics.extended_last_scored_year}.`,
+    },
+    {
+      label: metrics.baseline_name,
+      value: formatPercent(metrics.baseline_accuracy),
+      body: "Simple rule: most precursor wins, then precursor nominations, Oscar nominations, Metacritic, and Rotten Tomatoes.",
     },
     {
       label: `Latest Holdout ${metrics.holdout_year}`,
       value: formatPercent(metrics.holdout_accuracy),
-      body: `Predicted ${metrics.holdout_predicted_winner}, actual winner ${metrics.holdout_actual_winner}.`,
+      body: `Predicted ${metrics.holdout_predicted_winner} over ${metrics.holdout_runner_up ?? "the field"} with ${formatConfidence(metrics.holdout_confidence_label)} confidence.`,
     },
     {
-      label: "Forecast Season",
-      value: formatSeason(metrics.current_forecast_season),
-      body: "The future board now changes behavior by season so spring lists behave like watchlists and fall/winter lists behave more like awards forecasts.",
-    },
-    {
-      label: "Feature Set",
-      value: `${metrics.feature_count}`,
-      body: "Awards, timing, critic score, distributor, director history, prestige genre, and festival signals.",
+      label: "Trained On",
+      value: `${metrics.feature_count} Signals`,
+      body: "Oscar nominations, precursor awards, critic scores, release timing, distributor, genre, festival, and director-history features.",
     },
   ];
 
@@ -151,7 +164,9 @@ function renderRecentRaces(races) {
         <article class="race-card">
           <p class="eyebrow">${race.year_film} Film Year</p>
           <h3>${race.predicted_winner}</h3>
-          <p>Predicted winner with ${formatPercent(race.predicted_probability)} implied win share.</p>
+          <p>Trained on ${race.train_start}-${race.train_end}. Predicted winner with ${formatPercent(race.predicted_probability)} win share.</p>
+          <p>Runner-up: <strong>${race.runner_up ?? "Unknown"}</strong> at ${formatPercent(race.runner_up_probability ?? 0)}. Margin: ${formatPercent(race.leader_margin)}.</p>
+          <p>Confidence: <strong>${formatConfidence(race.confidence_label)}</strong>. Baseline picked <strong>${race.baseline_predicted_winner ?? "Unknown"}</strong>.</p>
           <p>Actual winner: <strong>${race.actual_winner}</strong></p>
           <span class="result ${race.correct ? "correct" : "miss"}">
             ${race.correct ? "Correct Call" : "Missed Call"}
@@ -173,6 +188,8 @@ function renderHistory(rows) {
           <td>${row.year_film}</td>
           <td>${row.predicted_winner}</td>
           <td>${row.actual_winner}</td>
+          <td>${row.baseline_predicted_winner ?? "—"}</td>
+          <td>${formatConfidence(row.confidence_label)}</td>
           <td><span class="history-pill ${row.correct ? "correct" : "miss"}">${row.correct ? "Hit" : "Miss"}</span></td>
         </tr>
       `
@@ -227,7 +244,8 @@ function renderHistoricalYear(data, year) {
   } else {
     summary.innerHTML = `
       Trained on <strong>${selected.train_start}-${selected.train_end}</strong>. 
-      Predicted winner: <strong>${predicted.film}</strong>. 
+      Predicted winner: <strong>${predicted.film}</strong> over <strong>${selected.rows[1]?.film ?? "the field"}</strong> by <strong>${formatPercent(predicted.margin_to_next ?? 0)}</strong>. 
+      Confidence: <strong>${formatConfidence(predicted.confidence_label)}</strong>. 
       Actual winner: <strong>${actual ? actual.film : "Unknown"}</strong>.
     `;
   }
@@ -238,11 +256,12 @@ function renderHistoricalYear(data, year) {
       (row, index) => `
         <article class="year-race-card">
           <div>
-            <h3>#${index + 1} ${row.film}</h3>
+            <h3>#${row.rank ?? index + 1} ${row.film}</h3>
             <p>
               ${row.oscar_nomination_count ?? "—"} Oscar nominations ·
               Tomatometer ${row.tomatometer_rating == null ? "—" : row.tomatometer_rating.toFixed(0)} ·
-              Momentum ${row.momentum_score == null ? "—" : row.momentum_score.toFixed(0)}
+              Momentum ${row.momentum_score == null ? "—" : row.momentum_score.toFixed(0)} ·
+              Gap to next ${formatPercent(row.margin_to_next ?? 0)}
             </p>
             <span class="winner-badge ${row.actual_winner ? "actual" : "nominee"}">
               ${
