@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Local server / editor noise
+.vscode/
+
+# Large or generated files you may not want in Git by default
+output/history/
