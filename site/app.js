@@ -67,6 +67,7 @@ function movementMarkup(card) {
 
 function renderHero(data) {
   const { hero, meta } = data;
+  const currentMode = (data.season_modes ?? []).find((mode) => mode.slug === meta.current_forecast_season);
   document.getElementById("hero-eyebrow").textContent = `${meta.current_ceremony_year} Best Picture Forecast`;
   document.getElementById("hero-title").textContent = hero.title;
   document.getElementById("hero-summary").textContent =
@@ -79,7 +80,9 @@ function renderHero(data) {
   document.getElementById("hero-film-genres").textContent = hero.genres || "Genre mix pending";
   document.getElementById("hero-film-overview").textContent = hero.overview || "No synopsis available yet.";
   document.getElementById("hero-summary").textContent =
-    `Current front-runner for the ${meta.current_ceremony_year} Oscars in ${formatSeason(meta.current_forecast_season).toLowerCase()} mode, blending TMDb contender tracking with a walk-forward historical model.`;
+    currentMode
+      ? `Current front-runner for the ${meta.current_ceremony_year} Oscars in ${formatSeason(meta.current_forecast_season).toLowerCase()} mode. This board leans most on ${currentMode.leans_on}.`
+      : `Current front-runner for the ${meta.current_ceremony_year} Oscars in ${formatSeason(meta.current_forecast_season).toLowerCase()} mode, blending TMDb contender tracking with a walk-forward historical model.`;
   document.getElementById("hero-film-card").insertAdjacentHTML("beforeend", movementMarkup(hero));
 }
 
@@ -156,6 +159,84 @@ function renderMetrics(data) {
         </article>
       `
     )
+    .join("");
+}
+
+function renderSeasonModes(data) {
+  const modes = data.season_modes ?? [];
+  const currentMode = modes.find((mode) => mode.current_mode);
+  document.getElementById("season-mode-summary").textContent = currentMode
+    ? `The live ${data.meta.current_ceremony_year} board is currently in ${currentMode.label.toLowerCase()} mode. Later-season cards stay marked TBD until the calendar actually reaches those phases, so we are not pretending to have festival or precursor evidence before it exists.`
+    : "Forecast modes shift the board from broad contender discovery early in the race toward stronger awards evidence later in the season.";
+
+  const container = document.getElementById("season-mode-grid");
+  container.innerHTML = modes
+    .map((mode) => {
+      const currentExample = mode.current_example;
+      const priorExamples = mode.prior_examples ?? [];
+      const currentExampleMarkup = currentExample
+        ? `
+            <div class="season-example current">
+              <div class="season-example-head">
+                <strong>Live ${currentExample.ceremony_year} Board</strong>
+                <span>${formatSeason(mode.slug)} mode</span>
+              </div>
+              <p>Projected winner: <strong>${escapeHtml(currentExample.top_pick)}</strong> at ${formatPercent(currentExample.top_pick_probability)}${currentExample.runner_up ? ` over ${escapeHtml(currentExample.runner_up)}` : ""}.</p>
+              <div class="season-example-list">
+                ${currentExample.top_three
+                  .map(
+                    (item, index) => `
+                      <span>#${index + 1} ${escapeHtml(item.title)} · ${formatPercent(item.probability)}</span>
+                    `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          `
+        : "";
+      const examplesMarkup = priorExamples.length
+        ? priorExamples
+            .map(
+              (example) => `
+                <div class="season-example">
+                  <div class="season-example-head">
+                    <strong>${example.ceremony_year} Oscars</strong>
+                    <span>${formatSeason(mode.slug)} mode</span>
+                  </div>
+                  <p>Projected winner: <strong>${escapeHtml(example.top_pick)}</strong> at ${formatPercent(example.top_pick_probability)}${example.runner_up ? ` over ${escapeHtml(example.runner_up)}` : ""}.</p>
+                  <div class="season-example-list">
+                    ${example.top_three
+                      .map(
+                        (item, index) => `
+                          <span>#${index + 1} ${escapeHtml(item.title)} · ${formatPercent(item.probability)}</span>
+                        `
+                      )
+                      .join("")}
+                  </div>
+                </div>
+              `
+            )
+            .join("")
+        : `<p class="season-empty">Archived ${mode.label.toLowerCase()} example pending.</p>`;
+
+      return `
+        <article class="season-mode-card ${mode.current_mode ? "current" : ""} ${mode.status ?? ""}">
+          <div class="season-mode-head">
+            <p class="eyebrow">${mode.current_mode ? "Current Mode" : "Forecast Mode"}</p>
+            <h3>${mode.label}</h3>
+          </div>
+          <div class="season-status-pill ${mode.status ?? ""}">${mode.status_label ?? "Forecast Mode"}</div>
+          <p>${mode.summary}</p>
+          <p><strong>Leans on:</strong> ${mode.leans_on}.</p>
+          <p><strong>Best for:</strong> ${mode.best_for}.</p>
+          <p class="season-status-copy">${mode.status_summary ?? ""}</p>
+          <div class="season-example-stack">
+            ${currentExampleMarkup}
+            ${examplesMarkup}
+          </div>
+        </article>
+      `;
+    })
     .join("");
 }
 
@@ -244,6 +325,8 @@ function renderHistoricalYear(data, year) {
   if (selected.is_future_forecast) {
     summary.innerHTML = `
       Future forecast for the <strong>${selected.year_film + 1}</strong> Oscars in <strong>${formatSeason(selected.forecast_season)}</strong> mode. 
+      ${selected.forecast_mode_summary ? `${selected.forecast_mode_summary} ` : ""}
+      ${selected.forecast_mode_leans_on ? `This mode leans most on <strong>${selected.forecast_mode_leans_on}</strong>. ` : ""}
       Current projected winner: <strong>${predicted.film}</strong>.
     `;
   } else {
@@ -295,6 +378,7 @@ async function main() {
       () => renderHero(data),
       () => renderContenders(data.forecast_cards ?? []),
       () => renderMetrics(data),
+      () => renderSeasonModes(data),
       () => renderHistoricalYearControls(data),
       () => renderRecentRaces(data.recent_races ?? []),
       () => renderHistory(data.backtest_rows ?? []),
