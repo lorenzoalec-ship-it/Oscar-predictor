@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oscar Predictor</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero" id="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" id="hero-eyebrow">Best Picture Forecast</p>
+          <h1 id="hero-title">Loading forecast…</h1>
+          <p class="hero-summary" id="hero-summary"></p>
+          <div class="hero-metrics">
+            <div class="metric-chip">
+              <span class="metric-label">Win Chance</span>
+              <strong id="hero-probability">--</strong>
+            </div>
+            <div class="metric-chip">
+              <span class="metric-label">Release Date</span>
+              <strong id="hero-release">--</strong>
+            </div>
+            <div class="metric-chip">
+              <span class="metric-label">Model</span>
+              <strong id="hero-model">--</strong>
+            </div>
+            <div class="metric-chip">
+              <span class="metric-label">Forecast Season</span>
+              <strong id="hero-season">--</strong>
+            </div>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-rank">Projected Winner</div>
+          <div class="hero-film" id="hero-film-card">
+            <span class="rank-badge">#1</span>
+            <strong id="hero-film-name">--</strong>
+            <span id="hero-film-genres">--</span>
+            <p id="hero-film-overview"></p>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="dashboard-grid">
+          <section class="panel panel-wide">
+            <div class="panel-head">
+              <p class="eyebrow">Top Contenders</p>
+              <h2>The Current Board</h2>
+            </div>
+            <div class="contender-list" id="contender-list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <p class="eyebrow">Model Readout</p>
+              <h2>Forecast Snapshot</h2>
+            </div>
+            <div class="stat-stack" id="metric-stack"></div>
+          </section>
+        </section>
+
+        <section class="panel panel-tall">
+          <div class="panel-head">
+            <p class="eyebrow">Historical Race Lab</p>
+            <h2>Explore A Specific Best Picture Year</h2>
+          </div>
+          <div class="history-controls">
+            <label for="year-select">Film Year</label>
+            <select id="year-select"></select>
+          </div>
+          <div class="history-year-summary" id="history-year-summary"></div>
+          <div class="year-race-list" id="year-race-list"></div>
+        </section>
+
+        <section class="panel panel-tall">
+          <div class="panel-head">
+            <p class="eyebrow">Recent Races</p>
+            <h2>How The Model Has Read The Last Few Years</h2>
+          </div>
+          <div class="race-grid" id="recent-races"></div>
+        </section>
+
+        <section class="dashboard-grid">
+          <section class="panel panel-wide">
+            <div class="panel-head">
+              <p class="eyebrow">Backtest</p>
+              <h2>Historical Winner Calls</h2>
+            </div>
+            <div class="history-table-wrap">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Predicted</th>
+                    <th>Actual</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody id="history-table"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <p class="eyebrow">Methodology</p>
+              <h2>What Powers This</h2>
+            </div>
+            <p class="method-copy" id="method-headline"></p>
+            <ul class="method-list" id="method-list"></ul>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="./data/site_data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+  </html>
