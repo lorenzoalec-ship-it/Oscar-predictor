@@ -61,7 +61,12 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore: weekly forecast refresh [skip ci]"
-            git push || (git pull --rebase && git push)
+            for i in 1 2 3; do
+              git push && break
+              echo "Push attempt $i failed, rebasing and retrying..."
+              git fetch origin main
+              git rebase origin/main
+            done
           fi
 
       # Pages deploy triggers automatically via deploy-pages.yml on push to main
