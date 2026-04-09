@@ -753,12 +753,34 @@ def merge_all(
     df["movie_rating"] = df["movie_rating_override"].combine_first(df["movie_rating"])
     df["movie_vote_count"] = df["movie_vote_count_override"].combine_first(df["movie_vote_count"])
     df = df.drop(columns=["movie_rating_override", "movie_vote_count_override"])
+    # Primary RT merge: exact year match
     df = df.merge(
         rt_tbl,
         left_on=["film_key", "year_film"],
         right_on=["film_key", "rt_release_year"],
         how="left",
     )
+    # Fallback RT merge: many prestige films get a limited Dec release (Oscar eligibility)
+    # but their wide release and RT tracking date falls in Jan-Mar of year_film + 1.
+    # For rows still missing tomatometer, try matching rt_release_year == year_film + 1.
+    rt_fallback = rt_tbl.copy()
+    rt_fallback["rt_release_year"] = rt_fallback["rt_release_year"] - 1
+    rt_cols = [c for c in rt_tbl.columns if c not in ("rt_release_year", "film_key")]
+    unmatched = df["tomatometer_rating"].isna()
+    if unmatched.any():
+        fallback_merge = df.loc[unmatched, ["film_key", "year_film"]].merge(
+            rt_fallback[["film_key", "rt_release_year"] + rt_cols],
+            left_on=["film_key", "year_film"],
+            right_on=["film_key", "rt_release_year"],
+            how="left",
+        )
+        for col in rt_cols:
+            if col in fallback_merge.columns:
+                df.loc[unmatched, col] = fallback_merge[col].values
+        filled = unmatched & df["tomatometer_rating"].notna()
+        if filled.sum():
+            print(f"[pipeline] RT year+1 fallback: filled RT scores for {filled.sum()} film(s).")
+
     df = df.merge(
         rt_recent_tbl,
         on=["year_film", "film_key"],

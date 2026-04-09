@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-09T18:29:17.105567+00:00",
+    "generated_at": "2026-04-09T19:42:18.129143+00:00",
     "model": "hgb",
     "current_forecast_year": 2026,
     "current_ceremony_year": 2027,
@@ -234,104 +234,104 @@
       "year_film": 2015,
       "train_start": 2005,
       "train_end": 2014,
-      "top_pick_confidence": 0.7125061035128623,
-      "top_pick_confidence_label": "high",
+      "top_pick_confidence": 0.5734201006780717,
+      "top_pick_confidence_label": "medium",
       "rows": [
         {
           "rank": 1,
           "film": "Spotlight",
-          "probability": 0.7125061035128623,
+          "probability": 0.5734201006780717,
           "actual_winner": true,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 97.0,
           "momentum_score": 26.0,
-          "margin_to_next": 0.44621236244721874,
-          "confidence_label": "high",
-          "confidence_probability": 0.7125061035128623
+          "margin_to_next": 0.15768924119548133,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5734201006780717
         },
         {
           "rank": 2,
           "film": "Mad Max: Fury Road",
-          "probability": 0.2662937410656435,
+          "probability": 0.41573085948259036,
           "actual_winner": false,
           "oscar_nomination_count": 10,
           "tomatometer_rating": 97.0,
           "momentum_score": 25.0,
-          "margin_to_next": 0.25034957193818896,
-          "confidence_label": "high",
-          "confidence_probability": 0.7125061035128623
+          "margin_to_next": 0.4097933224335211,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5734201006780717
         },
         {
           "rank": 3,
           "film": "The Revenant",
-          "probability": 0.015944169127454555,
+          "probability": 0.005937537049069244,
           "actual_winner": false,
           "oscar_nomination_count": 12,
           "tomatometer_rating": 78.0,
           "momentum_score": 37.0,
-          "margin_to_next": 0.01343420228455446,
-          "confidence_label": "high",
-          "confidence_probability": 0.7125061035128623
+          "margin_to_next": 0.001869321299602265,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5734201006780717
         },
         {
           "rank": 4,
           "film": "The Big Short",
-          "probability": 0.0025099668429000945,
+          "probability": 0.004068215749466979,
           "actual_winner": false,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 89.0,
           "momentum_score": 22.0,
-          "margin_to_next": 0.0004299072508776539,
-          "confidence_label": "high",
-          "confidence_probability": 0.7125061035128623
+          "margin_to_next": 0.0034007219167211168,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5734201006780717
         },
         {
           "rank": 5,
           "film": "Bridge of Spies",
-          "probability": 0.0020800595920224406,
+          "probability": 0.0006674938327458623,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 91.0,
           "momentum_score": 11.0,
-          "margin_to_next": 0.0018508229606758236,
-          "confidence_label": "high",
-          "confidence_probability": 0.7125061035128623
+          "margin_to_next": 0.0005838547381853684,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5734201006780717
         },
         {
           "rank": 6,
-          "film": "Brooklyn",
-          "probability": 0.00022923663134661706,
-          "actual_winner": false,
-          "oscar_nomination_count": 3,
-          "tomatometer_rating": 97.0,
-          "momentum_score": 14.0,
-          "margin_to_next": 1.4113284379289436e-06,
-          "confidence_label": "high",
-          "confidence_probability": 0.7125061035128623
-        },
-        {
-          "rank": 7,
           "film": "Room",
-          "probability": 0.00022782530290868812,
+          "probability": 8.363909456049393e-05,
           "actual_winner": false,
           "oscar_nomination_count": 4,
           "tomatometer_rating": 93.0,
           "momentum_score": 18.0,
-          "margin_to_next": 1.8927378047013308e-05,
-          "confidence_label": "high",
-          "confidence_probability": 0.7125061035128623
+          "margin_to_next": 1.694792464417206e-05,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5734201006780717
+        },
+        {
+          "rank": 7,
+          "film": "Brooklyn",
+          "probability": 6.669116991632187e-05,
+          "actual_winner": false,
+          "oscar_nomination_count": 3,
+          "tomatometer_rating": 97.0,
+          "momentum_score": 14.0,
+          "margin_to_next": 4.122822633727998e-05,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5734201006780717
         },
         {
           "rank": 8,
           "film": "The Martian",
-          "probability": 0.0002088979248616748,
+          "probability": 2.5462943579041895e-05,
           "actual_winner": false,
           "oscar_nomination_count": 7,
           "tomatometer_rating": 91.0,
           "momentum_score": 14.0,
           "margin_to_next": 0.0,
-          "confidence_label": "high",
-          "confidence_probability": 0.7125061035128623
+          "confidence_label": "medium",
+          "confidence_probability": 0.5734201006780717
         }
       ]
     },
@@ -339,116 +339,116 @@
       "year_film": 2016,
       "train_start": 2005,
       "train_end": 2015,
-      "top_pick_confidence": 0.7017008694079424,
-      "top_pick_confidence_label": "high",
+      "top_pick_confidence": 0.5178037714167288,
+      "top_pick_confidence_label": "medium",
       "rows": [
         {
           "rank": 1,
           "film": "Hacksaw Ridge",
-          "probability": 0.7017008694079424,
+          "probability": 0.5178037714167288,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 84.0,
           "momentum_score": 23.0,
-          "margin_to_next": 0.5513496915185234,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
+          "margin_to_next": 0.14362101556356655,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
         },
         {
           "rank": 2,
           "film": "La La Land",
-          "probability": 0.15035117788941904,
+          "probability": 0.3741827558531623,
           "actual_winner": false,
           "oscar_nomination_count": 14,
           "tomatometer_rating": 91.0,
           "momentum_score": 55.0,
-          "margin_to_next": 0.02188857575690939,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
+          "margin_to_next": 0.2953437259726762,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
         },
         {
           "rank": 3,
           "film": "Manchester by the Sea",
-          "probability": 0.12846260213250965,
+          "probability": 0.07883902988048606,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 96.0,
           "momentum_score": 25.0,
-          "margin_to_next": 0.1162957829178273,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
+          "margin_to_next": 0.0644744938532217,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
         },
         {
           "rank": 4,
           "film": "Arrival",
-          "probability": 0.012166819214682358,
+          "probability": 0.014364536027264372,
           "actual_winner": false,
           "oscar_nomination_count": 8,
           "tomatometer_rating": 94.0,
           "momentum_score": 18.0,
-          "margin_to_next": 0.006070170632498055,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
+          "margin_to_next": 0.00039792204315307507,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
         },
         {
           "rank": 5,
           "film": "Hell or High Water",
-          "probability": 0.006096648582184302,
+          "probability": 0.013966613984111297,
           "actual_winner": false,
           "oscar_nomination_count": 4,
           "tomatometer_rating": 97.0,
           "momentum_score": 7.0,
-          "margin_to_next": 0.005514648173198045,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
+          "margin_to_next": 0.013525360320591444,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
         },
         {
           "rank": 6,
           "film": "Hidden Figures",
-          "probability": 0.0005820004089862571,
+          "probability": 0.0004412536635198534,
           "actual_winner": false,
           "oscar_nomination_count": 3,
           "tomatometer_rating": 93.0,
           "momentum_score": 13.0,
-          "margin_to_next": 0.00031770400958633924,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
+          "margin_to_next": 0.00020123566116999185,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
         },
         {
           "rank": 7,
-          "film": "Lion",
-          "probability": 0.0002642963993999179,
-          "actual_winner": false,
-          "oscar_nomination_count": 6,
-          "tomatometer_rating": 84.0,
-          "momentum_score": 17.0,
-          "margin_to_next": 1.161506969981534e-05,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
-        },
-        {
-          "rank": 8,
           "film": "Moonlight",
-          "probability": 0.00025268132970010255,
+          "probability": 0.00024001800234986153,
           "actual_winner": true,
           "oscar_nomination_count": 8,
           "tomatometer_rating": 98.0,
           "momentum_score": 20.0,
-          "margin_to_next": 0.00012977669452415863,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
+          "margin_to_next": 0.00014045949241450143,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
         },
         {
-          "rank": 9,
+          "rank": 8,
           "film": "Fences",
-          "probability": 0.00012290463517594392,
+          "probability": 9.95585099353601e-05,
           "actual_winner": false,
           "oscar_nomination_count": 4,
           "tomatometer_rating": 92.0,
           "momentum_score": 19.0,
+          "margin_to_next": 3.709584749317065e-05,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
+        },
+        {
+          "rank": 9,
+          "film": "Lion",
+          "probability": 6.246266244218945e-05,
+          "actual_winner": false,
+          "oscar_nomination_count": 6,
+          "tomatometer_rating": 84.0,
+          "momentum_score": 17.0,
           "margin_to_next": 0.0,
-          "confidence_label": "high",
-          "confidence_probability": 0.7017008694079424
+          "confidence_label": "medium",
+          "confidence_probability": 0.5178037714167288
         }
       ]
     },
@@ -456,116 +456,116 @@
       "year_film": 2017,
       "train_start": 2005,
       "train_end": 2016,
-      "top_pick_confidence": 0.3321055614915024,
-      "top_pick_confidence_label": "low",
+      "top_pick_confidence": 0.6739718386867907,
+      "top_pick_confidence_label": "high",
       "rows": [
         {
           "rank": 1,
           "film": "The Shape of Water",
-          "probability": 0.3321055614915024,
+          "probability": 0.7485311981239866,
           "actual_winner": true,
           "oscar_nomination_count": 13,
           "tomatometer_rating": 92.0,
           "momentum_score": 50.0,
-          "margin_to_next": 0.03237579252831729,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
+          "margin_to_next": 0.6497319486638674,
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
         },
         {
           "rank": 2,
           "film": "Dunkirk",
-          "probability": 0.2997297689631851,
+          "probability": 0.0987992494601192,
           "actual_winner": false,
           "oscar_nomination_count": 8,
           "tomatometer_rating": 92.0,
           "momentum_score": 20.0,
-          "margin_to_next": 0.10620194130973337,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
+          "margin_to_next": 0.0338789271551445,
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
         },
         {
           "rank": 3,
-          "film": "Lady Bird",
-          "probability": 0.19352782765345172,
-          "actual_winner": false,
-          "oscar_nomination_count": 5,
-          "tomatometer_rating": 99.0,
-          "momentum_score": 15.0,
-          "margin_to_next": 0.12845403567604216,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
-        },
-        {
-          "rank": 4,
           "film": "Call Me by Your Name",
-          "probability": 0.06507379197740956,
+          "probability": 0.0649203223049747,
           "actual_winner": false,
           "oscar_nomination_count": 4,
           "tomatometer_rating": 95.0,
           "momentum_score": 14.0,
-          "margin_to_next": 0.009130439564179298,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
+          "margin_to_next": 0.03415402930318079,
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
         },
         {
-          "rank": 5,
-          "film": "Get Out",
-          "probability": 0.055943352413230264,
-          "actual_winner": false,
-          "oscar_nomination_count": 4,
-          "tomatometer_rating": 98.0,
-          "momentum_score": 7.0,
-          "margin_to_next": 0.028504158029739192,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
-        },
-        {
-          "rank": 6,
-          "film": "Darkest Hour",
-          "probability": 0.027439194383491072,
-          "actual_winner": false,
-          "oscar_nomination_count": 6,
-          "tomatometer_rating": 84.0,
-          "momentum_score": 28.0,
-          "margin_to_next": 0.005723785813545764,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
-        },
-        {
-          "rank": 7,
+          "rank": 4,
           "film": "Three Billboards outside Ebbing, Missouri",
-          "probability": 0.021715408569945308,
+          "probability": 0.030766293001793912,
           "actual_winner": false,
           "oscar_nomination_count": 7,
           "tomatometer_rating": 90.0,
           "momentum_score": 35.0,
-          "margin_to_next": 0.018675460012849164,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
+          "margin_to_next": 0.007821616322464774,
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
         },
         {
-          "rank": 8,
-          "film": "The Post",
-          "probability": 0.003039948557096145,
+          "rank": 5,
+          "film": "Get Out",
+          "probability": 0.02294467667932914,
           "actual_winner": false,
-          "oscar_nomination_count": 2,
-          "tomatometer_rating": 88.0,
+          "oscar_nomination_count": 4,
+          "tomatometer_rating": 98.0,
           "momentum_score": 7.0,
-          "margin_to_next": 0.0016148025664077192,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
+          "margin_to_next": 0.006709407932798301,
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
         },
         {
-          "rank": 9,
+          "rank": 6,
+          "film": "Lady Bird",
+          "probability": 0.016235268746530838,
+          "actual_winner": false,
+          "oscar_nomination_count": 5,
+          "tomatometer_rating": 99.0,
+          "momentum_score": 15.0,
+          "margin_to_next": 0.005752997897852349,
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
+        },
+        {
+          "rank": 7,
           "film": "Phantom Thread",
-          "probability": 0.0014251459906884259,
+          "probability": 0.010482270848678489,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 91.0,
           "momentum_score": 10.0,
+          "margin_to_next": 0.004473658588911139,
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
+        },
+        {
+          "rank": 8,
+          "film": "Darkest Hour",
+          "probability": 0.00600861225976735,
+          "actual_winner": false,
+          "oscar_nomination_count": 6,
+          "tomatometer_rating": 84.0,
+          "momentum_score": 28.0,
+          "margin_to_next": 0.0046965036849476,
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
+        },
+        {
+          "rank": 9,
+          "film": "The Post",
+          "probability": 0.00131210857481975,
+          "actual_winner": false,
+          "oscar_nomination_count": 2,
+          "tomatometer_rating": 88.0,
+          "momentum_score": 7.0,
           "margin_to_next": 0.0,
-          "confidence_label": "low",
-          "confidence_probability": 0.3321055614915024
+          "confidence_label": "high",
+          "confidence_probability": 0.6739718386867907
         }
       ]
     },
@@ -573,104 +573,104 @@
       "year_film": 2018,
       "train_start": 2005,
       "train_end": 2017,
-      "top_pick_confidence": 0.7749608728222366,
+      "top_pick_confidence": 0.8117095666226193,
       "top_pick_confidence_label": "very_high",
       "rows": [
         {
           "rank": 1,
           "film": "Roma",
-          "probability": 0.8213726754603381,
+          "probability": 0.8738708094608846,
           "actual_winner": false,
           "oscar_nomination_count": 10,
           "tomatometer_rating": 96.0,
           "momentum_score": 33.0,
-          "margin_to_next": 0.6863503392545659,
+          "margin_to_next": 0.8074822522617446,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7749608728222366
+          "confidence_probability": 0.8117095666226193
         },
         {
           "rank": 2,
-          "film": "Black Panther",
-          "probability": 0.13502233620577217,
-          "actual_winner": false,
-          "oscar_nomination_count": 7,
-          "tomatometer_rating": 96.0,
-          "momentum_score": 20.0,
-          "margin_to_next": 0.10129064844475572,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.7749608728222366
-        },
-        {
-          "rank": 3,
           "film": "Bohemian Rhapsody",
-          "probability": 0.03373168776101645,
+          "probability": 0.06638855719913998,
           "actual_winner": false,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 60.0,
           "momentum_score": 28.0,
-          "margin_to_next": 0.028316708748906416,
+          "margin_to_next": 0.020076015691934464,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7749608728222366
+          "confidence_probability": 0.8117095666226193
+        },
+        {
+          "rank": 3,
+          "film": "Black Panther",
+          "probability": 0.04631254150720552,
+          "actual_winner": false,
+          "oscar_nomination_count": 7,
+          "tomatometer_rating": 96.0,
+          "momentum_score": 20.0,
+          "margin_to_next": 0.03610553268455226,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8117095666226193
         },
         {
           "rank": 4,
-          "film": "A Star Is Born",
-          "probability": 0.005414979012110032,
-          "actual_winner": false,
-          "oscar_nomination_count": 8,
-          "tomatometer_rating": 90.0,
-          "momentum_score": 18.0,
-          "margin_to_next": 0.0038153333582437226,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.7749608728222366
-        },
-        {
-          "rank": 5,
           "film": "The Favourite",
-          "probability": 0.0015996456538663096,
+          "probability": 0.010207008822653258,
           "actual_winner": false,
           "oscar_nomination_count": 10,
           "tomatometer_rating": 93.0,
           "momentum_score": 19.0,
-          "margin_to_next": 0.00015187922364189792,
+          "margin_to_next": 0.008752313301803687,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7749608728222366
+          "confidence_probability": 0.8117095666226193
+        },
+        {
+          "rank": 5,
+          "film": "A Star Is Born",
+          "probability": 0.0014546955208495703,
+          "actual_winner": false,
+          "oscar_nomination_count": 8,
+          "tomatometer_rating": 90.0,
+          "momentum_score": 18.0,
+          "margin_to_next": 0.0006107107714884911,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8117095666226193
         },
         {
           "rank": 6,
-          "film": "BlacKkKlansman",
-          "probability": 0.0014477664302244117,
-          "actual_winner": false,
-          "oscar_nomination_count": 6,
-          "tomatometer_rating": 96.0,
-          "momentum_score": 19.0,
-          "margin_to_next": 0.0006590140608971758,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.7749608728222366
-        },
-        {
-          "rank": 7,
           "film": "Vice",
-          "probability": 0.0007887523693272359,
+          "probability": 0.0008439847493610791,
           "actual_winner": false,
           "oscar_nomination_count": 8,
           "tomatometer_rating": 64.0,
           "momentum_score": 24.0,
-          "margin_to_next": 0.00016659526198189913,
+          "margin_to_next": 0.00023445108464836644,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7749608728222366
+          "confidence_probability": 0.8117095666226193
+        },
+        {
+          "rank": 7,
+          "film": "BlacKkKlansman",
+          "probability": 0.0006095336647127127,
+          "actual_winner": false,
+          "oscar_nomination_count": 6,
+          "tomatometer_rating": 96.0,
+          "momentum_score": 19.0,
+          "margin_to_next": 0.00029666458951947786,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8117095666226193
         },
         {
           "rank": 8,
           "film": "Green Book",
-          "probability": 0.0006221571073453367,
+          "probability": 0.00031286907519323485,
           "actual_winner": true,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 77.0,
           "momentum_score": 31.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7749608728222366
+          "confidence_probability": 0.8117095666226193
         }
       ]
     },
@@ -678,116 +678,116 @@
       "year_film": 2019,
       "train_start": 2005,
       "train_end": 2018,
-      "top_pick_confidence": 0.43303542570949616,
-      "top_pick_confidence_label": "low",
+      "top_pick_confidence": 0.5369992544257574,
+      "top_pick_confidence_label": "medium",
       "rows": [
         {
           "rank": 1,
-          "film": "Parasite",
-          "probability": 0.43303542570949616,
-          "actual_winner": true,
-          "oscar_nomination_count": 6,
-          "tomatometer_rating": 99.0,
-          "momentum_score": 23.0,
-          "margin_to_next": 0.15549405531163885,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
-        },
-        {
-          "rank": 2,
           "film": "Once upon a Time...in Hollywood",
-          "probability": 0.2775413703978573,
+          "probability": 0.5528560777510819,
           "actual_winner": false,
           "oscar_nomination_count": 10,
           "tomatometer_rating": 86.0,
           "momentum_score": 34.0,
-          "margin_to_next": 0.14075042962930007,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
+          "margin_to_next": 0.2789242819658624,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
+        },
+        {
+          "rank": 2,
+          "film": "Parasite",
+          "probability": 0.27393179578521953,
+          "actual_winner": true,
+          "oscar_nomination_count": 6,
+          "tomatometer_rating": 99.0,
+          "momentum_score": 23.0,
+          "margin_to_next": 0.19655196948024223,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
         },
         {
           "rank": 3,
           "film": "The Irishman",
-          "probability": 0.13679094076855725,
+          "probability": 0.07737982630497732,
           "actual_winner": false,
           "oscar_nomination_count": 10,
           "tomatometer_rating": 95.0,
           "momentum_score": 14.0,
-          "margin_to_next": 0.031482780161986884,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
+          "margin_to_next": 0.024588183868056807,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
         },
         {
           "rank": 4,
           "film": "1917",
-          "probability": 0.10530816060657036,
+          "probability": 0.05279164243692051,
           "actual_winner": false,
           "oscar_nomination_count": 10,
           "tomatometer_rating": 88.0,
           "momentum_score": 39.0,
-          "margin_to_next": 0.07200847463872706,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
+          "margin_to_next": 0.03023469434325234,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
         },
         {
           "rank": 5,
-          "film": "Joker",
-          "probability": 0.033299685967843294,
-          "actual_winner": false,
-          "oscar_nomination_count": 11,
-          "tomatometer_rating": 68.0,
-          "momentum_score": 34.0,
-          "margin_to_next": 0.02048027537472066,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
-        },
-        {
-          "rank": 6,
           "film": "Marriage Story",
-          "probability": 0.012819410593122634,
+          "probability": 0.022556948093668174,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 95.0,
           "momentum_score": 31.0,
-          "margin_to_next": 0.012215968803858229,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
+          "margin_to_next": 0.004864791890698644,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
+        },
+        {
+          "rank": 6,
+          "film": "Joker",
+          "probability": 0.01769215620296953,
+          "actual_winner": false,
+          "oscar_nomination_count": 11,
+          "tomatometer_rating": 68.0,
+          "momentum_score": 34.0,
+          "margin_to_next": 0.01582182959055081,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
         },
         {
           "rank": 7,
           "film": "Jojo Rabbit",
-          "probability": 0.0006034417892644046,
+          "probability": 0.0018703266124187204,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 80.0,
           "momentum_score": 18.0,
-          "margin_to_next": 0.00019493358327981296,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
+          "margin_to_next": 0.0011071668861495885,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
         },
         {
           "rank": 8,
           "film": "Ford v Ferrari",
-          "probability": 0.00040850820598459166,
+          "probability": 0.0007631597262691319,
           "actual_winner": false,
           "oscar_nomination_count": 4,
           "tomatometer_rating": 92.0,
           "momentum_score": 4.0,
-          "margin_to_next": 0.00021545224468063302,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
+          "margin_to_next": 0.0006050926397939628,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
         },
         {
           "rank": 9,
           "film": "Little Women",
-          "probability": 0.00019305596130395864,
+          "probability": 0.00015806708647516906,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 95.0,
           "momentum_score": 14.0,
           "margin_to_next": 0.0,
-          "confidence_label": "low",
-          "confidence_probability": 0.43303542570949616
+          "confidence_label": "medium",
+          "confidence_probability": 0.5369992544257574
         }
       ]
     },
@@ -795,104 +795,104 @@
       "year_film": 2020,
       "train_start": 2005,
       "train_end": 2019,
-      "top_pick_confidence": 0.38620386767731346,
-      "top_pick_confidence_label": "low",
+      "top_pick_confidence": 0.6461327440319978,
+      "top_pick_confidence_label": "high",
       "rows": [
         {
           "rank": 1,
-          "film": "Minari",
-          "probability": 0.38620386767731346,
-          "actual_winner": false,
+          "film": "Nomadland",
+          "probability": 0.7516182057599969,
+          "actual_winner": true,
           "oscar_nomination_count": 6,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 13.0,
-          "margin_to_next": 0.04574161741841243,
-          "confidence_label": "low",
-          "confidence_probability": 0.38620386767731346
+          "tomatometer_rating": 93.0,
+          "momentum_score": 31.0,
+          "margin_to_next": 0.5993859244354013,
+          "confidence_label": "high",
+          "confidence_probability": 0.6461327440319978
         },
         {
           "rank": 2,
           "film": "The Father",
-          "probability": 0.34046225025890103,
+          "probability": 0.15223228132459565,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 0.0,
           "momentum_score": 6.0,
-          "margin_to_next": 0.09425714648047476,
-          "confidence_label": "low",
-          "confidence_probability": 0.38620386767731346
+          "margin_to_next": 0.06351670727660641,
+          "confidence_label": "high",
+          "confidence_probability": 0.6461327440319978
         },
         {
           "rank": 3,
-          "film": "Nomadland",
-          "probability": 0.24620510377842628,
-          "actual_winner": true,
+          "film": "Minari",
+          "probability": 0.08871557404798924,
+          "actual_winner": false,
           "oscar_nomination_count": 6,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 31.0,
-          "margin_to_next": 0.2206962456813841,
-          "confidence_label": "low",
-          "confidence_probability": 0.38620386767731346
+          "tomatometer_rating": 98.0,
+          "momentum_score": 13.0,
+          "margin_to_next": 0.08333749293348944,
+          "confidence_label": "high",
+          "confidence_probability": 0.6461327440319978
         },
         {
           "rank": 4,
           "film": "Judas and the Black Messiah",
-          "probability": 0.025508858097042172,
+          "probability": 0.0053780811144998105,
           "actual_winner": false,
           "oscar_nomination_count": 6,
-          "tomatometer_rating": 0.0,
+          "tomatometer_rating": 96.0,
           "momentum_score": 11.0,
-          "margin_to_next": 0.024447769808554322,
-          "confidence_label": "low",
-          "confidence_probability": 0.38620386767731346
+          "margin_to_next": 0.004205371578719277,
+          "confidence_label": "high",
+          "confidence_probability": 0.6461327440319978
         },
         {
           "rank": 5,
-          "film": "Mank",
-          "probability": 0.0010610882884878484,
-          "actual_winner": false,
-          "oscar_nomination_count": 10,
-          "tomatometer_rating": 83.0,
-          "momentum_score": 10.0,
-          "margin_to_next": 0.0007367419224280123,
-          "confidence_label": "low",
-          "confidence_probability": 0.38620386767731346
-        },
-        {
-          "rank": 6,
           "film": "The Trial of the Chicago 7",
-          "probability": 0.0003243463660598361,
+          "probability": 0.001172709535780534,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 89.0,
           "momentum_score": 17.0,
-          "margin_to_next": 0.0001372365040339665,
-          "confidence_label": "low",
-          "confidence_probability": 0.38620386767731346
+          "margin_to_next": 0.0006793111552663322,
+          "confidence_label": "high",
+          "confidence_probability": 0.6461327440319978
+        },
+        {
+          "rank": 6,
+          "film": "Mank",
+          "probability": 0.0004933983805142018,
+          "actual_winner": false,
+          "oscar_nomination_count": 10,
+          "tomatometer_rating": 83.0,
+          "momentum_score": 10.0,
+          "margin_to_next": 0.00019985373632483482,
+          "confidence_label": "high",
+          "confidence_probability": 0.6461327440319978
         },
         {
           "rank": 7,
           "film": "Sound of Metal",
-          "probability": 0.00018710986202586958,
+          "probability": 0.00029354464418936696,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 97.0,
           "momentum_score": 3.0,
-          "margin_to_next": 0.00013973419028237485,
-          "confidence_label": "low",
-          "confidence_probability": 0.38620386767731346
+          "margin_to_next": 0.0001973394517551097,
+          "confidence_label": "high",
+          "confidence_probability": 0.6461327440319978
         },
         {
           "rank": 8,
           "film": "Promising Young Woman",
-          "probability": 4.7375671743494745e-05,
+          "probability": 9.620519243425727e-05,
           "actual_winner": false,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 90.0,
           "momentum_score": 8.0,
           "margin_to_next": 0.0,
-          "confidence_label": "low",
-          "confidence_probability": 0.38620386767731346
+          "confidence_label": "high",
+          "confidence_probability": 0.6461327440319978
         }
       ]
     },
@@ -900,128 +900,128 @@
       "year_film": 2021,
       "train_start": 2005,
       "train_end": 2020,
-      "top_pick_confidence": 0.4903519374011763,
+      "top_pick_confidence": 0.5150208754849137,
       "top_pick_confidence_label": "medium",
       "rows": [
         {
           "rank": 1,
-          "film": "Don't Look Up",
-          "probability": 0.4903519374011763,
-          "actual_winner": false,
-          "oscar_nomination_count": 4,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 11.0,
-          "margin_to_next": 0.16893799143906701,
-          "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
-        },
-        {
-          "rank": 2,
-          "film": "The Power of the Dog",
-          "probability": 0.32141394596210926,
-          "actual_winner": false,
-          "oscar_nomination_count": 12,
-          "tomatometer_rating": 94.0,
-          "momentum_score": 42.0,
-          "margin_to_next": 0.1521961015232034,
-          "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
-        },
-        {
-          "rank": 3,
           "film": "CODA",
-          "probability": 0.16921784443890586,
+          "probability": 0.5214583935498767,
           "actual_winner": true,
           "oscar_nomination_count": 3,
           "tomatometer_rating": 0.0,
           "momentum_score": 30.0,
-          "margin_to_next": 0.16100545280416093,
+          "margin_to_next": 0.17022512651062005,
           "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
+          "confidence_probability": 0.5150208754849137
         },
         {
-          "rank": 4,
-          "film": "Dune",
-          "probability": 0.008212391634744935,
-          "actual_winner": false,
-          "oscar_nomination_count": 10,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 23.0,
-          "margin_to_next": 0.002367394514056022,
-          "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
-        },
-        {
-          "rank": 5,
-          "film": "Nightmare Alley",
-          "probability": 0.005844997120688913,
+          "rank": 2,
+          "film": "Don't Look Up",
+          "probability": 0.3512332670392566,
           "actual_winner": false,
           "oscar_nomination_count": 4,
           "tomatometer_rating": 0.0,
-          "momentum_score": 5.0,
-          "margin_to_next": 0.003507718149139506,
+          "momentum_score": 11.0,
+          "margin_to_next": 0.30920750438521855,
           "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
+          "confidence_probability": 0.5150208754849137
         },
         {
-          "rank": 6,
-          "film": "Drive My Car",
-          "probability": 0.0023372789715494073,
-          "actual_winner": false,
-          "oscar_nomination_count": 4,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 3.0,
-          "margin_to_next": 0.0009716334607706709,
-          "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
-        },
-        {
-          "rank": 7,
+          "rank": 3,
           "film": "Belfast",
-          "probability": 0.0013656455107787363,
+          "probability": 0.04202576265403805,
           "actual_winner": false,
           "oscar_nomination_count": 7,
           "tomatometer_rating": 0.0,
           "momentum_score": 18.0,
-          "margin_to_next": 0.0008211595643136722,
+          "margin_to_next": 0.007153830245042757,
           "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
+          "confidence_probability": 0.5150208754849137
+        },
+        {
+          "rank": 4,
+          "film": "Dune",
+          "probability": 0.03487193240899529,
+          "actual_winner": false,
+          "oscar_nomination_count": 10,
+          "tomatometer_rating": 0.0,
+          "momentum_score": 23.0,
+          "margin_to_next": 0.014455121615206984,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5150208754849137
+        },
+        {
+          "rank": 5,
+          "film": "Nightmare Alley",
+          "probability": 0.020416810793788306,
+          "actual_winner": false,
+          "oscar_nomination_count": 4,
+          "tomatometer_rating": 0.0,
+          "momentum_score": 5.0,
+          "margin_to_next": 0.003789049117968693,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5150208754849137
+        },
+        {
+          "rank": 6,
+          "film": "Drive My Car",
+          "probability": 0.016627761675819613,
+          "actual_winner": false,
+          "oscar_nomination_count": 4,
+          "tomatometer_rating": 0.0,
+          "momentum_score": 3.0,
+          "margin_to_next": 0.0050004957206356265,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5150208754849137
+        },
+        {
+          "rank": 7,
+          "film": "The Power of the Dog",
+          "probability": 0.011627265955183987,
+          "actual_winner": false,
+          "oscar_nomination_count": 12,
+          "tomatometer_rating": 94.0,
+          "momentum_score": 42.0,
+          "margin_to_next": 0.010587359460641594,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5150208754849137
         },
         {
           "rank": 8,
-          "film": "Licorice Pizza",
-          "probability": 0.0005444859464650641,
-          "actual_winner": false,
-          "oscar_nomination_count": 3,
-          "tomatometer_rating": 90.0,
-          "momentum_score": 13.0,
-          "margin_to_next": 0.00016034938952412867,
-          "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
-        },
-        {
-          "rank": 9,
           "film": "West Side Story",
-          "probability": 0.00038413655694093546,
+          "probability": 0.0010399064945423935,
           "actual_winner": false,
           "oscar_nomination_count": 7,
           "tomatometer_rating": 0.0,
           "momentum_score": 31.0,
-          "margin_to_next": 5.680010030045319e-05,
+          "margin_to_next": 0.0004118059899520032,
           "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
+          "confidence_probability": 0.5150208754849137
         },
         {
-          "rank": 10,
+          "rank": 9,
           "film": "King Richard",
-          "probability": 0.0003273364566404823,
+          "probability": 0.0006281005045903903,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 90.0,
           "momentum_score": 19.0,
+          "margin_to_next": 0.0005573015806815912,
+          "confidence_label": "medium",
+          "confidence_probability": 0.5150208754849137
+        },
+        {
+          "rank": 10,
+          "film": "Licorice Pizza",
+          "probability": 7.079892390879917e-05,
+          "actual_winner": false,
+          "oscar_nomination_count": 3,
+          "tomatometer_rating": 90.0,
+          "momentum_score": 13.0,
           "margin_to_next": 0.0,
           "confidence_label": "medium",
-          "confidence_probability": 0.4903519374011763
+          "confidence_probability": 0.5150208754849137
         }
       ]
     },
@@ -1029,128 +1029,128 @@
       "year_film": 2022,
       "train_start": 2005,
       "train_end": 2021,
-      "top_pick_confidence": 0.7930511119440863,
+      "top_pick_confidence": 0.8371711372525305,
       "top_pick_confidence_label": "very_high",
       "rows": [
         {
           "rank": 1,
           "film": "Everything Everywhere All at Once",
-          "probability": 0.9492566905323683,
+          "probability": 0.9510608083199414,
           "actual_winner": true,
           "oscar_nomination_count": 11,
           "tomatometer_rating": 0.0,
           "momentum_score": 54.0,
-          "margin_to_next": 0.9173890585444051,
+          "margin_to_next": 0.9108144709269539,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
+          "confidence_probability": 0.8371711372525305
         },
         {
           "rank": 2,
           "film": "All Quiet on the Western Front",
-          "probability": 0.03186763198796319,
+          "probability": 0.04024633739298751,
           "actual_winner": false,
           "oscar_nomination_count": 9,
           "tomatometer_rating": 0.0,
           "momentum_score": 20.0,
-          "margin_to_next": 0.02343689575917892,
+          "margin_to_next": 0.037039904655940696,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
+          "confidence_probability": 0.8371711372525305
         },
         {
           "rank": 3,
-          "film": "Top Gun: Maverick",
-          "probability": 0.008430736228784269,
-          "actual_winner": false,
-          "oscar_nomination_count": 6,
-          "tomatometer_rating": 96.0,
-          "momentum_score": 9.0,
-          "margin_to_next": 0.0053008460175612135,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
-        },
-        {
-          "rank": 4,
-          "film": "Avatar: The Way of Water",
-          "probability": 0.0031298902112230553,
-          "actual_winner": false,
-          "oscar_nomination_count": 4,
-          "tomatometer_rating": 76.0,
-          "momentum_score": 6.0,
-          "margin_to_next": 0.00024430462211658295,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
-        },
-        {
-          "rank": 5,
-          "film": "Triangle of Sadness",
-          "probability": 0.0028855855891064723,
-          "actual_winner": false,
-          "oscar_nomination_count": 3,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 5.0,
-          "margin_to_next": 0.0009297149438168327,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
-        },
-        {
-          "rank": 6,
           "film": "T\u00e1r",
-          "probability": 0.0019558706452896396,
+          "probability": 0.0032064327370468115,
           "actual_winner": false,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 0.0,
           "momentum_score": 12.0,
-          "margin_to_next": 0.0004291199096839958,
+          "margin_to_next": 0.000694736476019941,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
+          "confidence_probability": 0.8371711372525305
+        },
+        {
+          "rank": 4,
+          "film": "Triangle of Sadness",
+          "probability": 0.0025116962610268706,
+          "actual_winner": false,
+          "oscar_nomination_count": 3,
+          "tomatometer_rating": 0.0,
+          "momentum_score": 5.0,
+          "margin_to_next": 0.0010138645162475497,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8371711372525305
+        },
+        {
+          "rank": 5,
+          "film": "Top Gun: Maverick",
+          "probability": 0.001497831744779321,
+          "actual_winner": false,
+          "oscar_nomination_count": 6,
+          "tomatometer_rating": 96.0,
+          "momentum_score": 9.0,
+          "margin_to_next": 0.0008952829637285542,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8371711372525305
+        },
+        {
+          "rank": 6,
+          "film": "Avatar: The Way of Water",
+          "probability": 0.0006025487810507668,
+          "actual_winner": false,
+          "oscar_nomination_count": 4,
+          "tomatometer_rating": 76.0,
+          "momentum_score": 6.0,
+          "margin_to_next": 6.736510067484043e-06,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8371711372525305
         },
         {
           "rank": 7,
-          "film": "Women Talking",
-          "probability": 0.0015267507356056438,
-          "actual_winner": false,
-          "oscar_nomination_count": 2,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 4.0,
-          "margin_to_next": 0.0008661996588291494,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
-        },
-        {
-          "rank": 8,
           "film": "Elvis",
-          "probability": 0.0006605510767764943,
+          "probability": 0.0005958122709832827,
           "actual_winner": false,
           "oscar_nomination_count": 8,
           "tomatometer_rating": 77.0,
           "momentum_score": 21.0,
-          "margin_to_next": 0.00040689212414164245,
+          "margin_to_next": 0.0004259869404362703,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
+          "confidence_probability": 0.8371711372525305
+        },
+        {
+          "rank": 8,
+          "film": "Women Talking",
+          "probability": 0.00016982533054701242,
+          "actual_winner": false,
+          "oscar_nomination_count": 2,
+          "tomatometer_rating": 90.0,
+          "momentum_score": 4.0,
+          "margin_to_next": 9.902187204969337e-05,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8371711372525305
         },
         {
           "rank": 9,
           "film": "The Banshees of Inisherin",
-          "probability": 0.0002536589526348519,
+          "probability": 7.080345849731904e-05,
           "actual_winner": false,
           "oscar_nomination_count": 9,
           "tomatometer_rating": 96.0,
           "momentum_score": 37.0,
-          "margin_to_next": 0.00022102491238677735,
+          "margin_to_next": 3.2899755357744206e-05,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
+          "confidence_probability": 0.8371711372525305
         },
         {
           "rank": 10,
           "film": "The Fabelmans",
-          "probability": 3.263404024807454e-05,
+          "probability": 3.790370313957484e-05,
           "actual_winner": false,
           "oscar_nomination_count": 7,
           "tomatometer_rating": 92.0,
           "momentum_score": 15.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.7930511119440863
+          "confidence_probability": 0.8371711372525305
         }
       ]
     },
@@ -1158,128 +1158,128 @@
       "year_film": 2023,
       "train_start": 2005,
       "train_end": 2022,
-      "top_pick_confidence": 0.8403306942296513,
+      "top_pick_confidence": 0.8660524353543059,
       "top_pick_confidence_label": "very_high",
       "rows": [
         {
           "rank": 1,
           "film": "Oppenheimer",
-          "probability": 0.986186706042359,
+          "probability": 0.9693606219347227,
           "actual_winner": true,
           "oscar_nomination_count": 13,
           "tomatometer_rating": 0.0,
           "momentum_score": 64.0,
-          "margin_to_next": 0.9788120153030037,
+          "margin_to_next": 0.9467899589528652,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
+          "confidence_probability": 0.8660524353543059
         },
         {
           "rank": 2,
           "film": "Anatomy of a Fall",
-          "probability": 0.007374690739355332,
+          "probability": 0.022570662981857472,
           "actual_winner": false,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 0.0,
           "momentum_score": 17.0,
-          "margin_to_next": 0.005501272145229405,
+          "margin_to_next": 0.020722151508563248,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
+          "confidence_probability": 0.8660524353543059
         },
         {
           "rank": 3,
           "film": "The Holdovers",
-          "probability": 0.0018734185941259272,
+          "probability": 0.001848511473294224,
           "actual_winner": false,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 97.0,
           "momentum_score": 33.0,
-          "margin_to_next": 0.00018981304486062763,
+          "margin_to_next": 0.0001432381892383667,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
+          "confidence_probability": 0.8660524353543059
         },
         {
           "rank": 4,
-          "film": "American Fiction",
-          "probability": 0.0016836055492652996,
-          "actual_winner": false,
-          "oscar_nomination_count": 5,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 7.0,
-          "margin_to_next": 2.8835224959745985e-05,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
-        },
-        {
-          "rank": 5,
           "film": "Poor Things",
-          "probability": 0.0016547703243055536,
+          "probability": 0.0017052732840558574,
           "actual_winner": false,
           "oscar_nomination_count": 11,
           "tomatometer_rating": 92.0,
           "momentum_score": 34.0,
-          "margin_to_next": 0.0012653343163264996,
+          "margin_to_next": 0.00017079500857990746,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
+          "confidence_probability": 0.8660524353543059
+        },
+        {
+          "rank": 5,
+          "film": "American Fiction",
+          "probability": 0.00153447827547595,
+          "actual_winner": false,
+          "oscar_nomination_count": 5,
+          "tomatometer_rating": 0.0,
+          "momentum_score": 7.0,
+          "margin_to_next": 0.00012066363156373492,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8660524353543059
         },
         {
           "rank": 6,
-          "film": "Killers of the Flower Moon",
-          "probability": 0.00038943600797905405,
-          "actual_winner": false,
-          "oscar_nomination_count": 10,
-          "tomatometer_rating": 93.0,
-          "momentum_score": 22.0,
-          "margin_to_next": 1.5572769228348654e-05,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
-        },
-        {
-          "rank": 7,
-          "film": "Barbie",
-          "probability": 0.0003738632387507054,
-          "actual_winner": false,
-          "oscar_nomination_count": 8,
-          "tomatometer_rating": 88.0,
-          "momentum_score": 25.0,
-          "margin_to_next": 8.644801542883061e-05,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
-        },
-        {
-          "rank": 8,
-          "film": "Maestro",
-          "probability": 0.0002874152233218748,
-          "actual_winner": false,
-          "oscar_nomination_count": 7,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 15.0,
-          "margin_to_next": 0.00015227121705442765,
-          "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
-        },
-        {
-          "rank": 9,
           "film": "The Zone of Interest",
-          "probability": 0.00013514400626744714,
+          "probability": 0.001413814643912215,
           "actual_winner": false,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 93.0,
           "momentum_score": 19.0,
-          "margin_to_next": 9.419373199752432e-05,
+          "margin_to_next": 0.0003615984463053205,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
+          "confidence_probability": 0.8660524353543059
+        },
+        {
+          "rank": 7,
+          "film": "Maestro",
+          "probability": 0.0010522161976068945,
+          "actual_winner": false,
+          "oscar_nomination_count": 7,
+          "tomatometer_rating": 0.0,
+          "momentum_score": 15.0,
+          "margin_to_next": 0.0007227918628639641,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8660524353543059
+        },
+        {
+          "rank": 8,
+          "film": "Barbie",
+          "probability": 0.00032942433474293046,
+          "actual_winner": false,
+          "oscar_nomination_count": 8,
+          "tomatometer_rating": 88.0,
+          "momentum_score": 25.0,
+          "margin_to_next": 0.00022346035634461658,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8660524353543059
+        },
+        {
+          "rank": 9,
+          "film": "Killers of the Flower Moon",
+          "probability": 0.00010596397839831388,
+          "actual_winner": false,
+          "oscar_nomination_count": 10,
+          "tomatometer_rating": 93.0,
+          "momentum_score": 22.0,
+          "margin_to_next": 2.6931082464733857e-05,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8660524353543059
         },
         {
           "rank": 10,
           "film": "Past Lives",
-          "probability": 4.095027426992281e-05,
+          "probability": 7.903289593358002e-05,
           "actual_winner": false,
           "oscar_nomination_count": 2,
           "tomatometer_rating": 95.0,
           "momentum_score": 10.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8403306942296513
+          "confidence_probability": 0.8660524353543059
         }
       ]
     },
@@ -1287,572 +1287,68 @@
       "year_film": 2024,
       "train_start": 2005,
       "train_end": 2023,
-      "top_pick_confidence": 0.5236371485528596,
+      "top_pick_confidence": 0.4856801132011259,
       "top_pick_confidence_label": "medium",
       "rows": [
         {
           "rank": 1,
           "film": "Anora",
-          "probability": 0.5236371485528596,
+          "probability": 0.4856801132011259,
           "actual_winner": true,
           "oscar_nomination_count": 6,
           "tomatometer_rating": 0.0,
           "momentum_score": 42.0,
-          "margin_to_next": 0.07006054744530743,
+          "margin_to_next": 0.0068437880898989945,
           "confidence_label": "medium",
-          "confidence_probability": 0.5236371485528596
+          "confidence_probability": 0.4856801132011259
         },
         {
           "rank": 2,
           "film": "Dune: Part Two",
-          "probability": 0.45357660110755216,
+          "probability": 0.4788363251112269,
           "actual_winner": false,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 0.0,
           "momentum_score": 18.0,
-          "margin_to_next": 0.4447251756623986,
+          "margin_to_next": 0.45872837385959786,
           "confidence_label": "medium",
-          "confidence_probability": 0.5236371485528596
+          "confidence_probability": 0.4856801132011259
         },
         {
           "rank": 3,
           "film": "I'm Still Here",
-          "probability": 0.008851425445153532,
+          "probability": 0.020107951251629064,
           "actual_winner": false,
           "oscar_nomination_count": 3,
           "tomatometer_rating": 0.0,
           "momentum_score": 2.0,
-          "margin_to_next": 0.001797970074029433,
+          "margin_to_next": 0.010748274254290095,
           "confidence_label": "medium",
-          "confidence_probability": 0.5236371485528596
+          "confidence_probability": 0.4856801132011259
         },
         {
           "rank": 4,
-          "film": "Emilia P\u00e9rez",
-          "probability": 0.007053455371124099,
-          "actual_winner": false,
-          "oscar_nomination_count": 13,
-          "tomatometer_rating": 0.0,
-          "momentum_score": 45.0,
-          "margin_to_next": 0.0001720858478134477,
-          "confidence_label": "medium",
-          "confidence_probability": 0.5236371485528596
-        },
-        {
-          "rank": 5,
           "film": "The Substance",
-          "probability": 0.006881369523310651,
+          "probability": 0.00935967699733897,
           "actual_winner": false,
           "oscar_nomination_count": 5,
           "tomatometer_rating": 0.0,
           "momentum_score": 20.0,
+          "margin_to_next": 0.0033437435586600164,
+          "confidence_label": "medium",
+          "confidence_probability": 0.4856801132011259
+        },
+        {
+          "rank": 5,
+          "film": "Emilia P\u00e9rez",
+          "probability": 0.006015933438678953,
+          "actual_winner": false,
+          "oscar_nomination_count": 13,
+          "tomatometer_rating": 0.0,
+          "momentum_score": 45.0,
           "margin_to_next": 0.0,
           "confidence_label": "medium",
-          "confidence_probability": 0.5236371485528596
-        }
-      ]
-    },
-    {
-      "year_film": 2024,
-      "train_start": null,
-      "train_end": null,
-      "is_future_forecast": true,
-      "forecast_season": null,
-      "forecast_mode_summary": null,
-      "forecast_mode_leans_on": null,
-      "forecast_mode_best_for": null,
-      "rows": [
-        {
-          "film": "Dune: Part Two",
-          "probability": 0.1903887898481617,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Firebrand",
-          "probability": 0.1561291156718818,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Godzilla x Kong: The New Empire",
-          "probability": 0.0896350926770258,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Poolman",
-          "probability": 0.0535292564109116,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "I Am: Celine Dion",
-          "probability": 0.0472944566240982,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Tuesday",
-          "probability": 0.0413606235596075,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Bad Behaviour",
-          "probability": 0.0413606235596075,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Furiosa: A Mad Max Saga",
-          "probability": 0.0204778760378576,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Do Not Expect Too Much From the End of the World",
-          "probability": 0.0188547340735418,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Kung Fu Panda 4",
-          "probability": 0.0158212352533804,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Twisters",
-          "probability": 0.0152499891305098,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Inside Out 2",
-          "probability": 0.0151259508732909,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "La Chimera",
-          "probability": 0.0142102701827299,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Late Night with the Devil",
-          "probability": 0.0141481030293169,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Ghostbusters: Frozen Empire",
-          "probability": 0.0135101359792911,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "The Fall Guy",
-          "probability": 0.0129555592979899,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Despicable Me 4",
-          "probability": 0.0127570698629032,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "The American Society of Magical Negroes",
-          "probability": 0.0126398948320723,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "The Garfield Movie",
-          "probability": 0.0104316945513049,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        },
-        {
-          "film": "Love Lies Bleeding",
-          "probability": 0.0102885478321567,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": null,
-          "forecast_season": null,
-          "prestige_score": null,
-          "manual_contender_flag": 0
-        }
-      ]
-    },
-    {
-      "year_film": 2025,
-      "train_start": null,
-      "train_end": null,
-      "is_future_forecast": true,
-      "forecast_season": "precursor",
-      "forecast_mode_summary": "During guild and critics season, the forecast should behave more like an awards race and less like a release calendar watchlist.",
-      "forecast_mode_leans_on": "PGA, DGA, Critics Choice, BAFTA, SAG, Golden Globe signals, plus critics and nomination volume",
-      "forecast_mode_best_for": "tracking the real shape of the race before nominations lock",
-      "rows": [
-        {
-          "film": "Frankenstein",
-          "probability": 0.0056511838933937,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.6150000000000001,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Hamnet",
-          "probability": 0.0055880538581034,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.6433333333333333,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "After the Hunt",
-          "probability": 0.0053058771814489,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.45,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Train Dreams",
-          "probability": 0.0052550321391655,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.54,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Wake Up Dead Man: A Knives Out Mystery",
-          "probability": 0.0051630668321661,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.5,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Ballad of a Small Player",
-          "probability": 0.0050508311049849,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.535,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Marty Supreme",
-          "probability": 0.0049614547304898,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.4425,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Bugonia",
-          "probability": 0.0049438943748921,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.48,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Jay Kelly",
-          "probability": 0.0049276283627802,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.4875,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "It Was Just an Accident",
-          "probability": 0.0048069658881465,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.6275000000000001,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "One Battle After Another",
-          "probability": 0.0046595427129211,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.4375,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Sinners",
-          "probability": 0.004621484405605,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.325,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "No Other Choice",
-          "probability": 0.0045865910214277,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.615,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Sir\u00e2t",
-          "probability": 0.0045787281272741,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.6124999999999999,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Blue Moon",
-          "probability": 0.0045321196906088,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.4283333333333333,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Wicked: For Good",
-          "probability": 0.0045232434178334,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.345,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "A Big Bold Beautiful Journey",
-          "probability": 0.0044892322977692,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.3275,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "The Secret Agent",
-          "probability": 0.0043897038258204,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.5275,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Sentimental Value",
-          "probability": 0.0043087160750441,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.515,
-          "manual_contender_flag": 1
-        },
-        {
-          "film": "Nonnas",
-          "probability": 0.0042436279324155,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": null,
-          "momentum_score": null,
-          "poster_url": NaN,
-          "forecast_season": "precursor",
-          "prestige_score": 0.0,
-          "manual_contender_flag": 0
+          "confidence_probability": 0.4856801132011259
         }
       ]
     },
@@ -2115,16 +1611,16 @@
     "holdout_actual_winner": "Anora",
     "holdout_year": 2024,
     "holdout_runner_up": "Dune: Part Two",
-    "holdout_leader_margin": 0.8942132138761092,
+    "holdout_leader_margin": 0.9524186219086154,
     "holdout_confidence_label": "very_high",
-    "holdout_confidence_probability": 0.944147012286449,
+    "holdout_confidence_probability": 0.9749075682890087,
     "walk_forward_winner_accuracy": 1.0,
     "production_walk_forward_winner_accuracy": 1.0,
     "production_scored_years": 5,
     "production_first_scored_year": 2020,
     "production_last_scored_year": 2024,
     "production_training_start": 2010,
-    "extended_walk_forward_winner_accuracy": 0.6,
+    "extended_walk_forward_winner_accuracy": 0.7,
     "extended_scored_years": 10,
     "extended_first_scored_year": 2015,
     "extended_last_scored_year": 2024,
@@ -2133,12 +1629,12 @@
     "baseline_name": "Precursor Wins Baseline",
     "baseline_scored_years": 10,
     "confidence_weight": 0.7,
-    "extended_top_pick_brier_raw": 0.2636507438835628,
-    "extended_top_pick_brier_calibrated": 0.2627975160175233,
-    "extended_top_pick_log_loss_raw": 0.7085386294782609,
-    "extended_top_pick_log_loss_calibrated": 0.7194255428416703,
+    "extended_top_pick_brier_raw": 0.21411820955910632,
+    "extended_top_pick_brier_calibrated": 0.21730330586053626,
+    "extended_top_pick_log_loss_raw": 0.6190660047252814,
+    "extended_top_pick_log_loss_calibrated": 0.6263943838330013,
     "feature_count": 35,
-    "last_generated_at": "2026-04-09T18:29:17.105926+00:00",
+    "last_generated_at": "2026-04-09T19:42:18.129275+00:00",
     "current_forecast_season": "early"
   },
   "recent_races": [
@@ -2147,12 +1643,12 @@
       "train_start": 2005,
       "train_end": 2014,
       "predicted_winner": "Spotlight",
-      "predicted_probability": 0.7125061035128623,
+      "predicted_probability": 0.5734201006780717,
       "runner_up": "Mad Max: Fury Road",
-      "runner_up_probability": 0.2662937410656435,
-      "leader_margin": 0.44621236244721874,
-      "confidence_label": "high",
-      "confidence_probability": 0.7125061035128623,
+      "runner_up_probability": 0.41573085948259036,
+      "leader_margin": 0.15768924119548133,
+      "confidence_label": "medium",
+      "confidence_probability": 0.5734201006780717,
       "actual_winner": "Spotlight",
       "correct": true,
       "baseline_predicted_winner": "The Revenant",
@@ -2160,15 +1656,15 @@
       "top_three": [
         {
           "film": "Spotlight",
-          "probability": 0.7125061035128623
+          "probability": 0.5734201006780717
         },
         {
           "film": "Mad Max: Fury Road",
-          "probability": 0.2662937410656435
+          "probability": 0.41573085948259036
         },
         {
           "film": "The Revenant",
-          "probability": 0.015944169127454555
+          "probability": 0.005937537049069244
         }
       ]
     },
@@ -2177,12 +1673,12 @@
       "train_start": 2005,
       "train_end": 2015,
       "predicted_winner": "Hacksaw Ridge",
-      "predicted_probability": 0.7017008694079424,
+      "predicted_probability": 0.5178037714167288,
       "runner_up": "La La Land",
-      "runner_up_probability": 0.15035117788941904,
-      "leader_margin": 0.5513496915185234,
-      "confidence_label": "high",
-      "confidence_probability": 0.7017008694079424,
+      "runner_up_probability": 0.3741827558531623,
+      "leader_margin": 0.14362101556356655,
+      "confidence_label": "medium",
+      "confidence_probability": 0.5178037714167288,
       "actual_winner": "Moonlight",
       "correct": false,
       "baseline_predicted_winner": "La La Land",
@@ -2190,15 +1686,15 @@
       "top_three": [
         {
           "film": "Hacksaw Ridge",
-          "probability": 0.7017008694079424
+          "probability": 0.5178037714167288
         },
         {
           "film": "La La Land",
-          "probability": 0.15035117788941904
+          "probability": 0.3741827558531623
         },
         {
           "film": "Manchester by the Sea",
-          "probability": 0.12846260213250965
+          "probability": 0.07883902988048606
         }
       ]
     },
@@ -2207,12 +1703,12 @@
       "train_start": 2005,
       "train_end": 2016,
       "predicted_winner": "The Shape of Water",
-      "predicted_probability": 0.3321055614915024,
+      "predicted_probability": 0.7485311981239866,
       "runner_up": "Dunkirk",
-      "runner_up_probability": 0.2997297689631851,
-      "leader_margin": 0.03237579252831729,
-      "confidence_label": "low",
-      "confidence_probability": 0.3321055614915024,
+      "runner_up_probability": 0.0987992494601192,
+      "leader_margin": 0.6497319486638674,
+      "confidence_label": "high",
+      "confidence_probability": 0.6739718386867907,
       "actual_winner": "The Shape of Water",
       "correct": true,
       "baseline_predicted_winner": "The Shape of Water",
@@ -2220,15 +1716,15 @@
       "top_three": [
         {
           "film": "The Shape of Water",
-          "probability": 0.3321055614915024
+          "probability": 0.7485311981239866
         },
         {
           "film": "Dunkirk",
-          "probability": 0.2997297689631851
+          "probability": 0.0987992494601192
         },
         {
-          "film": "Lady Bird",
-          "probability": 0.19352782765345172
+          "film": "Call Me by Your Name",
+          "probability": 0.0649203223049747
         }
       ]
     },
@@ -2237,12 +1733,12 @@
       "train_start": 2005,
       "train_end": 2017,
       "predicted_winner": "Roma",
-      "predicted_probability": 0.8213726754603381,
-      "runner_up": "Black Panther",
-      "runner_up_probability": 0.13502233620577217,
-      "leader_margin": 0.6863503392545659,
+      "predicted_probability": 0.8738708094608846,
+      "runner_up": "Bohemian Rhapsody",
+      "runner_up_probability": 0.06638855719913998,
+      "leader_margin": 0.8074822522617446,
       "confidence_label": "very_high",
-      "confidence_probability": 0.7749608728222366,
+      "confidence_probability": 0.8117095666226193,
       "actual_winner": "Green Book",
       "correct": false,
       "baseline_predicted_winner": "Roma",
@@ -2250,15 +1746,15 @@
       "top_three": [
         {
           "film": "Roma",
-          "probability": 0.8213726754603381
-        },
-        {
-          "film": "Black Panther",
-          "probability": 0.13502233620577217
+          "probability": 0.8738708094608846
         },
         {
           "film": "Bohemian Rhapsody",
-          "probability": 0.03373168776101645
+          "probability": 0.06638855719913998
+        },
+        {
+          "film": "Black Panther",
+          "probability": 0.04631254150720552
         }
       ]
     },
@@ -2266,29 +1762,29 @@
       "year_film": 2019,
       "train_start": 2005,
       "train_end": 2018,
-      "predicted_winner": "Parasite",
-      "predicted_probability": 0.43303542570949616,
-      "runner_up": "Once upon a Time...in Hollywood",
-      "runner_up_probability": 0.2775413703978573,
-      "leader_margin": 0.15549405531163885,
-      "confidence_label": "low",
-      "confidence_probability": 0.43303542570949616,
+      "predicted_winner": "Once upon a Time...in Hollywood",
+      "predicted_probability": 0.5528560777510819,
+      "runner_up": "Parasite",
+      "runner_up_probability": 0.27393179578521953,
+      "leader_margin": 0.2789242819658624,
+      "confidence_label": "medium",
+      "confidence_probability": 0.5369992544257574,
       "actual_winner": "Parasite",
-      "correct": true,
+      "correct": false,
       "baseline_predicted_winner": "1917",
       "baseline_correct": false,
       "top_three": [
         {
-          "film": "Parasite",
-          "probability": 0.43303542570949616
+          "film": "Once upon a Time...in Hollywood",
+          "probability": 0.5528560777510819
         },
         {
-          "film": "Once upon a Time...in Hollywood",
-          "probability": 0.2775413703978573
+          "film": "Parasite",
+          "probability": 0.27393179578521953
         },
         {
           "film": "The Irishman",
-          "probability": 0.13679094076855725
+          "probability": 0.07737982630497732
         }
       ]
     },
@@ -2296,29 +1792,29 @@
       "year_film": 2020,
       "train_start": 2005,
       "train_end": 2019,
-      "predicted_winner": "Minari",
-      "predicted_probability": 0.38620386767731346,
+      "predicted_winner": "Nomadland",
+      "predicted_probability": 0.7516182057599969,
       "runner_up": "The Father",
-      "runner_up_probability": 0.34046225025890103,
-      "leader_margin": 0.04574161741841243,
-      "confidence_label": "low",
-      "confidence_probability": 0.38620386767731346,
+      "runner_up_probability": 0.15223228132459565,
+      "leader_margin": 0.5993859244354013,
+      "confidence_label": "high",
+      "confidence_probability": 0.6461327440319978,
       "actual_winner": "Nomadland",
-      "correct": false,
+      "correct": true,
       "baseline_predicted_winner": "Nomadland",
       "baseline_correct": true,
       "top_three": [
         {
-          "film": "Minari",
-          "probability": 0.38620386767731346
+          "film": "Nomadland",
+          "probability": 0.7516182057599969
         },
         {
           "film": "The Father",
-          "probability": 0.34046225025890103
+          "probability": 0.15223228132459565
         },
         {
-          "film": "Nomadland",
-          "probability": 0.24620510377842628
+          "film": "Minari",
+          "probability": 0.08871557404798924
         }
       ]
     },
@@ -2326,29 +1822,29 @@
       "year_film": 2021,
       "train_start": 2005,
       "train_end": 2020,
-      "predicted_winner": "Don't Look Up",
-      "predicted_probability": 0.4903519374011763,
-      "runner_up": "The Power of the Dog",
-      "runner_up_probability": 0.32141394596210926,
-      "leader_margin": 0.16893799143906701,
+      "predicted_winner": "CODA",
+      "predicted_probability": 0.5214583935498767,
+      "runner_up": "Don't Look Up",
+      "runner_up_probability": 0.3512332670392566,
+      "leader_margin": 0.17022512651062005,
       "confidence_label": "medium",
-      "confidence_probability": 0.4903519374011763,
+      "confidence_probability": 0.5150208754849137,
       "actual_winner": "CODA",
-      "correct": false,
+      "correct": true,
       "baseline_predicted_winner": "The Power of the Dog",
       "baseline_correct": false,
       "top_three": [
         {
-          "film": "Don't Look Up",
-          "probability": 0.4903519374011763
-        },
-        {
-          "film": "The Power of the Dog",
-          "probability": 0.32141394596210926
-        },
-        {
           "film": "CODA",
-          "probability": 0.16921784443890586
+          "probability": 0.5214583935498767
+        },
+        {
+          "film": "Don't Look Up",
+          "probability": 0.3512332670392566
+        },
+        {
+          "film": "Belfast",
+          "probability": 0.04202576265403805
         }
       ]
     },
@@ -2357,12 +1853,12 @@
       "train_start": 2005,
       "train_end": 2021,
       "predicted_winner": "Everything Everywhere All at Once",
-      "predicted_probability": 0.9492566905323683,
+      "predicted_probability": 0.9510608083199414,
       "runner_up": "All Quiet on the Western Front",
-      "runner_up_probability": 0.03186763198796319,
-      "leader_margin": 0.9173890585444051,
+      "runner_up_probability": 0.04024633739298751,
+      "leader_margin": 0.9108144709269539,
       "confidence_label": "very_high",
-      "confidence_probability": 0.7930511119440863,
+      "confidence_probability": 0.8371711372525305,
       "actual_winner": "Everything Everywhere All at Once",
       "correct": true,
       "baseline_predicted_winner": "Everything Everywhere All at Once",
@@ -2370,15 +1866,15 @@
       "top_three": [
         {
           "film": "Everything Everywhere All at Once",
-          "probability": 0.9492566905323683
+          "probability": 0.9510608083199414
         },
         {
           "film": "All Quiet on the Western Front",
-          "probability": 0.03186763198796319
+          "probability": 0.04024633739298751
         },
         {
-          "film": "Top Gun: Maverick",
-          "probability": 0.008430736228784269
+          "film": "T\u00e1r",
+          "probability": 0.0032064327370468115
         }
       ]
     },
@@ -2387,12 +1883,12 @@
       "train_start": 2005,
       "train_end": 2022,
       "predicted_winner": "Oppenheimer",
-      "predicted_probability": 0.986186706042359,
+      "predicted_probability": 0.9693606219347227,
       "runner_up": "Anatomy of a Fall",
-      "runner_up_probability": 0.007374690739355332,
-      "leader_margin": 0.9788120153030037,
+      "runner_up_probability": 0.022570662981857472,
+      "leader_margin": 0.9467899589528652,
       "confidence_label": "very_high",
-      "confidence_probability": 0.8403306942296513,
+      "confidence_probability": 0.8660524353543059,
       "actual_winner": "Oppenheimer",
       "correct": true,
       "baseline_predicted_winner": "Oppenheimer",
@@ -2400,15 +1896,15 @@
       "top_three": [
         {
           "film": "Oppenheimer",
-          "probability": 0.986186706042359
+          "probability": 0.9693606219347227
         },
         {
           "film": "Anatomy of a Fall",
-          "probability": 0.007374690739355332
+          "probability": 0.022570662981857472
         },
         {
           "film": "The Holdovers",
-          "probability": 0.0018734185941259272
+          "probability": 0.001848511473294224
         }
       ]
     },
@@ -2417,12 +1913,12 @@
       "train_start": 2005,
       "train_end": 2023,
       "predicted_winner": "Anora",
-      "predicted_probability": 0.5236371485528596,
+      "predicted_probability": 0.4856801132011259,
       "runner_up": "Dune: Part Two",
-      "runner_up_probability": 0.45357660110755216,
-      "leader_margin": 0.07006054744530743,
+      "runner_up_probability": 0.4788363251112269,
+      "leader_margin": 0.0068437880898989945,
       "confidence_label": "medium",
-      "confidence_probability": 0.5236371485528596,
+      "confidence_probability": 0.4856801132011259,
       "actual_winner": "Anora",
       "correct": true,
       "baseline_predicted_winner": "Anora",
@@ -2430,15 +1926,15 @@
       "top_three": [
         {
           "film": "Anora",
-          "probability": 0.5236371485528596
+          "probability": 0.4856801132011259
         },
         {
           "film": "Dune: Part Two",
-          "probability": 0.45357660110755216
+          "probability": 0.4788363251112269
         },
         {
           "film": "I'm Still Here",
-          "probability": 0.008851425445153532
+          "probability": 0.020107951251629064
         }
       ]
     }
@@ -2655,14 +2151,14 @@
       "predicted_winner": "Spotlight",
       "actual_winner": "Spotlight",
       "correct": true,
-      "predicted_probability": 0.7125061035128623,
+      "predicted_probability": 0.5734201006780717,
       "runner_up": "Mad Max: Fury Road",
-      "runner_up_probability": 0.2662937410656435,
-      "leader_margin": 0.44621236244721874,
-      "confidence_label": "very_high",
-      "prior_walk_forward_accuracy": 0.7125061035128623,
-      "calibrated_confidence": 0.7125061035128623,
-      "calibrated_confidence_label": "high",
+      "runner_up_probability": 0.41573085948259036,
+      "leader_margin": 0.15768924119548133,
+      "confidence_label": "medium",
+      "prior_walk_forward_accuracy": 0.5734201006780717,
+      "calibrated_confidence": 0.5734201006780717,
+      "calibrated_confidence_label": "medium",
       "baseline_predicted_winner": "The Revenant",
       "baseline_correct": false
     },
@@ -2673,14 +2169,14 @@
       "predicted_winner": "Hacksaw Ridge",
       "actual_winner": "Moonlight",
       "correct": false,
-      "predicted_probability": 0.7017008694079424,
+      "predicted_probability": 0.5178037714167288,
       "runner_up": "La La Land",
-      "runner_up_probability": 0.15035117788941904,
-      "leader_margin": 0.5513496915185234,
-      "confidence_label": "very_high",
+      "runner_up_probability": 0.3741827558531623,
+      "leader_margin": 0.14362101556356655,
+      "confidence_label": "medium",
       "prior_walk_forward_accuracy": 1.0,
-      "calibrated_confidence": 0.7017008694079424,
-      "calibrated_confidence_label": "high",
+      "calibrated_confidence": 0.5178037714167288,
+      "calibrated_confidence_label": "medium",
       "baseline_predicted_winner": "La La Land",
       "baseline_correct": false
     },
@@ -2691,14 +2187,14 @@
       "predicted_winner": "The Shape of Water",
       "actual_winner": "The Shape of Water",
       "correct": true,
-      "predicted_probability": 0.3321055614915024,
+      "predicted_probability": 0.7485311981239866,
       "runner_up": "Dunkirk",
-      "runner_up_probability": 0.2997297689631851,
-      "leader_margin": 0.03237579252831729,
-      "confidence_label": "low",
+      "runner_up_probability": 0.0987992494601192,
+      "leader_margin": 0.6497319486638674,
+      "confidence_label": "very_high",
       "prior_walk_forward_accuracy": 0.5,
-      "calibrated_confidence": 0.3321055614915024,
-      "calibrated_confidence_label": "low",
+      "calibrated_confidence": 0.6739718386867907,
+      "calibrated_confidence_label": "high",
       "baseline_predicted_winner": "The Shape of Water",
       "baseline_correct": true
     },
@@ -2709,13 +2205,13 @@
       "predicted_winner": "Roma",
       "actual_winner": "Green Book",
       "correct": false,
-      "predicted_probability": 0.8213726754603381,
-      "runner_up": "Black Panther",
-      "runner_up_probability": 0.13502233620577217,
-      "leader_margin": 0.6863503392545659,
+      "predicted_probability": 0.8738708094608846,
+      "runner_up": "Bohemian Rhapsody",
+      "runner_up_probability": 0.06638855719913998,
+      "leader_margin": 0.8074822522617446,
       "confidence_label": "very_high",
       "prior_walk_forward_accuracy": 0.6666666666666666,
-      "calibrated_confidence": 0.7749608728222366,
+      "calibrated_confidence": 0.8117095666226193,
       "calibrated_confidence_label": "very_high",
       "baseline_predicted_winner": "Roma",
       "baseline_correct": false
@@ -2724,17 +2220,17 @@
       "year_film": 2019,
       "train_start": 2005,
       "train_end": 2018,
-      "predicted_winner": "Parasite",
+      "predicted_winner": "Once upon a Time...in Hollywood",
       "actual_winner": "Parasite",
-      "correct": true,
-      "predicted_probability": 0.43303542570949616,
-      "runner_up": "Once upon a Time...in Hollywood",
-      "runner_up_probability": 0.2775413703978573,
-      "leader_margin": 0.15549405531163885,
-      "confidence_label": "medium",
+      "correct": false,
+      "predicted_probability": 0.5528560777510819,
+      "runner_up": "Parasite",
+      "runner_up_probability": 0.27393179578521953,
+      "leader_margin": 0.2789242819658624,
+      "confidence_label": "high",
       "prior_walk_forward_accuracy": 0.5,
-      "calibrated_confidence": 0.43303542570949616,
-      "calibrated_confidence_label": "low",
+      "calibrated_confidence": 0.5369992544257574,
+      "calibrated_confidence_label": "medium",
       "baseline_predicted_winner": "1917",
       "baseline_correct": false
     },
@@ -2742,17 +2238,17 @@
       "year_film": 2020,
       "train_start": 2005,
       "train_end": 2019,
-      "predicted_winner": "Minari",
+      "predicted_winner": "Nomadland",
       "actual_winner": "Nomadland",
-      "correct": false,
-      "predicted_probability": 0.38620386767731346,
+      "correct": true,
+      "predicted_probability": 0.7516182057599969,
       "runner_up": "The Father",
-      "runner_up_probability": 0.34046225025890103,
-      "leader_margin": 0.04574161741841243,
-      "confidence_label": "low",
-      "prior_walk_forward_accuracy": 0.6,
-      "calibrated_confidence": 0.38620386767731346,
-      "calibrated_confidence_label": "low",
+      "runner_up_probability": 0.15223228132459565,
+      "leader_margin": 0.5993859244354013,
+      "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.4,
+      "calibrated_confidence": 0.6461327440319978,
+      "calibrated_confidence_label": "high",
       "baseline_predicted_winner": "Nomadland",
       "baseline_correct": true
     },
@@ -2760,16 +2256,16 @@
       "year_film": 2021,
       "train_start": 2005,
       "train_end": 2020,
-      "predicted_winner": "Don't Look Up",
+      "predicted_winner": "CODA",
       "actual_winner": "CODA",
-      "correct": false,
-      "predicted_probability": 0.4903519374011763,
-      "runner_up": "The Power of the Dog",
-      "runner_up_probability": 0.32141394596210926,
-      "leader_margin": 0.16893799143906701,
+      "correct": true,
+      "predicted_probability": 0.5214583935498767,
+      "runner_up": "Don't Look Up",
+      "runner_up_probability": 0.3512332670392566,
+      "leader_margin": 0.17022512651062005,
       "confidence_label": "medium",
       "prior_walk_forward_accuracy": 0.5,
-      "calibrated_confidence": 0.4903519374011763,
+      "calibrated_confidence": 0.5150208754849137,
       "calibrated_confidence_label": "medium",
       "baseline_predicted_winner": "The Power of the Dog",
       "baseline_correct": false
@@ -2781,13 +2277,13 @@
       "predicted_winner": "Everything Everywhere All at Once",
       "actual_winner": "Everything Everywhere All at Once",
       "correct": true,
-      "predicted_probability": 0.9492566905323683,
+      "predicted_probability": 0.9510608083199414,
       "runner_up": "All Quiet on the Western Front",
-      "runner_up_probability": 0.03186763198796319,
-      "leader_margin": 0.9173890585444051,
+      "runner_up_probability": 0.04024633739298751,
+      "leader_margin": 0.9108144709269539,
       "confidence_label": "very_high",
-      "prior_walk_forward_accuracy": 0.42857142857142855,
-      "calibrated_confidence": 0.7930511119440863,
+      "prior_walk_forward_accuracy": 0.5714285714285714,
+      "calibrated_confidence": 0.8371711372525305,
       "calibrated_confidence_label": "very_high",
       "baseline_predicted_winner": "Everything Everywhere All at Once",
       "baseline_correct": true
@@ -2799,13 +2295,13 @@
       "predicted_winner": "Oppenheimer",
       "actual_winner": "Oppenheimer",
       "correct": true,
-      "predicted_probability": 0.986186706042359,
+      "predicted_probability": 0.9693606219347227,
       "runner_up": "Anatomy of a Fall",
-      "runner_up_probability": 0.007374690739355332,
-      "leader_margin": 0.9788120153030037,
+      "runner_up_probability": 0.022570662981857472,
+      "leader_margin": 0.9467899589528652,
       "confidence_label": "very_high",
-      "prior_walk_forward_accuracy": 0.5,
-      "calibrated_confidence": 0.8403306942296513,
+      "prior_walk_forward_accuracy": 0.625,
+      "calibrated_confidence": 0.8660524353543059,
       "calibrated_confidence_label": "very_high",
       "baseline_predicted_winner": "Oppenheimer",
       "baseline_correct": true
@@ -2817,13 +2313,13 @@
       "predicted_winner": "Anora",
       "actual_winner": "Anora",
       "correct": true,
-      "predicted_probability": 0.5236371485528596,
+      "predicted_probability": 0.4856801132011259,
       "runner_up": "Dune: Part Two",
-      "runner_up_probability": 0.45357660110755216,
-      "leader_margin": 0.07006054744530743,
+      "runner_up_probability": 0.4788363251112269,
+      "leader_margin": 0.0068437880898989945,
       "confidence_label": "low",
-      "prior_walk_forward_accuracy": 0.5555555555555556,
-      "calibrated_confidence": 0.5236371485528596,
+      "prior_walk_forward_accuracy": 0.6666666666666666,
+      "calibrated_confidence": 0.4856801132011259,
       "calibrated_confidence_label": "medium",
       "baseline_predicted_winner": "Anora",
       "baseline_correct": true
@@ -2836,7 +2332,7 @@
       "The longer validation view starts training at 2005 so we can review a tougher 10-year window from 2015-2024.",
       "The winner model is trained on Oscar nomination totals, precursor wins and nominations from PGA, DGA, Critics Choice, BAFTA, SAG, and the Golden Globes, plus critics scores, release timing, distributor flags, genre tags, festivals, and director history.",
       "The simple comparison baseline picks the film with the most precursor wins, then precursor nominations, then Oscar nominations, Metacritic, and Rotten Tomatoes. That baseline is shown alongside the model on the longer validation window.",
-      "Confidence labels are now shrinkage-calibrated toward prior walk-forward accuracy. On the 2015-2024 extended window, top-pick Brier improved from 0.264 to 0.263.",
+      "Confidence labels are now shrinkage-calibrated toward prior walk-forward accuracy. On the 2015-2024 extended window, top-pick Brier improved from 0.214 to 0.217.",
       "Future races rely on TMDb-first movie pool data and a season-aware blend that shifts weight from broad prestige tracking early in the year toward awards-style signals later in the race."
     ]
   }

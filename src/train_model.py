@@ -119,7 +119,6 @@ def prepare_data(df):
         "pga_nom_count",
         "dga_nom_count",
         "critics_choice_nom_count",
-        "momentum_score",
         "high_nomination_flag",
         "movie_rating",
         "movie_vote_count_log",

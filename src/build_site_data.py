@@ -30,6 +30,7 @@ SITE_DATA_PATH = ROOT / "site" / "data" / "site_data.json"
 SITE_DATA_JS_PATH = ROOT / "site" / "data" / "site_data.js"
 FORECAST_HISTORY_DIR = OUTPUT_DIR / "history"
 SITE_HISTORY_START_YEAR = 1999
+CURRENT_FORECAST_YEAR = 2026  # Only this year appears as a live future forecast in the dropdown
 FORECAST_SEASON_ORDER = ["early", "festival", "precursor", "post_nomination"]
 FORECAST_SEASON_GUIDE = {
     "early": {
@@ -379,6 +380,8 @@ def build_future_year_payload():
     forecast_files = list_publishable_future_forecasts()
     for path in forecast_files:
         year = int(path.stem.rsplit("_", 1)[-1])
+        if year != CURRENT_FORECAST_YEAR:
+            continue
         df = pd.read_csv(path).copy()
         forecast_season = forecast_season_for_df(df)
         season_guide = FORECAST_SEASON_GUIDE.get(forecast_season, {})
