@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-09T19:42:18.129143+00:00",
+    "generated_at": "2026-04-09T19:48:14.964706+00:00",
     "model": "hgb",
     "current_forecast_year": 2026,
     "current_ceremony_year": 2027,
@@ -1353,6 +1353,123 @@
       ]
     },
     {
+      "year_film": 2025,
+      "train_start": 2005,
+      "train_end": 2024,
+      "top_pick_confidence": 0.908529644294719,
+      "top_pick_confidence_label": "very_high",
+      "rows": [
+        {
+          "rank": 1,
+          "film": "One Battle After Another",
+          "probability": 0.9978994918495986,
+          "actual_winner": true,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 94.0,
+          "momentum_score": 69.0,
+          "margin_to_next": 0.9970855291364643,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        },
+        {
+          "rank": 2,
+          "film": "Bugonia",
+          "probability": 0.0008139627131343128,
+          "actual_winner": false,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 0.0,
+          "momentum_score": 12.0,
+          "margin_to_next": 0.0003831642981391543,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        },
+        {
+          "rank": 3,
+          "film": "The Secret Agent",
+          "probability": 0.0004307984149951585,
+          "actual_winner": false,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 98.0,
+          "momentum_score": 10.0,
+          "margin_to_next": 0.00014585941009993781,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        },
+        {
+          "rank": 4,
+          "film": "Hamnet",
+          "probability": 0.0002849390048952207,
+          "actual_winner": false,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 87.0,
+          "momentum_score": 41.0,
+          "margin_to_next": 7.92554326728175e-05,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        },
+        {
+          "rank": 5,
+          "film": "Sinners",
+          "probability": 0.00020568357222240318,
+          "actual_winner": false,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 97.0,
+          "momentum_score": 46.0,
+          "margin_to_next": 9.67853367184954e-05,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        },
+        {
+          "rank": 6,
+          "film": "Frankenstein",
+          "probability": 0.00010889823550390778,
+          "actual_winner": false,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 85.0,
+          "momentum_score": 25.0,
+          "margin_to_next": 2.348949895378785e-05,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        },
+        {
+          "rank": 7,
+          "film": "Marty Supreme",
+          "probability": 8.540873655011993e-05,
+          "actual_winner": false,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 93.0,
+          "momentum_score": 20.0,
+          "margin_to_next": 0.0,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        },
+        {
+          "rank": 8,
+          "film": "Sentimental Value",
+          "probability": 8.540873655011993e-05,
+          "actual_winner": false,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 96.0,
+          "momentum_score": 18.0,
+          "margin_to_next": 0.0,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        },
+        {
+          "rank": 9,
+          "film": "Train Dreams",
+          "probability": 8.540873655011993e-05,
+          "actual_winner": false,
+          "oscar_nomination_count": 1,
+          "tomatometer_rating": 94.0,
+          "momentum_score": 4.0,
+          "margin_to_next": 0.0,
+          "confidence_label": "very_high",
+          "confidence_probability": 0.908529644294719
+        }
+      ]
+    },
+    {
       "year_film": 2026,
       "train_start": null,
       "train_end": null,
@@ -1607,67 +1724,37 @@
   ],
   "metrics": {
     "holdout_accuracy": 1.0,
-    "holdout_predicted_winner": "Anora",
-    "holdout_actual_winner": "Anora",
-    "holdout_year": 2024,
-    "holdout_runner_up": "Dune: Part Two",
-    "holdout_leader_margin": 0.9524186219086154,
+    "holdout_predicted_winner": "One Battle After Another",
+    "holdout_actual_winner": "One Battle After Another",
+    "holdout_year": 2025,
+    "holdout_runner_up": "Sinners",
+    "holdout_leader_margin": 0.9948707744101302,
     "holdout_confidence_label": "very_high",
-    "holdout_confidence_probability": 0.9749075682890087,
+    "holdout_confidence_probability": 0.9968252671056973,
     "walk_forward_winner_accuracy": 1.0,
     "production_walk_forward_winner_accuracy": 1.0,
-    "production_scored_years": 5,
+    "production_scored_years": 6,
     "production_first_scored_year": 2020,
-    "production_last_scored_year": 2024,
+    "production_last_scored_year": 2025,
     "production_training_start": 2010,
-    "extended_walk_forward_winner_accuracy": 0.7,
-    "extended_scored_years": 10,
+    "extended_walk_forward_winner_accuracy": 0.7272727272727273,
+    "extended_scored_years": 11,
     "extended_first_scored_year": 2015,
-    "extended_last_scored_year": 2024,
+    "extended_last_scored_year": 2025,
     "extended_training_start": 2005,
-    "baseline_accuracy": 0.5,
+    "baseline_accuracy": 0.5454545454545454,
     "baseline_name": "Precursor Wins Baseline",
-    "baseline_scored_years": 10,
+    "baseline_scored_years": 11,
     "confidence_weight": 0.7,
-    "extended_top_pick_brier_raw": 0.21411820955910632,
-    "extended_top_pick_brier_calibrated": 0.21730330586053626,
-    "extended_top_pick_log_loss_raw": 0.6190660047252814,
-    "extended_top_pick_log_loss_calibrated": 0.6263943838330013,
+    "extended_top_pick_brier_raw": 0.19465331888414117,
+    "extended_top_pick_brier_calibrated": 0.1983090804162012,
+    "extended_top_pick_log_loss_raw": 0.5629784331422343,
+    "extended_top_pick_log_loss_calibrated": 0.5781701454613292,
     "feature_count": 35,
-    "last_generated_at": "2026-04-09T19:42:18.129275+00:00",
+    "last_generated_at": "2026-04-09T19:48:14.964918+00:00",
     "current_forecast_season": "early"
   },
   "recent_races": [
-    {
-      "year_film": 2015,
-      "train_start": 2005,
-      "train_end": 2014,
-      "predicted_winner": "Spotlight",
-      "predicted_probability": 0.5734201006780717,
-      "runner_up": "Mad Max: Fury Road",
-      "runner_up_probability": 0.41573085948259036,
-      "leader_margin": 0.15768924119548133,
-      "confidence_label": "medium",
-      "confidence_probability": 0.5734201006780717,
-      "actual_winner": "Spotlight",
-      "correct": true,
-      "baseline_predicted_winner": "The Revenant",
-      "baseline_correct": false,
-      "top_three": [
-        {
-          "film": "Spotlight",
-          "probability": 0.5734201006780717
-        },
-        {
-          "film": "Mad Max: Fury Road",
-          "probability": 0.41573085948259036
-        },
-        {
-          "film": "The Revenant",
-          "probability": 0.005937537049069244
-        }
-      ]
-    },
     {
       "year_film": 2016,
       "train_start": 2005,
@@ -1937,6 +2024,36 @@
           "probability": 0.020107951251629064
         }
       ]
+    },
+    {
+      "year_film": 2025,
+      "train_start": 2005,
+      "train_end": 2024,
+      "predicted_winner": "One Battle After Another",
+      "predicted_probability": 0.9978994918495986,
+      "runner_up": "Bugonia",
+      "runner_up_probability": 0.0008139627131343128,
+      "leader_margin": 0.9970855291364643,
+      "confidence_label": "very_high",
+      "confidence_probability": 0.908529644294719,
+      "actual_winner": "One Battle After Another",
+      "correct": true,
+      "baseline_predicted_winner": "One Battle After Another",
+      "baseline_correct": true,
+      "top_three": [
+        {
+          "film": "One Battle After Another",
+          "probability": 0.9978994918495986
+        },
+        {
+          "film": "Bugonia",
+          "probability": 0.0008139627131343128
+        },
+        {
+          "film": "The Secret Agent",
+          "probability": 0.0004307984149951585
+        }
+      ]
     }
   ],
   "season_modes": [
@@ -2038,6 +2155,10 @@
     }
   ],
   "actual_winners": [
+    {
+      "year_film": 2025,
+      "film": "One Battle After Another"
+    },
     {
       "year_film": 2024,
       "film": "Anora"
@@ -2323,16 +2444,34 @@
       "calibrated_confidence_label": "medium",
       "baseline_predicted_winner": "Anora",
       "baseline_correct": true
+    },
+    {
+      "year_film": 2025,
+      "train_start": 2005,
+      "train_end": 2024,
+      "predicted_winner": "One Battle After Another",
+      "actual_winner": "One Battle After Another",
+      "correct": true,
+      "predicted_probability": 0.9978994918495986,
+      "runner_up": "Bugonia",
+      "runner_up_probability": 0.0008139627131343128,
+      "leader_margin": 0.9970855291364643,
+      "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.7,
+      "calibrated_confidence": 0.908529644294719,
+      "calibrated_confidence_label": "very_high",
+      "baseline_predicted_winner": "One Battle After Another",
+      "baseline_correct": true
     }
   ],
   "methodology": {
     "headline": "The site uses a production Best Picture model trained on modern-era nominees, plus a longer walk-forward validation window to keep the headline honest.",
     "bullets": [
-      "Walk-forward means each historical film year is scored only with models trained on earlier film years. The live production setup starts training at 2010 and currently scores 2020-2024.",
-      "The longer validation view starts training at 2005 so we can review a tougher 10-year window from 2015-2024.",
+      "Walk-forward means each historical film year is scored only with models trained on earlier film years. The live production setup starts training at 2010 and currently scores 2020-2025.",
+      "The longer validation view starts training at 2005 so we can review a tougher 11-year window from 2015-2025.",
       "The winner model is trained on Oscar nomination totals, precursor wins and nominations from PGA, DGA, Critics Choice, BAFTA, SAG, and the Golden Globes, plus critics scores, release timing, distributor flags, genre tags, festivals, and director history.",
       "The simple comparison baseline picks the film with the most precursor wins, then precursor nominations, then Oscar nominations, Metacritic, and Rotten Tomatoes. That baseline is shown alongside the model on the longer validation window.",
-      "Confidence labels are now shrinkage-calibrated toward prior walk-forward accuracy. On the 2015-2024 extended window, top-pick Brier improved from 0.214 to 0.217.",
+      "Confidence labels are now shrinkage-calibrated toward prior walk-forward accuracy. On the 2015-2024 extended window, top-pick Brier improved from 0.195 to 0.198.",
       "Future races rely on TMDb-first movie pool data and a season-aware blend that shifts weight from broad prestige tracking early in the year toward awards-style signals later in the race."
     ]
   }
