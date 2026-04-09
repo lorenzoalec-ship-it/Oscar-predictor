@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-09T19:48:14.964706+00:00",
+    "generated_at": "2026-04-09T20:20:35.640435+00:00",
     "model": "hgb",
     "current_forecast_year": 2026,
     "current_ceremony_year": 2027,
@@ -19,6 +19,12 @@
     "forecast_season": "early",
     "prestige_score": 0.3225,
     "manual_contender_flag": 1,
+    "pga_win": 0,
+    "dga_win": 0,
+    "sag_win": 0,
+    "bafta_win": 0,
+    "golden_globe_win": 0,
+    "critics_choice_win": 0,
     "previous_rank": 1,
     "rank_delta": 0,
     "movement": "same"
@@ -37,6 +43,12 @@
       "forecast_season": "early",
       "prestige_score": 0.3225,
       "manual_contender_flag": 1,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 1,
       "rank_delta": 0,
       "movement": "same"
@@ -54,6 +66,12 @@
       "forecast_season": "early",
       "prestige_score": 0.3625,
       "manual_contender_flag": 1,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 2,
       "rank_delta": 0,
       "movement": "same"
@@ -71,6 +89,12 @@
       "forecast_season": "early",
       "prestige_score": 0.3225,
       "manual_contender_flag": 1,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 3,
       "rank_delta": 0,
       "movement": "same"
@@ -88,6 +112,12 @@
       "forecast_season": "early",
       "prestige_score": 0.3225,
       "manual_contender_flag": 1,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 4,
       "rank_delta": 0,
       "movement": "same"
@@ -105,6 +135,12 @@
       "forecast_season": "early",
       "prestige_score": 0.3225,
       "manual_contender_flag": 1,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 5,
       "rank_delta": 0,
       "movement": "same"
@@ -122,6 +158,12 @@
       "forecast_season": "early",
       "prestige_score": 0.0225,
       "manual_contender_flag": 0,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 6,
       "rank_delta": 0,
       "movement": "same"
@@ -139,6 +181,12 @@
       "forecast_season": "early",
       "prestige_score": 0.0758333333333333,
       "manual_contender_flag": 0,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 7,
       "rank_delta": 0,
       "movement": "same"
@@ -156,6 +204,12 @@
       "forecast_season": "early",
       "prestige_score": 0.0225,
       "manual_contender_flag": 0,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 8,
       "rank_delta": 0,
       "movement": "same"
@@ -173,6 +227,12 @@
       "forecast_season": "early",
       "prestige_score": 0.0225,
       "manual_contender_flag": 0,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 9,
       "rank_delta": 0,
       "movement": "same"
@@ -190,6 +250,12 @@
       "forecast_season": "early",
       "prestige_score": 0.0225,
       "manual_contender_flag": 0,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 10,
       "rank_delta": 0,
       "movement": "same"
@@ -207,6 +273,12 @@
       "forecast_season": "early",
       "prestige_score": 0.0625,
       "manual_contender_flag": 0,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 11,
       "rank_delta": 0,
       "movement": "same"
@@ -224,6 +296,12 @@
       "forecast_season": "early",
       "prestige_score": 0.0225,
       "manual_contender_flag": 0,
+      "pga_win": 0,
+      "dga_win": 0,
+      "sag_win": 0,
+      "bafta_win": 0,
+      "golden_globe_win": 0,
+      "critics_choice_win": 0,
       "previous_rank": 12,
       "rank_delta": 0,
       "movement": "same"
@@ -247,7 +325,13 @@
           "momentum_score": 26.0,
           "margin_to_next": 0.15768924119548133,
           "confidence_label": "medium",
-          "confidence_probability": 0.5734201006780717
+          "confidence_probability": 0.5734201006780717,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -259,7 +343,13 @@
           "momentum_score": 25.0,
           "margin_to_next": 0.4097933224335211,
           "confidence_label": "medium",
-          "confidence_probability": 0.5734201006780717
+          "confidence_probability": 0.5734201006780717,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -271,7 +361,13 @@
           "momentum_score": 37.0,
           "margin_to_next": 0.001869321299602265,
           "confidence_label": "medium",
-          "confidence_probability": 0.5734201006780717
+          "confidence_probability": 0.5734201006780717,
+          "pga_win": 0,
+          "dga_win": 1,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -283,7 +379,13 @@
           "momentum_score": 22.0,
           "margin_to_next": 0.0034007219167211168,
           "confidence_label": "medium",
-          "confidence_probability": 0.5734201006780717
+          "confidence_probability": 0.5734201006780717,
+          "pga_win": 1,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -295,7 +397,13 @@
           "momentum_score": 11.0,
           "margin_to_next": 0.0005838547381853684,
           "confidence_label": "medium",
-          "confidence_probability": 0.5734201006780717
+          "confidence_probability": 0.5734201006780717,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -307,7 +415,13 @@
           "momentum_score": 18.0,
           "margin_to_next": 1.694792464417206e-05,
           "confidence_label": "medium",
-          "confidence_probability": 0.5734201006780717
+          "confidence_probability": 0.5734201006780717,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -319,7 +433,13 @@
           "momentum_score": 14.0,
           "margin_to_next": 4.122822633727998e-05,
           "confidence_label": "medium",
-          "confidence_probability": 0.5734201006780717
+          "confidence_probability": 0.5734201006780717,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -331,7 +451,13 @@
           "momentum_score": 14.0,
           "margin_to_next": 0.0,
           "confidence_label": "medium",
-          "confidence_probability": 0.5734201006780717
+          "confidence_probability": 0.5734201006780717,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -352,7 +478,13 @@
           "momentum_score": 23.0,
           "margin_to_next": 0.14362101556356655,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 2,
@@ -364,7 +496,13 @@
           "momentum_score": 55.0,
           "margin_to_next": 0.2953437259726762,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 1,
+          "dga_win": 1,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 3,
@@ -376,7 +514,13 @@
           "momentum_score": 25.0,
           "margin_to_next": 0.0644744938532217,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -388,7 +532,13 @@
           "momentum_score": 18.0,
           "margin_to_next": 0.00039792204315307507,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -400,7 +550,13 @@
           "momentum_score": 7.0,
           "margin_to_next": 0.013525360320591444,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -412,7 +568,13 @@
           "momentum_score": 13.0,
           "margin_to_next": 0.00020123566116999185,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -424,7 +586,13 @@
           "momentum_score": 20.0,
           "margin_to_next": 0.00014045949241450143,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -436,7 +604,13 @@
           "momentum_score": 19.0,
           "margin_to_next": 3.709584749317065e-05,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 9,
@@ -448,7 +622,13 @@
           "momentum_score": 17.0,
           "margin_to_next": 0.0,
           "confidence_label": "medium",
-          "confidence_probability": 0.5178037714167288
+          "confidence_probability": 0.5178037714167288,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -469,7 +649,13 @@
           "momentum_score": 50.0,
           "margin_to_next": 0.6497319486638674,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 1,
+          "dga_win": 1,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -481,7 +667,13 @@
           "momentum_score": 20.0,
           "margin_to_next": 0.0338789271551445,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -493,7 +685,13 @@
           "momentum_score": 14.0,
           "margin_to_next": 0.03415402930318079,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -505,7 +703,13 @@
           "momentum_score": 35.0,
           "margin_to_next": 0.007821616322464774,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -517,7 +721,13 @@
           "momentum_score": 7.0,
           "margin_to_next": 0.006709407932798301,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -529,7 +739,13 @@
           "momentum_score": 15.0,
           "margin_to_next": 0.005752997897852349,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -541,7 +757,13 @@
           "momentum_score": 10.0,
           "margin_to_next": 0.004473658588911139,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -553,7 +775,13 @@
           "momentum_score": 28.0,
           "margin_to_next": 0.0046965036849476,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 9,
@@ -565,7 +793,13 @@
           "momentum_score": 7.0,
           "margin_to_next": 0.0,
           "confidence_label": "high",
-          "confidence_probability": 0.6739718386867907
+          "confidence_probability": 0.6739718386867907,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -586,7 +820,13 @@
           "momentum_score": 33.0,
           "margin_to_next": 0.8074822522617446,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8117095666226193
+          "confidence_probability": 0.8117095666226193,
+          "pga_win": 0,
+          "dga_win": 1,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -598,7 +838,13 @@
           "momentum_score": 28.0,
           "margin_to_next": 0.020076015691934464,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8117095666226193
+          "confidence_probability": 0.8117095666226193,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -610,7 +856,13 @@
           "momentum_score": 20.0,
           "margin_to_next": 0.03610553268455226,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8117095666226193
+          "confidence_probability": 0.8117095666226193,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -622,7 +874,13 @@
           "momentum_score": 19.0,
           "margin_to_next": 0.008752313301803687,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8117095666226193
+          "confidence_probability": 0.8117095666226193,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -634,7 +892,13 @@
           "momentum_score": 18.0,
           "margin_to_next": 0.0006107107714884911,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8117095666226193
+          "confidence_probability": 0.8117095666226193,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -646,7 +910,13 @@
           "momentum_score": 24.0,
           "margin_to_next": 0.00023445108464836644,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8117095666226193
+          "confidence_probability": 0.8117095666226193,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -658,7 +928,13 @@
           "momentum_score": 19.0,
           "margin_to_next": 0.00029666458951947786,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8117095666226193
+          "confidence_probability": 0.8117095666226193,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -670,7 +946,13 @@
           "momentum_score": 31.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8117095666226193
+          "confidence_probability": 0.8117095666226193,
+          "pga_win": 1,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -691,7 +973,13 @@
           "momentum_score": 34.0,
           "margin_to_next": 0.2789242819658624,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -703,7 +991,13 @@
           "momentum_score": 23.0,
           "margin_to_next": 0.19655196948024223,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -715,7 +1009,13 @@
           "momentum_score": 14.0,
           "margin_to_next": 0.024588183868056807,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -727,7 +1027,13 @@
           "momentum_score": 39.0,
           "margin_to_next": 0.03023469434325234,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 1,
+          "dga_win": 1,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -739,7 +1045,13 @@
           "momentum_score": 31.0,
           "margin_to_next": 0.004864791890698644,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -751,7 +1063,13 @@
           "momentum_score": 34.0,
           "margin_to_next": 0.01582182959055081,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -763,7 +1081,13 @@
           "momentum_score": 18.0,
           "margin_to_next": 0.0011071668861495885,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -775,7 +1099,13 @@
           "momentum_score": 4.0,
           "margin_to_next": 0.0006050926397939628,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 9,
@@ -787,7 +1117,13 @@
           "momentum_score": 14.0,
           "margin_to_next": 0.0,
           "confidence_label": "medium",
-          "confidence_probability": 0.5369992544257574
+          "confidence_probability": 0.5369992544257574,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -808,7 +1144,13 @@
           "momentum_score": 31.0,
           "margin_to_next": 0.5993859244354013,
           "confidence_label": "high",
-          "confidence_probability": 0.6461327440319978
+          "confidence_probability": 0.6461327440319978,
+          "pga_win": 1,
+          "dga_win": 1,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -820,7 +1162,13 @@
           "momentum_score": 6.0,
           "margin_to_next": 0.06351670727660641,
           "confidence_label": "high",
-          "confidence_probability": 0.6461327440319978
+          "confidence_probability": 0.6461327440319978,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -832,7 +1180,13 @@
           "momentum_score": 13.0,
           "margin_to_next": 0.08333749293348944,
           "confidence_label": "high",
-          "confidence_probability": 0.6461327440319978
+          "confidence_probability": 0.6461327440319978,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -844,7 +1198,13 @@
           "momentum_score": 11.0,
           "margin_to_next": 0.004205371578719277,
           "confidence_label": "high",
-          "confidence_probability": 0.6461327440319978
+          "confidence_probability": 0.6461327440319978,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -856,7 +1216,13 @@
           "momentum_score": 17.0,
           "margin_to_next": 0.0006793111552663322,
           "confidence_label": "high",
-          "confidence_probability": 0.6461327440319978
+          "confidence_probability": 0.6461327440319978,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -868,7 +1234,13 @@
           "momentum_score": 10.0,
           "margin_to_next": 0.00019985373632483482,
           "confidence_label": "high",
-          "confidence_probability": 0.6461327440319978
+          "confidence_probability": 0.6461327440319978,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -880,7 +1252,13 @@
           "momentum_score": 3.0,
           "margin_to_next": 0.0001973394517551097,
           "confidence_label": "high",
-          "confidence_probability": 0.6461327440319978
+          "confidence_probability": 0.6461327440319978,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -892,7 +1270,13 @@
           "momentum_score": 8.0,
           "margin_to_next": 0.0,
           "confidence_label": "high",
-          "confidence_probability": 0.6461327440319978
+          "confidence_probability": 0.6461327440319978,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -913,7 +1297,13 @@
           "momentum_score": 30.0,
           "margin_to_next": 0.17022512651062005,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 1,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 2,
@@ -925,7 +1315,13 @@
           "momentum_score": 11.0,
           "margin_to_next": 0.30920750438521855,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -937,7 +1333,13 @@
           "momentum_score": 18.0,
           "margin_to_next": 0.007153830245042757,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -949,7 +1351,13 @@
           "momentum_score": 23.0,
           "margin_to_next": 0.014455121615206984,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -961,7 +1369,13 @@
           "momentum_score": 5.0,
           "margin_to_next": 0.003789049117968693,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -973,7 +1387,13 @@
           "momentum_score": 3.0,
           "margin_to_next": 0.0050004957206356265,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -985,7 +1405,13 @@
           "momentum_score": 42.0,
           "margin_to_next": 0.010587359460641594,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 1,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 8,
@@ -997,7 +1423,13 @@
           "momentum_score": 31.0,
           "margin_to_next": 0.0004118059899520032,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 9,
@@ -1009,7 +1441,13 @@
           "momentum_score": 19.0,
           "margin_to_next": 0.0005573015806815912,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 10,
@@ -1021,7 +1459,13 @@
           "momentum_score": 13.0,
           "margin_to_next": 0.0,
           "confidence_label": "medium",
-          "confidence_probability": 0.5150208754849137
+          "confidence_probability": 0.5150208754849137,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -1042,7 +1486,13 @@
           "momentum_score": 54.0,
           "margin_to_next": 0.9108144709269539,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 1,
+          "dga_win": 1,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -1054,7 +1504,13 @@
           "momentum_score": 20.0,
           "margin_to_next": 0.037039904655940696,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -1066,7 +1522,13 @@
           "momentum_score": 12.0,
           "margin_to_next": 0.000694736476019941,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -1078,7 +1540,13 @@
           "momentum_score": 5.0,
           "margin_to_next": 0.0010138645162475497,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -1090,7 +1558,13 @@
           "momentum_score": 9.0,
           "margin_to_next": 0.0008952829637285542,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -1102,7 +1576,13 @@
           "momentum_score": 6.0,
           "margin_to_next": 6.736510067484043e-06,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -1114,7 +1594,13 @@
           "momentum_score": 21.0,
           "margin_to_next": 0.0004259869404362703,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -1126,7 +1612,13 @@
           "momentum_score": 4.0,
           "margin_to_next": 9.902187204969337e-05,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 9,
@@ -1138,7 +1630,13 @@
           "momentum_score": 37.0,
           "margin_to_next": 3.2899755357744206e-05,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 10,
@@ -1150,7 +1648,13 @@
           "momentum_score": 15.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8371711372525305
+          "confidence_probability": 0.8371711372525305,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -1171,7 +1675,13 @@
           "momentum_score": 64.0,
           "margin_to_next": 0.9467899589528652,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 1,
+          "dga_win": 1,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -1183,7 +1693,13 @@
           "momentum_score": 17.0,
           "margin_to_next": 0.020722151508563248,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -1195,7 +1711,13 @@
           "momentum_score": 33.0,
           "margin_to_next": 0.0001432381892383667,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -1207,7 +1729,13 @@
           "momentum_score": 34.0,
           "margin_to_next": 0.00017079500857990746,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -1219,7 +1747,13 @@
           "momentum_score": 7.0,
           "margin_to_next": 0.00012066363156373492,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -1231,7 +1765,13 @@
           "momentum_score": 19.0,
           "margin_to_next": 0.0003615984463053205,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -1243,7 +1783,13 @@
           "momentum_score": 15.0,
           "margin_to_next": 0.0007227918628639641,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -1255,7 +1801,13 @@
           "momentum_score": 25.0,
           "margin_to_next": 0.00022346035634461658,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 9,
@@ -1267,7 +1819,13 @@
           "momentum_score": 22.0,
           "margin_to_next": 2.6931082464733857e-05,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 10,
@@ -1279,7 +1837,13 @@
           "momentum_score": 10.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.8660524353543059
+          "confidence_probability": 0.8660524353543059,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -1300,7 +1864,13 @@
           "momentum_score": 42.0,
           "margin_to_next": 0.0068437880898989945,
           "confidence_label": "medium",
-          "confidence_probability": 0.4856801132011259
+          "confidence_probability": 0.4856801132011259,
+          "pga_win": 1,
+          "dga_win": 1,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -1312,7 +1882,13 @@
           "momentum_score": 18.0,
           "margin_to_next": 0.45872837385959786,
           "confidence_label": "medium",
-          "confidence_probability": 0.4856801132011259
+          "confidence_probability": 0.4856801132011259,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -1324,7 +1900,13 @@
           "momentum_score": 2.0,
           "margin_to_next": 0.010748274254290095,
           "confidence_label": "medium",
-          "confidence_probability": 0.4856801132011259
+          "confidence_probability": 0.4856801132011259,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -1336,7 +1918,13 @@
           "momentum_score": 20.0,
           "margin_to_next": 0.0033437435586600164,
           "confidence_label": "medium",
-          "confidence_probability": 0.4856801132011259
+          "confidence_probability": 0.4856801132011259,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -1348,7 +1936,13 @@
           "momentum_score": 45.0,
           "margin_to_next": 0.0,
           "confidence_label": "medium",
-          "confidence_probability": 0.4856801132011259
+          "confidence_probability": 0.4856801132011259,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -1369,7 +1963,13 @@
           "momentum_score": 69.0,
           "margin_to_next": 0.9970855291364643,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 1,
+          "dga_win": 1,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 1
         },
         {
           "rank": 2,
@@ -1381,7 +1981,13 @@
           "momentum_score": 12.0,
           "margin_to_next": 0.0003831642981391543,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 3,
@@ -1393,7 +1999,13 @@
           "momentum_score": 10.0,
           "margin_to_next": 0.00014585941009993781,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 4,
@@ -1405,7 +2017,13 @@
           "momentum_score": 41.0,
           "margin_to_next": 7.92554326728175e-05,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 5,
@@ -1417,7 +2035,13 @@
           "momentum_score": 46.0,
           "margin_to_next": 9.67853367184954e-05,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 1,
+          "bafta_win": 1,
+          "golden_globe_win": 1,
+          "critics_choice_win": 0
         },
         {
           "rank": 6,
@@ -1429,7 +2053,13 @@
           "momentum_score": 25.0,
           "margin_to_next": 2.348949895378785e-05,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 1,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 7,
@@ -1441,7 +2071,13 @@
           "momentum_score": 20.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 8,
@@ -1453,7 +2089,13 @@
           "momentum_score": 18.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "rank": 9,
@@ -1465,7 +2107,13 @@
           "momentum_score": 4.0,
           "margin_to_next": 0.0,
           "confidence_label": "very_high",
-          "confidence_probability": 0.908529644294719
+          "confidence_probability": 0.908529644294719,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         }
       ]
     },
@@ -1489,7 +2137,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/lV8YHwGkYZsm6EfIqnhaSz2avKt.jpg",
           "forecast_season": "early",
           "prestige_score": 0.3225,
-          "manual_contender_flag": 1
+          "manual_contender_flag": 1,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "People We Meet on Vacation",
@@ -1501,7 +2155,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/peG6482ALJQ9Tbvv2P38BquVk0f.jpg",
           "forecast_season": "early",
           "prestige_score": 0.3625,
-          "manual_contender_flag": 1
+          "manual_contender_flag": 1,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Project Hail Mary",
@@ -1513,7 +2173,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
           "forecast_season": "early",
           "prestige_score": 0.3225,
-          "manual_contender_flag": 1
+          "manual_contender_flag": 1,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "The Wrecking Crew",
@@ -1525,7 +2191,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/gbVwHl4YPSq6BcC92TQpe7qUTh6.jpg",
           "forecast_season": "early",
           "prestige_score": 0.3225,
-          "manual_contender_flag": 1
+          "manual_contender_flag": 1,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "The Rip",
@@ -1537,7 +2209,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/eZo31Dhl5BQ6GfbMNf3oU0tUvPZ.jpg",
           "forecast_season": "early",
           "prestige_score": 0.3225,
-          "manual_contender_flag": 1
+          "manual_contender_flag": 1,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Shelter",
@@ -1549,7 +2227,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/buPFnHZ3xQy6vZEHxbHgL1Pc6CR.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "The Singers",
@@ -1561,7 +2245,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/a6wheh1243vceZ7Dqb0knYmKqaj.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0758333333333333,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Whistle",
@@ -1573,7 +2263,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/eGxPyseSnEZBMJaopGfRUO9HSYx.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Cold Storage",
@@ -1585,7 +2281,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/pfqkETJ2A3zXZJuNcufZbAJNnKA.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Primate",
@@ -1597,7 +2299,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/z97hrgI5wbGbZvSVkBfAeBnFKAg.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "The Bluff",
@@ -1609,7 +2317,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/dl1cA7wdwePc9QU2Rc24EPqlcyJ.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0625,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "One Mile: Chapter Two",
@@ -1621,7 +2335,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/3sjc9qXXmQoUWKQ3qIjS1nZaUJy.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Return to Silent Hill",
@@ -1633,7 +2353,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/fqAGFN2K2kDL0EHxvJaXzaMUkkt.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0625,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Peaky Blinders: The Immortal Man",
@@ -1645,7 +2371,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/gRMalasZEzsZi4w2VFuYusfSfqf.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0625,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "We Bury the Dead",
@@ -1657,7 +2389,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/xZqo0yPARmyF8TACVNyaOACkYWG.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Dead Man's Wire",
@@ -1669,7 +2407,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/dgSoeebklY0IGKWbp36r9FwRXlv.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0625,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Love Me Love Me",
@@ -1681,7 +2425,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/jfwHKRHRE2X4NTexdzblaioHH51.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0625,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "\"Wuthering Heights\"",
@@ -1693,7 +2443,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/3YBce6dTh1D5oCMITXk2S5QhPt.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0625,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Joe's College Road Trip",
@@ -1705,7 +2461,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/jWGOCUlzF4aCVLwHoiuqWWfhcrA.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         },
         {
           "film": "Redux Redux",
@@ -1717,7 +2479,13 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/9u7sUTYPPTxGCXbkcw8FTq50PnO.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
-          "manual_contender_flag": 0
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
         }
       ]
     }
@@ -1751,7 +2519,7 @@
     "extended_top_pick_log_loss_raw": 0.5629784331422343,
     "extended_top_pick_log_loss_calibrated": 0.5781701454613292,
     "feature_count": 35,
-    "last_generated_at": "2026-04-09T19:48:14.964918+00:00",
+    "last_generated_at": "2026-04-09T20:20:35.640630+00:00",
     "current_forecast_season": "early"
   },
   "recent_races": [

@@ -114,6 +114,14 @@ def list_publishable_future_forecasts():
         return {}
 
 
+def _safe_int_col(row, col):
+    v = row.get(col)
+    try:
+        return int(float(v)) if v is not None and str(v) != "nan" else 0
+    except (ValueError, TypeError):
+        return 0
+
+
 def load_forecast_cards(path: Path, limit: int = 12):
     df = pd.read_csv(path).head(limit).copy()
     cards = []
@@ -132,6 +140,12 @@ def load_forecast_cards(path: Path, limit: int = 12):
                 "forecast_season": row.get("forecast_season"),
                 "prestige_score": float(row.get("prestige_score", 0)) if pd.notna(row.get("prestige_score")) else None,
                 "manual_contender_flag": int(row.get("manual_contender_flag", 0)) if pd.notna(row.get("manual_contender_flag")) else 0,
+                "pga_win": _safe_int_col(row, "pga_win"),
+                "dga_win": _safe_int_col(row, "dga_win"),
+                "sag_win": _safe_int_col(row, "sag_win"),
+                "bafta_win": _safe_int_col(row, "bafta_win"),
+                "golden_globe_win": _safe_int_col(row, "golden_globe_win"),
+                "critics_choice_win": _safe_int_col(row, "critics_choice_win"),
             }
         )
     return cards
@@ -310,6 +324,10 @@ def build_historical_year_payload(model_df, years, confidence_rows=None):
             "rows": [],
         }
         for _, row in results.iterrows():
+            def _intcol(col):
+                v = row.get(col)
+                return int(v) if v is not None and str(v) != "nan" else 0
+
             summary["rows"].append(
                 {
                     "rank": int(row["rank"]),
@@ -330,6 +348,13 @@ def build_historical_year_payload(model_df, years, confidence_rows=None):
                         if int(year) in confidence_map
                         else float(row["win_probability"])
                     ),
+                    # Precursor award wins
+                    "pga_win": _intcol("pga_win"),
+                    "dga_win": _intcol("dga_win"),
+                    "sag_win": _intcol("sag_win"),
+                    "bafta_win": _intcol("bafta_win"),
+                    "golden_globe_win": _intcol("golden_globe_win"),
+                    "critics_choice_win": _intcol("critics_choice_win"),
                 }
             )
         payload.append(summary)
@@ -387,6 +412,13 @@ def build_future_year_payload():
         season_guide = FORECAST_SEASON_GUIDE.get(forecast_season, {})
         rows = []
         for _, row in df.head(20).iterrows():
+            def _fcol(col):
+                v = row.get(col)
+                try:
+                    return int(float(v)) if v is not None and str(v) != "nan" else 0
+                except (ValueError, TypeError):
+                    return 0
+
             rows.append(
                 {
                     "film": row.get("title"),
@@ -399,6 +431,12 @@ def build_future_year_payload():
                     "forecast_season": row.get("forecast_season"),
                     "prestige_score": float(row.get("prestige_score", 0)) if pd.notna(row.get("prestige_score")) else None,
                     "manual_contender_flag": int(row.get("manual_contender_flag", 0)) if pd.notna(row.get("manual_contender_flag")) else 0,
+                    "pga_win": _fcol("pga_win"),
+                    "dga_win": _fcol("dga_win"),
+                    "sag_win": _fcol("sag_win"),
+                    "bafta_win": _fcol("bafta_win"),
+                    "golden_globe_win": _fcol("golden_globe_win"),
+                    "critics_choice_win": _fcol("critics_choice_win"),
                 }
             )
 

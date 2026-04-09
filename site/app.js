@@ -86,6 +86,32 @@ function renderHero(data) {
   document.getElementById("hero-film-card").insertAdjacentHTML("beforeend", movementMarkup(hero));
 }
 
+function probBarMarkup(probability) {
+  const pct = Math.round((probability ?? 0) * 100);
+  return `<div class="prob-bar-wrap"><div class="prob-bar-fill" style="width:${pct}%"></div></div>`;
+}
+
+const PRECURSOR_LABELS = {
+  pga_win: "PGA",
+  dga_win: "DGA",
+  sag_win: "SAG",
+  bafta_win: "BAFTA",
+  golden_globe_win: "Globe",
+  critics_choice_win: "Critics Choice",
+};
+
+function awardBadgesMarkup(row) {
+  const badges = [];
+  for (const [key, label] of Object.entries(PRECURSOR_LABELS)) {
+    const val = row[key];
+    if (val == null) continue;
+    if (Number(val) >= 1) {
+      badges.push(`<span class="award-badge win">★ ${label}</span>`);
+    }
+  }
+  return badges.length ? `<div class="award-badges">${badges.join("")}</div>` : "";
+}
+
 function renderContenders(cards) {
   const container = document.getElementById("contender-list");
   container.innerHTML = cards
@@ -101,10 +127,12 @@ function renderContenders(cards) {
               TMDb rating ${card.rating?.toFixed(1) ?? "—"} from ${card.vote_count?.toLocaleString?.() ?? card.vote_count} votes<br />
               ${formatSeason(card.forecast_season)} mode${card.manual_contender_flag ? " · Curated contender" : ""}
             </div>
+            ${awardBadgesMarkup(card)}
           </div>
           <div class="contender-probability">
             <strong>${formatPercent(card.probability)}</strong>
             <span>Win Chance</span>
+            ${probBarMarkup(card.probability)}
             ${movementMarkup(card)}
           </div>
         </article>
@@ -264,8 +292,34 @@ function renderRecentRaces(races) {
 }
 
 function renderHistory(rows) {
+  const sorted = rows.slice().sort((a, b) => a.year_film - b.year_film);
+  const total = sorted.length;
+  const hits = sorted.filter((r) => r.correct).length;
+  const accuracyPct = total ? Math.round((hits / total) * 100) : 0;
+
+  const strip = document.getElementById("accuracy-strip");
+  if (strip) {
+    strip.innerHTML = `
+      <div class="accuracy-header">
+        <span class="accuracy-big">${accuracyPct}%</span>
+        <span class="accuracy-strip-summary">${hits}/${total} correct · Walk-forward validation</span>
+      </div>
+      <div class="accuracy-strip">
+        ${sorted
+          .map(
+            (r) => `
+          <div class="accuracy-year-dot" title="${r.year_film}: ${r.correct ? "Hit" : "Miss"} — predicted ${r.predicted_winner}, actual ${r.actual_winner}">
+            <div class="dot ${r.correct ? "hit" : "miss"}"></div>
+            <span class="yr-label">${String(r.year_film).slice(-2)}</span>
+          </div>`
+          )
+          .join("")}
+      </div>
+    `;
+  }
+
   const container = document.getElementById("history-table");
-  container.innerHTML = rows
+  container.innerHTML = sorted
     .slice()
     .reverse()
     .map(
@@ -348,9 +402,9 @@ function renderHistoricalYear(data, year) {
             <p>
               ${row.oscar_nomination_count ?? "—"} Oscar nominations ·
               Tomatometer ${row.tomatometer_rating == null ? "—" : row.tomatometer_rating.toFixed(0)} ·
-              Momentum ${row.momentum_score == null ? "—" : row.momentum_score.toFixed(0)} ·
               Gap to next ${formatPercent(row.margin_to_next ?? 0)}
             </p>
+            ${awardBadgesMarkup(row)}
             <span class="winner-badge ${row.actual_winner ? "actual" : "nominee"}">
               ${
                 selected.is_future_forecast
@@ -363,8 +417,11 @@ function renderHistoricalYear(data, year) {
               }
             </span>
           </div>
-          <strong>${formatPercent(row.probability)}</strong>
-          <span class="metric-label">Win Share</span>
+          <div style="text-align:right">
+            <strong>${formatPercent(row.probability)}</strong>
+            <span class="metric-label" style="display:block">Win Share</span>
+            ${probBarMarkup(row.probability)}
+          </div>
         </article>
       `
     )

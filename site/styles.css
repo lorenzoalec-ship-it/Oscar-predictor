@@ -311,6 +311,118 @@ main {
   letter-spacing: 0.14em;
 }
 
+/* Probability bar */
+.prob-bar-wrap {
+  margin-top: 8px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(215, 168, 76, 0.12);
+  overflow: hidden;
+  min-width: 80px;
+}
+
+.prob-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+  transition: width 0.4s ease;
+}
+
+/* Precursor award badges */
+.award-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.award-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.award-badge.win {
+  background: rgba(215, 168, 76, 0.2);
+  color: var(--gold-soft);
+  border: 1px solid rgba(215, 168, 76, 0.35);
+}
+
+.award-badge.nom {
+  background: rgba(199, 183, 156, 0.1);
+  color: var(--muted);
+  border: 1px solid rgba(199, 183, 156, 0.18);
+}
+
+/* Accuracy strip */
+.accuracy-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.accuracy-strip-summary {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.accuracy-year-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: default;
+}
+
+.accuracy-year-dot .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.accuracy-year-dot .dot.hit {
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(120, 185, 143, 0.5);
+}
+
+.accuracy-year-dot .dot.miss {
+  background: var(--rose);
+  box-shadow: 0 0 6px rgba(209, 111, 91, 0.4);
+}
+
+.accuracy-year-dot .yr-label {
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.accuracy-big {
+  font-size: 2.8rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", serif;
+  color: var(--gold-soft);
+  margin-right: 4px;
+  line-height: 1;
+}
+
+.accuracy-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
 .stat-card {
   border-radius: 22px;
   padding: 18px;
