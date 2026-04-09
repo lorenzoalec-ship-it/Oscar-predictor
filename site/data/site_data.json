@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-09T15:43:42.566022+00:00",
+    "generated_at": "2026-04-09T16:24:07.074137+00:00",
     "model": "hgb",
     "current_forecast_year": 2026,
     "current_ceremony_year": 2027,
@@ -234,6 +234,8 @@
       "year_film": 2015,
       "train_start": 2005,
       "train_end": 2014,
+      "top_pick_confidence": 0.8104036963490142,
+      "top_pick_confidence_label": "very_high",
       "rows": [
         {
           "rank": 1,
@@ -244,7 +246,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 25.0,
           "margin_to_next": 0.6365056881967249,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8104036963490142
         },
         {
           "rank": 2,
@@ -255,7 +258,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 34.0,
           "margin_to_next": 0.16455686440483355,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8104036963490142
         },
         {
           "rank": 3,
@@ -266,7 +270,8 @@
           "tomatometer_rating": 89.0,
           "momentum_score": 34.0,
           "margin_to_next": 0.004902249361929505,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8104036963490142
         },
         {
           "rank": 4,
@@ -277,7 +282,8 @@
           "tomatometer_rating": 91.0,
           "momentum_score": 12.0,
           "margin_to_next": 0.0028595389420553,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8104036963490142
         },
         {
           "rank": 5,
@@ -288,7 +294,8 @@
           "tomatometer_rating": 79.0,
           "momentum_score": 37.0,
           "margin_to_next": 0.0013853951290498361,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8104036963490142
         },
         {
           "rank": 6,
@@ -299,7 +306,8 @@
           "tomatometer_rating": 91.0,
           "momentum_score": 14.0,
           "margin_to_next": 0.00011363627997054829,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8104036963490142
         },
         {
           "rank": 7,
@@ -310,7 +318,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 19.0,
           "margin_to_next": 1.5706461078584413e-05,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8104036963490142
         },
         {
           "rank": 8,
@@ -321,7 +330,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 14.0,
           "margin_to_next": 0.0,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.8104036963490142
         }
       ]
     },
@@ -329,6 +339,8 @@
       "year_film": 2016,
       "train_start": 2005,
       "train_end": 2015,
+      "top_pick_confidence": 0.545040532291189,
+      "top_pick_confidence_label": "medium",
       "rows": [
         {
           "rank": 1,
@@ -339,7 +351,8 @@
           "tomatometer_rating": 91.0,
           "momentum_score": 55.0,
           "margin_to_next": 0.8770622449003445,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         },
         {
           "rank": 2,
@@ -350,7 +363,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 22.0,
           "margin_to_next": 0.0006193740010137089,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         },
         {
           "rank": 3,
@@ -361,7 +375,8 @@
           "tomatometer_rating": 84.0,
           "momentum_score": 23.0,
           "margin_to_next": 0.0067982510017328,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         },
         {
           "rank": 4,
@@ -372,7 +387,8 @@
           "tomatometer_rating": 94.0,
           "momentum_score": 18.0,
           "margin_to_next": 0.021554330994053184,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         },
         {
           "rank": 5,
@@ -383,7 +399,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 7.0,
           "margin_to_next": 0.001089155290144094,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         },
         {
           "rank": 6,
@@ -394,7 +411,8 @@
           "tomatometer_rating": 98.0,
           "momentum_score": 27.0,
           "margin_to_next": 0.000248209047439779,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         },
         {
           "rank": 7,
@@ -405,7 +423,8 @@
           "tomatometer_rating": 96.0,
           "momentum_score": 31.0,
           "margin_to_next": 0.00030743515260307395,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         },
         {
           "rank": 8,
@@ -416,7 +435,8 @@
           "tomatometer_rating": 92.0,
           "momentum_score": 26.0,
           "margin_to_next": 0.000497127569219743,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         },
         {
           "rank": 9,
@@ -427,7 +447,8 @@
           "tomatometer_rating": 85.0,
           "momentum_score": 17.0,
           "margin_to_next": 0.0,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.545040532291189
         }
       ]
     },
@@ -435,6 +456,8 @@
       "year_film": 2017,
       "train_start": 2005,
       "train_end": 2016,
+      "top_pick_confidence": 0.19246000891227058,
+      "top_pick_confidence_label": "low",
       "rows": [
         {
           "rank": 1,
@@ -445,7 +468,8 @@
           "tomatometer_rating": 92.0,
           "momentum_score": 50.0,
           "margin_to_next": 0.039143383042265,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         },
         {
           "rank": 2,
@@ -456,7 +480,8 @@
           "tomatometer_rating": 98.0,
           "momentum_score": 15.0,
           "margin_to_next": 0.025129959542977476,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         },
         {
           "rank": 3,
@@ -467,7 +492,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 14.0,
           "margin_to_next": 0.2030465056926034,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         },
         {
           "rank": 4,
@@ -478,7 +504,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 7.0,
           "margin_to_next": 0.020945890452369484,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         },
         {
           "rank": 5,
@@ -489,7 +516,8 @@
           "tomatometer_rating": 99.0,
           "momentum_score": 26.0,
           "margin_to_next": 0.011918199937795197,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         },
         {
           "rank": 6,
@@ -500,7 +528,8 @@
           "tomatometer_rating": 92.0,
           "momentum_score": 20.0,
           "margin_to_next": 0.0011315947889758947,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         },
         {
           "rank": 7,
@@ -511,7 +540,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 10.0,
           "margin_to_next": 0.0054108829905511364,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         },
         {
           "rank": 8,
@@ -522,7 +552,8 @@
           "tomatometer_rating": 90.0,
           "momentum_score": 25.0,
           "margin_to_next": 0.012945516028417736,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         },
         {
           "rank": 9,
@@ -533,7 +564,8 @@
           "tomatometer_rating": 85.0,
           "momentum_score": 28.0,
           "margin_to_next": 0.0,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.19246000891227058
         }
       ]
     },
@@ -541,6 +573,8 @@
       "year_film": 2018,
       "train_start": 2005,
       "train_end": 2017,
+      "top_pick_confidence": 0.5389033744831039,
+      "top_pick_confidence_label": "medium",
       "rows": [
         {
           "rank": 1,
@@ -551,7 +585,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 32.0,
           "margin_to_next": 0.4133454502277572,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.5389033744831039
         },
         {
           "rank": 2,
@@ -562,7 +597,8 @@
           "tomatometer_rating": 96.0,
           "momentum_score": 33.0,
           "margin_to_next": 0.23634577875008905,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.5389033744831039
         },
         {
           "rank": 3,
@@ -573,7 +609,8 @@
           "tomatometer_rating": 96.0,
           "momentum_score": 25.0,
           "margin_to_next": 0.0007354796284057413,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.5389033744831039
         },
         {
           "rank": 4,
@@ -584,7 +621,8 @@
           "tomatometer_rating": 90.0,
           "momentum_score": 25.0,
           "margin_to_next": 0.016971950654369475,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.5389033744831039
         },
         {
           "rank": 5,
@@ -595,7 +633,8 @@
           "tomatometer_rating": 60.0,
           "momentum_score": 37.0,
           "margin_to_next": 0.007966534280528147,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.5389033744831039
         },
         {
           "rank": 6,
@@ -606,7 +645,8 @@
           "tomatometer_rating": 66.0,
           "momentum_score": 24.0,
           "margin_to_next": 0.0002601195581431934,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.5389033744831039
         },
         {
           "rank": 7,
@@ -617,7 +657,8 @@
           "tomatometer_rating": 77.0,
           "momentum_score": 31.0,
           "margin_to_next": 0.00012268185139519003,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.5389033744831039
         },
         {
           "rank": 8,
@@ -628,7 +669,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 20.0,
           "margin_to_next": 0.0,
-          "confidence_label": "very_high"
+          "confidence_label": "medium",
+          "confidence_probability": 0.5389033744831039
         }
       ]
     },
@@ -636,6 +678,8 @@
       "year_film": 2019,
       "train_start": 2005,
       "train_end": 2018,
+      "top_pick_confidence": 0.4243179317476503,
+      "top_pick_confidence_label": "low",
       "rows": [
         {
           "rank": 1,
@@ -646,7 +690,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 34.0,
           "margin_to_next": 0.17012701630340854,
-          "confidence_label": "medium"
+          "confidence_label": "low",
+          "confidence_probability": 0.4243179317476503
         },
         {
           "rank": 2,
@@ -657,7 +702,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 31.0,
           "margin_to_next": 0.29082230486239496,
-          "confidence_label": "medium"
+          "confidence_label": "low",
+          "confidence_probability": 0.4243179317476503
         },
         {
           "rank": 3,
@@ -668,7 +714,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 23.0,
           "margin_to_next": 0.07557247164722321,
-          "confidence_label": "medium"
+          "confidence_label": "low",
+          "confidence_probability": 0.4243179317476503
         },
         {
           "rank": 4,
@@ -679,7 +726,8 @@
           "tomatometer_rating": 80.0,
           "momentum_score": 18.0,
           "margin_to_next": 0.0013668019376880136,
-          "confidence_label": "medium"
+          "confidence_label": "low",
+          "confidence_probability": 0.4243179317476503
         },
         {
           "rank": 5,
@@ -690,7 +738,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 39.0,
           "margin_to_next": 0.0010210166418127234,
-          "confidence_label": "medium"
+          "confidence_label": "low",
+          "confidence_probability": 0.4243179317476503
         },
         {
           "rank": 6,
@@ -701,7 +750,8 @@
           "tomatometer_rating": 0.0,
           "momentum_score": 14.0,
           "margin_to_next": 0.0009729838639435832,
-          "confidence_label": "medium"
+          "confidence_label": "low",
+          "confidence_probability": 0.4243179317476503
         },
         {
           "rank": 7,
@@ -712,7 +762,8 @@
           "tomatometer_rating": 92.0,
           "momentum_score": 4.0,
           "margin_to_next": 7.756303024716914e-05,
-          "confidence_label": "medium"
+          "confidence_label": "low",
+          "confidence_probability": 0.4243179317476503
         },
         {
           "rank": 8,
@@ -723,7 +774,8 @@
           "tomatometer_rating": 95.0,
           "momentum_score": 14.0,
           "margin_to_next": 0.0,
-          "confidence_label": "medium"
+          "confidence_label": "low",
+          "confidence_probability": 0.4243179317476503
         }
       ]
     },
@@ -731,6 +783,8 @@
       "year_film": 2020,
       "train_start": 2005,
       "train_end": 2019,
+      "top_pick_confidence": 0.6652473952149514,
+      "top_pick_confidence_label": "high",
       "rows": [
         {
           "rank": 1,
@@ -741,7 +795,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 31.0,
           "margin_to_next": 0.9669790354497777,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6652473952149514
         },
         {
           "rank": 2,
@@ -752,7 +807,8 @@
           "tomatometer_rating": 98.0,
           "momentum_score": 6.0,
           "margin_to_next": 0.002309921897311506,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6652473952149514
         },
         {
           "rank": 3,
@@ -763,7 +819,8 @@
           "tomatometer_rating": 83.0,
           "momentum_score": 10.0,
           "margin_to_next": 4.638843692524562e-05,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6652473952149514
         },
         {
           "rank": 4,
@@ -774,7 +831,8 @@
           "tomatometer_rating": 89.0,
           "momentum_score": 17.0,
           "margin_to_next": 0.0045996761111591865,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6652473952149514
         },
         {
           "rank": 5,
@@ -785,7 +843,8 @@
           "tomatometer_rating": 98.0,
           "momentum_score": 13.0,
           "margin_to_next": 0.00018368607301225506,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6652473952149514
         },
         {
           "rank": 6,
@@ -796,7 +855,8 @@
           "tomatometer_rating": 96.0,
           "momentum_score": 11.0,
           "margin_to_next": 0.000542783306579359,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6652473952149514
         },
         {
           "rank": 7,
@@ -807,7 +867,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 3.0,
           "margin_to_next": 0.00031855187224693243,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6652473952149514
         },
         {
           "rank": 8,
@@ -818,7 +879,8 @@
           "tomatometer_rating": 90.0,
           "momentum_score": 8.0,
           "margin_to_next": 0.0,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6652473952149514
         }
       ]
     },
@@ -826,6 +888,8 @@
       "year_film": 2021,
       "train_start": 2005,
       "train_end": 2020,
+      "top_pick_confidence": 0.32371368880479745,
+      "top_pick_confidence_label": "low",
       "rows": [
         {
           "rank": 1,
@@ -836,7 +900,8 @@
           "tomatometer_rating": 94.0,
           "momentum_score": 30.0,
           "margin_to_next": 0.0031307451226923466,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 2,
@@ -847,7 +912,8 @@
           "tomatometer_rating": 83.0,
           "momentum_score": 23.0,
           "margin_to_next": 0.03801402752022326,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 3,
@@ -858,7 +924,8 @@
           "tomatometer_rating": 94.0,
           "momentum_score": 42.0,
           "margin_to_next": 0.2061774996636358,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 4,
@@ -869,7 +936,8 @@
           "tomatometer_rating": 56.0,
           "momentum_score": 11.0,
           "margin_to_next": 0.05661889097531015,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 5,
@@ -880,7 +948,8 @@
           "tomatometer_rating": 86.0,
           "momentum_score": 18.0,
           "margin_to_next": 0.010290815099039273,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 6,
@@ -891,7 +960,8 @@
           "tomatometer_rating": 80.0,
           "momentum_score": 5.0,
           "margin_to_next": 0.0006866075645316056,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 7,
@@ -902,7 +972,8 @@
           "tomatometer_rating": 90.0,
           "momentum_score": 13.0,
           "margin_to_next": 0.0004938928604987561,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 8,
@@ -913,7 +984,8 @@
           "tomatometer_rating": 90.0,
           "momentum_score": 19.0,
           "margin_to_next": 0.0009220455305850444,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 9,
@@ -924,7 +996,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 3.0,
           "margin_to_next": 0.00023487936508471573,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         },
         {
           "rank": 10,
@@ -935,7 +1008,8 @@
           "tomatometer_rating": 91.0,
           "momentum_score": 31.0,
           "margin_to_next": 0.0,
-          "confidence_label": "low"
+          "confidence_label": "low",
+          "confidence_probability": 0.32371368880479745
         }
       ]
     },
@@ -943,6 +1017,8 @@
       "year_film": 2022,
       "train_start": 2005,
       "train_end": 2021,
+      "top_pick_confidence": 0.7678663267402759,
+      "top_pick_confidence_label": "very_high",
       "rows": [
         {
           "rank": 1,
@@ -953,7 +1029,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 54.0,
           "margin_to_next": 0.992008446217312,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 2,
@@ -964,7 +1041,8 @@
           "tomatometer_rating": 91.0,
           "momentum_score": 12.0,
           "margin_to_next": 0.0008190316659213953,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 3,
@@ -975,7 +1053,8 @@
           "tomatometer_rating": 92.0,
           "momentum_score": 15.0,
           "margin_to_next": 0.000638403791577628,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 4,
@@ -986,7 +1065,8 @@
           "tomatometer_rating": 96.0,
           "momentum_score": 37.0,
           "margin_to_next": 0.00012936746735565837,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 5,
@@ -997,7 +1077,8 @@
           "tomatometer_rating": 90.0,
           "momentum_score": 20.0,
           "margin_to_next": 5.319574108728325e-06,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 6,
@@ -1008,7 +1089,8 @@
           "tomatometer_rating": 90.0,
           "momentum_score": 4.0,
           "margin_to_next": 3.4440197583790585e-05,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 7,
@@ -1019,7 +1101,8 @@
           "tomatometer_rating": 77.0,
           "momentum_score": 21.0,
           "margin_to_next": 9.908462099909225e-05,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 8,
@@ -1030,7 +1113,8 @@
           "tomatometer_rating": 96.0,
           "momentum_score": 9.0,
           "margin_to_next": 0.00010547344354768726,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 9,
@@ -1041,7 +1125,8 @@
           "tomatometer_rating": 76.0,
           "momentum_score": 6.0,
           "margin_to_next": 8.339515574584403e-05,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         },
         {
           "rank": 10,
@@ -1052,7 +1137,8 @@
           "tomatometer_rating": 72.0,
           "momentum_score": 5.0,
           "margin_to_next": 0.0,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7678663267402759
         }
       ]
     },
@@ -1060,6 +1146,8 @@
       "year_film": 2023,
       "train_start": 2005,
       "train_end": 2022,
+      "top_pick_confidence": 0.7940804330461575,
+      "top_pick_confidence_label": "very_high",
       "rows": [
         {
           "rank": 1,
@@ -1070,7 +1158,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 64.0,
           "margin_to_next": 0.98737034100139,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 2,
@@ -1081,7 +1170,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 33.0,
           "margin_to_next": 0.0005090606241234261,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 3,
@@ -1092,7 +1182,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 22.0,
           "margin_to_next": 0.0002324802124160771,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 4,
@@ -1103,7 +1194,8 @@
           "tomatometer_rating": 92.0,
           "momentum_score": 34.0,
           "margin_to_next": 0.0009030196046732816,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 5,
@@ -1114,7 +1206,8 @@
           "tomatometer_rating": 88.0,
           "momentum_score": 25.0,
           "margin_to_next": 0.0005191619112305395,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 6,
@@ -1125,7 +1218,8 @@
           "tomatometer_rating": 95.0,
           "momentum_score": 10.0,
           "margin_to_next": 0.00017126544713881483,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 7,
@@ -1136,7 +1230,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 7.0,
           "margin_to_next": 2.627892341111886e-05,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 8,
@@ -1147,7 +1242,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 19.0,
           "margin_to_next": 0.0001776145835716332,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 9,
@@ -1158,7 +1254,8 @@
           "tomatometer_rating": 78.0,
           "momentum_score": 15.0,
           "margin_to_next": 0.00017458036675911952,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         },
         {
           "rank": 10,
@@ -1169,7 +1266,8 @@
           "tomatometer_rating": 96.0,
           "momentum_score": 17.0,
           "margin_to_next": 0.0,
-          "confidence_label": "very_high"
+          "confidence_label": "very_high",
+          "confidence_probability": 0.7940804330461575
         }
       ]
     },
@@ -1177,6 +1275,8 @@
       "year_film": 2024,
       "train_start": 2005,
       "train_end": 2023,
+      "top_pick_confidence": 0.6571495713572829,
+      "top_pick_confidence_label": "high",
       "rows": [
         {
           "rank": 1,
@@ -1187,7 +1287,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 42.0,
           "margin_to_next": 0.5399730978048072,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 2,
@@ -1198,7 +1299,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 36.0,
           "margin_to_next": 0.12303634289382627,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 3,
@@ -1209,7 +1311,8 @@
           "tomatometer_rating": 82.0,
           "momentum_score": 23.0,
           "margin_to_next": 0.047466566332147714,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 4,
@@ -1220,7 +1323,8 @@
           "tomatometer_rating": 70.0,
           "momentum_score": 45.0,
           "margin_to_next": 0.00918198119232315,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 5,
@@ -1231,7 +1335,8 @@
           "tomatometer_rating": 89.0,
           "momentum_score": 20.0,
           "margin_to_next": 0.0021953757052362733,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 6,
@@ -1242,7 +1347,8 @@
           "tomatometer_rating": 88.0,
           "momentum_score": 24.0,
           "margin_to_next": 0.00044762158332422274,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 7,
@@ -1253,7 +1359,8 @@
           "tomatometer_rating": 97.0,
           "momentum_score": 2.0,
           "margin_to_next": 0.0009796729973608927,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 8,
@@ -1264,7 +1371,8 @@
           "tomatometer_rating": 93.0,
           "momentum_score": 31.0,
           "margin_to_next": 0.00012080575854296616,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 9,
@@ -1275,7 +1383,8 @@
           "tomatometer_rating": 92.0,
           "momentum_score": 1.0,
           "margin_to_next": 0.0014346820095175077,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         },
         {
           "rank": 10,
@@ -1286,7 +1395,8 @@
           "tomatometer_rating": 92.0,
           "momentum_score": 18.0,
           "margin_to_next": 0.0,
-          "confidence_label": "very_high"
+          "confidence_label": "high",
+          "confidence_probability": 0.6571495713572829
         }
       ]
     },
@@ -2046,6 +2156,7 @@
     "holdout_runner_up": "Conclave",
     "holdout_leader_margin": 0.6082533345771239,
     "holdout_confidence_label": "very_high",
+    "holdout_confidence_probability": 0.8702940621852159,
     "walk_forward_winner_accuracy": 1.0,
     "production_walk_forward_winner_accuracy": 1.0,
     "production_scored_years": 5,
@@ -2060,8 +2171,13 @@
     "baseline_accuracy": 0.5,
     "baseline_name": "Precursor Wins Baseline",
     "baseline_scored_years": 10,
+    "confidence_weight": 0.6,
+    "extended_top_pick_brier_raw": 0.32348925087303,
+    "extended_top_pick_brier_calibrated": 0.2859664532190653,
+    "extended_top_pick_log_loss_raw": 0.86051932612994,
+    "extended_top_pick_log_loss_calibrated": 0.78746652970681,
     "feature_count": 42,
-    "last_generated_at": "2026-04-09T15:43:42.566381+00:00",
+    "last_generated_at": "2026-04-09T16:24:07.074299+00:00",
     "current_forecast_season": "early"
   },
   "recent_races": [
@@ -2075,6 +2191,7 @@
       "runner_up_probability": 0.17389800815228929,
       "leader_margin": 0.6365056881967249,
       "confidence_label": "very_high",
+      "confidence_probability": 0.8104036963490142,
       "actual_winner": "Spotlight",
       "correct": false,
       "baseline_predicted_winner": "The Revenant",
@@ -2103,7 +2220,8 @@
       "runner_up": "Hidden Figures",
       "runner_up_probability": 0.03133864225163734,
       "leader_margin": 0.8770622449003445,
-      "confidence_label": "very_high",
+      "confidence_label": "medium",
+      "confidence_probability": 0.545040532291189,
       "actual_winner": "Moonlight",
       "correct": false,
       "baseline_predicted_winner": "La La Land",
@@ -2133,6 +2251,7 @@
       "runner_up_probability": 0.28162329847818596,
       "leader_margin": 0.039143383042265,
       "confidence_label": "low",
+      "confidence_probability": 0.19246000891227058,
       "actual_winner": "The Shape of Water",
       "correct": true,
       "baseline_predicted_winner": "The Shape of Water",
@@ -2161,7 +2280,8 @@
       "runner_up": "Roma",
       "runner_up_probability": 0.2626046183551937,
       "leader_margin": 0.4133454502277572,
-      "confidence_label": "very_high",
+      "confidence_label": "medium",
+      "confidence_probability": 0.5389033744831039,
       "actual_winner": "Green Book",
       "correct": false,
       "baseline_predicted_winner": "Roma",
@@ -2190,7 +2310,8 @@
       "runner_up": "Marriage Story",
       "runner_up_probability": 0.37040286994267524,
       "leader_margin": 0.17012701630340854,
-      "confidence_label": "medium",
+      "confidence_label": "low",
+      "confidence_probability": 0.4243179317476503,
       "actual_winner": "Parasite",
       "correct": false,
       "baseline_predicted_winner": "1917",
@@ -2219,7 +2340,8 @@
       "runner_up": "The Father",
       "runner_up_probability": 0.008433289908474587,
       "leader_margin": 0.9669790354497777,
-      "confidence_label": "very_high",
+      "confidence_label": "high",
+      "confidence_probability": 0.6652473952149514,
       "actual_winner": "Nomadland",
       "correct": true,
       "baseline_predicted_winner": "Nomadland",
@@ -2249,6 +2371,7 @@
       "runner_up_probability": 0.3141698473297479,
       "leader_margin": 0.0031307451226923466,
       "confidence_label": "low",
+      "confidence_probability": 0.32371368880479745,
       "actual_winner": "CODA",
       "correct": true,
       "baseline_predicted_winner": "The Power of the Dog",
@@ -2278,6 +2401,7 @@
       "runner_up_probability": 0.002054479302195414,
       "leader_margin": 0.992008446217312,
       "confidence_label": "very_high",
+      "confidence_probability": 0.7678663267402759,
       "actual_winner": "Everything Everywhere All at Once",
       "correct": true,
       "baseline_predicted_winner": "Everything Everywhere All at Once",
@@ -2307,6 +2431,7 @@
       "runner_up_probability": 0.0027637140755393383,
       "leader_margin": 0.98737034100139,
       "confidence_label": "very_high",
+      "confidence_probability": 0.7940804330461575,
       "actual_winner": "Oppenheimer",
       "correct": true,
       "baseline_predicted_winner": "Oppenheimer",
@@ -2335,7 +2460,8 @@
       "runner_up": "Conclave",
       "runner_up_probability": 0.18490581742029402,
       "leader_margin": 0.5399730978048072,
-      "confidence_label": "very_high",
+      "confidence_label": "high",
+      "confidence_probability": 0.6571495713572829,
       "actual_winner": "Anora",
       "correct": true,
       "baseline_predicted_winner": "Anora",
@@ -2475,6 +2601,9 @@
       "runner_up_probability": 0.17389800815228929,
       "leader_margin": 0.6365056881967249,
       "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.8104036963490142,
+      "calibrated_confidence": 0.8104036963490142,
+      "calibrated_confidence_label": "very_high",
       "baseline_predicted_winner": "The Revenant",
       "baseline_correct": false
     },
@@ -2490,6 +2619,9 @@
       "runner_up_probability": 0.03133864225163734,
       "leader_margin": 0.8770622449003445,
       "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.0,
+      "calibrated_confidence": 0.545040532291189,
+      "calibrated_confidence_label": "medium",
       "baseline_predicted_winner": "La La Land",
       "baseline_correct": false
     },
@@ -2505,6 +2637,9 @@
       "runner_up_probability": 0.28162329847818596,
       "leader_margin": 0.039143383042265,
       "confidence_label": "low",
+      "prior_walk_forward_accuracy": 0.0,
+      "calibrated_confidence": 0.19246000891227058,
+      "calibrated_confidence_label": "low",
       "baseline_predicted_winner": "The Shape of Water",
       "baseline_correct": true
     },
@@ -2520,6 +2655,9 @@
       "runner_up_probability": 0.2626046183551937,
       "leader_margin": 0.4133454502277572,
       "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.3333333333333333,
+      "calibrated_confidence": 0.5389033744831039,
+      "calibrated_confidence_label": "medium",
       "baseline_predicted_winner": "Roma",
       "baseline_correct": false
     },
@@ -2535,6 +2673,9 @@
       "runner_up_probability": 0.37040286994267524,
       "leader_margin": 0.17012701630340854,
       "confidence_label": "medium",
+      "prior_walk_forward_accuracy": 0.25,
+      "calibrated_confidence": 0.4243179317476503,
+      "calibrated_confidence_label": "low",
       "baseline_predicted_winner": "1917",
       "baseline_correct": false
     },
@@ -2550,6 +2691,9 @@
       "runner_up_probability": 0.008433289908474587,
       "leader_margin": 0.9669790354497777,
       "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.2,
+      "calibrated_confidence": 0.6652473952149514,
+      "calibrated_confidence_label": "high",
       "baseline_predicted_winner": "Nomadland",
       "baseline_correct": true
     },
@@ -2565,6 +2709,9 @@
       "runner_up_probability": 0.3141698473297479,
       "leader_margin": 0.0031307451226923466,
       "confidence_label": "low",
+      "prior_walk_forward_accuracy": 0.3333333333333333,
+      "calibrated_confidence": 0.32371368880479745,
+      "calibrated_confidence_label": "low",
       "baseline_predicted_winner": "The Power of the Dog",
       "baseline_correct": false
     },
@@ -2580,6 +2727,9 @@
       "runner_up_probability": 0.002054479302195414,
       "leader_margin": 0.992008446217312,
       "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.42857142857142855,
+      "calibrated_confidence": 0.7678663267402759,
+      "calibrated_confidence_label": "very_high",
       "baseline_predicted_winner": "Everything Everywhere All at Once",
       "baseline_correct": true
     },
@@ -2595,6 +2745,9 @@
       "runner_up_probability": 0.0027637140755393383,
       "leader_margin": 0.98737034100139,
       "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.5,
+      "calibrated_confidence": 0.7940804330461575,
+      "calibrated_confidence_label": "very_high",
       "baseline_predicted_winner": "Oppenheimer",
       "baseline_correct": true
     },
@@ -2610,6 +2763,9 @@
       "runner_up_probability": 0.18490581742029402,
       "leader_margin": 0.5399730978048072,
       "confidence_label": "very_high",
+      "prior_walk_forward_accuracy": 0.5555555555555556,
+      "calibrated_confidence": 0.6571495713572829,
+      "calibrated_confidence_label": "high",
       "baseline_predicted_winner": "Anora",
       "baseline_correct": true
     }
@@ -2621,6 +2777,7 @@
       "The longer validation view starts training at 2005 so we can review a tougher 10-year window from 2015-2024.",
       "The winner model is trained on Oscar nomination totals, precursor wins and nominations from PGA, DGA, Critics Choice, BAFTA, SAG, and the Golden Globes, plus critics scores, release timing, distributor flags, genre tags, festivals, and director history.",
       "The simple comparison baseline picks the film with the most precursor wins, then precursor nominations, then Oscar nominations, Metacritic, and Rotten Tomatoes. That baseline is shown alongside the model on the longer validation window.",
+      "Confidence labels are now shrinkage-calibrated toward prior walk-forward accuracy. On the 2015-2024 extended window, top-pick Brier improved from 0.323 to 0.286.",
       "Future races rely on TMDb-first movie pool data and a season-aware blend that shifts weight from broad prestige tracking early in the year toward awards-style signals later in the race."
     ]
   }
