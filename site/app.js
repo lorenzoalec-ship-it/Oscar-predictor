@@ -31,6 +31,21 @@ const GENRE_LABELS = {
   10752: "War",
 };
 
+function filmTitle(card) {
+  return card?.title ?? card?.film ?? "Film";
+}
+
+function filmInitials(value) {
+  const letters = String(value ?? "")
+    .split(/[\s:/\-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0))
+    .join("")
+    .toUpperCase();
+  return letters || "RS";
+}
+
 function formatPercent(value) {
   if (value == null || Number.isNaN(Number(value))) return "N/A";
   return `${(value * 100).toFixed(1)}%`;
@@ -84,11 +99,17 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-function posterMarkup(card) {
+function posterMarkup(card, className = "") {
+  const title = filmTitle(card);
+  const classes = ["poster-frame", className].filter(Boolean).join(" ");
   if (card.poster_url) {
-    return `<div class="poster-frame"><img src="${card.poster_url}" alt="${escapeHtml(card.title)} poster" loading="lazy" /></div>`;
+    return `<div class="${classes}"><img src="${card.poster_url}" alt="${escapeHtml(title)} poster" loading="lazy" /></div>`;
   }
-  return `<div class="poster-frame">Poster pending</div>`;
+  return `
+    <div class="${classes} poster-fallback" aria-label="${escapeHtml(title)} poster placeholder">
+      <span>${escapeHtml(filmInitials(title))}</span>
+    </div>
+  `;
 }
 
 function movementMarkup(card) {
@@ -117,14 +138,22 @@ function renderHero(data) {
   document.getElementById("hero-release").textContent = formatDate(hero.release_date);
   document.getElementById("hero-model").textContent = meta.model ? meta.model.toUpperCase() : "Unknown";
   document.getElementById("hero-season").textContent = formatSeason(meta.current_forecast_season);
-  document.getElementById("hero-film-name").textContent = hero.title ?? "";
-  document.getElementById("hero-film-genres").textContent = formatGenres(hero.genres);
-  document.getElementById("hero-film-overview").textContent = hero.overview || "No synopsis available yet.";
   document.getElementById("hero-summary").textContent =
     currentMode
       ? `${BRAND_DESCRIPTOR} The live ${meta.current_ceremony_year} Best Picture board is running in ${formatSeason(meta.current_forecast_season).toLowerCase()} mode and currently leans most on ${currentMode.leans_on}.`
       : `${BRAND_DESCRIPTOR} This Best Picture board blends TMDb contender tracking with a walk-forward historical model.`;
-  document.getElementById("hero-film-card").insertAdjacentHTML("beforeend", movementMarkup(hero));
+  document.getElementById("hero-film-card").innerHTML = `
+    <div class="hero-film-layout">
+      ${posterMarkup(hero, "hero-poster")}
+      <div class="hero-film-copy">
+        <span class="rank-badge">#1</span>
+        <strong>${escapeHtml(filmTitle(hero))}</strong>
+        <span>${escapeHtml(formatGenres(hero.genres))}</span>
+        <p>${escapeHtml(hero.overview || "No synopsis available yet.")}</p>
+        ${movementMarkup(hero)}
+      </div>
+    </div>
+  `;
 }
 
 function probBarMarkup(probability) {
@@ -414,15 +443,18 @@ function renderRecentRaces(races) {
     .map(
       (race) => `
         <article class="race-card">
-          <p class="eyebrow">${race.year_film} Film Year</p>
-          <h3>${race.predicted_winner}</h3>
-          <p>Trained on ${race.train_start}-${race.train_end}. Predicted winner with ${formatPercent(race.predicted_probability)} win share.</p>
-          <p>Runner-up: <strong>${race.runner_up ?? "Unknown"}</strong> at ${formatPercent(race.runner_up_probability ?? 0)}. Margin: ${formatPercent(race.leader_margin)}.</p>
-          <p>Confidence: <strong>${formatConfidence(race.confidence_label)}</strong> (${formatPercent(race.confidence_probability ?? 0)}). Baseline picked <strong>${race.baseline_predicted_winner ?? "Unknown"}</strong>.</p>
-          <p>Actual winner: <strong>${race.actual_winner}</strong></p>
-          <span class="result ${race.correct ? "correct" : "miss"}">
-            ${race.correct ? "Correct Call" : "Missed Call"}
-          </span>
+          ${posterMarkup({ title: race.predicted_winner }, "race-poster")}
+          <div class="race-card-copy">
+            <p class="eyebrow">${race.year_film} Film Year</p>
+            <h3>${race.predicted_winner}</h3>
+            <p>Trained on ${race.train_start}-${race.train_end}. Predicted winner with ${formatPercent(race.predicted_probability)} win share.</p>
+            <p>Runner-up: <strong>${race.runner_up ?? "Unknown"}</strong> at ${formatPercent(race.runner_up_probability ?? 0)}. Margin: ${formatPercent(race.leader_margin)}.</p>
+            <p>Confidence: <strong>${formatConfidence(race.confidence_label)}</strong> (${formatPercent(race.confidence_probability ?? 0)}). Baseline picked <strong>${race.baseline_predicted_winner ?? "Unknown"}</strong>.</p>
+            <p>Actual winner: <strong>${race.actual_winner}</strong></p>
+            <span class="result ${race.correct ? "correct" : "miss"}">
+              ${race.correct ? "Correct Call" : "Missed Call"}
+            </span>
+          </div>
         </article>
       `
     )
@@ -539,7 +571,8 @@ function renderHistoricalYear(data, year) {
     .map(
       (row, index) => `
         <article class="year-race-card">
-          <div>
+          ${posterMarkup(row, "year-race-poster")}
+          <div class="year-race-copy">
             <h3>#${row.rank ?? index + 1} ${row.film}</h3>
             <p>
               ${row.oscar_nomination_count ?? "—"} Oscar nominations ·
@@ -559,9 +592,9 @@ function renderHistoricalYear(data, year) {
               }
             </span>
           </div>
-          <div style="text-align:right">
+          <div class="year-race-probability">
             <strong>${formatPercent(row.probability)}</strong>
-            <span class="metric-label" style="display:block">Win Share</span>
+            <span class="metric-label">Win Share</span>
             ${probBarMarkup(row.probability)}
           </div>
         </article>
