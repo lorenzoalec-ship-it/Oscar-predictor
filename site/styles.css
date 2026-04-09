@@ -697,6 +697,73 @@ main {
   line-height: 1.6;
 }
 
+/* Signals dropdown */
+.signals-details {
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.signals-details summary {
+  cursor: pointer;
+  color: var(--gold-soft);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.signals-details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.2s;
+}
+
+.signals-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.signals-list {
+  margin-top: 14px;
+  display: grid;
+  gap: 16px;
+}
+
+.signal-group-label {
+  margin: 0 0 8px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold-soft);
+}
+
+.signal-group {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.signal-row {
+  display: grid;
+  gap: 2px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(223, 193, 128, 0.06);
+}
+
+.signal-name {
+  font-size: 0.82rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.signal-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 @media (max-width: 960px) {
   .hero,
   .dashboard-grid {

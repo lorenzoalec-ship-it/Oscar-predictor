@@ -141,6 +141,84 @@ function renderContenders(cards) {
     .join("");
 }
 
+const SIGNAL_GROUPS = [
+  {
+    group: "Precursor Awards",
+    signals: [
+      { key: "pga_win", label: "PGA Win", desc: "Producers Guild of America — the single strongest Best Picture predictor. PGA and Oscar have aligned ~80% of the time." },
+      { key: "dga_win", label: "DGA Win", desc: "Directors Guild of America — DGA winner goes on to win Best Picture roughly 70% of the time." },
+      { key: "sag_win", label: "SAG Win (Ensemble)", desc: "Screen Actors Guild ensemble cast award. The only guild voted on entirely by actors, who make up the largest Oscar branch." },
+      { key: "bafta_win", label: "BAFTA Win", desc: "British Academy of Film and Television Arts — often an early bellwether, especially for international films." },
+      { key: "golden_globe_win", label: "Golden Globe Win", desc: "Drama category win is the more relevant signal for Best Picture. Comedy/Musical winners rarely cross over." },
+      { key: "critics_choice_win", label: "Critics Choice Win", desc: "Broadcast Film Critics Association award, voted just before Oscar nominations. High overlap with Academy taste." },
+    ],
+  },
+  {
+    group: "Oscar Nominations",
+    signals: [
+      { key: "oscar_nomination_count", label: "Total Oscar Nominations", desc: "Films with 10+ nominations almost always include Best Picture. More nominations = broader Academy support across branches." },
+      { key: "high_nomination_flag", label: "High Nomination Flag", desc: "Binary flag for films with an unusually large nomination haul (top tier). Acts as a non-linear boost." },
+      { key: "nominee_probability", label: "Nominee Probability", desc: "Model output from a separate nominee-prediction stage. Helps filter the field before scoring winners." },
+    ],
+  },
+  {
+    group: "Critic Scores",
+    signals: [
+      { key: "tomatometer_rating", label: "Rotten Tomatoes Tomatometer", desc: "Aggregate critic approval percentage. Strong RT scores are near-necessary but not sufficient — no film under 70% has won in the modern era." },
+      { key: "metacritic_score", label: "Metacritic Score", desc: "Weighted average of critic reviews. Often more discriminating than RT since it measures degree of praise, not just approval." },
+      { key: "movie_rating", label: "TMDb User Rating", desc: "Crowd rating from TMDb. Captures general audience reception, which correlates with broad Academy support." },
+      { key: "movie_vote_count_log", label: "TMDb Vote Count (log)", desc: "Log-scaled vote count. A proxy for cultural reach — widely seen films tend to have more Academy members who have actually watched them." },
+    ],
+  },
+  {
+    group: "Release & Timing",
+    signals: [
+      { key: "release_month", label: "Release Month", desc: "December releases dominate Best Picture — recency bias means films fresh in voters' minds get more attention. Limited Dec releases are flagged separately." },
+    ],
+  },
+  {
+    group: "Distributor",
+    signals: [
+      { key: "is_prestige_distributor", label: "Prestige Distributor", desc: "A24, Focus Features, Searchlight, Neon — specialty distributors with strong Oscar campaign infrastructure and Academy relationships." },
+      { key: "is_major_studio_distributor", label: "Major Studio Distributor", desc: "Universal, Warner Bros., Paramount etc. Major studios have resources for large-scale campaigns but less prestige-film focus." },
+      { key: "is_streaming_distributor", label: "Streaming Distributor", desc: "Netflix, Apple TV+, Amazon — streaming nominees have grown steadily but still face some Academy resistance relative to theatrical releases." },
+    ],
+  },
+  {
+    group: "Genre",
+    signals: [
+      { key: "is_drama_genre", label: "Drama", desc: "The dominant Best Picture genre. Nearly every winner is classified as drama." },
+      { key: "is_history_genre", label: "Historical", desc: "Historical dramas have a strong track record — Braveheart, Gladiator, 12 Years a Slave, Oppenheimer." },
+      { key: "is_biography_genre", label: "Biography", desc: "Biopics are a reliable Oscar category — The King's Speech, Bohemian Rhapsody, Oppenheimer." },
+      { key: "is_war_genre", label: "War", desc: "War films have a consistent presence: Platoon, The Hurt Locker, 1917, All Quiet on the Western Front." },
+      { key: "is_music_genre", label: "Music", desc: "Music-themed films have won occasionally — Whiplash, Bohemian Rhapsody, La La Land (runner-up)." },
+      { key: "is_romance_genre", label: "Romance", desc: "Romance is rarely a winner on its own but often present as a secondary genre in Best Picture nominees." },
+      { key: "prestige_genre_score", label: "Prestige Genre Score", desc: "Composite score combining genre signals into a single prestige-weighted value." },
+    ],
+  },
+  {
+    group: "Festivals",
+    signals: [
+      { key: "cannes_flag", label: "Cannes", desc: "Palme d'Or or major Cannes prize. Strong European art-house signal; occasionally translates to Oscar (Parasite, Amour)." },
+      { key: "venice_flag", label: "Venice", desc: "Venice Film Festival premiere. The Venice-to-Oscar pipeline has been remarkably strong — Nomadland, Roma, The Shape of Water all won here first." },
+      { key: "tiff_flag", label: "TIFF", desc: "Toronto International Film Festival. TIFF People's Choice Award is arguably the best early Oscar indicator — winners have gone on to win Best Picture multiple times." },
+      { key: "telluride_flag", label: "Telluride", desc: "Small, invite-only festival that premieres many Oscar frontrunners before the wider circuit. A Telluride slot signals distributor confidence." },
+      { key: "sundance_flag", label: "Sundance", desc: "Primary signal for independent films. Sundance winners occasionally cross into Best Picture (CODA)." },
+      { key: "sxsw_flag", label: "SXSW", desc: "South by Southwest — less direct Oscar correlation but signals indie buzz and early critical attention." },
+      { key: "festival_presence_score", label: "Festival Presence Score", desc: "Composite of all festival flags weighted by Oscar correlation strength." },
+      { key: "major_festival_flag", label: "Major Festival Flag", desc: "Binary flag for Venice/TIFF/Telluride presence — the three festivals most directly linked to Oscar success." },
+    ],
+  },
+  {
+    group: "Director History",
+    signals: [
+      { key: "director_prior_directing_nominations", label: "Prior Directing Nominations", desc: "Number of times this director has been nominated for Best Director before. The Academy rewards established talent." },
+      { key: "director_prior_directing_wins", label: "Prior Directing Wins", desc: "Prior Best Director wins. A previous winner has established credibility with voters." },
+      { key: "director_has_prior_directing_win", label: "Prior Win Flag", desc: "Binary flag — has this director won before? Prior winners like Spielberg, Scorsese, Bigelow get a credibility bump." },
+    ],
+  },
+];
+
 function renderMetrics(data) {
   const metrics = data.metrics;
   const stack = document.getElementById("metric-stack");
@@ -148,22 +226,22 @@ function renderMetrics(data) {
     {
       label: `Production Walk-Forward (${metrics.production_training_start}+ train)`,
       value: formatPercent(metrics.production_walk_forward_winner_accuracy),
-      body: `Retrained year by year on prior film years only, scoring ${metrics.production_first_scored_year}-${metrics.production_last_scored_year}.`,
+      body: `The headline accuracy number. Trained only on films from ${metrics.production_training_start} onward — the modern Oscar era where precursor awards and streaming distributors exist. Each year is scored using only data from prior years, so no future information leaks in. Scored across ${metrics.production_first_scored_year}–${metrics.production_last_scored_year}.`,
     },
     {
       label: `Extended Validation (${metrics.extended_training_start}+ train)`,
       value: formatPercent(metrics.extended_walk_forward_winner_accuracy),
-      body: `Same walk-forward setup across ${metrics.extended_scored_years} scored years from ${metrics.extended_first_scored_year}-${metrics.extended_last_scored_year}.`,
+      body: `The same walk-forward method but starting training earlier (${metrics.extended_training_start}), giving a longer ${metrics.extended_scored_years}-year window (${metrics.extended_first_scored_year}–${metrics.extended_last_scored_year}). This is a tougher test — older eras had fewer precursor signals — so accuracy is typically lower. It exists to show the model isn't just overfit to the modern era.`,
     },
     {
       label: metrics.baseline_name,
       value: formatPercent(metrics.baseline_accuracy),
-      body: "Simple rule: most precursor wins, then precursor nominations, Oscar nominations, Metacritic, and Rotten Tomatoes.",
+      body: "A rules-based comparison: pick the film with the most precursor wins, breaking ties by nominations, then Metacritic, then RT. No machine learning. Beating this baseline consistently is what validates the model.",
     },
     {
       label: "Confidence Calibration",
       value: `${metrics.extended_top_pick_brier_calibrated.toFixed(3)} Brier`,
-      body: `Top-pick confidence is shrunk toward prior walk-forward accuracy. Extended-window Brier improved from ${metrics.extended_top_pick_brier_raw.toFixed(3)} to ${metrics.extended_top_pick_brier_calibrated.toFixed(3)}.`,
+      body: `Raw model probabilities tend to be overconfident. Confidence scores are shrunk toward the historical base rate so a "70% confidence" call actually means something. Brier score improved from ${metrics.extended_top_pick_brier_raw.toFixed(3)} → ${metrics.extended_top_pick_brier_calibrated.toFixed(3)} after calibration (lower is better).`,
     },
     {
       label: `Latest Holdout ${metrics.holdout_year}`,
@@ -174,6 +252,7 @@ function renderMetrics(data) {
       label: "Trained On",
       value: `${metrics.feature_count} Signals`,
       body: "Oscar nominations, precursor awards, critic scores, release timing, distributor, genre, festival, and director-history features.",
+      hasDropdown: true,
     },
   ];
 
@@ -184,6 +263,24 @@ function renderMetrics(data) {
           <span class="metric-label">${item.label}</span>
           <strong>${item.value}</strong>
           <p>${item.body}</p>
+          ${item.hasDropdown ? `
+            <details class="signals-details">
+              <summary>View all ${metrics.feature_count} signals</summary>
+              <div class="signals-list">
+                ${SIGNAL_GROUPS.map((group) => `
+                  <div class="signal-group">
+                    <p class="signal-group-label">${group.group}</p>
+                    ${group.signals.map((s) => `
+                      <div class="signal-row">
+                        <span class="signal-name">${s.label}</span>
+                        <span class="signal-desc">${s.desc}</span>
+                      </div>
+                    `).join("")}
+                  </div>
+                `).join("")}
+              </div>
+            </details>
+          ` : ""}
         </article>
       `
     )
