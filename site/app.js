@@ -11,6 +11,25 @@ async function loadSiteData() {
 
 const BRAND_NAME = "RedCarpet Signals";
 const BRAND_DESCRIPTOR = "Signals shaping the awards race, starting with Best Picture.";
+const GENRE_LABELS = {
+  12: "Adventure",
+  14: "Fantasy",
+  16: "Animation",
+  18: "Drama",
+  27: "Horror",
+  28: "Action",
+  35: "Comedy",
+  36: "History",
+  37: "Western",
+  53: "Thriller",
+  80: "Crime",
+  878: "Sci-Fi",
+  9648: "Mystery",
+  10402: "Music",
+  10749: "Romance",
+  10751: "Family",
+  10752: "War",
+};
 
 function formatPercent(value) {
   if (value == null || Number.isNaN(Number(value))) return "N/A";
@@ -38,6 +57,22 @@ function formatSeason(value) {
     .split("_")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
+}
+
+function formatGenres(value) {
+  if (!value) return "Genre mix pending";
+  const parts = Array.isArray(value) ? value : String(value).split(",");
+  const labels = parts
+    .map((part) => String(part).trim())
+    .filter(Boolean)
+    .map((part) => {
+      const numericKey = Number(part);
+      if (!Number.isNaN(numericKey)) {
+        return GENRE_LABELS[numericKey] ?? part;
+      }
+      return part;
+    });
+  return labels.length ? labels.join(" · ") : "Genre mix pending";
 }
 
 function escapeHtml(value) {
@@ -75,15 +110,15 @@ function renderHero(data) {
   const currentMode = (data.season_modes ?? []).find((mode) => mode.slug === meta.current_forecast_season);
   document.title = `${BRAND_NAME} | Best Picture Board`;
   document.getElementById("hero-eyebrow").textContent = meta.current_ceremony_year
-    ? `${BRAND_NAME} · ${meta.current_ceremony_year} Best Picture Board`
-    : `${BRAND_NAME} · Best Picture Board`;
+    ? `${meta.current_ceremony_year} Best Picture Board`
+    : "Best Picture Board";
   document.getElementById("hero-title").textContent = hero.title ?? "";
   document.getElementById("hero-probability").textContent = formatPercent(hero.probability);
   document.getElementById("hero-release").textContent = formatDate(hero.release_date);
   document.getElementById("hero-model").textContent = meta.model ? meta.model.toUpperCase() : "Unknown";
   document.getElementById("hero-season").textContent = formatSeason(meta.current_forecast_season);
   document.getElementById("hero-film-name").textContent = hero.title ?? "";
-  document.getElementById("hero-film-genres").textContent = hero.genres || "Genre mix pending";
+  document.getElementById("hero-film-genres").textContent = formatGenres(hero.genres);
   document.getElementById("hero-film-overview").textContent = hero.overview || "No synopsis available yet.";
   document.getElementById("hero-summary").textContent =
     currentMode
@@ -129,7 +164,7 @@ function renderContenders(cards) {
           <div>
             <h3>${card.title}</h3>
             <div class="contender-meta">
-              ${formatDate(card.release_date)} · ${card.genres || "Genres pending"}<br />
+              ${formatDate(card.release_date)} · ${formatGenres(card.genres)}<br />
               TMDb rating ${card.rating?.toFixed(1) ?? "—"} from ${card.vote_count?.toLocaleString?.() ?? card.vote_count} votes<br />
               ${formatSeason(card.forecast_season)} mode${card.manual_contender_flag ? " · Curated contender" : ""}
             </div>

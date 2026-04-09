@@ -1,0 +1,19 @@
+<svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rcsBg" x1="12" y1="10" x2="74" y2="80" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8F1E3A"/>
+      <stop offset="1" stop-color="#5E1325"/>
+    </linearGradient>
+    <linearGradient id="rcsCarpet" x1="44" y1="28" x2="44" y2="76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4C481"/>
+      <stop offset="1" stop-color="#C99848"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="84" height="84" rx="24" fill="url(#rcsBg)"/>
+  <rect x="2" y="2" width="84" height="84" rx="24" stroke="#EAD6AF" stroke-opacity="0.22" stroke-width="2"/>
+  <path d="M18 18C28 7.33333 60 7.33333 70 18" stroke="#F8EEDC" stroke-opacity="0.22" stroke-width="4" stroke-linecap="round"/>
+  <path d="M30 76L39 33H49L58 76H30Z" fill="url(#rcsCarpet)"/>
+  <path d="M36 76L42 33" stroke="#7B152E" stroke-opacity="0.42" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M52 76L46 33" stroke="#7B152E" stroke-opacity="0.42" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M44 12L46.782 18.2188L53.5595 18.8357L48.4912 23.3824L49.9392 30.0143L44 26.59L38.0608 30.0143L39.5088 23.3824L34.4405 18.8357L41.218 18.2188L44 12Z" fill="#F8E6BF"/>
+</svg>
