@@ -11,6 +11,33 @@ async function loadSiteData() {
 
 const BRAND_NAME = "RedCarpet Signals";
 const BRAND_DESCRIPTOR = "Signals shaping the awards race, starting with Best Picture.";
+const TAB_CONFIG = {
+  "best-picture": {
+    title: "RedCarpet Signals | Best Picture Board",
+    scope: "Best Picture Board",
+    copy: "Live contenders, movement, and historical race context",
+  },
+  "best-actor": {
+    title: "RedCarpet Signals | Best Actor",
+    scope: "Best Actor",
+    copy: "Next board in progress",
+  },
+  "best-actress": {
+    title: "RedCarpet Signals | Best Actress",
+    scope: "Best Actress",
+    copy: "Next board in progress",
+  },
+  "best-director": {
+    title: "RedCarpet Signals | Best Director",
+    scope: "Best Director",
+    copy: "Next board in progress",
+  },
+  "box-office": {
+    title: "RedCarpet Signals | Box Office",
+    scope: "Domestic / Worldwide Box Office",
+    copy: "Signals view coming soon",
+  },
+};
 const GENRE_LABELS = {
   12: "Adventure",
   14: "Fantasy",
@@ -125,11 +152,44 @@ function movementMarkup(card) {
   return `<span class="movement-chip new">New entry</span>`;
 }
 
+function setActiveTab(tab) {
+  const config = TAB_CONFIG[tab] ?? TAB_CONFIG["best-picture"];
+  document.title = config.title;
+
+  document.querySelectorAll("[data-tab]").forEach((button) => {
+    const active = button.dataset.tab === tab;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-selected", active ? "true" : "false");
+    button.tabIndex = active ? 0 : -1;
+  });
+
+  document.querySelectorAll("[data-tab-panel]").forEach((panel) => {
+    const active = panel.dataset.tabPanel === tab;
+    panel.hidden = !active;
+    panel.classList.toggle("is-active", active);
+  });
+
+  const scopePill = document.getElementById("scope-pill");
+  const scopeCopy = document.getElementById("scope-copy");
+  if (scopePill) scopePill.textContent = config.scope;
+  if (scopeCopy) scopeCopy.textContent = config.copy;
+}
+
+function initTabs() {
+  const buttons = [...document.querySelectorAll("[data-tab]")];
+  if (!buttons.length) return;
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => setActiveTab(button.dataset.tab));
+  });
+
+  setActiveTab("best-picture");
+}
+
 function renderHero(data) {
   const { hero, meta } = data;
   if (!hero || !meta) return;
   const currentMode = (data.season_modes ?? []).find((mode) => mode.slug === meta.current_forecast_season);
-  document.title = `${BRAND_NAME} | Best Picture Board`;
   document.getElementById("hero-eyebrow").textContent = meta.current_ceremony_year
     ? `${meta.current_ceremony_year} Best Picture Board`
     : "Best Picture Board";
@@ -443,7 +503,7 @@ function renderRecentRaces(races) {
     .map(
       (race) => `
         <article class="race-card">
-          ${posterMarkup({ title: race.predicted_winner }, "race-poster")}
+          ${posterMarkup({ title: race.predicted_winner, poster_url: race.poster_url }, "race-poster")}
           <div class="race-card-copy">
             <p class="eyebrow">${race.year_film} Film Year</p>
             <h3>${race.predicted_winner}</h3>
@@ -604,6 +664,7 @@ function renderHistoricalYear(data, year) {
 }
 
 async function main() {
+  initTabs();
   try {
     const data = await loadSiteData();
     const sections = [

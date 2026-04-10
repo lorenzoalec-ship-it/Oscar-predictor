@@ -1,37 +1,26 @@
 {
   "year": 2026,
-  "started_at": "2026-04-09T01:30:44.634283+00:00",
-  "finished_at": "2026-04-09T01:30:48.241667+00:00",
+  "started_at": "2026-04-10T00:07:56.147848+00:00",
+  "finished_at": "2026-04-10T00:09:36.614112+00:00",
   "skip_tmdb": true,
   "skip_source_refresh": true,
   "external_refresh_report": {},
-  "synced_agent_updates": [],
+  "synced_agent_updates": [
+    "data/raw/rotten_tomatoes_recent_summary.csv",
+    "data/raw/festival_metacritic_summary.csv",
+    "data/raw/future_contender_enrichment.csv"
+  ],
   "missing_agent_updates": [
     "data/agent_updates/golden_globe_recent_summary.csv",
     "data/agent_updates/sag_recent_summary.csv",
     "data/agent_updates/bafta_recent_summary.csv",
-    "data/agent_updates/rotten_tomatoes_recent_summary.csv",
-    "data/agent_updates/festival_metacritic_summary.csv",
-    "data/agent_updates/future_contender_enrichment.csv"
+    "data/agent_updates/pga_recent_summary.csv",
+    "data/agent_updates/dga_recent_summary.csv",
+    "data/agent_updates/critics_choice_recent_summary.csv"
   ],
   "tmdb_pool_path": "data/raw/tmdb_movies_2026.csv",
   "forecast_output_path": "output/future_best_picture_predictions_2026.csv",
   "site_data_path": "site/data/site_data.json",
-  "publish_pages": true,
-  "publish_report": {
-    "repo": "lorenzoalec-ship-it/Oscar-predictor",
-    "branch": "main",
-    "published": [
-      {
-        "path": "site/data/site_data.json",
-        "sha": "c8bcc035e1c53aa6f576dba40d188d1f94374eb5",
-        "created": true
-      },
-      {
-        "path": "site/data/site_data.js",
-        "sha": "5361ec1a2c9719c2026ece073206cab953f70729",
-        "created": false
-      }
-    ]
-  }
+  "publish_pages": false,
+  "publish_report": {}
 }

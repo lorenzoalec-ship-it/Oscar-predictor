@@ -17,129 +17,191 @@
           </div>
         </a>
         <div class="site-scope">
-          <span class="scope-pill">Best Picture Board</span>
-          <span class="scope-copy">Live contenders, movement, and historical race context</span>
+          <span class="scope-pill" id="scope-pill">Best Picture Board</span>
+          <span class="scope-copy" id="scope-copy">Live contenders, movement, and historical race context</span>
         </div>
       </header>
 
-      <header class="hero" id="hero">
-        <div class="hero-copy">
-          <p class="eyebrow" id="hero-eyebrow">RedCarpet Signals · Best Picture Board</p>
-          <h1 id="hero-title">Loading forecast…</h1>
-          <p class="hero-summary" id="hero-summary"></p>
-          <div class="hero-metrics">
-            <div class="metric-chip">
-              <span class="metric-label">Win Chance</span>
-              <strong id="hero-probability">--</strong>
-            </div>
-            <div class="metric-chip">
-              <span class="metric-label">Release Date</span>
-              <strong id="hero-release">--</strong>
-            </div>
-            <div class="metric-chip">
-              <span class="metric-label">Model</span>
-              <strong id="hero-model">--</strong>
-            </div>
-            <div class="metric-chip">
-              <span class="metric-label">Forecast Season</span>
-              <strong id="hero-season">--</strong>
+      <nav class="section-tabs" aria-label="Awards boards">
+        <button class="section-tab is-active" type="button" data-tab="best-picture" aria-selected="true">Best Picture</button>
+        <button class="section-tab" type="button" data-tab="best-actor" aria-selected="false">Best Actor</button>
+        <button class="section-tab" type="button" data-tab="best-actress" aria-selected="false">Best Actress</button>
+        <button class="section-tab" type="button" data-tab="best-director" aria-selected="false">Best Director</button>
+        <button class="section-tab" type="button" data-tab="box-office" aria-selected="false">Box Office</button>
+      </nav>
+
+      <section class="tab-panel is-active" data-tab-panel="best-picture">
+        <header class="hero" id="hero">
+          <div class="hero-copy">
+            <p class="eyebrow" id="hero-eyebrow">RedCarpet Signals · Best Picture Board</p>
+            <h1 id="hero-title">Loading forecast…</h1>
+            <p class="hero-summary" id="hero-summary"></p>
+            <div class="hero-metrics">
+              <div class="metric-chip">
+                <span class="metric-label">Win Chance</span>
+                <strong id="hero-probability">--</strong>
+              </div>
+              <div class="metric-chip">
+                <span class="metric-label">Release Date</span>
+                <strong id="hero-release">--</strong>
+              </div>
+              <div class="metric-chip">
+                <span class="metric-label">Model</span>
+                <strong id="hero-model">--</strong>
+              </div>
+              <div class="metric-chip">
+                <span class="metric-label">Forecast Season</span>
+                <strong id="hero-season">--</strong>
+              </div>
             </div>
           </div>
+          <div class="hero-panel">
+            <div class="hero-rank">Projected Winner</div>
+            <div class="hero-film" id="hero-film-card">
+              <span class="rank-badge">#1</span>
+              <strong id="hero-film-name">--</strong>
+              <span id="hero-film-genres">--</span>
+              <p id="hero-film-overview"></p>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <section class="dashboard-grid">
+            <section class="panel panel-wide">
+              <div class="panel-head">
+                <p class="eyebrow">Best Picture Board</p>
+                <h2>The Current Board</h2>
+              </div>
+              <div class="contender-list" id="contender-list"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <p class="eyebrow">Signals Readout</p>
+                <h2>Best Picture Snapshot</h2>
+              </div>
+              <div class="stat-stack" id="metric-stack"></div>
+            </section>
+          </section>
+
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Season Modes</p>
+              <h2>How The Best Picture Board Evolves</h2>
+            </div>
+            <p class="method-copy" id="season-mode-summary"></p>
+            <div class="season-mode-grid" id="season-mode-grid"></div>
+          </section>
+
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Best Picture Race Lab</p>
+              <h2>Explore A Specific Best Picture Year</h2>
+            </div>
+            <div class="history-controls">
+              <label for="year-select">Film Year</label>
+              <select id="year-select"></select>
+            </div>
+            <div class="history-year-summary" id="history-year-summary"></div>
+            <div class="year-race-list" id="year-race-list"></div>
+          </section>
+
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Recent Best Picture Races</p>
+              <h2>How The Model Read The Last 10 Years</h2>
+            </div>
+            <div class="race-grid" id="recent-races"></div>
+          </section>
+
+          <section class="dashboard-grid">
+            <section class="panel panel-wide">
+              <div class="panel-head">
+                <p class="eyebrow">Backtest</p>
+                <h2>Extended Validation</h2>
+              </div>
+              <div id="accuracy-strip"></div>
+              <div class="history-table-wrap">
+                <table class="history-table">
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Model</th>
+                      <th>Actual</th>
+                      <th>Baseline</th>
+                      <th>Confidence</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody id="history-table"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <p class="eyebrow">Signals Engine</p>
+                <h2>What Powers The Best Picture Board</h2>
+              </div>
+              <p class="method-copy" id="method-headline"></p>
+              <ul class="method-list" id="method-list"></ul>
+            </section>
+          </section>
+        </main>
+      </section>
+
+      <section class="panel tab-panel tab-panel-placeholder" data-tab-panel="best-actor" hidden>
+        <div class="panel-head">
+          <p class="eyebrow">Best Actor</p>
+          <h2>Board Coming Soon</h2>
         </div>
-        <div class="hero-panel">
-          <div class="hero-rank">Projected Winner</div>
-          <div class="hero-film" id="hero-film-card">
-            <span class="rank-badge">#1</span>
-            <strong id="hero-film-name">--</strong>
-            <span id="hero-film-genres">--</span>
-            <p id="hero-film-overview"></p>
-          </div>
+        <div class="placeholder-grid">
+          <article class="placeholder-card">
+            <strong>Best Actor board is queued up next.</strong>
+            <p>We’ll use the same structure here: live contenders, historical race reads, and signal detail once the category model is ready.</p>
+          </article>
         </div>
-      </header>
+      </section>
 
-      <main>
-        <section class="dashboard-grid">
-          <section class="panel panel-wide">
-            <div class="panel-head">
-              <p class="eyebrow">Best Picture Board</p>
-              <h2>The Current Board</h2>
-            </div>
-            <div class="contender-list" id="contender-list"></div>
-          </section>
+      <section class="panel tab-panel tab-panel-placeholder" data-tab-panel="best-actress" hidden>
+        <div class="panel-head">
+          <p class="eyebrow">Best Actress</p>
+          <h2>Board Coming Soon</h2>
+        </div>
+        <div class="placeholder-grid">
+          <article class="placeholder-card">
+            <strong>Best Actress is marked as TBD for now.</strong>
+            <p>This slot is reserved for the future category build once the data model and interface are ready.</p>
+          </article>
+        </div>
+      </section>
 
-          <section class="panel">
-            <div class="panel-head">
-              <p class="eyebrow">Signals Readout</p>
-              <h2>Best Picture Snapshot</h2>
-            </div>
-            <div class="stat-stack" id="metric-stack"></div>
-          </section>
-        </section>
+      <section class="panel tab-panel tab-panel-placeholder" data-tab-panel="best-director" hidden>
+        <div class="panel-head">
+          <p class="eyebrow">Best Director</p>
+          <h2>Board Coming Soon</h2>
+        </div>
+        <div class="placeholder-grid">
+          <article class="placeholder-card">
+            <strong>Best Director is a placeholder today.</strong>
+            <p>We can turn this into the first expansion board once the Best Picture data layer is cleaned up the way we want.</p>
+          </article>
+        </div>
+      </section>
 
-        <section class="panel panel-tall">
-          <div class="panel-head">
-            <p class="eyebrow">Season Modes</p>
-            <h2>How The Best Picture Board Evolves</h2>
-          </div>
-          <p class="method-copy" id="season-mode-summary"></p>
-          <div class="season-mode-grid" id="season-mode-grid"></div>
-        </section>
-
-        <section class="panel panel-tall">
-          <div class="panel-head">
-            <p class="eyebrow">Best Picture Race Lab</p>
-            <h2>Explore A Specific Best Picture Year</h2>
-          </div>
-          <div class="history-controls">
-            <label for="year-select">Film Year</label>
-            <select id="year-select"></select>
-          </div>
-          <div class="history-year-summary" id="history-year-summary"></div>
-          <div class="year-race-list" id="year-race-list"></div>
-        </section>
-
-        <section class="panel panel-tall">
-          <div class="panel-head">
-            <p class="eyebrow">Recent Best Picture Races</p>
-            <h2>How The Model Read The Last 10 Years</h2>
-          </div>
-          <div class="race-grid" id="recent-races"></div>
-        </section>
-
-        <section class="dashboard-grid">
-          <section class="panel panel-wide">
-            <div class="panel-head">
-              <p class="eyebrow">Backtest</p>
-              <h2>Extended Validation</h2>
-            </div>
-            <div id="accuracy-strip"></div>
-            <div class="history-table-wrap">
-              <table class="history-table">
-                <thead>
-                  <tr>
-                    <th>Year</th>
-                    <th>Model</th>
-                    <th>Actual</th>
-                    <th>Baseline</th>
-                    <th>Confidence</th>
-                    <th>Result</th>
-                  </tr>
-                </thead>
-                <tbody id="history-table"></tbody>
-              </table>
-            </div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <p class="eyebrow">Signals Engine</p>
-              <h2>What Powers The Best Picture Board</h2>
-            </div>
-            <p class="method-copy" id="method-headline"></p>
-            <ul class="method-list" id="method-list"></ul>
-          </section>
-        </section>
-      </main>
+      <section class="panel tab-panel tab-panel-placeholder" data-tab-panel="box-office" hidden>
+        <div class="panel-head">
+          <p class="eyebrow">Domestic / Worldwide Box Office</p>
+          <h2>Box Office View Coming Soon</h2>
+        </div>
+        <div class="placeholder-grid">
+          <article class="placeholder-card">
+            <strong>Domestic and worldwide box office tabs are reserved.</strong>
+            <p>Once added, this area can track grosses, momentum, and crossover between commercial performance and awards attention.</p>
+          </article>
+        </div>
+      </section>
     </div>
 
     <script src="./data/site_data.js"></script>

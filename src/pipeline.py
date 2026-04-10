@@ -369,6 +369,10 @@ def build_recent_rt_summary_table(rt_recent: pd.DataFrame) -> pd.DataFrame:
     df["tomatometer_rating"] = pd.to_numeric(df["tomatometer_rating"], errors="coerce")
     df["audience_rating"] = pd.to_numeric(df.get("audience_rating"), errors="coerce")
     df["rt_release_month"] = pd.to_numeric(df.get("rt_release_month"), errors="coerce")
+    if "rt_url" not in df.columns:
+        df["rt_url"] = pd.NA
+    if "poster_url" not in df.columns:
+        df["poster_url"] = pd.NA
     return df[
         [
             "year_film",
@@ -377,6 +381,8 @@ def build_recent_rt_summary_table(rt_recent: pd.DataFrame) -> pd.DataFrame:
             "tomatometer_rating",
             "audience_rating",
             "rt_release_month",
+            "rt_url",
+            "poster_url",
         ]
     ].drop_duplicates(subset=["year_film", "film_key"], keep="first")
 
@@ -791,7 +797,23 @@ def merge_all(
     df["tomatometer_rating"] = df["tomatometer_rating_recent"].combine_first(df["tomatometer_rating"])
     df["audience_rating"] = df["audience_rating_recent"].combine_first(df["audience_rating"])
     df["rt_release_month"] = df["rt_release_month_recent"].combine_first(df["rt_release_month"])
-    df = df.drop(columns=["film_recent", "tomatometer_rating_recent", "audience_rating_recent", "rt_release_month_recent"])
+    if "rt_url_recent" in df.columns:
+        df["rt_url"] = df["rt_url_recent"].combine_first(df["rt_url"])
+    if "poster_url_recent" in df.columns:
+        if "poster_url" not in df.columns:
+            df["poster_url"] = pd.NA
+        df["poster_url"] = df["poster_url_recent"].combine_first(df["poster_url"])
+    df = df.drop(
+        columns=[
+            "film_recent",
+            "tomatometer_rating_recent",
+            "audience_rating_recent",
+            "rt_release_month_recent",
+            "rt_url_recent",
+            "poster_url_recent",
+        ],
+        errors="ignore",
+    )
     df = df.merge(festival_metacritic_tbl, on=["year_film", "film_key"], how="left")
     df = df.merge(globes_tbl, on=["year_film", "film_key"], how="left")
     df = df.merge(sag_tbl, on=["year_film", "film_key"], how="left")

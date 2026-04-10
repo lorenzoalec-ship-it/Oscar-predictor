@@ -246,6 +246,7 @@ def build_recent_race_cards(model_df, years, modern_era_start, baseline_rows=Non
                 "train_end": int(train_df["year_film"].max()),
                 "predicted_winner": predicted["film"],
                 "predicted_probability": float(predicted["win_probability"]),
+                "poster_url": predicted.get("poster_url"),
                 "runner_up": results.iloc[1]["film"] if len(results) > 1 else None,
                 "runner_up_probability": float(results.iloc[1]["win_probability"]) if len(results) > 1 else None,
                 "leader_margin": float(predicted["leader_margin"]),
@@ -338,6 +339,7 @@ def build_historical_year_payload(model_df, years, confidence_rows=None):
                     "tomatometer_rating": float(row["tomatometer_rating"]),
                     "momentum_score": float(row["momentum_score"]),
                     "margin_to_next": float(row["margin_to_next"]),
+                    "poster_url": row.get("poster_url"),
                     "confidence_label": (
                         confidence_map[int(year)]["calibrated_confidence_label"]
                         if int(year) in confidence_map

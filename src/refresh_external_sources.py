@@ -10,6 +10,8 @@ from urllib.request import Request, urlopen
 
 import pandas as pd
 
+from rotten_tomatoes_lookup import refresh_rt_match_cache
+
 _REQUEST_TIMEOUT = 15
 _MAX_RETRIES = 3
 
@@ -27,6 +29,8 @@ def _urlopen_with_retry(request: Request, timeout: int = _REQUEST_TIMEOUT, max_r
 
 
 AGENT_UPDATES_DIR = Path("data/agent_updates")
+OSCARS_PATH = Path("data/raw/the_oscar_award.csv")
+RT_MANUAL_OVERRIDE_PATH = Path("data/raw/rotten_tomatoes_manual_overrides.csv")
 AWARDS_MANIFEST_PATH = AGENT_UPDATES_DIR / "awards_wikipedia_manifest.json"
 FILM_MANIFEST_PATH = AGENT_UPDATES_DIR / "film_wikipedia_manifest.csv"
 
@@ -37,8 +41,10 @@ PGA_OUTPUT_PATH = AGENT_UPDATES_DIR / "pga_recent_summary.csv"
 DGA_OUTPUT_PATH = AGENT_UPDATES_DIR / "dga_recent_summary.csv"
 CRITICS_CHOICE_OUTPUT_PATH = AGENT_UPDATES_DIR / "critics_choice_recent_summary.csv"
 RT_OUTPUT_PATH = AGENT_UPDATES_DIR / "rotten_tomatoes_recent_summary.csv"
+RT_CACHE_PATH = AGENT_UPDATES_DIR / "rotten_tomatoes_match_cache.csv"
 FESTIVAL_OUTPUT_PATH = AGENT_UPDATES_DIR / "festival_metacritic_summary.csv"
 FUTURE_ENRICHMENT_OUTPUT_PATH = AGENT_UPDATES_DIR / "future_contender_enrichment.csv"
+RT_REFRESH_START_YEAR = 2000
 
 WIKIPEDIA_API_TEMPLATE = (
     "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1"
@@ -100,7 +106,9 @@ def normalize_text(value) -> str:
 
 
 def clean_film_key(value) -> str:
-    return normalize_text(value).lower()
+    text = normalize_text(value).lower().replace("&", " and ")
+    text = re.sub(r"[^a-z0-9]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def extract_page_extract(wikipedia_title: str) -> str:
@@ -179,6 +187,161 @@ def read_film_manifest() -> pd.DataFrame:
     df = pd.read_csv(FILM_MANIFEST_PATH)
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_", regex=False)
     return df
+
+
+def read_rt_manual_overrides() -> pd.DataFrame:
+    columns = [
+        "year_film",
+        "film",
+        "tomatometer_rating",
+        "audience_rating",
+        "rt_release_month",
+        "rt_url",
+        "poster_url",
+    ]
+    if not RT_MANUAL_OVERRIDE_PATH.exists():
+        return pd.DataFrame(columns=columns + ["film_key"])
+
+    df = pd.read_csv(RT_MANUAL_OVERRIDE_PATH)
+    df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_", regex=False)
+    for column in columns:
+        if column not in df.columns:
+            df[column] = pd.NA
+    df["year_film"] = pd.to_numeric(df["year_film"], errors="coerce")
+    df["film_key"] = df["film"].map(clean_film_key)
+    return df[columns + ["film_key"]]
+
+
+def build_rt_refresh_candidates(manifest: pd.DataFrame) -> pd.DataFrame:
+    candidate_frames = []
+
+    if OSCARS_PATH.exists():
+        oscars = pd.read_csv(OSCARS_PATH, usecols=["year_film", "canon_category", "film"])
+        oscars["year_film"] = pd.to_numeric(oscars["year_film"], errors="coerce")
+        historical = oscars[
+            oscars["canon_category"].astype(str).str.upper().eq("BEST PICTURE")
+            & oscars["film"].notna()
+            & oscars["year_film"].ge(RT_REFRESH_START_YEAR)
+        ][["year_film", "film"]].copy()
+        historical["release_month"] = pd.NA
+        candidate_frames.append(historical)
+
+    if not manifest.empty:
+        manifest_candidates = manifest.copy()
+        manifest_candidates["year_film"] = pd.to_numeric(manifest_candidates["year_film"], errors="coerce")
+        manifest_candidates = manifest_candidates[manifest_candidates["film"].notna()].copy()
+        if "release_month" not in manifest_candidates.columns:
+            manifest_candidates["release_month"] = pd.NA
+        candidate_frames.append(manifest_candidates[["year_film", "film", "release_month"]])
+
+    if not candidate_frames:
+        return pd.DataFrame(columns=["year_film", "film", "release_month"])
+
+    candidates = pd.concat(candidate_frames, ignore_index=True)
+    candidates["film"] = candidates["film"].astype(str).str.strip()
+    candidates = candidates[candidates["film"].ne("")].copy()
+    candidates["film_key"] = candidates["film"].map(clean_film_key)
+    candidates["release_month"] = pd.to_numeric(candidates["release_month"], errors="coerce")
+    candidates["release_month_priority"] = candidates["release_month"].notna().astype(int)
+    candidates = candidates.sort_values(
+        ["year_film", "film_key", "release_month_priority"],
+        ascending=[True, True, False],
+    )
+    candidates = candidates.drop_duplicates(subset=["year_film", "film_key"], keep="first")
+    return candidates[["year_film", "film", "release_month"]]
+
+
+def build_rt_summary(
+    rt_cache_df: pd.DataFrame,
+    wikipedia_rt_df: pd.DataFrame,
+    manual_overrides_df: pd.DataFrame,
+) -> pd.DataFrame:
+    summary_frames = []
+
+    if not wikipedia_rt_df.empty:
+        wiki = wikipedia_rt_df.copy()
+        wiki["source_priority"] = 1
+        summary_frames.append(wiki)
+
+    if not rt_cache_df.empty:
+        cache_rows = rt_cache_df[rt_cache_df["status"] == "matched"].copy()
+        cache_rows["rt_release_month"] = pd.to_numeric(cache_rows["release_month"], errors="coerce")
+        cache_rows["film_key"] = cache_rows["film"].map(clean_film_key)
+        cache_rows["source_priority"] = 2
+        summary_frames.append(
+            cache_rows[
+                [
+                    "year_film",
+                    "film",
+                    "film_key",
+                    "tomatometer_rating",
+                    "audience_rating",
+                    "rt_release_month",
+                    "rt_url",
+                    "poster_url",
+                    "source_priority",
+                ]
+            ]
+        )
+
+    if not manual_overrides_df.empty:
+        manual = manual_overrides_df.copy()
+        manual["source_priority"] = 3
+        summary_frames.append(
+            manual[
+                [
+                    "year_film",
+                    "film",
+                    "film_key",
+                    "tomatometer_rating",
+                    "audience_rating",
+                    "rt_release_month",
+                    "rt_url",
+                    "poster_url",
+                    "source_priority",
+                ]
+            ]
+        )
+
+    if not summary_frames:
+        return pd.DataFrame(
+            columns=[
+                "year_film",
+                "film",
+                "tomatometer_rating",
+                "audience_rating",
+                "rt_release_month",
+                "rt_url",
+                "poster_url",
+            ]
+        )
+
+    summary = pd.concat(summary_frames, ignore_index=True, sort=False)
+    summary["year_film"] = pd.to_numeric(summary["year_film"], errors="coerce")
+    summary["film_key"] = summary["film_key"].fillna(summary["film"].map(clean_film_key))
+    summary["tomatometer_rating"] = pd.to_numeric(summary["tomatometer_rating"], errors="coerce")
+    summary["audience_rating"] = pd.to_numeric(summary["audience_rating"], errors="coerce")
+    summary["rt_release_month"] = pd.to_numeric(summary["rt_release_month"], errors="coerce")
+    summary["score_present"] = summary["tomatometer_rating"].notna().astype(int)
+    summary["url_present"] = summary["rt_url"].notna().astype(int)
+    summary["poster_present"] = summary["poster_url"].notna().astype(int)
+    summary = summary.sort_values(
+        ["year_film", "film_key", "score_present", "url_present", "poster_present", "source_priority"],
+        ascending=[True, True, False, False, False, False],
+    )
+    summary = summary.drop_duplicates(subset=["year_film", "film_key"], keep="first")
+    summary = summary.sort_values(["year_film", "film"])
+    return summary[
+        [
+            "year_film",
+            "film",
+            "tomatometer_rating",
+            "audience_rating",
+            "rt_release_month",
+            "rt_url",
+            "poster_url",
+        ]
+    ]
 
 
 def row_to_film_candidate(row: pd.Series) -> Optional[str]:
@@ -303,10 +466,10 @@ def refresh_awards_sources() -> dict:
 
 def refresh_film_sources() -> dict:
     manifest = read_film_manifest()
-    if manifest.empty:
-        return {"rows": 0, "rt_path": str(RT_OUTPUT_PATH), "festival_path": str(FESTIVAL_OUTPUT_PATH), "future_path": str(FUTURE_ENRICHMENT_OUTPUT_PATH)}
-
-    rt_rows = []
+    rt_candidates = build_rt_refresh_candidates(manifest)
+    rt_cache_df = refresh_rt_match_cache(rt_candidates, RT_CACHE_PATH) if not rt_candidates.empty else pd.DataFrame()
+    manual_rt_df = read_rt_manual_overrides()
+    wiki_rt_rows = []
     festival_rows = []
     future_rows = []
 
@@ -347,13 +510,16 @@ def refresh_film_sources() -> dict:
             }
         )
 
-        rt_rows.append(
+        wiki_rt_rows.append(
             {
                 "year_film": year_film,
                 "film": film,
+                "film_key": clean_film_key(film),
                 "tomatometer_rating": tomatometer_rating,
                 "audience_rating": pd.NA,
                 "rt_release_month": release_month,
+                "rt_url": pd.NA,
+                "poster_url": pd.NA,
             }
         )
 
@@ -370,10 +536,20 @@ def refresh_film_sources() -> dict:
             }
         )
 
-    rt_df = pd.DataFrame(
-        rt_rows,
-        columns=["year_film", "film", "tomatometer_rating", "audience_rating", "rt_release_month"],
+    wikipedia_rt_df = pd.DataFrame(
+        wiki_rt_rows,
+        columns=[
+            "year_film",
+            "film",
+            "film_key",
+            "tomatometer_rating",
+            "audience_rating",
+            "rt_release_month",
+            "rt_url",
+            "poster_url",
+        ],
     )
+    rt_df = build_rt_summary(rt_cache_df, wikipedia_rt_df, manual_rt_df)
     festival_df = pd.DataFrame(
         festival_rows,
         columns=[

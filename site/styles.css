@@ -81,6 +81,80 @@ body::before {
   animation: rise-in 550ms ease both;
 }
 
+.section-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+  animation: rise-in 620ms ease both;
+}
+
+.section-tab {
+  appearance: none;
+  border: 1px solid rgba(102, 21, 42, 0.14);
+  background: rgba(247, 239, 230, 0.92);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 11px 16px;
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.section-tab:hover {
+  transform: translateY(-1px);
+  border-color: rgba(102, 21, 42, 0.24);
+  color: var(--oxblood);
+}
+
+.section-tab.is-active {
+  background: linear-gradient(135deg, rgba(102, 21, 42, 0.96), rgba(184, 38, 73, 0.9));
+  border-color: transparent;
+  color: var(--paper-soft);
+  box-shadow: 0 12px 28px rgba(71, 16, 29, 0.18);
+}
+
+.tab-panel[hidden] {
+  display: none !important;
+}
+
+.tab-panel-placeholder {
+  animation: rise-in 640ms ease both;
+}
+
+.placeholder-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.placeholder-card {
+  border: 1px solid rgba(102, 21, 42, 0.1);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(244, 235, 224, 0.98), rgba(235, 223, 209, 0.98));
+  padding: 22px;
+}
+
+.placeholder-card strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.placeholder-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
 .site-brand {
   display: inline-flex;
   align-items: center;
@@ -984,7 +1058,7 @@ main {
   margin-top: 14px;
   display: grid;
   gap: 16px;
-  max-height: min(68vh, 760px);
+  max-height: min(52vh, 430px);
   overflow-y: auto;
   padding-right: 10px;
   scrollbar-width: thin;
@@ -1082,6 +1156,16 @@ main {
     height: 62px;
   }
 
+  .section-tabs {
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .section-tab {
+    padding: 10px 14px;
+    font-size: 0.72rem;
+  }
+
   .hero,
   .panel {
     padding: 20px;
@@ -1111,6 +1195,10 @@ main {
 
   .year-race-probability {
     text-align: left;
+  }
+
+  .signals-list {
+    max-height: 340px;
   }
 }
 
