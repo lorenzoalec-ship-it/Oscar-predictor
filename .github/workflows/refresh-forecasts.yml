@@ -62,7 +62,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: weekly forecast refresh [skip ci]"
+            git commit -m "chore: weekly forecast refresh"
             for i in 1 2 3; do
               git push && break
               echo "Push attempt $i failed, rebasing and retrying..."
