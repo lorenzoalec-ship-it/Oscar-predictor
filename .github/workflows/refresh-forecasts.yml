@@ -50,6 +50,8 @@ jobs:
         run: python src/future_best_picture.py --year $ELIGIBILITY_YEAR
 
       - name: Rebuild site data
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python src/build_site_data.py
 
       - name: Commit updated forecasts

@@ -301,6 +301,7 @@ function renderContenders(cards) {
               ${formatSeason(card.forecast_season)} mode${card.manual_contender_flag ? " · Curated contender" : ""}
             </div>
             ${awardBadgesMarkup(card)}
+            ${card.movement_blurb ? `<p class="movement-blurb">${escapeHtml(card.movement_blurb)}</p>` : ""}
           </div>
           <div class="contender-probability">
             <strong>${formatPercent(card.probability)}</strong>

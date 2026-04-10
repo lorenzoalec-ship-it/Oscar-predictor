@@ -1,4 +1,6 @@
 import json
+import os
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
@@ -563,6 +565,95 @@ def build_forecast_season_payload(current_forecast_year: int, current_forecast_s
     return payload
 
 
+def _card_context(card: dict) -> str:
+    """Build a concise context string for a forecast card."""
+    parts = [f"Film: {card['title']}"]
+    parts.append(f"Current rank: #{card['rank']}")
+
+    movement = card.get("movement")
+    delta = card.get("rank_delta")
+    if movement == "up":
+        parts.append(f"Moved up {delta} spot(s) this week")
+    elif movement == "down":
+        parts.append(f"Moved down {abs(delta)} spot(s) this week")
+    elif movement == "new":
+        parts.append("New entry on the board this week")
+    else:
+        parts.append("No rank change this week")
+
+    prob = card.get("probability", 0)
+    parts.append(f"Win probability: {prob * 100:.1f}%")
+
+    awards = []
+    for key, label in [
+        ("pga_win", "PGA"), ("dga_win", "DGA"), ("sag_win", "SAG"),
+        ("bafta_win", "BAFTA"), ("golden_globe_win", "Golden Globe"),
+        ("critics_choice_win", "Critics Choice"),
+    ]:
+        if card.get(key):
+            awards.append(label)
+    if awards:
+        parts.append(f"Precursor wins: {', '.join(awards)}")
+    else:
+        parts.append("No precursor wins yet")
+
+    if card.get("tomatometer_rating") is not None:
+        parts.append(f"Rotten Tomatoes: {int(card['tomatometer_rating'])}%")
+
+    return "\n".join(parts)
+
+
+def generate_movement_blurbs(cards: list[dict]) -> list[dict]:
+    """
+    Generate a 1-2 sentence AI blurb for each forecast card explaining
+    why it moved up, down, or stayed the same. Skips if ANTHROPIC_API_KEY
+    is not set. Falls back gracefully on any error.
+    """
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
+        print("[blurbs] ANTHROPIC_API_KEY not set — skipping AI blurbs.")
+        return cards
+
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=api_key)
+    except ImportError:
+        print("[blurbs] anthropic package not installed — skipping AI blurbs.")
+        return cards
+
+    enriched = []
+    for card in cards:
+        try:
+            context = _card_context(card)
+            message = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=120,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": (
+                            "You are writing short, punchy analyst blurbs for an Oscar prediction site. "
+                            "Based on the data below, write 1-2 sentences (max 40 words) explaining why this film "
+                            "moved up, down, or stayed put in the Best Picture rankings this week. "
+                            "Be specific — mention actual awards or scores. No filler phrases. "
+                            "Do not start with the film title.\n\n"
+                            f"{context}"
+                        ),
+                    }
+                ],
+            )
+            blurb = message.content[0].text.strip()
+            updated = dict(card)
+            updated["movement_blurb"] = blurb
+            enriched.append(updated)
+            time.sleep(0.3)  # gentle rate limit
+        except Exception as exc:
+            print(f"[blurbs] Failed for {card.get('title')}: {exc}")
+            enriched.append(card)
+
+    return enriched
+
+
 def build_payload():
     raw_df = load_data()
     model_df = prepare_data(raw_df)
@@ -571,6 +662,7 @@ def build_payload():
     forecast_cards = load_forecast_cards(forecast_path, limit=12)
     previous_forecast_cards = load_previous_forecast_cards(forecast_year, limit=50)
     forecast_cards = add_rank_changes(forecast_cards, previous_forecast_cards)
+    forecast_cards = generate_movement_blurbs(forecast_cards)
     hero = forecast_cards[0]
 
     holdout_result = evaluate_latest_holdout(

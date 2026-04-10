@@ -646,6 +646,14 @@ main {
   line-height: 1.56;
 }
 
+.movement-blurb {
+  margin: 6px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
 .contender-probability {
   text-align: right;
 }
