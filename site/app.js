@@ -152,6 +152,21 @@ function movementMarkup(card) {
   return `<span class="movement-chip new">New entry</span>`;
 }
 
+function formatScore(value) {
+  if (value == null || Number.isNaN(Number(value))) return "—";
+  return Math.round(Number(value)).toString();
+}
+
+function criticStripMarkup(card, className = "") {
+  const classes = ["critic-strip", className].filter(Boolean).join(" ");
+  return `
+    <div class="${classes}">
+      <span><strong>RT</strong> ${formatScore(card.tomatometer_rating)}</span>
+      <span><strong>Audience</strong> ${formatScore(card.audience_rating)}</span>
+    </div>
+  `;
+}
+
 function setActiveTab(tab) {
   const config = TAB_CONFIG[tab] ?? TAB_CONFIG["best-picture"];
   document.title = config.title;
@@ -209,6 +224,7 @@ function renderHero(data) {
         <span class="rank-badge">#1</span>
         <strong>${escapeHtml(filmTitle(hero))}</strong>
         <span>${escapeHtml(formatGenres(hero.genres))}</span>
+        ${criticStripMarkup(hero, "critic-strip-hero")}
         <p>${escapeHtml(hero.overview || "No synopsis available yet.")}</p>
         ${movementMarkup(hero)}
       </div>
@@ -255,6 +271,7 @@ function renderContenders(cards) {
             <div class="contender-meta">
               ${formatDate(card.release_date)} · ${formatGenres(card.genres)}<br />
               TMDb rating ${card.rating?.toFixed(1) ?? "—"} from ${card.vote_count?.toLocaleString?.() ?? card.vote_count} votes<br />
+              RT ${formatScore(card.tomatometer_rating)} · Audience ${formatScore(card.audience_rating)}<br />
               ${formatSeason(card.forecast_season)} mode${card.manual_contender_flag ? " · Curated contender" : ""}
             </div>
             ${awardBadgesMarkup(card)}
