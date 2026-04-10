@@ -157,12 +157,38 @@ function formatScore(value) {
   return Math.round(Number(value)).toString();
 }
 
+const TOMATO_ICON = `<svg width="14" height="14" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <ellipse cx="50" cy="58" rx="36" ry="34" fill="#E8212A"/>
+  <path d="M50 24 C50 24 44 10 30 14 C36 18 38 26 38 26" fill="#4CAF50"/>
+  <path d="M50 24 C50 24 56 10 70 14 C64 18 62 26 62 26" fill="#4CAF50"/>
+  <path d="M50 24 C50 24 50 8 50 8" stroke="#4CAF50" stroke-width="4" stroke-linecap="round"/>
+</svg>`;
+
+const AUDIENCE_ICON = `<svg width="14" height="14" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect x="20" y="38" width="60" height="44" rx="6" fill="#D97C16"/>
+  <rect x="28" y="30" width="14" height="12" rx="3" fill="#F5C842"/>
+  <rect x="43" y="26" width="14" height="16" rx="3" fill="#F5C842"/>
+  <rect x="58" y="30" width="14" height="12" rx="3" fill="#F5C842"/>
+  <circle cx="35" cy="60" r="6" fill="#FFF" opacity="0.25"/>
+  <circle cx="50" cy="60" r="6" fill="#FFF" opacity="0.25"/>
+  <circle cx="65" cy="60" r="6" fill="#FFF" opacity="0.25"/>
+</svg>`;
+
 function criticStripMarkup(card, className = "") {
   const classes = ["critic-strip", className].filter(Boolean).join(" ");
+  const rtScore = formatScore(card.tomatometer_rating);
+  const audScore = formatScore(card.audience_rating);
+  const rtUrl = card.rt_url || null;
+  const source = rtUrl
+    ? `<a class="critic-source" href="${escapeHtml(rtUrl)}" target="_blank" rel="noopener">Rotten Tomatoes ↗</a>`
+    : `<span class="critic-source">Rotten Tomatoes</span>`;
   return `
-    <div class="${classes}">
-      <span><strong>RT</strong> ${formatScore(card.tomatometer_rating)}</span>
-      <span><strong>Audience</strong> ${formatScore(card.audience_rating)}</span>
+    <div class="critic-strip-wrap">
+      <div class="${classes}">
+        <span title="Tomatometer">${TOMATO_ICON}<strong>${rtScore}</strong></span>
+        <span title="Audience Score">${AUDIENCE_ICON}<strong>${audScore}</strong></span>
+      </div>
+      ${source}
     </div>
   `;
 }
