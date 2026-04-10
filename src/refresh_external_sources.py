@@ -29,10 +29,12 @@ def _urlopen_with_retry(request: Request, timeout: int = _REQUEST_TIMEOUT, max_r
 
 
 AGENT_UPDATES_DIR = Path("data/agent_updates")
+RAW_DIR = Path("data/raw")
 OSCARS_PATH = Path("data/raw/the_oscar_award.csv")
 RT_MANUAL_OVERRIDE_PATH = Path("data/raw/rotten_tomatoes_manual_overrides.csv")
 AWARDS_MANIFEST_PATH = AGENT_UPDATES_DIR / "awards_wikipedia_manifest.json"
 FILM_MANIFEST_PATH = AGENT_UPDATES_DIR / "film_wikipedia_manifest.csv"
+TMDB_POOL_GLOB = "tmdb_movies_*.csv"
 
 GLOBES_OUTPUT_PATH = AGENT_UPDATES_DIR / "golden_globe_recent_summary.csv"
 SAG_OUTPUT_PATH = AGENT_UPDATES_DIR / "sag_recent_summary.csv"
@@ -212,6 +214,49 @@ def read_rt_manual_overrides() -> pd.DataFrame:
     return df[columns + ["film_key"]]
 
 
+def read_tmdb_future_pool_candidates() -> pd.DataFrame:
+    frames = []
+    for path in sorted(RAW_DIR.glob(TMDB_POOL_GLOB)):
+        try:
+            df = pd.read_csv(path)
+        except Exception as exc:
+            print(f"Skipping TMDb pool {path}: {exc}")
+            continue
+
+        df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_", regex=False)
+        if "title" not in df.columns:
+            continue
+
+        if "release_date" in df.columns:
+            release_date = pd.to_datetime(df["release_date"], errors="coerce")
+            year_film = release_date.dt.year
+            release_month = release_date.dt.month
+        else:
+            match = re.search(r"tmdb_movies_(\d{4})\.csv$", path.name)
+            inferred_year = int(match.group(1)) if match else None
+            year_film = pd.Series(inferred_year, index=df.index, dtype="float64")
+            release_month = pd.Series(pd.NA, index=df.index)
+
+        candidate_df = pd.DataFrame(
+            {
+                "year_film": pd.to_numeric(year_film, errors="coerce"),
+                "film": df["title"].astype(str).str.strip(),
+                "release_month": pd.to_numeric(release_month, errors="coerce"),
+            }
+        )
+        candidate_df = candidate_df[
+            candidate_df["year_film"].notna()
+            & candidate_df["film"].ne("")
+            & candidate_df["film"].ne("nan")
+        ].copy()
+        frames.append(candidate_df)
+
+    if not frames:
+        return pd.DataFrame(columns=["year_film", "film", "release_month"])
+
+    return pd.concat(frames, ignore_index=True)
+
+
 def build_rt_refresh_candidates(manifest: pd.DataFrame) -> pd.DataFrame:
     candidate_frames = []
 
@@ -233,6 +278,10 @@ def build_rt_refresh_candidates(manifest: pd.DataFrame) -> pd.DataFrame:
         if "release_month" not in manifest_candidates.columns:
             manifest_candidates["release_month"] = pd.NA
         candidate_frames.append(manifest_candidates[["year_film", "film", "release_month"]])
+
+    tmdb_candidates = read_tmdb_future_pool_candidates()
+    if not tmdb_candidates.empty:
+        candidate_frames.append(tmdb_candidates)
 
     if not candidate_frames:
         return pd.DataFrame(columns=["year_film", "film", "release_month"])

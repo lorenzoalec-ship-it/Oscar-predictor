@@ -126,6 +126,16 @@ def load_forecast_cards(path: Path, limit: int = 12):
     df = pd.read_csv(path).head(limit).copy()
     cards = []
     for idx, row in df.reset_index(drop=True).iterrows():
+        tomatometer_rating = (
+            float(row.get("tomatometer_rating"))
+            if pd.notna(row.get("tomatometer_rating"))
+            else None
+        )
+        audience_rating = (
+            float(row.get("audience_rating"))
+            if pd.notna(row.get("audience_rating"))
+            else None
+        )
         cards.append(
             {
                 "rank": idx + 1,
@@ -137,6 +147,9 @@ def load_forecast_cards(path: Path, limit: int = 12):
                 "genres": row.get("genres") or row.get("genre_ids") or "",
                 "overview": row.get("overview") or row.get("description") or "",
                 "poster_url": row.get("poster_url"),
+                "tomatometer_rating": tomatometer_rating,
+                "audience_rating": audience_rating,
+                "rt_url": row.get("rt_url"),
                 "forecast_season": row.get("forecast_season"),
                 "prestige_score": float(row.get("prestige_score", 0)) if pd.notna(row.get("prestige_score")) else None,
                 "manual_contender_flag": int(row.get("manual_contender_flag", 0)) if pd.notna(row.get("manual_contender_flag")) else 0,
@@ -427,7 +440,17 @@ def build_future_year_payload():
                     "probability": float(row.get("best_picture_probability", 0)),
                     "actual_winner": False,
                     "oscar_nomination_count": None,
-                    "tomatometer_rating": None,
+                    "tomatometer_rating": (
+                        float(row.get("tomatometer_rating"))
+                        if pd.notna(row.get("tomatometer_rating"))
+                        else None
+                    ),
+                    "audience_rating": (
+                        float(row.get("audience_rating"))
+                        if pd.notna(row.get("audience_rating"))
+                        else None
+                    ),
+                    "rt_url": row.get("rt_url"),
                     "momentum_score": None,
                     "poster_url": row.get("poster_url"),
                     "forecast_season": row.get("forecast_season"),

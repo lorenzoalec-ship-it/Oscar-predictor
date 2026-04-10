@@ -15,6 +15,8 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 from pipeline import clean_text, genre_flag, parse_percent, build_oscar_film_table
+import future_best_picture as future_best_picture_module
+import refresh_external_sources as refresh_external_sources_module
 from future_best_picture import (
     normalize,
     clip01,
@@ -22,6 +24,7 @@ from future_best_picture import (
     infer_season,
     add_common_features,
     has_genre_id,
+    merge_future_enrichment,
 )
 
 
@@ -153,6 +156,105 @@ class TestHasGenreId:
     def test_no_match(self):
         result = has_genre_id(pd.Series(["36,10749"]), "18")
         assert result.iloc[0] == 0
+
+
+class TestFutureRtMerge:
+    def test_merge_future_enrichment_applies_recent_rt_scores(self, tmp_path, monkeypatch):
+        festival_path = tmp_path / "festival.csv"
+        future_path = tmp_path / "future.csv"
+        rt_path = tmp_path / "rt.csv"
+
+        pd.DataFrame(
+            columns=[
+                "year_film",
+                "film",
+                "metacritic_score",
+                "cannes_flag",
+                "venice_flag",
+                "tiff_flag",
+                "telluride_flag",
+                "sundance_flag",
+                "sxsw_flag",
+            ]
+        ).to_csv(festival_path, index=False)
+        pd.DataFrame(
+            [
+                {
+                    "year_film": 2026,
+                    "film": "Project Hail Mary",
+                    "release_month": 3,
+                    "metacritic_score": 77,
+                    "cannes_flag": 0,
+                    "venice_flag": 0,
+                    "tiff_flag": 0,
+                    "telluride_flag": 0,
+                    "sundance_flag": 0,
+                    "sxsw_flag": 0,
+                    "manual_contender_flag": 1,
+                    "notes": "fixture",
+                    "wikipedia_title": "Project_Hail_Mary_(film)",
+                }
+            ]
+        ).to_csv(future_path, index=False)
+        pd.DataFrame(
+            [
+                {
+                    "year_film": 2026,
+                    "film": "Project Hail Mary",
+                    "tomatometer_rating": 94,
+                    "audience_rating": 96,
+                    "rt_release_month": 3,
+                    "rt_url": "https://www.rottentomatoes.com/m/project_hail_mary",
+                    "poster_url": "https://rt.example/poster.jpg",
+                }
+            ]
+        ).to_csv(rt_path, index=False)
+
+        monkeypatch.setattr(future_best_picture_module, "FESTIVAL_METACRITIC_SUMMARY_PATH", festival_path)
+        monkeypatch.setattr(future_best_picture_module, "FUTURE_CONTENDER_ENRICHMENT_PATH", future_path)
+        monkeypatch.setattr(future_best_picture_module, "RT_RECENT_SUMMARY_PATH", rt_path)
+
+        base = pd.DataFrame(
+            [
+                {
+                    "title": "Project Hail Mary",
+                    "release_date": pd.Timestamp("2026-03-15"),
+                    "poster_url": "https://tmdb.example/poster.jpg",
+                }
+            ]
+        )
+
+        merged = merge_future_enrichment(base, 2026)
+
+        assert merged.loc[0, "tomatometer_rating"] == 94
+        assert merged.loc[0, "audience_rating"] == 96
+        assert merged.loc[0, "rt_url"] == "https://www.rottentomatoes.com/m/project_hail_mary"
+        assert merged.loc[0, "poster_url"] == "https://tmdb.example/poster.jpg"
+
+
+class TestRtRefreshCandidates:
+    def test_build_rt_refresh_candidates_includes_tmdb_future_pool(self, tmp_path, monkeypatch):
+        raw_dir = tmp_path / "raw"
+        raw_dir.mkdir()
+        tmdb_pool_path = raw_dir / "tmdb_movies_2026.csv"
+        pd.DataFrame(
+            [
+                {"title": "Project Hail Mary", "release_date": "2026-03-15"},
+                {"title": "The Rip", "release_date": "2026-01-13"},
+            ]
+        ).to_csv(tmdb_pool_path, index=False)
+
+        monkeypatch.setattr(refresh_external_sources_module, "RAW_DIR", raw_dir)
+        monkeypatch.setattr(refresh_external_sources_module, "OSCARS_PATH", tmp_path / "missing_oscars.csv")
+
+        candidates = refresh_external_sources_module.build_rt_refresh_candidates(pd.DataFrame())
+
+        project_hail_mary = candidates[candidates["film"] == "Project Hail Mary"]
+        the_rip = candidates[candidates["film"] == "The Rip"]
+        assert not project_hail_mary.empty
+        assert not the_rip.empty
+        assert int(project_hail_mary.iloc[0]["year_film"]) == 2026
+        assert int(project_hail_mary.iloc[0]["release_month"]) == 3
 
 
 # ---------------------------------------------------------------------------

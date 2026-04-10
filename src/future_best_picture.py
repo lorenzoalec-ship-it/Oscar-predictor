@@ -13,6 +13,7 @@ DEFAULT_POOL_PATH_TEMPLATE = "data/raw/tmdb_movies_{year}.csv"
 OUTPUT_PATH_TEMPLATE = "output/future_best_picture_predictions_{year}.csv"
 FESTIVAL_METACRITIC_SUMMARY_PATH = Path("data/raw/festival_metacritic_summary.csv")
 FUTURE_CONTENDER_ENRICHMENT_PATH = Path("data/raw/future_contender_enrichment.csv")
+RT_RECENT_SUMMARY_PATH = Path("data/raw/rotten_tomatoes_recent_summary.csv")
 
 TMDB_DRAMA_ID = "18"
 TMDB_HISTORY_ID = "36"
@@ -194,6 +195,14 @@ def load_future_contender_enrichment() -> pd.DataFrame:
     return df
 
 
+def load_recent_rt_summary() -> pd.DataFrame:
+    df = pd.read_csv(RT_RECENT_SUMMARY_PATH)
+    df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_", regex=False)
+    df["year_film"] = pd.to_numeric(df["year_film"], errors="coerce")
+    df["film_key"] = df["film"].astype(str).str.strip().str.lower()
+    return df
+
+
 def merge_festival_metacritic(df: pd.DataFrame, year_column: str, title_column: str) -> pd.DataFrame:
     summary = load_festival_metacritic_summary()
     enriched = df.copy()
@@ -211,6 +220,7 @@ def merge_festival_metacritic(df: pd.DataFrame, year_column: str, title_column: 
 def merge_future_enrichment(df: pd.DataFrame, eligibility_year: int) -> pd.DataFrame:
     summary = load_festival_metacritic_summary()
     future = load_future_contender_enrichment()
+    rt_summary = load_recent_rt_summary()
     enriched = df.copy()
     enriched["year_film"] = pd.to_numeric(enriched["release_date"].dt.year, errors="coerce")
     enriched["film_key"] = enriched["title"].astype(str).str.strip().str.lower()
@@ -244,7 +254,12 @@ def merge_future_enrichment(df: pd.DataFrame, eligibility_year: int) -> pd.DataF
             overridden = enriched[future_col].notna().sum()
             if overridden:
                 print(f"[merge_future_enrichment] Overriding '{col}' for {overridden} film(s) from future enrichment.")
-            enriched[col] = enriched[future_col].combine_first(enriched.get(col))
+            existing_col = (
+                enriched[col]
+                if col in enriched.columns
+                else pd.Series(pd.NA, index=enriched.index, dtype="object")
+            )
+            enriched[col] = existing_col.where(enriched[future_col].isna(), enriched[future_col])
 
     future_only = future[future["year_film"] == eligibility_year].copy()
     existing_keys = set(enriched["film_key"].dropna().astype(str))
@@ -269,7 +284,62 @@ def merge_future_enrichment(df: pd.DataFrame, eligibility_year: int) -> pd.DataF
         future_only["manual_contender_flag"] = future_only["manual_contender_flag"].fillna(1)
         enriched = pd.concat([enriched, future_only], ignore_index=True, sort=False)
 
-    drop_cols = [col for col in enriched.columns if col.endswith("_future")]
+    enriched = enriched.merge(
+        rt_summary.drop(columns=["film"]),
+        on=["year_film", "film_key"],
+        how="left",
+        suffixes=("", "_rt"),
+    )
+
+    if "tomatometer_rating_rt" in enriched.columns:
+        existing_rt = (
+            pd.to_numeric(enriched["tomatometer_rating"], errors="coerce")
+            if "tomatometer_rating" in enriched.columns
+            else pd.Series(pd.NA, index=enriched.index, dtype="float64")
+        )
+        existing_rt = existing_rt.mask(existing_rt.eq(0), pd.NA)
+        enriched["tomatometer_rating"] = pd.to_numeric(
+            enriched["tomatometer_rating_rt"], errors="coerce"
+        ).combine_first(existing_rt)
+
+    if "audience_rating_rt" in enriched.columns:
+        existing_audience = (
+            pd.to_numeric(enriched["audience_rating"], errors="coerce")
+            if "audience_rating" in enriched.columns
+            else pd.Series(pd.NA, index=enriched.index, dtype="float64")
+        )
+        existing_audience = existing_audience.mask(existing_audience.eq(0), pd.NA)
+        enriched["audience_rating"] = pd.to_numeric(
+            enriched["audience_rating_rt"], errors="coerce"
+        ).combine_first(existing_audience)
+
+    if "rt_url_rt" in enriched.columns:
+        existing_rt_url = (
+            enriched["rt_url"]
+            if "rt_url" in enriched.columns
+            else pd.Series(pd.NA, index=enriched.index, dtype="object")
+        )
+        enriched["rt_url"] = enriched["rt_url_rt"].combine_first(existing_rt_url)
+
+    if "rt_release_month_rt" in enriched.columns:
+        existing_release_month = (
+            pd.to_numeric(enriched["release_month"], errors="coerce")
+            if "release_month" in enriched.columns
+            else pd.Series(pd.NA, index=enriched.index, dtype="float64")
+        )
+        enriched["release_month"] = pd.to_numeric(
+            enriched["rt_release_month_rt"], errors="coerce"
+        ).combine_first(existing_release_month)
+
+    if "poster_url_rt" in enriched.columns:
+        existing_poster_url = (
+            enriched["poster_url"]
+            if "poster_url" in enriched.columns
+            else pd.Series(pd.NA, index=enriched.index, dtype="object")
+        )
+        enriched["poster_url"] = existing_poster_url.combine_first(enriched["poster_url_rt"])
+
+    drop_cols = [col for col in enriched.columns if col.endswith("_future") or col.endswith("_rt")]
     return enriched.drop(columns=drop_cols, errors="ignore")
 
 
