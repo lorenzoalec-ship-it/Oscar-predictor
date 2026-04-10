@@ -66,8 +66,10 @@ jobs:
             for i in 1 2 3; do
               git push && break
               echo "Push attempt $i failed, rebasing and retrying..."
+              git stash
               git fetch origin main
               git rebase origin/main
+              git stash pop || true
             done
           fi
 
