@@ -152,43 +152,106 @@
         </main>
       </section>
 
-      <section class="panel tab-panel tab-panel-placeholder" data-tab-panel="best-actor" hidden>
-        <div class="panel-head">
-          <p class="eyebrow">Best Actor</p>
-          <h2>Board Coming Soon</h2>
-        </div>
-        <div class="placeholder-grid">
-          <article class="placeholder-card">
-            <strong>Best Actor board is queued up next.</strong>
-            <p>We’ll use the same structure here: live contenders, historical race reads, and signal detail once the category model is ready.</p>
-          </article>
-        </div>
+      <section class="tab-panel" data-tab-panel="best-actor" hidden>
+        <main>
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Best Actor Board</p>
+              <h2>Historical Model Accuracy</h2>
+            </div>
+            <div id="actor-accuracy-strip"></div>
+            <div id="actor-live-notice" class="category-live-notice"></div>
+          </section>
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Best Actor · Walk-Forward Backtest</p>
+              <h2>How The Model Read Each Race</h2>
+            </div>
+            <div class="history-table-wrap">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Model Pick</th>
+                    <th>Film</th>
+                    <th>Actual Winner</th>
+                    <th>Signals</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody id="actor-history-table"></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
       </section>
 
-      <section class="panel tab-panel tab-panel-placeholder" data-tab-panel="best-actress" hidden>
-        <div class="panel-head">
-          <p class="eyebrow">Best Actress</p>
-          <h2>Board Coming Soon</h2>
-        </div>
-        <div class="placeholder-grid">
-          <article class="placeholder-card">
-            <strong>Best Actress is marked as TBD for now.</strong>
-            <p>This slot is reserved for the future category build once the data model and interface are ready.</p>
-          </article>
-        </div>
+      <section class="tab-panel" data-tab-panel="best-actress" hidden>
+        <main>
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Best Actress Board</p>
+              <h2>Historical Model Accuracy</h2>
+            </div>
+            <div id="actress-accuracy-strip"></div>
+            <div id="actress-live-notice" class="category-live-notice"></div>
+          </section>
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Best Actress · Walk-Forward Backtest</p>
+              <h2>How The Model Read Each Race</h2>
+            </div>
+            <div class="history-table-wrap">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Model Pick</th>
+                    <th>Film</th>
+                    <th>Actual Winner</th>
+                    <th>Signals</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody id="actress-history-table"></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
       </section>
 
-      <section class="panel tab-panel tab-panel-placeholder" data-tab-panel="best-director" hidden>
-        <div class="panel-head">
-          <p class="eyebrow">Best Director</p>
-          <h2>Board Coming Soon</h2>
-        </div>
-        <div class="placeholder-grid">
-          <article class="placeholder-card">
-            <strong>Best Director is a placeholder today.</strong>
-            <p>We can turn this into the first expansion board once the Best Picture data layer is cleaned up the way we want.</p>
-          </article>
-        </div>
+      <section class="tab-panel" data-tab-panel="best-director" hidden>
+        <main>
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Best Director Board</p>
+              <h2>Historical Model Accuracy</h2>
+            </div>
+            <div id="director-accuracy-strip"></div>
+            <div id="director-live-notice" class="category-live-notice"></div>
+          </section>
+          <section class="panel panel-tall">
+            <div class="panel-head">
+              <p class="eyebrow">Best Director · Walk-Forward Backtest</p>
+              <h2>How The Model Read Each Race</h2>
+            </div>
+            <div class="history-table-wrap">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Model Pick</th>
+                    <th>Film</th>
+                    <th>Actual Winner</th>
+                    <th>Signals</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody id="director-history-table"></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
       </section>
 
       <section class="panel tab-panel tab-panel-placeholder" data-tab-panel="box-office" hidden>

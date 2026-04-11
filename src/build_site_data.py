@@ -7,6 +7,10 @@ from typing import Optional
 
 import pandas as pd
 
+from train_category_model import (
+    CATEGORY_CONFIG,
+    backtest_category,
+)
 from train_model import (
     DEFAULT_BASELINE_NAME,
     DEFAULT_EXTENDED_VALIDATION_START,
@@ -654,6 +658,71 @@ def generate_movement_blurbs(cards: list[dict]) -> list[dict]:
     return enriched
 
 
+def build_category_payload(category: str) -> dict:
+    """
+    Run the walk-forward backtest for 'actor', 'actress', or 'director' and
+    return a payload dict with backtest_rows and accuracy metrics.
+    """
+    label = CATEGORY_CONFIG[category]["label"]
+    print(f"[categories] Running {label} backtest...")
+    try:
+        summary = backtest_category(category)
+    except Exception as exc:
+        print(f"[categories] {label} backtest failed: {exc}")
+        return {
+            "label": label,
+            "error": str(exc),
+            "backtest_rows": [],
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "total_count": 0,
+            "first_year": None,
+            "last_year": None,
+        }
+
+    if summary.empty:
+        return {
+            "label": label,
+            "backtest_rows": [],
+            "accuracy": 0.0,
+            "correct_count": 0,
+            "total_count": 0,
+            "first_year": None,
+            "last_year": None,
+        }
+
+    accuracy = float(summary["correct"].mean())
+    rows = []
+    for _, row in summary.iterrows():
+        r = {
+            "year_film": int(row["year_film"]),
+            "predicted_winner": row["predicted_winner"],
+            "predicted_film": row.get("predicted_film"),
+            "predicted_probability": float(row["predicted_probability"]),
+            "actual_winner": row["actual_winner"],
+            "actual_film": row.get("actual_film"),
+            "correct": bool(row["correct"]),
+            "runner_up": row.get("runner_up"),
+            "runner_up_film": row.get("runner_up_film"),
+        }
+        # Include available precursor signals
+        for sig in ("sag_win", "dga_win", "globe_win", "bafta_win"):
+            v = row.get(sig)
+            if v is not None and str(v) != "nan":
+                r[sig] = int(float(v))
+        rows.append(r)
+
+    return {
+        "label": label,
+        "backtest_rows": rows,
+        "accuracy": accuracy,
+        "correct_count": int(summary["correct"].sum()),
+        "total_count": int(len(summary)),
+        "first_year": int(summary["year_film"].min()),
+        "last_year": int(summary["year_film"].max()),
+    }
+
+
 def build_payload():
     raw_df = load_data()
     model_df = prepare_data(raw_df)
@@ -817,6 +886,9 @@ def build_payload():
         "recent_races": recent_races,
         "season_modes": season_modes,
         "actual_winners": build_actual_winners(model_df, start_year=SITE_HISTORY_START_YEAR),
+        "actor_data": build_category_payload("actor"),
+        "actress_data": build_category_payload("actress"),
+        "director_data": build_category_payload("director"),
         "backtest_rows": backtest_rows,
         "methodology": {
             "headline": "The site uses a production Best Picture model trained on modern-era nominees, plus a longer walk-forward validation window to keep the headline honest.",

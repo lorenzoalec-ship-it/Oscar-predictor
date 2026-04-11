@@ -708,6 +708,100 @@ function renderHistoricalYear(data, year) {
     .join("");
 }
 
+// ---------------------------------------------------------------------------
+// Category board rendering (Best Actor / Actress / Director)
+// ---------------------------------------------------------------------------
+
+const CATEGORY_PRECURSOR_LABELS = {
+  sag_win: "SAG",
+  dga_win: "DGA",
+  globe_win: "Globe",
+  bafta_win: "BAFTA",
+};
+
+function categoryPrecursorBadges(row) {
+  const badges = [];
+  for (const [key, label] of Object.entries(CATEGORY_PRECURSOR_LABELS)) {
+    if (row[key] != null && Number(row[key]) >= 1) {
+      badges.push(`<span class="award-badge win">★ ${label}</span>`);
+    }
+  }
+  return badges.length ? `<div class="award-badges">${badges.join("")}</div>` : "—";
+}
+
+function renderCategoryAccuracyStrip(categoryData, stripId) {
+  const el = document.getElementById(stripId);
+  if (!el) return;
+  const rows = (categoryData.backtest_rows ?? []).slice().sort((a, b) => a.year_film - b.year_film);
+  const total = categoryData.total_count ?? rows.length;
+  const hits = categoryData.correct_count ?? rows.filter((r) => r.correct).length;
+  const pct = total ? Math.round((hits / total) * 100) : 0;
+
+  el.innerHTML = `
+    <div class="accuracy-header">
+      <span class="accuracy-big">${pct}%</span>
+      <span class="accuracy-strip-summary">${hits}/${total} correct · Walk-forward ${categoryData.first_year ?? ""}–${categoryData.last_year ?? ""}</span>
+    </div>
+    <div class="accuracy-strip">
+      ${rows.map((r) => `
+        <div class="accuracy-year-dot" title="${r.year_film}: ${r.correct ? "Hit" : "Miss"} — predicted ${r.predicted_winner}, actual ${r.actual_winner}">
+          <div class="dot ${r.correct ? "hit" : "miss"}"></div>
+          <span class="yr-label">${String(r.year_film).slice(-2)}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderCategoryLiveNotice(categoryData, noticeId) {
+  const el = document.getElementById(noticeId);
+  if (!el) return;
+  el.innerHTML = `
+    <div class="category-live-notice-inner">
+      <p class="eyebrow">Live Board</p>
+      <p>
+        The 2026 ${escapeHtml(categoryData.label)} nominees will appear here once announced.
+        The historical backtest below shows how this model would have performed across
+        <strong>${categoryData.total_count ?? 0}</strong> prior races
+        (${categoryData.first_year ?? ""}–${categoryData.last_year ?? ""}).
+      </p>
+    </div>
+  `;
+}
+
+function renderCategoryTable(categoryData, tableId) {
+  const el = document.getElementById(tableId);
+  if (!el) return;
+  const rows = (categoryData.backtest_rows ?? []).slice().sort((a, b) => b.year_film - a.year_film);
+  el.innerHTML = rows
+    .map((row) => `
+      <tr>
+        <td>${row.year_film}</td>
+        <td><strong>${escapeHtml(row.predicted_winner ?? "—")}</strong></td>
+        <td>${escapeHtml(row.predicted_film ?? "—")}</td>
+        <td>${escapeHtml(row.actual_winner ?? "—")}</td>
+        <td>${categoryPrecursorBadges(row)}</td>
+        <td><span class="history-pill ${row.correct ? "correct" : "miss"}">${row.correct ? "Hit" : "Miss"}</span></td>
+      </tr>
+    `)
+    .join("");
+}
+
+function renderCategoryBoard(data, category) {
+  const key = `${category}_data`;
+  const categoryData = data[key];
+  if (!categoryData) return;
+
+  const capCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  renderCategoryAccuracyStrip(categoryData, `${category}-accuracy-strip`);
+  renderCategoryLiveNotice(categoryData, `${category}-live-notice`);
+  renderCategoryTable(categoryData, `${category}-history-table`);
+}
+
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
+
 async function main() {
   initTabs();
   try {
@@ -722,6 +816,9 @@ async function main() {
       () => renderHistory(data.backtest_rows ?? []),
       () => renderMethodology(data.methodology ?? { headline: "", bullets: [] }),
       () => renderSignalsEngine(data.metrics?.feature_count ?? 35),
+      () => renderCategoryBoard(data, "actor"),
+      () => renderCategoryBoard(data, "actress"),
+      () => renderCategoryBoard(data, "director"),
     ];
 
     sections.forEach((renderSection) => {

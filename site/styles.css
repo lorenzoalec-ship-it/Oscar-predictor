@@ -1241,6 +1241,25 @@ main {
   }
 }
 
+/* Category board live notice */
+.category-live-notice {
+  margin-bottom: 1.5rem;
+}
+
+.category-live-notice-inner {
+  background: var(--surface-raised, #1e1e2e);
+  border: 1px solid var(--border, rgba(255,255,255,0.1));
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.category-live-notice-inner p {
+  margin: 0.25rem 0 0;
+  color: var(--text-secondary, #b0b0c0);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
