@@ -1116,25 +1116,6 @@ main {
   margin-top: 14px;
   display: grid;
   gap: 16px;
-  max-height: min(52vh, 430px);
-  overflow-y: auto;
-  padding-right: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(102, 21, 42, 0.28) rgba(102, 21, 42, 0.06);
-}
-
-.signals-list::-webkit-scrollbar {
-  width: 10px;
-}
-
-.signals-list::-webkit-scrollbar-track {
-  background: rgba(102, 21, 42, 0.06);
-  border-radius: 999px;
-}
-
-.signals-list::-webkit-scrollbar-thumb {
-  background: rgba(102, 21, 42, 0.28);
-  border-radius: 999px;
 }
 
 .signal-group-label {

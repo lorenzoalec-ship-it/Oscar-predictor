@@ -425,8 +425,7 @@ function renderMetrics(data) {
     {
       label: "Trained On",
       value: `${metrics.feature_count} Signals`,
-      body: "Nomination totals, precursor awards, critic scores, release timing, distributor, genre, festival, and director-history features.",
-      hasDropdown: true,
+      body: "Nomination totals, precursor awards, critic scores, release timing, distributor, genre, festival, and director-history features. Full breakdown in the Signals Engine below.",
     },
   ];
 
@@ -437,24 +436,6 @@ function renderMetrics(data) {
           <span class="metric-label">${item.label}</span>
           <strong>${item.value}</strong>
           <p>${item.body}</p>
-          ${item.hasDropdown ? `
-            <details class="signals-details">
-              <summary>View all ${metrics.feature_count} signals</summary>
-              <div class="signals-list">
-                ${SIGNAL_GROUPS.map((group) => `
-                  <div class="signal-group">
-                    <p class="signal-group-label">${group.group}</p>
-                    ${group.signals.map((s) => `
-                      <div class="signal-row">
-                        <span class="signal-name">${s.label}</span>
-                        <span class="signal-desc">${s.desc}</span>
-                      </div>
-                    `).join("")}
-                  </div>
-                `).join("")}
-              </div>
-            </details>
-          ` : ""}
         </article>
       `
     )
@@ -611,6 +592,26 @@ function renderHistory(rows) {
     .join("");
 }
 
+function renderSignalsEngine(featureCount) {
+  const container = document.getElementById("signals-engine-list");
+  if (!container) return;
+  container.innerHTML = `
+    <div class="signals-list">
+      ${SIGNAL_GROUPS.map((group) => `
+        <div class="signal-group">
+          <p class="signal-group-label">${group.group}</p>
+          ${group.signals.map((s) => `
+            <div class="signal-row">
+              <span class="signal-name">${s.label}</span>
+              <span class="signal-desc">${s.desc}</span>
+            </div>
+          `).join("")}
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderMethodology(methodology) {
   const headline = methodology.headline
     ? methodology.headline.replace(/^The site uses/, `${BRAND_NAME} uses`)
@@ -720,6 +721,7 @@ async function main() {
       () => renderRecentRaces(data.recent_races ?? []),
       () => renderHistory(data.backtest_rows ?? []),
       () => renderMethodology(data.methodology ?? { headline: "", bullets: [] }),
+      () => renderSignalsEngine(data.metrics?.feature_count ?? 35),
     ];
 
     sections.forEach((renderSection) => {
