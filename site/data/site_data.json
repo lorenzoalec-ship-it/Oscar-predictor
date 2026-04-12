@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-12T00:50:04.430503+00:00",
+    "generated_at": "2026-04-12T01:00:58.398200+00:00",
     "model": "hgb",
     "current_forecast_year": 2026,
     "current_ceremony_year": 2027,
@@ -2654,26 +2654,6 @@
           "critics_choice_win": 0
         },
         {
-          "film": "The Muppet Show",
-          "probability": 0.0142909547247037,
-          "actual_winner": false,
-          "oscar_nomination_count": null,
-          "tomatometer_rating": 98.0,
-          "audience_rating": 97.0,
-          "rt_url": "https://www.rottentomatoes.com/m/the_muppet_show",
-          "momentum_score": null,
-          "poster_url": "https://image.tmdb.org/t/p/w500/tcwar1rL0neoLvnklL7DzYw7sN8.jpg",
-          "forecast_season": "early",
-          "prestige_score": 0.0358333333333333,
-          "manual_contender_flag": 0,
-          "pga_win": 0,
-          "dga_win": 0,
-          "sag_win": 0,
-          "bafta_win": 0,
-          "golden_globe_win": 0,
-          "critics_choice_win": 0
-        },
-        {
           "film": "Redux Redux",
           "probability": 0.0140915189592337,
           "actual_winner": false,
@@ -2685,6 +2665,26 @@
           "poster_url": "https://image.tmdb.org/t/p/w500/9u7sUTYPPTxGCXbkcw8FTq50PnO.jpg",
           "forecast_season": "early",
           "prestige_score": 0.0225,
+          "manual_contender_flag": 0,
+          "pga_win": 0,
+          "dga_win": 0,
+          "sag_win": 0,
+          "bafta_win": 0,
+          "golden_globe_win": 0,
+          "critics_choice_win": 0
+        },
+        {
+          "film": "The Drama",
+          "probability": 0.0140542270120396,
+          "actual_winner": false,
+          "oscar_nomination_count": null,
+          "tomatometer_rating": 76.0,
+          "audience_rating": 80.0,
+          "rt_url": "https://www.rottentomatoes.com/m/the_drama",
+          "momentum_score": null,
+          "poster_url": "https://image.tmdb.org/t/p/w500/rnIOUhzwJDfgQakx8EjoNyItKgs.jpg",
+          "forecast_season": "early",
+          "prestige_score": 0.0625,
           "manual_contender_flag": 0,
           "pga_win": 0,
           "dga_win": 0,
@@ -2725,7 +2725,7 @@
     "extended_top_pick_log_loss_raw": 0.5790916954718743,
     "extended_top_pick_log_loss_calibrated": 0.5145664483917558,
     "feature_count": 35,
-    "last_generated_at": "2026-04-12T00:50:04.430635+00:00",
+    "last_generated_at": "2026-04-12T01:00:58.398353+00:00",
     "current_forecast_season": "early"
   },
   "recent_races": [
