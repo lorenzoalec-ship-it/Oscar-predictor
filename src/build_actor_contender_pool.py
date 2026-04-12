@@ -114,17 +114,33 @@ def load_current_precursors(year: int, category: str = "actor") -> pd.DataFrame:
 def build_actor_pool(year: int) -> pd.DataFrame:
     """
     Build the candidate pool for Best Actor for the given year.
+
+    Requires TMDb credits to be pulled first (pull_person_credits.py --year {year}).
+    The manual manifest supplements TMDb credits but is NOT used as the sole source —
+    that would produce unreliable actor-film pairings.
+
     Returns a DataFrame with: name, film, tmdb_person_id, profile_url,
     tomatometer_rating, metacritic_score, sag_nom, sag_win, globe_nom,
     globe_win, bafta_nom, bafta_win
     """
     film_pool = load_film_pool(year)
     tmdb_credits = load_tmdb_credits(year)
-    manifest = load_person_manifest(year, "actor")
+    precursors = load_current_precursors(year, "actor")
+
+    # If precursor data exists (e.g. post-SAG/Globe/BAFTA), build the pool from
+    # known nominees even without TMDb credits — these are verified pairings.
+    has_precursor_data = not precursors.empty
+
+    # If no TMDb credits AND no precursor data, we have no reliable source.
+    # Return empty pool so the site shows no live board (same as BP before films scored).
+    if tmdb_credits.empty and not has_precursor_data:
+        print(f"[actor] No TMDb credits or precursor data for {year} — skipping live board.")
+        print(f"[actor] Run: python src/pull_person_credits.py --year {year}")
+        return pd.DataFrame()
 
     candidates = []
 
-    # From TMDb credits (joined to film pool)
+    # From TMDb credits (joined to film pool) — primary source
     if not tmdb_credits.empty and "lead_actor_name" in tmdb_credits.columns:
         merged = film_pool.merge(
             tmdb_credits[["tmdb_id", "lead_actor_name", "lead_actor_id", "lead_actor_profile_url"]],
@@ -143,20 +159,29 @@ def build_actor_pool(year: int) -> pd.DataFrame:
                 "metacritic_score": float(row.get("metacritic_score", 0) or 0),
             })
 
-    # From manual manifest
-    for _, row in manifest.iterrows():
-        # Look up film scores from film pool
-        film_scores = film_pool[film_pool["title"].str.upper() == str(row["film"]).upper()]
-        tomatometer = float(film_scores["tomatometer_rating"].values[0]) if not film_scores.empty else 0.0
-        metacritic = float(film_scores["metacritic_score"].values[0]) if not film_scores.empty else 0.0
-        candidates.append({
-            "name": str(row["name"]).strip(),
-            "film": str(row["film"]).strip(),
-            "tmdb_person_id": str(row.get("tmdb_person_id", "") or ""),
-            "profile_url": "",
-            "tomatometer_rating": tomatometer,
-            "metacritic_score": metacritic,
-        })
+    # From precursor data — verified actor-film pairings from SAG/Globe/BAFTA nominations
+    # These are always reliable and supplement or replace TMDb credits post-nominations.
+    if has_precursor_data and "name" in precursors.columns:
+        existing_names = {c["name"].upper() for c in candidates}
+        for _, row in precursors.iterrows():
+            name = str(row.get("name", "")).strip()
+            film = str(row.get("film", "")).strip()
+            if not name or not film:
+                continue
+            if name.upper() in existing_names:
+                continue  # Already added from TMDb credits
+            film_scores = film_pool[film_pool["title"].str.upper() == film.upper()]
+            tomatometer = float(film_scores["tomatometer_rating"].values[0]) if not film_scores.empty else 0.0
+            metacritic = float(film_scores["metacritic_score"].values[0]) if not film_scores.empty else 0.0
+            candidates.append({
+                "name": name,
+                "film": film,
+                "tmdb_person_id": "",
+                "profile_url": "",
+                "tomatometer_rating": tomatometer,
+                "metacritic_score": metacritic,
+            })
+            existing_names.add(name.upper())
 
     if not candidates:
         print(f"[actor] No candidates found for year {year}")

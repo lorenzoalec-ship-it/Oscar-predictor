@@ -106,6 +106,14 @@ def normalize_results(results: list[dict], year: int) -> pd.DataFrame:
     df["release_date"] = pd.to_datetime(df["release_date"], errors="coerce")
     df = df.sort_values(["release_date", "no_of_persons_voted"], ascending=[True, False])
     df = df.drop_duplicates(subset=["title", "release_date"], keep="first")
+
+    # Filter out TV Movies (TMDb genre 10770) — they are not Oscar-eligible
+    before = len(df)
+    df = df[~df["genre_ids"].str.contains("10770", na=False)]
+    removed = before - len(df)
+    if removed:
+        print(f"Filtered {removed} TV Movie entries (genre 10770).")
+
     return df
 
 
