@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-12T01:00:58.398200+00:00",
+    "generated_at": "2026-04-12T21:33:45.873783+00:00",
     "model": "hgb",
     "current_forecast_year": 2026,
     "current_ceremony_year": 2027,
@@ -2725,7 +2725,7 @@
     "extended_top_pick_log_loss_raw": 0.5790916954718743,
     "extended_top_pick_log_loss_calibrated": 0.5145664483917558,
     "feature_count": 35,
-    "last_generated_at": "2026-04-12T01:00:58.398353+00:00",
+    "last_generated_at": "2026-04-12T21:33:45.873928+00:00",
     "current_forecast_season": "early"
   },
   "recent_races": [

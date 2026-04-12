@@ -874,6 +874,245 @@ function renderCategoryBoard(data, category) {
 }
 
 // ---------------------------------------------------------------------------
+// Visual 1 — Probability Donut
+// ---------------------------------------------------------------------------
+
+function renderDonut(cards) {
+  const el = document.getElementById("donut-wrap");
+  if (!el) return;
+
+  const top = cards.slice(0, 6);
+  const totalTop = top.reduce((s, c) => s + (c.probability ?? 0), 0);
+  const other = Math.max(0, 1 - totalTop);
+
+  const slices = [...top.map(c => ({ label: c.title, value: c.probability ?? 0, isOther: false }))];
+  if (other > 0.005) slices.push({ label: "All Others", value: other, isOther: true });
+
+  const COLORS = ["#c9a227", "#e8c55a", "#f0d98a", "#a07818", "#7a5c10", "#4e3a08"];
+  const OTHER_COLOR = "#d9cfc5";
+  const SIZE = 220;
+  const CX = SIZE / 2, CY = SIZE / 2;
+  const R_OUT = 96, R_IN = 58;
+
+  // Build pie slices
+  let angle = -Math.PI / 2;
+  const GAP = 0.018;
+  let paths = "";
+  let legendItems = "";
+
+  slices.forEach((slice, i) => {
+    const sweep = slice.value * 2 * Math.PI - GAP;
+    if (sweep <= 0) return;
+    const a1 = angle + GAP / 2;
+    const a2 = a1 + sweep;
+    const x1o = CX + R_OUT * Math.cos(a1), y1o = CY + R_OUT * Math.sin(a1);
+    const x2o = CX + R_OUT * Math.cos(a2), y2o = CY + R_OUT * Math.sin(a2);
+    const x1i = CX + R_IN * Math.cos(a2), y1i = CY + R_IN * Math.sin(a2);
+    const x2i = CX + R_IN * Math.cos(a1), y2i = CY + R_IN * Math.sin(a1);
+    const large = sweep > Math.PI ? 1 : 0;
+    const color = slice.isOther ? OTHER_COLOR : COLORS[i] ?? OTHER_COLOR;
+    const pct = Math.round(slice.value * 100);
+    const title = slice.label.length > 22 ? slice.label.slice(0, 20) + "…" : slice.label;
+
+    paths += `<path d="M ${x1o} ${y1o} A ${R_OUT} ${R_OUT} 0 ${large} 1 ${x2o} ${y2o} L ${x1i} ${y1i} A ${R_IN} ${R_IN} 0 ${large} 0 ${x2i} ${y2i} Z"
+      fill="${color}" class="donut-slice" data-label="${escapeHtml(slice.label)}" data-pct="${pct}">
+      <title>${escapeHtml(slice.label)}: ${pct}%</title>
+    </path>`;
+
+    angle = a2 + GAP / 2;
+
+    if (!slice.isOther) {
+      legendItems += `
+        <li class="donut-legend-item">
+          <span class="donut-swatch" style="background:${color}"></span>
+          <span class="donut-legend-title">${escapeHtml(title)}</span>
+          <strong class="donut-legend-pct">${pct}%</strong>
+        </li>`;
+    }
+  });
+
+  // Center label — top film
+  const topFilm = cards[0];
+  const topPct = Math.round((topFilm?.probability ?? 0) * 100);
+  const topTitle = (topFilm?.title ?? "—").length > 16
+    ? (topFilm?.title ?? "—").slice(0, 14) + "…"
+    : (topFilm?.title ?? "—");
+
+  el.innerHTML = `
+    <div class="donut-layout">
+      <div class="donut-svg-wrap">
+        <svg viewBox="0 0 ${SIZE} ${SIZE}" width="${SIZE}" height="${SIZE}" class="donut-svg">
+          ${paths}
+          <text x="${CX}" y="${CY - 10}" text-anchor="middle" class="donut-center-pct">${topPct}%</text>
+          <text x="${CX}" y="${CY + 10}" text-anchor="middle" class="donut-center-label">${escapeHtml(topTitle)}</text>
+          <text x="${CX}" y="${CY + 26}" text-anchor="middle" class="donut-center-sub">frontrunner</text>
+        </svg>
+      </div>
+      <ul class="donut-legend">${legendItems}</ul>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------------
+// Visual 2 — Race Tightness Gauge
+// ---------------------------------------------------------------------------
+
+function renderGauge(cards) {
+  const el = document.getElementById("gauge-wrap");
+  if (!el) return;
+
+  // Tightness = 1 - gap between #1 and #2 (capped 0-1, higher = tighter race)
+  const p1 = cards[0]?.probability ?? 0;
+  const p2 = cards[1]?.probability ?? 0;
+  const gap = p1 - p2;
+  // Map gap to openness: gap=0 → very open (needle left), gap=1 → near certainty (needle right)
+  const certainty = Math.min(1, Math.max(0, gap / 0.6));
+
+  const labels = ["Wide Open", "Competitive", "Leaning", "Likely", "Near Lock"];
+  const zones = [
+    { color: "#6bc1a0", from: 0,   to: 0.2  },
+    { color: "#c9a227", from: 0.2, to: 0.4  },
+    { color: "#e0a020", from: 0.4, to: 0.65 },
+    { color: "#d4752a", from: 0.65,to: 0.85 },
+    { color: "#c94040", from: 0.85,to: 1.0  },
+  ];
+
+  const W = 280, H = 160;
+  const CX = W / 2, CY = H - 20;
+  const R = 110;
+  // Arc from 180° to 0° (left to right)
+  const startA = Math.PI, endA = 0;
+
+  function arcPath(r, a1, a2, color, rIn = r - 22) {
+    const x1o = CX + r * Math.cos(a1), y1o = CY + r * Math.sin(a1);
+    const x2o = CX + r * Math.cos(a2), y2o = CY + r * Math.sin(a2);
+    const x1i = CX + rIn * Math.cos(a2), y1i = CY + rIn * Math.sin(a2);
+    const x2i = CX + rIn * Math.cos(a1), y2i = CY + rIn * Math.sin(a1);
+    const large = Math.abs(a2 - a1) > Math.PI ? 1 : 0;
+    return `<path d="M ${x1o} ${y1o} A ${r} ${r} 0 ${large} 1 ${x2o} ${y2o} L ${x1i} ${y1i} A ${rIn} ${rIn} 0 ${large} 0 ${x2i} ${y2i} Z" fill="${color}" />`;
+  }
+
+  let arcs = "";
+  zones.forEach(z => {
+    const a1 = startA + (startA - endA) * (1 - z.from);  // reversed: left=low
+    const a2 = startA + (startA - endA) * (1 - z.to);
+    // Actually: angle = π - (certainty * π), so 0 certainty → π (left), 1 certainty → 0 (right)
+    const ta1 = Math.PI - z.to * Math.PI;
+    const ta2 = Math.PI - z.from * Math.PI;
+    arcs += arcPath(R, ta1, ta2, z.color);
+  });
+
+  // Needle
+  const needleAngle = Math.PI - certainty * Math.PI;
+  const nx = CX + (R - 5) * Math.cos(needleAngle);
+  const ny = CY + (R - 5) * Math.sin(needleAngle);
+
+  // Label
+  const labelIdx = Math.min(4, Math.floor(certainty * 5));
+  const raceLabel = labels[labelIdx];
+
+  // Gap label
+  const gapPct = Math.round(gap * 100);
+  const topTitle = (cards[0]?.title ?? "—").length > 18
+    ? (cards[0]?.title ?? "—").slice(0, 16) + "…"
+    : (cards[0]?.title ?? "—");
+
+  el.innerHTML = `
+    <div class="gauge-layout">
+      <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="gauge-svg">
+        ${arcs}
+        <!-- Needle -->
+        <line x1="${CX}" y1="${CY}" x2="${nx}" y2="${ny}"
+          stroke="#1a1a2e" stroke-width="3" stroke-linecap="round" />
+        <circle cx="${CX}" cy="${CY}" r="6" fill="#1a1a2e" />
+        <!-- Labels -->
+        <text x="14" y="${CY - 5}" class="gauge-edge-label">Open</text>
+        <text x="${W - 14}" y="${CY - 5}" text-anchor="end" class="gauge-edge-label">Lock</text>
+      </svg>
+      <div class="gauge-readout">
+        <strong class="gauge-label">${escapeHtml(raceLabel)}</strong>
+        <p class="gauge-sub">${escapeHtml(topTitle)} leads by <strong>${gapPct}pp</strong></p>
+      </div>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------------
+// Visual 3 — Signal Matrix
+// ---------------------------------------------------------------------------
+
+function renderSignalMatrix(cards) {
+  const el = document.getElementById("signal-matrix");
+  if (!el) return;
+
+  const PRECURSORS = [
+    { key: "pga_win",            label: "PGA" },
+    { key: "dga_win",            label: "DGA" },
+    { key: "sag_win",            label: "SAG" },
+    { key: "bafta_win",          label: "BAFTA" },
+    { key: "golden_globe_win",   label: "Globe" },
+    { key: "critics_choice_win", label: "Critics" },
+  ];
+
+  const top = cards.slice(0, 10);
+
+  // Column headers
+  const headers = PRECURSORS.map(p => `<th class="matrix-th">${p.label}</th>`).join("");
+
+  // Rows
+  const rows = top.map(card => {
+    const cells = PRECURSORS.map(p => {
+      const val = card[p.key] ?? 0;
+      const won = Number(val) >= 1;
+      return `<td class="matrix-cell ${won ? "matrix-win" : "matrix-miss"}" title="${card.title} — ${p.label}: ${won ? "WON" : "Not won"}">
+        ${won ? `<span class="matrix-star">★</span>` : `<span class="matrix-dot"></span>`}
+      </td>`;
+    }).join("");
+
+    const totalWins = PRECURSORS.filter(p => Number(card[p.key] ?? 0) >= 1).length;
+    const pct = Math.round((card.probability ?? 0) * 100);
+    const rankDelta = card.rank_delta;
+    const mvmt = card.movement ?? "same";
+    const arrow = mvmt === "up" ? "↑" : mvmt === "down" ? "↓" : mvmt === "new" ? "★" : "";
+    const arrowClass = mvmt === "up" ? "up" : mvmt === "down" ? "down" : "";
+    const title = card.title.length > 24 ? card.title.slice(0, 22) + "…" : card.title;
+
+    return `<tr class="matrix-row">
+      <td class="matrix-film-cell">
+        <span class="matrix-rank">#${card.rank}</span>
+        <span class="matrix-title" title="${escapeHtml(card.title)}">${escapeHtml(title)}</span>
+        ${arrow ? `<span class="matrix-arrow ${arrowClass}">${arrow}</span>` : ""}
+      </td>
+      ${cells}
+      <td class="matrix-wins-cell">
+        <span class="matrix-wins-badge ${totalWins >= 4 ? "wins-high" : totalWins >= 2 ? "wins-mid" : "wins-low"}">${totalWins}/6</span>
+      </td>
+      <td class="matrix-prob-cell">${pct}%</td>
+    </tr>`;
+  }).join("");
+
+  el.innerHTML = `
+    <div class="matrix-scroll">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th class="matrix-th matrix-film-th">Film</th>
+            ${headers}
+            <th class="matrix-th">Wins</th>
+            <th class="matrix-th">Odds</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <p class="matrix-legend">
+      <span class="matrix-star">★</span> = Precursor win &nbsp;·&nbsp;
+      <span class="matrix-dot-inline"></span> = Not won this season
+    </p>
+  `;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -884,6 +1123,9 @@ async function main() {
     const sections = [
       () => renderHero(data),
       () => renderContenders(data.forecast_cards ?? []),
+      () => renderDonut(data.forecast_cards ?? []),
+      () => renderGauge(data.forecast_cards ?? []),
+      () => renderSignalMatrix(data.forecast_cards ?? []),
       () => renderMetrics(data),
       () => renderSeasonModes(data),
       () => renderHistoricalYearControls(data),
