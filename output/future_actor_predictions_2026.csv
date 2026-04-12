@@ -1,8 +1,3 @@
 rank,name,film,win_probability,prior_nominations,prior_wins,tmdb_person_id,profile_url,sag_nom,sag_win,globe_nom,globe_win,bafta_nom,bafta_win,tomatometer_rating,metacritic_score,forecast_season,previous_rank,rank_delta,movement
-1,Paul Mescal,The History of Sound,0.24453005419803642,1,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
-2,Adam Driver,Eddington,0.24453005419803642,1,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
-3,Timothee Chalamet,Marty Supreme,0.12676608377384374,0,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
-4,Benicio del Toro,The Phoenician Scheme,0.12676608377384374,0,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
-5,Jake Gyllenhaal,The Mastermind,0.12676608377384374,0,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
-6,Jesse Plemons,Alpha,0.12676608377384374,0,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
-7,Denzel Washington,Highest 2 Lowest,0.0038755565085521974,7,1,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
+1,Cillian Murphy,Peaky Blinders: The Immortal Man,0.9786314273350907,1,1,nan,,0,0,0,0,0,0,90.0,0.0,early,,,new
+2,Ryan Gosling,Project Hail Mary,0.021368572664909314,2,0,nan,,0,0,0,0,0,0,94.0,77.0,early,1.0,-1.0,down

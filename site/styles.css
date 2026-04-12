@@ -1519,16 +1519,23 @@ main {
 
 .gauge-label {
   display: block;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 800;
-  color: var(--ink);
   letter-spacing: -0.01em;
+  margin-bottom: 0.15rem;
+}
+
+.gauge-film {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0.1rem 0;
 }
 
 .gauge-sub {
   font-size: 0.8rem;
   color: var(--ink-muted);
-  margin: 0.2rem 0 0;
+  margin: 0.1rem 0 0;
 }
 
 /* --- Signal Matrix --- */
