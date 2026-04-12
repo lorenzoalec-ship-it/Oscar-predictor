@@ -779,7 +779,7 @@ function renderCategoryLiveBoard(categoryData, category) {
   if (!contenders.length) return;
 
   // Find the panel in the correct tab
-  const tabPanel = document.querySelector(`[data-tab-panel="${category}"]`);
+  const tabPanel = document.querySelector(`[data-tab-panel="best-${category}"]`);
   if (!tabPanel) return;
 
   // Create or find the live board section

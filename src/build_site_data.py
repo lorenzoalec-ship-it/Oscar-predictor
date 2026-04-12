@@ -615,8 +615,50 @@ def generate_movement_blurbs(cards: list[dict]) -> list[dict]:
     """
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
-        print("[blurbs] ANTHROPIC_API_KEY not set — skipping AI blurbs.")
-        return cards
+        print("[blurbs] ANTHROPIC_API_KEY not set — preserving existing blurbs.")
+        # Preserve previously generated blurbs so local rebuilds don't wipe them.
+        # Try reading from the current site_data.json first; fall back to git HEAD.
+        existing_blurbs: dict[str, str] = {}
+        existing_path = Path(__file__).resolve().parent.parent / "site" / "data" / "site_data.json"
+
+        def _load_blurbs_from_json(source: str) -> dict[str, str]:
+            try:
+                data = json.loads(source)
+                return {
+                    c.get("title", ""): c.get("movement_blurb", "")
+                    for c in data.get("forecast_cards", [])
+                    if c.get("movement_blurb")
+                }
+            except Exception:
+                return {}
+
+        # 1. Try on-disk file
+        if existing_path.exists():
+            try:
+                with open(existing_path) as f:
+                    existing_blurbs = _load_blurbs_from_json(f.read())
+            except Exception:
+                pass
+
+        # 2. If disk file had no blurbs (e.g. was overwritten by a no-key build), try git
+        if not existing_blurbs:
+            try:
+                import subprocess
+                result = subprocess.run(
+                    ["git", "show", "HEAD:site/data/site_data.json"],
+                    capture_output=True, text=True, cwd=existing_path.parent.parent.parent
+                )
+                if result.returncode == 0:
+                    existing_blurbs = _load_blurbs_from_json(result.stdout)
+                    if existing_blurbs:
+                        print(f"[blurbs] Restored {len(existing_blurbs)} blurbs from git HEAD.")
+            except Exception:
+                pass
+
+        return [
+            {**card, "movement_blurb": existing_blurbs.get(card.get("title", ""), card.get("movement_blurb", ""))}
+            for card in cards
+        ]
 
     try:
         import anthropic
