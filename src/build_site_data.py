@@ -678,6 +678,7 @@ def build_category_payload(category: str) -> dict:
             "total_count": 0,
             "first_year": None,
             "last_year": None,
+            "live_contenders": [],
         }
 
     if summary.empty:
@@ -689,6 +690,7 @@ def build_category_payload(category: str) -> dict:
             "total_count": 0,
             "first_year": None,
             "last_year": None,
+            "live_contenders": [],
         }
 
     accuracy = float(summary["correct"].mean())
@@ -712,6 +714,41 @@ def build_category_payload(category: str) -> dict:
                 r[sig] = int(float(v))
         rows.append(r)
 
+    # Load live contenders for the current year
+    year = datetime.now().year
+    month = datetime.now().month
+    # Jan-Mar = Oscar window for prior year's films
+    if month <= 3:
+        year = year - 1
+    live_path = ROOT / "output" / f"future_actor_predictions_{year}.csv"
+
+    live_contenders = []
+    if category == "actor" and live_path.exists():
+        live_df = pd.read_csv(live_path)
+        for _, row in live_df.iterrows():
+            lc = {
+                "rank": int(row.get("rank", 0)),
+                "name": str(row.get("name", "")),
+                "film": str(row.get("film", "")),
+                "win_probability": float(row.get("win_probability", 0)),
+                "prior_nominations": int(row.get("prior_nominations", 0)),
+                "prior_wins": int(row.get("prior_wins", 0)),
+                "profile_url": str(row.get("profile_url", "") or ""),
+                "sag_nom": int(row.get("sag_nom", 0)),
+                "sag_win": int(row.get("sag_win", 0)),
+                "globe_nom": int(row.get("globe_nom", 0)),
+                "globe_win": int(row.get("globe_win", 0)),
+                "bafta_nom": int(row.get("bafta_nom", 0)),
+                "bafta_win": int(row.get("bafta_win", 0)),
+                "tomatometer_rating": float(row.get("tomatometer_rating", 0)),
+                "metacritic_score": float(row.get("metacritic_score", 0)),
+                "forecast_season": str(row.get("forecast_season", "early")),
+                "previous_rank": int(row["previous_rank"]) if pd.notna(row.get("previous_rank")) else None,
+                "rank_delta": int(row["rank_delta"]) if pd.notna(row.get("rank_delta")) else None,
+                "movement": str(row.get("movement", "new")),
+            }
+            live_contenders.append(lc)
+
     return {
         "label": label,
         "backtest_rows": rows,
@@ -720,6 +757,7 @@ def build_category_payload(category: str) -> dict:
         "total_count": int(len(summary)),
         "first_year": int(summary["year_film"].min()),
         "last_year": int(summary["year_film"].max()),
+        "live_contenders": live_contenders,
     }
 
 

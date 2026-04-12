@@ -63,6 +63,25 @@ DIRECTOR_FEATURES = [
     "metacritic_score",
 ]
 
+# Recent backfill files (2020-2024 data not in the original CSVs)
+SAG_ACTOR_RECENT_PATH = ROOT / "data" / "raw" / "sag_actor_recent.csv"
+GLOBE_ACTOR_RECENT_PATH = ROOT / "data" / "raw" / "globe_actor_recent.csv"
+BAFTA_ACTOR_RECENT_PATH = ROOT / "data" / "raw" / "bafta_actor_recent.csv"
+
+# Extended feature set including nomination signals
+ACTOR_FEATURES_EXTENDED = [
+    "prior_nominations",
+    "prior_wins",
+    "sag_nom",
+    "sag_win",
+    "globe_nom",
+    "globe_win",
+    "bafta_nom",
+    "bafta_win",
+    "tomatometer_rating",
+    "metacritic_score",
+]
+
 
 # ---------------------------------------------------------------------------
 # Data loaders — raw precursor sources
@@ -208,6 +227,45 @@ def load_film_scores() -> pd.DataFrame:
 # Year coverage helpers
 # ---------------------------------------------------------------------------
 
+def load_sag_acting_recent(gender: str) -> pd.DataFrame:
+    """Load the 2020+ SAG acting backfill. Returns year_film, name_key, sag_nom, sag_win."""
+    if gender != "male":
+        return pd.DataFrame(columns=["year_film", "name_key", "sag_nom", "sag_win"])
+    if not SAG_ACTOR_RECENT_PATH.exists():
+        return pd.DataFrame(columns=["year_film", "name_key", "sag_nom", "sag_win"])
+    df = pd.read_csv(SAG_ACTOR_RECENT_PATH)
+    df["name_key"] = df["name"].apply(_norm_name)
+    df["sag_nom"] = df["sag_nom"].fillna(0).astype(int)
+    df["sag_win"] = df["sag_win"].fillna(0).astype(int)
+    return df[["year_film", "name_key", "sag_nom", "sag_win"]]
+
+
+def load_globe_acting_recent(gender: str) -> pd.DataFrame:
+    """Load the 2020+ Globe acting backfill. Returns year_film, name_key, globe_nom, globe_win."""
+    if gender != "male":
+        return pd.DataFrame(columns=["year_film", "name_key", "globe_nom", "globe_win"])
+    if not GLOBE_ACTOR_RECENT_PATH.exists():
+        return pd.DataFrame(columns=["year_film", "name_key", "globe_nom", "globe_win"])
+    df = pd.read_csv(GLOBE_ACTOR_RECENT_PATH)
+    df["name_key"] = df["name"].apply(_norm_name)
+    df["globe_nom"] = df["globe_nom"].fillna(0).astype(int)
+    df["globe_win"] = df["globe_win"].fillna(0).astype(int)
+    return df[["year_film", "name_key", "globe_nom", "globe_win"]]
+
+
+def load_bafta_acting_recent(gender: str) -> pd.DataFrame:
+    """Load the 2020+ BAFTA acting backfill. Returns year_film, name_key, bafta_nom, bafta_win."""
+    if gender != "male":
+        return pd.DataFrame(columns=["year_film", "name_key", "bafta_nom", "bafta_win"])
+    if not BAFTA_ACTOR_RECENT_PATH.exists():
+        return pd.DataFrame(columns=["year_film", "name_key", "bafta_nom", "bafta_win"])
+    df = pd.read_csv(BAFTA_ACTOR_RECENT_PATH)
+    df["name_key"] = df["name"].apply(_norm_name)
+    df["bafta_nom"] = df["bafta_nom"].fillna(0).astype(int)
+    df["bafta_win"] = df["bafta_win"].fillna(0).astype(int)
+    return df[["year_film", "name_key", "bafta_nom", "bafta_win"]]
+
+
 def _years_covered(df: pd.DataFrame) -> set:
     return set(df["year_film"].dropna().astype(int).unique())
 
@@ -305,6 +363,38 @@ def build_category_dataset(category: str) -> pd.DataFrame:
         nominees = _join_precursor_by_name(nominees, globe, "globe_win")
         nominees = _join_precursor_by_name(nominees, bafta, "bafta_win")
 
+        # Initialize nom columns with 0 (older years won't have them)
+        nominees["sag_nom"] = 0
+        nominees["globe_nom"] = 0
+        nominees["bafta_nom"] = 0
+
+        if category == "actor":
+            # Load and merge recent backfill data (fills the 2020-2024 gap)
+            for loader_fn, nom_col, win_col in [
+                (lambda: load_sag_acting_recent("male"), "sag_nom", "sag_win"),
+                (lambda: load_globe_acting_recent("male"), "globe_nom", "globe_win"),
+                (lambda: load_bafta_acting_recent("male"), "bafta_nom", "bafta_win"),
+            ]:
+                recent = loader_fn()
+                if recent.empty:
+                    continue
+                recent_agg = (
+                    recent.groupby(["year_film", "name_key"])[[nom_col, win_col]]
+                    .max().reset_index()
+                )
+                # Merge, updating rows where old CSV had no coverage
+                tmp = nominees.merge(
+                    recent_agg.rename(columns={nom_col: f"_r_{nom_col}", win_col: f"_r_{win_col}"}),
+                    on=["year_film", "name_key"], how="left"
+                )
+                # Update nom column from recent backfill
+                nominees[nom_col] = tmp[f"_r_{nom_col}"].fillna(0).astype(int)
+                # For win: if old CSV already has a 1 (win), keep it. Otherwise use recent backfill value.
+                nominees[win_col] = nominees[win_col].where(
+                    nominees[win_col] >= 1,
+                    tmp[f"_r_{win_col}"].fillna(0).astype(int)
+                )
+
     elif category == "director":
         globe = load_globe_director()
         bafta = load_bafta_director()
@@ -349,7 +439,9 @@ def _build_model():
 
 
 def _features_for(category: str):
-    return DIRECTOR_FEATURES if category == "director" else ACTOR_FEATURES
+    if category == "director":
+        return DIRECTOR_FEATURES
+    return ACTOR_FEATURES_EXTENDED  # includes nom columns for actor/actress
 
 
 def _train_and_score_year(train_df: pd.DataFrame, test_df: pd.DataFrame,
@@ -461,6 +553,81 @@ def backtest_accuracy(category: str, verbose: bool = True) -> tuple[pd.DataFrame
         print(summary[["year_film", "predicted_winner", "actual_winner", "correct"]].to_string(index=False))
         print(f"\nAccuracy: {accuracy:.2%} ({int(summary['correct'].sum())}/{len(summary)} correct)")
     return summary, accuracy
+
+
+# ---------------------------------------------------------------------------
+# Live scoring for future years
+# ---------------------------------------------------------------------------
+
+def score_category_year(
+    year_film: int,
+    candidates: pd.DataFrame,
+    category: str = "actor",
+) -> pd.DataFrame:
+    """
+    Train the category model on all historical data up to (but not including)
+    year_film, then score the provided candidates DataFrame.
+
+    candidates must have columns: name, film, and optionally any feature columns
+    (sag_nom, sag_win, globe_nom, globe_win, bafta_nom, bafta_win,
+     tomatometer_rating, metacritic_score).
+    Missing feature columns are filled with 0.
+
+    Returns candidates with added columns:
+      win_probability, prior_nominations, prior_wins
+    """
+    hist_df = build_category_dataset(category)
+    train_df = hist_df[hist_df["year_film"] < year_film].copy()
+
+    if train_df["winner"].sum() == 0 or len(train_df["year_film"].unique()) < MIN_TRAIN_YEARS:
+        candidates = candidates.copy()
+        n = len(candidates)
+        candidates["win_probability"] = 1.0 / n if n else 0.0
+        candidates["prior_nominations"] = 0
+        candidates["prior_wins"] = 0
+        return candidates
+
+    # Add prior Oscar history for each candidate
+    oscar_hist = hist_df[["name_key", "year_film", "winner"]].copy()
+    oscar_hist = oscar_hist[oscar_hist["year_film"] < year_film]
+
+    prior_noms_map = oscar_hist.groupby("name_key").size().to_dict()
+    prior_wins_map = oscar_hist[oscar_hist["winner"] == 1].groupby("name_key").size().to_dict()
+
+    candidates = candidates.copy()
+    candidates["name_key"] = candidates["name"].apply(_norm_name)
+    candidates["prior_nominations"] = candidates["name_key"].map(prior_noms_map).fillna(0).astype(int)
+    candidates["prior_wins"] = candidates["name_key"].map(prior_wins_map).fillna(0).astype(int)
+
+    features = _features_for(category)
+    for f in features:
+        if f not in candidates.columns:
+            candidates[f] = 0
+        candidates[f] = pd.to_numeric(candidates[f], errors="coerce").fillna(0)
+
+    # Train model
+    available = [f for f in features if f in train_df.columns]
+    X_train = train_df[available].fillna(0)
+    y_train = train_df["winner"]
+
+    if y_train.nunique() < 2:
+        n = len(candidates)
+        candidates["win_probability"] = 1.0 / n if n else 0.0
+        return candidates
+
+    model = _build_model()
+    model.fit(X_train, y_train)
+
+    X_test = candidates[[f for f in available if f in candidates.columns]].fillna(0)
+    classes = list(model.classes_)
+    pos_idx = classes.index(1) if 1 in classes else 0
+    probs = model.predict_proba(X_test)[:, pos_idx]
+
+    total = probs.sum()
+    if total > 0:
+        probs = probs / total
+    candidates["win_probability"] = probs
+    return candidates
 
 
 # ---------------------------------------------------------------------------

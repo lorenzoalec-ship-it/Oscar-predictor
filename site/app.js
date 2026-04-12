@@ -756,6 +756,11 @@ function renderCategoryAccuracyStrip(categoryData, stripId) {
 function renderCategoryLiveNotice(categoryData, noticeId) {
   const el = document.getElementById(noticeId);
   if (!el) return;
+  const hasLive = (categoryData.live_contenders ?? []).length > 0;
+  if (hasLive) {
+    el.innerHTML = ""; // hide placeholder when live board is shown
+    return;
+  }
   el.innerHTML = `
     <div class="category-live-notice-inner">
       <p class="eyebrow">Live Board</p>
@@ -767,6 +772,76 @@ function renderCategoryLiveNotice(categoryData, noticeId) {
       </p>
     </div>
   `;
+}
+
+function renderCategoryLiveBoard(categoryData, category) {
+  const contenders = categoryData.live_contenders ?? [];
+  if (!contenders.length) return;
+
+  // Find the panel in the correct tab
+  const tabPanel = document.querySelector(`[data-tab-panel="${category}"]`);
+  if (!tabPanel) return;
+
+  // Create or find the live board section
+  let liveSection = tabPanel.querySelector(".category-live-board");
+  if (!liveSection) {
+    const main = tabPanel.querySelector("main");
+    if (!main) return;
+    liveSection = document.createElement("section");
+    liveSection.className = "panel panel-tall category-live-board";
+    liveSection.innerHTML = `
+      <div class="panel-head">
+        <p class="eyebrow">Best ${category.charAt(0).toUpperCase() + category.slice(1)} · 2026 Contenders</p>
+        <h2>Live Contender Board</h2>
+      </div>
+      <div class="contender-list" id="${category}-live-list"></div>
+    `;
+    main.insertBefore(liveSection, main.firstChild);
+  }
+
+  const listEl = liveSection.querySelector(`#${category}-live-list`);
+  if (!listEl) return;
+
+  listEl.innerHTML = contenders.map((c) => {
+    const delta = c.rank_delta;
+    const mvmt = c.movement ?? "new";
+    const arrow = mvmt === "up" ? "↑" : mvmt === "down" ? "↓" : mvmt === "new" ? "★" : "—";
+    const arrowClass = mvmt === "up" ? "up" : mvmt === "down" ? "down" : mvmt === "new" ? "new" : "same";
+    const pct = Math.round((c.win_probability ?? 0) * 100);
+
+    // Build precursor badges
+    const badges = [];
+    if (c.sag_win) badges.push('<span class="award-badge win">★ SAG</span>');
+    else if (c.sag_nom) badges.push('<span class="award-badge nom">SAG</span>');
+    if (c.globe_win) badges.push('<span class="award-badge win">★ Globe</span>');
+    else if (c.globe_nom) badges.push('<span class="award-badge nom">Globe</span>');
+    if (c.bafta_win) badges.push('<span class="award-badge win">★ BAFTA</span>');
+    else if (c.bafta_nom) badges.push('<span class="award-badge nom">BAFTA</span>');
+    const badgesHtml = badges.length ? `<div class="award-badges">${badges.join("")}</div>` : "";
+
+    const profileImg = c.profile_url ?
+      `<img class="contender-profile-img" src="${escapeHtml(c.profile_url)}" alt="${escapeHtml(c.name)}" loading="lazy">` :
+      `<div class="contender-profile-placeholder">${escapeHtml(c.name.charAt(0))}</div>`;
+
+    return `
+      <article class="contender-row">
+        <div class="contender-rank">
+          <span class="rank-num">${c.rank}</span>
+          <span class="rank-delta ${arrowClass}">${arrow}${delta != null && delta !== 0 ? Math.abs(delta) : ""}</span>
+        </div>
+        <div class="contender-profile">${profileImg}</div>
+        <div class="contender-body">
+          <div class="contender-title-row">
+            <strong class="contender-name">${escapeHtml(c.name)}</strong>
+            <span class="contender-film">${escapeHtml(c.film)}</span>
+          </div>
+          ${badgesHtml}
+          ${probBarMarkup(c.win_probability)}
+        </div>
+        <div class="contender-pct">${pct}%</div>
+      </article>
+    `;
+  }).join("");
 }
 
 function renderCategoryTable(categoryData, tableId) {
@@ -792,7 +867,7 @@ function renderCategoryBoard(data, category) {
   const categoryData = data[key];
   if (!categoryData) return;
 
-  const capCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  renderCategoryLiveBoard(categoryData, category);
   renderCategoryAccuracyStrip(categoryData, `${category}-accuracy-strip`);
   renderCategoryLiveNotice(categoryData, `${category}-live-notice`);
   renderCategoryTable(categoryData, `${category}-history-table`);

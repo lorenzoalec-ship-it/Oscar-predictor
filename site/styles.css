@@ -1260,6 +1260,140 @@ main {
   line-height: 1.55;
 }
 
+/* --- Category live board --- */
+.category-live-board {
+  margin-bottom: 2rem;
+}
+
+.contender-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contender-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface, rgba(255, 250, 244, 0.9));
+  border: 1px solid var(--border, rgba(102, 21, 42, 0.12));
+  border-radius: 10px;
+}
+
+.contender-rank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 2.5rem;
+  flex-shrink: 0;
+}
+
+.rank-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink, #161013);
+  line-height: 1;
+}
+
+.rank-delta {
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-top: 0.1rem;
+}
+
+.rank-delta.up { color: var(--green, #247a58); }
+.rank-delta.down { color: var(--scarlet, #b82649); }
+.rank-delta.new { color: var(--gold, #c9a227); }
+.rank-delta.same { color: var(--ink-muted, #7b6c69); }
+
+.contender-profile {
+  flex-shrink: 0;
+}
+
+.contender-profile-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.contender-profile-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gold-gradient, linear-gradient(135deg, #b8860b, #ffd700));
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contender-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.contender-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink, #161013);
+}
+
+.contender-film {
+  font-size: 0.85rem;
+  color: var(--ink-muted, #7b6c69);
+  font-style: italic;
+  margin-left: 0.5rem;
+}
+
+.contender-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.award-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+}
+
+.award-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.award-badge.win {
+  background: var(--gold, #c9a227);
+  color: #1a1a2e;
+}
+
+.award-badge.nom {
+  background: var(--surface-strong, #f2e8dd);
+  color: var(--ink-soft, #574b49);
+  border: 1px solid var(--border-strong, rgba(102, 21, 42, 0.24));
+}
+
+.contender-pct {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold, #c9a227);
+  min-width: 3rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

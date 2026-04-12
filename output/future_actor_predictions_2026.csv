@@ -1,0 +1,6 @@
+rank,name,film,win_probability,prior_nominations,prior_wins,tmdb_person_id,profile_url,sag_nom,sag_win,globe_nom,globe_win,bafta_nom,bafta_win,tomatometer_rating,metacritic_score,forecast_season,previous_rank,rank_delta,movement
+1,Adam Driver,Eddington,0.3889431399533846,1,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
+2,Josh O'Connor,Materialists,0.20163083357705527,0,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
+3,Zach Galifianakis,The Phoenician Scheme,0.20163083357705527,0,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
+4,Jake Gyllenhaal,Snow White,0.20163083357705527,0,0,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
+5,Denzel Washington,Highest 2 Lowest,0.006164359315449626,7,1,nan,,0,0,0,0,0,0,0.0,0.0,early,,,new
