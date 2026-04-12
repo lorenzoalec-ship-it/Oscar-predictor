@@ -131,10 +131,13 @@ def build_actor_pool(year: int) -> pd.DataFrame:
     # known nominees even without TMDb credits — these are verified pairings.
     has_precursor_data = not precursors.empty
 
-    # If no TMDb credits AND no precursor data, we have no reliable source.
-    # Return empty pool so the site shows no live board (same as BP before films scored).
-    if tmdb_credits.empty and not has_precursor_data:
-        print(f"[actor] No TMDb credits or precursor data for {year} — skipping live board.")
+    # Load manual manifest early — use as fallback source when no credits exist yet.
+    manifest = load_person_manifest(year, "actor")
+    has_manifest = not manifest.empty
+
+    # If no TMDb credits AND no precursor data AND no manifest, we have no reliable source.
+    if tmdb_credits.empty and not has_precursor_data and not has_manifest:
+        print(f"[actor] No TMDb credits, precursor data, or manifest for {year} — skipping live board.")
         print(f"[actor] Run: python src/pull_person_credits.py --year {year}")
         return pd.DataFrame()
 
@@ -159,6 +162,32 @@ def build_actor_pool(year: int) -> pd.DataFrame:
                 "metacritic_score": float(row.get("metacritic_score", 0) or 0),
             })
 
+    # From manual manifest — early-season source when TMDb credits not yet available
+    # Also used when a film's lead actor can't be reliably auto-detected
+    if has_manifest:
+        existing_names = {c["name"].upper() for c in candidates}
+        for _, row in manifest.iterrows():
+            name = str(row.get("name", "")).strip()
+            film = str(row.get("film", "")).strip()
+            tmdb_pid = str(row.get("tmdb_person_id", "") or "")
+            if not name or not film:
+                continue
+            if name.upper() in existing_names:
+                continue  # TMDb credits already have this actor
+            film_scores = film_pool[film_pool["title"].str.upper() == film.upper()]
+            tomatometer = float(film_scores["tomatometer_rating"].values[0]) if not film_scores.empty else 0.0
+            metacritic = float(film_scores["metacritic_score"].values[0]) if not film_scores.empty else 0.0
+            candidates.append({
+                "name": name,
+                "film": film,
+                "tmdb_person_id": tmdb_pid,
+                "profile_url": "",
+                "tomatometer_rating": tomatometer,
+                "metacritic_score": metacritic,
+            })
+            existing_names.add(name.upper())
+            print(f"[actor] Added from manifest: {name} / {film}")
+
     # From precursor data — verified actor-film pairings from SAG/Globe/BAFTA nominations
     # These are always reliable and supplement or replace TMDb credits post-nominations.
     if has_precursor_data and "name" in precursors.columns:
@@ -169,7 +198,7 @@ def build_actor_pool(year: int) -> pd.DataFrame:
             if not name or not film:
                 continue
             if name.upper() in existing_names:
-                continue  # Already added from TMDb credits
+                continue  # Already added from TMDb credits or manifest
             film_scores = film_pool[film_pool["title"].str.upper() == film.upper()]
             tomatometer = float(film_scores["tomatometer_rating"].values[0]) if not film_scores.empty else 0.0
             metacritic = float(film_scores["metacritic_score"].values[0]) if not film_scores.empty else 0.0

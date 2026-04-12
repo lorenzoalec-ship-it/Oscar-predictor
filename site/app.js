@@ -961,73 +961,90 @@ function renderGauge(cards) {
   const el = document.getElementById("gauge-wrap");
   if (!el) return;
 
-  // Tightness = 1 - gap between #1 and #2 (capped 0-1, higher = tighter race)
+  // Certainty = how dominant the frontrunner is, 0=wide open, 1=near lock
   const p1 = cards[0]?.probability ?? 0;
   const p2 = cards[1]?.probability ?? 0;
   const gap = p1 - p2;
-  // Map gap to openness: gap=0 → very open (needle left), gap=1 → near certainty (needle right)
   const certainty = Math.min(1, Math.max(0, gap / 0.6));
 
   const labels = ["Wide Open", "Competitive", "Leaning", "Likely", "Near Lock"];
   const zones = [
-    { color: "#6bc1a0", from: 0,   to: 0.2  },
-    { color: "#c9a227", from: 0.2, to: 0.4  },
-    { color: "#e0a020", from: 0.4, to: 0.65 },
-    { color: "#d4752a", from: 0.65,to: 0.85 },
-    { color: "#c94040", from: 0.85,to: 1.0  },
+    { color: "#5cb88a", from: 0,    to: 0.2  },
+    { color: "#b8b022", from: 0.2,  to: 0.4  },
+    { color: "#d9941a", from: 0.4,  to: 0.65 },
+    { color: "#c4621e", from: 0.65, to: 0.85 },
+    { color: "#be3535", from: 0.85, to: 1.0  },
   ];
 
-  const W = 280, H = 160;
-  const CX = W / 2, CY = H - 20;
-  const R = 110;
-  // Arc from 180° to 0° (left to right)
-  const startA = Math.PI, endA = 0;
+  // SVG dimensions — larger for readability
+  const W = 360, H = 220;
+  const CX = W / 2, CY = 186;
+  const R = 148, rIn = 110;
+  const GAP = 0.012; // angular gap between zones (in t-units)
 
-  function arcPath(r, a1, a2, color, rIn = r - 22) {
-    const x1o = CX + r * Math.cos(a1), y1o = CY + r * Math.sin(a1);
-    const x2o = CX + r * Math.cos(a2), y2o = CY + r * Math.sin(a2);
-    const x1i = CX + rIn * Math.cos(a2), y1i = CY + rIn * Math.sin(a2);
-    const x2i = CX + rIn * Math.cos(a1), y2i = CY + rIn * Math.sin(a1);
-    const large = Math.abs(a2 - a1) > Math.PI ? 1 : 0;
-    return `<path d="M ${x1o} ${y1o} A ${r} ${r} 0 ${large} 1 ${x2o} ${y2o} L ${x1i} ${y1i} A ${rIn} ${rIn} 0 ${large} 0 ${x2i} ${y2i} Z" fill="${color}" />`;
+  // angle(t) = π*(t-1)  maps t∈[0,1] → [-π, 0]
+  // sin is ≤ 0 in this range → points are above CY ✓
+  // sweep=0 (CCW in screen coords) draws the upper arc from a1→a2
+  function zoneArc(from, to, color) {
+    const a1 = Math.PI * (from - 1) + GAP * Math.PI;
+    const a2 = Math.PI * (to   - 1) - GAP * Math.PI;
+    const span = to - from;
+    const large = span > 0.5 ? 1 : 0;
+    const x1o = CX + R    * Math.cos(a1), y1o = CY + R    * Math.sin(a1);
+    const x2o = CX + R    * Math.cos(a2), y2o = CY + R    * Math.sin(a2);
+    const x1i = CX + rIn  * Math.cos(a2), y1i = CY + rIn  * Math.sin(a2);
+    const x2i = CX + rIn  * Math.cos(a1), y2i = CY + rIn  * Math.sin(a1);
+    // Outer arc CCW (sweep=0) → upper path; inner arc CW (sweep=1) → return path
+    return `<path d="M ${x1o.toFixed(1)} ${y1o.toFixed(1)} A ${R} ${R} 0 ${large} 0 ${x2o.toFixed(1)} ${y2o.toFixed(1)} L ${x1i.toFixed(1)} ${y1i.toFixed(1)} A ${rIn} ${rIn} 0 ${large} 1 ${x2i.toFixed(1)} ${y2i.toFixed(1)} Z" fill="${color}" />`;
   }
 
-  let arcs = "";
-  zones.forEach(z => {
-    const a1 = startA + (startA - endA) * (1 - z.from);  // reversed: left=low
-    const a2 = startA + (startA - endA) * (1 - z.to);
-    // Actually: angle = π - (certainty * π), so 0 certainty → π (left), 1 certainty → 0 (right)
-    const ta1 = Math.PI - z.to * Math.PI;
-    const ta2 = Math.PI - z.from * Math.PI;
-    arcs += arcPath(R, ta1, ta2, z.color);
-  });
+  const arcs = zones.map(z => zoneArc(z.from, z.to, z.color)).join("\n");
 
-  // Needle
-  const needleAngle = Math.PI - certainty * Math.PI;
-  const nx = CX + (R - 5) * Math.cos(needleAngle);
-  const ny = CY + (R - 5) * Math.sin(needleAngle);
+  // Needle angle: t=certainty → a = π*(certainty-1)
+  const needleAngle = Math.PI * (certainty - 1);
+  const nLen = R - 12;
+  const nx = CX + nLen * Math.cos(needleAngle);
+  const ny = CY + nLen * Math.sin(needleAngle);
 
-  // Label
+  // Tick marks at zone boundaries for scale reference
+  const ticks = [0, 0.2, 0.4, 0.65, 0.85, 1].map(t => {
+    const a = Math.PI * (t - 1);
+    const x1 = CX + (rIn - 6) * Math.cos(a), y1 = CY + (rIn - 6) * Math.sin(a);
+    const x2 = CX + (R + 6)   * Math.cos(a), y2 = CY + (R + 6)   * Math.sin(a);
+    return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="var(--surface-1)" stroke-width="2"/>`;
+  }).join("\n");
+
   const labelIdx = Math.min(4, Math.floor(certainty * 5));
   const raceLabel = labels[labelIdx];
-
-  // Gap label
   const gapPct = Math.round(gap * 100);
-  const topTitle = (cards[0]?.title ?? "—").length > 18
-    ? (cards[0]?.title ?? "—").slice(0, 16) + "…"
+  const topTitle = (cards[0]?.title ?? "—").length > 22
+    ? (cards[0]?.title ?? "—").slice(0, 20) + "…"
     : (cards[0]?.title ?? "—");
+
+  // Edge label positions (just outside left/right ends of the arc)
+  const leftA = Math.PI * (0 - 1);   // = -π → left
+  const rightA = Math.PI * (1 - 1);  // = 0  → right
+  const lx = CX + (R + 14) * Math.cos(leftA),  ly = CY + (R + 14) * Math.sin(leftA);
+  const rx = CX + (R + 14) * Math.cos(rightA), ry = CY + (R + 14) * Math.sin(rightA);
 
   el.innerHTML = `
     <div class="gauge-layout">
       <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="gauge-svg">
         ${arcs}
+        ${ticks}
+        <!-- Needle shadow -->
+        <line x1="${CX}" y1="${CY}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}"
+          stroke="rgba(0,0,0,0.35)" stroke-width="5" stroke-linecap="round" />
         <!-- Needle -->
-        <line x1="${CX}" y1="${CY}" x2="${nx}" y2="${ny}"
-          stroke="#1a1a2e" stroke-width="3" stroke-linecap="round" />
-        <circle cx="${CX}" cy="${CY}" r="6" fill="#1a1a2e" />
-        <!-- Labels -->
-        <text x="14" y="${CY - 5}" class="gauge-edge-label">Open</text>
-        <text x="${W - 14}" y="${CY - 5}" text-anchor="end" class="gauge-edge-label">Lock</text>
+        <line x1="${CX}" y1="${CY}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}"
+          stroke="#f0e8d8" stroke-width="3.5" stroke-linecap="round" />
+        <!-- Hub -->
+        <circle cx="${CX}" cy="${CY}" r="9" fill="#1a1a2e" stroke="#f0e8d8" stroke-width="2"/>
+        <!-- Edge labels -->
+        <text x="${lx.toFixed(1)}" y="${(ly + 5).toFixed(1)}" text-anchor="middle" class="gauge-edge-label">Open</text>
+        <text x="${rx.toFixed(1)}" y="${(ry + 5).toFixed(1)}" text-anchor="middle" class="gauge-edge-label">Lock</text>
+        <!-- Gap stat in center -->
+        <text x="${CX}" y="${(CY + 22).toFixed(1)}" text-anchor="middle" class="gauge-gap-label">${gapPct}pp lead</text>
       </svg>
       <div class="gauge-readout">
         <strong class="gauge-label">${escapeHtml(raceLabel)}</strong>

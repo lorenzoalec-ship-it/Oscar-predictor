@@ -1501,9 +1501,18 @@ main {
 .gauge-svg { overflow: visible; }
 
 .gauge-edge-label {
-  font-size: 9px;
+  font-size: 11px;
   fill: var(--ink-muted);
   font-family: inherit;
+  font-weight: 600;
+}
+
+.gauge-gap-label {
+  font-size: 12px;
+  fill: var(--ink-muted);
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .gauge-readout { text-align: center; }
