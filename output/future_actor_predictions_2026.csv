@@ -1,76 +1,39 @@
 rank,name,film,win_probability,prior_nominations,prior_wins,tmdb_person_id,profile_url,sag_nom,sag_win,globe_nom,globe_win,bafta_nom,bafta_win,tomatometer_rating,metacritic_score,forecast_season,previous_rank,rank_delta,movement
-1,Joe Keery,Cold Storage,0.04513544254017965,0,0,1467219.0,https://image.tmdb.org/t/p/w185/4DrWP7WP1c2XYlmcgfFSma3J9z3.jpg,0,0,0,0,0,0,80.0,0.0,early,,,new
-2,Jacob Elordi,"""Wuthering Heights""",0.03648190487808453,0,0,2034418.0,https://image.tmdb.org/t/p/w185/qZNRPWCP2c5d0YaYLTzHXU9Rdoe.jpg,0,0,0,0,0,0,58.0,0.0,early,,,new
-3,Tyriq Withers,Reminders of Him,0.03648190487808453,0,0,3052321.0,https://image.tmdb.org/t/p/w185/mAKuI4myaqzM0y8rPNItWXCDo3h.jpg,0,0,0,0,0,0,57.0,0.0,early,,,new
-4,Karl Urban,The Bluff,0.035976088300985185,0,0,1372.0,https://image.tmdb.org/t/p/w185/6CkZLwEJxfqqcJHyeXegMAvOlPh.jpg,0,0,0,0,0,0,54.0,0.0,early,,,new
-5,Paul Dano,The Wizard of the Kremlin,0.035976088300985185,0,0,17142.0,https://image.tmdb.org/t/p/w185/kwxJ98dHuFOZNAZuri5I9cMEX7q.jpg,0,0,0,0,0,0,52.0,0.0,early,,,new
-6,Jermaine Fowler,Night Patrol,0.035976088300985185,0,0,1488960.0,https://image.tmdb.org/t/p/w185/tUovrCcFKncccMY7yarqeLBeVPk.jpg,0,0,0,0,0,0,53.0,0.0,early,,,new
-7,Troy Kotsur,In Cold Light,0.035976088300985185,0,0,1571661.0,https://image.tmdb.org/t/p/w185/24K3og12jGBGL9dqH5OYFdjF9wu.jpg,0,0,0,0,0,0,55.0,0.0,early,,,new
-8,Matt Johnson,Nirvanna the Band the Show the Movie,0.031856923658271544,0,0,1144092.0,https://image.tmdb.org/t/p/w185/3COKJ3lpoXhxgRELso9kmwDH29b.jpg,0,0,0,0,0,0,98.0,0.0,early,,,new
-9,Steevan Glover,Kidnapped: Elizabeth Smart,0.03031414723454803,0,0,3722624.0,https://image.tmdb.org/t/p/w185/rA6tk3KTzOXPjlJUkZKwPbk9gmO.jpg,0,0,0,0,0,0,100.0,0.0,early,,,new
-10,Caleb McLaughlin,GOAT,0.02590887110816356,0,0,1474123.0,https://image.tmdb.org/t/p/w185/4jVS3EziBn7bf97ErxkW7jsdiLM.jpg,0,0,0,0,0,0,85.0,0.0,early,,,new
-11,Jeremy Holm,Redux Redux,0.02451233922635737,0,0,1595506.0,https://image.tmdb.org/t/p/w185/cOOu1DOY6s59oAMMjtXJ70RicNU.jpg,0,0,0,0,0,0,97.0,0.0,early,,,new
-12,Elvis Presley,EPiC: Elvis Presley in Concert,0.02451233922635737,0,0,21457.0,https://image.tmdb.org/t/p/w185/psf1wJUw48ALsfV3tN31FX0mDW5.jpg,0,0,0,0,0,0,97.0,0.0,early,,,new
-13,Dylan O'Brien,Send Help,0.018554578240554932,0,0,527393.0,https://image.tmdb.org/t/p/w185/xN3GdvIlqsR838gDoblhPH0numP.jpg,0,0,0,0,0,0,93.0,0.0,early,,,new
-14,Daveed Diggs,In the Blink of an Eye,0.01591394591269658,0,0,1652371.0,https://image.tmdb.org/t/p/w185/codalhZzB4LvJTSGOnOyrTEsqsF.jpg,0,0,0,0,0,0,16.0,0.0,early,,,new
-15,Nicholas Hamilton,Do Not Enter,0.01591394591269658,0,0,1504947.0,https://image.tmdb.org/t/p/w185/6XB730yU5XKJfEhV5W2zV8B9Fmh.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-16,Elijah Wood,Ready or Not: Here I Come,0.01591394591269658,0,0,109.0,https://image.tmdb.org/t/p/w185/ayARmqAe9Aab1zg6FjJG0u9MEBo.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-17,Donald Trump,Melania,0.01591394591269658,0,0,33663.0,https://image.tmdb.org/t/p/w185/nkQrZELEgxsvwDSlYkNfpFmsFx4.jpg,0,0,0,0,0,0,10.0,0.0,early,,,new
-18,Ryan Phillippe,One Mile: Chapter One,0.01591394591269658,0,0,11864.0,https://image.tmdb.org/t/p/w185/fgneZFXn0fGG1o7tMzJvHqfHHF7.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-19,Djimon Hounsou,Twisted,0.01591394591269658,0,0,938.0,https://image.tmdb.org/t/p/w185/tpvtxxvCx2Mb5DV632hmuYlHoiY.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-20,Philip Winchester,The Internship,0.01591394591269658,0,0,58428.0,https://image.tmdb.org/t/p/w185/oc7lc2d98lM393blvmFfAGnXSMf.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-21,Skylar Astin,F Valentine's Day,0.01591394591269658,0,0,73128.0,https://image.tmdb.org/t/p/w185/dx6xbrerLNKHbUSOdTI68h7qrE3.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-22,James McAvoy,Pose,0.01591394591269658,0,0,5530.0,https://image.tmdb.org/t/p/w185/u4REKbm3zhFI2J5tVyqRovGRYUJ.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-23,Frank Grillo,Misdirection,0.01591394591269658,0,0,81685.0,https://image.tmdb.org/t/p/w185/kuEco4vo1xrsM8DyrNSZUEi593P.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-24,Pepe Barroso,Love Me Love Me,0.01591394591269658,0,0,3791174.0,https://image.tmdb.org/t/p/w185/1aclLzISTojUZ9CrKsRcI1eIJls.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-25,Stephen Lang,Hellfire,0.01591394591269658,0,0,32747.0,https://image.tmdb.org/t/p/w185/gnO5VfkDgA2fsHweD0622LUY3Hu.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-26,Djimon Hounsou,Thrash,0.01591394591269658,0,0,938.0,https://image.tmdb.org/t/p/w185/tpvtxxvCx2Mb5DV632hmuYlHoiY.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-27,Ryan Phillippe,One Mile: Chapter Two,0.01591394591269658,0,0,11864.0,https://image.tmdb.org/t/p/w185/fgneZFXn0fGG1o7tMzJvHqfHHF7.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-28,Michael Jai White,Oscar Shaw,0.01591394591269658,0,0,64856.0,https://image.tmdb.org/t/p/w185/YPoHYuzR37wFpPpwEXZYQlhLln.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-29,Alex Honnold,Skyscraper Live,0.01591394591269658,0,0,107800.0,https://image.tmdb.org/t/p/w185/jKpVo1wTFK7VoCULHFKpoxDgHRw.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-30,Keanu Reeves,Outcome,0.01591394591269658,0,0,6384.0,https://image.tmdb.org/t/p/w185/8RZLOyYGsoRe9p44q3xin9QkMHv.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-31,Scott Mechlowicz,The Confession,0.01591394591269658,0,0,41464.0,https://image.tmdb.org/t/p/w185/2PMsSnuukuRmHCKcQqqCnD0MIN8.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-32,Garry Kasparov,Queen of Chess,0.01470890221512056,0,0,225958.0,https://image.tmdb.org/t/p/w185/vOE9BQVsU6kYQjK2zRdexDNLZBH.jpg,0,0,0,0,0,0,88.0,0.0,early,,,new
-33,Jaime M. Callica,Bodycam,0.01470890221512056,0,0,1476624.0,https://image.tmdb.org/t/p/w185/bMdYe1mrsvLp638lNqTqQELroNr.jpg,0,0,0,0,0,0,88.0,0.0,early,,,new
-34,Brenton Thwaites,We Bury the Dead,0.01470890221512056,0,0,1017347.0,https://image.tmdb.org/t/p/w185/4jrtVjdIGJpmgevEPRuIIU9HWcO.jpg,0,0,0,0,0,0,88.0,0.0,early,,,new
-35,Stephen Graham,Good Boy,0.012382439983689469,0,0,1115.0,https://image.tmdb.org/t/p/w185/yguEO9zFvuccq87kOJpFLsmUgvs.jpg,0,0,0,0,0,0,87.0,0.0,early,,,new
-36,Bobby Moynihan,Hoppers,0.011956677004601303,0,0,452205.0,https://image.tmdb.org/t/p/w185/gOvwNz5joi5yWJ7dAhuF8WA2aas.jpg,0,0,0,0,0,0,94.0,0.0,early,,,new
-37,Chris Pratt,The Super Mario Galaxy Movie,0.011301279542080966,0,0,73457.0,https://image.tmdb.org/t/p/w185/cRH6HPAQ98PlOwwEvhYO4CM9lwu.jpg,0,0,0,0,0,0,43.0,0.0,early,,,new
-38,Tyler Perry,Joe's College Road Trip,0.011301279542080966,0,0,80602.0,https://image.tmdb.org/t/p/w185/8KU0OizemVLrERXt5HJIa0PAkIN.jpg,0,0,0,0,0,0,42.0,0.0,early,,,new
-39,Glen Powell,How to Make a Killing,0.011301279542080966,0,0,83271.0,https://image.tmdb.org/t/p/w185/fUnIaJkdgvQTztyR1nLeUceSzly.jpg,0,0,0,0,0,0,44.0,0.0,early,,,new
-40,Gerard Butler,Greenland 2: Migration,0.011301279542080966,0,0,17276.0,https://image.tmdb.org/t/p/w185/i54XoxYieuff2w6MwyfwVUBvmR0.jpg,0,0,0,0,0,0,48.0,0.0,early,,,new
-41,Paul Sparks,The Mortuary Assistant,0.011301279542080966,0,0,167564.0,https://image.tmdb.org/t/p/w185/cQnCJI94lje55gZ7kEQ7YZUQPDb.jpg,0,0,0,0,0,0,37.0,0.0,early,,,new
-42,Method Man,Relationship Goals,0.01088224993580668,0,0,5384.0,https://image.tmdb.org/t/p/w185/mYJFxOcrda410rS5JHPf0nPuimZ.jpg,0,0,0,0,0,0,19.0,0.0,early,,,new
-43,Mason Gooding,Scream 7,0.01088224993580668,0,0,2174509.0,https://image.tmdb.org/t/p/w185/bmlry1xqBzNgv8Chm783ss93Cvg.jpg,0,0,0,0,0,0,30.0,0.0,early,,,new
-44,Chris Pratt,Mercy,0.01088224993580668,0,0,73457.0,https://image.tmdb.org/t/p/w185/cRH6HPAQ98PlOwwEvhYO4CM9lwu.jpg,0,0,0,0,0,0,25.0,0.0,early,,,new
-45,Jeremy Irvine,Return to Silent Hill,0.01088224993580668,0,0,225692.0,https://image.tmdb.org/t/p/w185/wnyLs0r9j1IB4zK2QBkgg2TyAzZ.jpg,0,0,0,0,0,0,18.0,0.0,early,,,new
-46,Kit Harington,The Dreadful,0.01088224993580668,0,0,239019.0,https://image.tmdb.org/t/p/w185/iGXlJbExWwZmo9sUDsYuzf4Sv4y.jpg,0,0,0,0,0,0,36.0,0.0,early,,,new
-47,Mitchell Hope,Killer Whale,0.01088224993580668,0,0,1421393.0,https://image.tmdb.org/t/p/w185/gpuRDlEhFUvqju2kmzfl6ijWMjR.jpg,0,0,0,0,0,0,20.0,0.0,early,,,new
-48,Richard Brake,The Strangers: Chapter 3,0.01088224993580668,0,0,3901.0,https://image.tmdb.org/t/p/w185/JwsiErANShzPSdYsNoiNYdrSg1.jpg,0,0,0,0,0,0,17.0,0.0,early,,,new
-49,Cillian Murphy,Peaky Blinders: The Immortal Man,0.009595682152642669,1,1,2037.0,https://image.tmdb.org/t/p/w185/2lKs67r7FI4bPu0AXxMUJZxmUXn.jpg,0,0,0,0,0,0,90.0,0.0,early,1.0,-48.0,down
-50,Adam DiMarco,undertone,0.009000419601008997,0,0,936932.0,https://image.tmdb.org/t/p/w185/eYEgtlwO7aelRf8PqCh50YEAZU2.jpg,0,0,0,0,0,0,73.0,0.0,early,,,new
-51,Ralph Fiennes,28 Years Later: The Bone Temple,0.005988566882003301,2,0,5469.0,https://image.tmdb.org/t/p/w185/pCnVXH1Uo2ODoOit4UXni8OD9VB.jpg,0,0,0,0,0,0,92.0,0.0,early,,,new
-52,Chris Hemsworth,Crime 101,0.004795033723672992,0,0,74568.0,https://image.tmdb.org/t/p/w185/piQGdoIQOF3C1EI5cbYZLAW1gfj.jpg,0,0,0,0,0,0,89.0,0.0,early,,,new
-53,Chris Smither,The Singers,0.004795033723672992,0,0,5287521.0,,0,0,0,0,0,0,90.0,0.0,early,,,new
-54,Kevin James,Solo Mio,0.004575775466826298,0,0,32895.0,https://image.tmdb.org/t/p/w185/3WPW5duZyQcjveefxwLULgIyhM0.jpg,0,0,0,0,0,0,83.0,0.0,early,,,new
-55,Sam Rockwell,"Good Luck, Have Fun, Don't Die",0.004575775466826298,0,0,6807.0,https://image.tmdb.org/t/p/w185/afYhNpLwpa65Yy0Q0g00FNFhzx5.jpg,0,0,0,0,0,0,83.0,0.0,early,,,new
-56,Bill Skarsgård,Dead Man's Wire,0.0036792614437693035,0,0,137905.0,https://image.tmdb.org/t/p/w185/xBXLx1m0uzhXIbY3wN8lmPGeUHl.jpg,0,0,0,0,0,0,92.0,0.0,early,,,new
-57,Jason Statham,Shelter,0.0032143411738616012,0,0,976.0,https://image.tmdb.org/t/p/w185/pXGSq2UpcDE2NMF8LR56QZf5U1q.jpg,0,0,0,0,0,0,65.0,0.0,early,,,new
-58,Paterson Joseph,They Will Kill You,0.0032143411738616012,0,0,19868.0,https://image.tmdb.org/t/p/w185/7CIVAl4HiuWrmp4r8Jk09sqxTBy.jpg,0,0,0,0,0,0,63.0,0.0,early,,,new
-59,Billy Ray Cyrus,Hannah Montana 20th Anniversary Special,0.0032143411738616012,0,0,78887.0,https://image.tmdb.org/t/p/w185/ly0Ejh5micQppq2L6UJvbl8Y674.jpg,0,0,0,0,0,0,60.0,0.0,early,,,new
-60,André Holland,The Dutchman,0.0032143411738616012,0,0,459980.0,https://image.tmdb.org/t/p/w185/riYqFOgYLYH4Hw8p2JYTw5lXGDE.jpg,0,0,0,0,0,0,64.0,0.0,early,,,new
-61,Mark Fischbach,Iron Lung,0.0032143411738616012,0,0,1494060.0,https://image.tmdb.org/t/p/w185/2y59nq7vipTBdRMmMTsy1d4HeiG.jpg,0,0,0,0,0,0,61.0,0.0,early,,,new
-62,Sky Yang,Whistle,0.0032143411738616012,0,0,2388828.0,https://image.tmdb.org/t/p/w185/vOkkOgn7CrSHY1pecVr5p8ZHIcB.jpg,0,0,0,0,0,0,64.0,0.0,early,,,new
-63,Alan Ritchson,War Machine,0.0032143411738616012,0,0,64295.0,https://image.tmdb.org/t/p/w185/92YNEEpCyugkTzPprJwZpvVtvuK.jpg,0,0,0,0,0,0,69.0,0.0,early,,,new
-64,Alexander Skarsgård,The Moment,0.0032143411738616012,0,0,28846.0,https://image.tmdb.org/t/p/w185/6VNNddrSrIVgdzhXr4Zg89gmOzY.jpg,0,0,0,0,0,0,67.0,0.0,early,,,new
-65,Dave Bautista,The Wrecking Crew,0.0029921211552977702,0,0,543530.0,https://image.tmdb.org/t/p/w185/snk6JiXOOoRjPtHU5VMoy6qbd32.jpg,0,0,0,0,0,0,75.0,0.0,early,,,new
-66,Robert Pattinson,The Drama,0.0029921211552977702,0,0,11288.0,https://image.tmdb.org/t/p/w185/3qZ09UE7lN6AtorfXFRYpEtSY93.jpg,0,0,0,0,0,0,76.0,0.0,early,,,new
-67,Troy Kotsur,Primate,0.0029921211552977702,0,0,1571661.0,https://image.tmdb.org/t/p/w185/24K3og12jGBGL9dqH5OYFdjF9wu.jpg,0,0,0,0,0,0,78.0,0.0,early,,,new
-68,Jason Biggs,Untitled Home Invasion Romance,0.0029921211552977702,0,0,21593.0,https://image.tmdb.org/t/p/w185/3nRgOQylYbNuDiddtNoh8uWTz5P.jpg,0,0,0,0,0,0,77.0,0.0,early,,,new
-69,Gaten Matarazzo,Pizza Movie,0.0029921211552977702,0,0,1653291.0,https://image.tmdb.org/t/p/w185/qOwnmR5gbOT6ygp17YyLlEKXD38.jpg,0,0,0,0,0,0,78.0,0.0,early,,,new
-70,Louis Theroux,Louis Theroux: Inside the Manosphere,0.0029921211552977702,0,0,219396.0,https://image.tmdb.org/t/p/w185/bd1aUigEuidrND9C1vumCN3pC0o.jpg,0,0,0,0,0,0,78.0,0.0,early,,,new
-71,James Marsden,Mike & Nick & Nick & Alice,0.0029921211552977702,0,0,11006.0,https://image.tmdb.org/t/p/w185/gmM9kCBzMeSGmkVXJGAkm25i9pe.jpg,0,0,0,0,0,0,78.0,0.0,early,,,new
-72,Christian Bale,The Bride!,0.0007515380959255518,2,0,3894.0,https://image.tmdb.org/t/p/w185/7Pxez9J8fuPd2Mn9kex13YALrCQ.jpg,0,0,0,0,0,0,57.0,55.0,early,,,new
-73,Tom Blyth,People We Meet on Vacation,0.00013511724746178286,0,0,1524100.0,https://image.tmdb.org/t/p/w185/q8bkN1GvXqjs1ZGFYWViH9o2WDq.jpg,0,0,0,0,0,0,76.0,50.0,early,,,new
-74,Matt Damon,The Rip,9.449380790035265e-05,2,0,1892.0,https://image.tmdb.org/t/p/w185/At3JgvaNeEN4Z4ESKlhhes85Xo3.jpg,0,0,0,0,0,0,79.0,63.0,early,,,new
-75,Ryan Gosling,Project Hail Mary,9.19233925275958e-05,2,0,30614.0,https://image.tmdb.org/t/p/w185/lyUyVARQKhGxaxy0FbPJCQRpiaW.jpg,0,0,0,0,0,0,94.0,77.0,early,2.0,-73.0,down
+1,Joe Keery,Cold Storage,0.0956399185858377,0,0,1467219.0,https://image.tmdb.org/t/p/w185/4DrWP7WP1c2XYlmcgfFSma3J9z3.jpg,0,0,0,0,0,0,80.0,0.0,early,1,0,same
+2,Jacob Elordi,"""Wuthering Heights""",0.0872220526294023,0,0,2034418.0,https://image.tmdb.org/t/p/w185/qZNRPWCP2c5d0YaYLTzHXU9Rdoe.jpg,0,0,0,0,0,0,58.0,0.0,early,2,0,same
+3,Paul Dano,The Wizard of the Kremlin,0.0771446249996575,0,0,17142.0,https://image.tmdb.org/t/p/w185/kwxJ98dHuFOZNAZuri5I9cMEX7q.jpg,0,0,0,0,0,0,52.0,0.0,early,5,2,up
+4,Karl Urban,The Bluff,0.0771446249996575,0,0,1372.0,https://image.tmdb.org/t/p/w185/6CkZLwEJxfqqcJHyeXegMAvOlPh.jpg,0,0,0,0,0,0,54.0,0.0,early,4,0,same
+5,Steevan Glover,Kidnapped: Elizabeth Smart,0.0663255296393216,0,0,3722624.0,https://image.tmdb.org/t/p/w185/rA6tk3KTzOXPjlJUkZKwPbk9gmO.jpg,0,0,0,0,0,0,100.0,0.0,early,9,4,up
+6,Caleb McLaughlin,GOAT,0.05492699722963971,0,0,1474123.0,https://image.tmdb.org/t/p/w185/4jVS3EziBn7bf97ErxkW7jsdiLM.jpg,0,0,0,0,0,0,85.0,0.0,early,10,4,up
+7,Elvis Presley,EPiC: Elvis Presley in Concert,0.05282142277375664,0,0,21457.0,https://image.tmdb.org/t/p/w185/psf1wJUw48ALsfV3tN31FX0mDW5.jpg,0,0,0,0,0,0,97.0,0.0,early,12,5,up
+8,Jeremy Holm,Redux Redux,0.05282142277375664,0,0,1595506.0,https://image.tmdb.org/t/p/w185/cOOu1DOY6s59oAMMjtXJ70RicNU.jpg,0,0,0,0,0,0,97.0,0.0,early,11,3,up
+9,Dylan O'Brien,Send Help,0.04016124991228002,0,0,527393.0,https://image.tmdb.org/t/p/w185/xN3GdvIlqsR838gDoblhPH0numP.jpg,0,0,0,0,0,0,93.0,0.0,early,13,4,up
+10,Brenton Thwaites,We Bury the Dead,0.03217293394286375,0,0,1017347.0,https://image.tmdb.org/t/p/w185/4jrtVjdIGJpmgevEPRuIIU9HWcO.jpg,0,0,0,0,0,0,88.0,0.0,early,34,24,up
+11,Jaime M. Callica,Bodycam,0.03217293394286375,0,0,1476624.0,https://image.tmdb.org/t/p/w185/bMdYe1mrsvLp638lNqTqQELroNr.jpg,0,0,0,0,0,0,88.0,0.0,early,33,22,up
+12,Stephen Lang,Hellfire,0.029251690681912537,0,0,32747.0,https://image.tmdb.org/t/p/w185/gnO5VfkDgA2fsHweD0622LUY3Hu.jpg,0,0,0,0,0,0,0.0,0.0,early,25,13,up
+13,Pepe Barroso,Love Me Love Me,0.029251690681912537,0,0,3791174.0,https://image.tmdb.org/t/p/w185/1aclLzISTojUZ9CrKsRcI1eIJls.jpg,0,0,0,0,0,0,0.0,0.0,early,24,11,up
+14,Ryan Phillippe,One Mile: Chapter Two,0.029251690681912537,0,0,11864.0,https://image.tmdb.org/t/p/w185/fgneZFXn0fGG1o7tMzJvHqfHHF7.jpg,0,0,0,0,0,0,0.0,0.0,early,27,13,up
+15,Stephen Graham,Good Boy,0.025244603306803826,0,0,1115.0,https://image.tmdb.org/t/p/w185/yguEO9zFvuccq87kOJpFLsmUgvs.jpg,0,0,0,0,0,0,87.0,0.0,early,35,20,up
+16,Bobby Moynihan,Hoppers,0.02375951042829138,0,0,452205.0,https://image.tmdb.org/t/p/w185/gOvwNz5joi5yWJ7dAhuF8WA2aas.jpg,0,0,0,0,0,0,94.0,0.0,early,36,20,up
+17,Adam DiMarco,undertone,0.021543993107741712,0,0,936932.0,https://image.tmdb.org/t/p/w185/eYEgtlwO7aelRf8PqCh50YEAZU2.jpg,0,0,0,0,0,0,73.0,0.0,early,50,33,up
+18,Chris Pratt,The Super Mario Galaxy Movie,0.018374649587367887,0,0,73457.0,https://image.tmdb.org/t/p/w185/cRH6HPAQ98PlOwwEvhYO4CM9lwu.jpg,0,0,0,0,0,0,43.0,0.0,early,44,26,up
+19,Ralph Fiennes,28 Years Later: The Bone Temple,0.016513307579226328,2,0,5469.0,https://image.tmdb.org/t/p/w185/pCnVXH1Uo2ODoOit4UXni8OD9VB.jpg,0,0,0,0,0,0,92.0,0.0,early,51,32,up
+20,Cillian Murphy,Peaky Blinders: The Immortal Man,0.015654148204656687,1,1,2037.0,https://image.tmdb.org/t/p/w185/2lKs67r7FI4bPu0AXxMUJZxmUXn.jpg,0,0,0,0,0,0,90.0,0.0,early,49,29,up
+21,Chris Smither,The Singers,0.011529272098287816,0,0,5287521.0,,0,0,0,0,0,0,90.0,0.0,early,53,32,up
+22,Sam Rockwell,"Good Luck, Have Fun, Don't Die",0.011371004597929741,0,0,6807.0,https://image.tmdb.org/t/p/w185/afYhNpLwpa65Yy0Q0g00FNFhzx5.jpg,0,0,0,0,0,0,83.0,0.0,early,55,33,up
+23,Chris Hemsworth,Crime 101,0.011216963976118745,0,0,74568.0,https://image.tmdb.org/t/p/w185/piQGdoIQOF3C1EI5cbYZLAW1gfj.jpg,0,0,0,0,0,0,89.0,0.0,early,52,29,up
+24,Bill Skarsgård,Dead Man's Wire,0.009121769093834803,0,0,137905.0,https://image.tmdb.org/t/p/w185/xBXLx1m0uzhXIbY3wN8lmPGeUHl.jpg,0,0,0,0,0,0,92.0,0.0,early,56,32,up
+25,Louis Theroux,Louis Theroux: Inside the Manosphere,0.008377634605623473,0,0,219396.0,https://image.tmdb.org/t/p/w185/bd1aUigEuidrND9C1vumCN3pC0o.jpg,0,0,0,0,0,0,78.0,0.0,early,70,45,up
+26,Gaten Matarazzo,Pizza Movie,0.008377634605623473,0,0,1653291.0,https://image.tmdb.org/t/p/w185/qOwnmR5gbOT6ygp17YyLlEKXD38.jpg,0,0,0,0,0,0,78.0,0.0,early,69,43,up
+27,Dave Bautista,The Wrecking Crew,0.008377634605623473,0,0,543530.0,https://image.tmdb.org/t/p/w185/snk6JiXOOoRjPtHU5VMoy6qbd32.jpg,0,0,0,0,0,0,75.0,0.0,early,65,38,up
+28,Jason Biggs,Untitled Home Invasion Romance,0.008377634605623473,0,0,21593.0,https://image.tmdb.org/t/p/w185/3nRgOQylYbNuDiddtNoh8uWTz5P.jpg,0,0,0,0,0,0,77.0,0.0,early,68,40,up
+29,Troy Kotsur,Primate,0.008377634605623473,0,0,1571661.0,https://image.tmdb.org/t/p/w185/24K3og12jGBGL9dqH5OYFdjF9wu.jpg,0,0,0,0,0,0,78.0,0.0,early,67,38,up
+30,Robert Pattinson,The Drama,0.008377634605623473,0,0,11288.0,https://image.tmdb.org/t/p/w185/3qZ09UE7lN6AtorfXFRYpEtSY93.jpg,0,0,0,0,0,0,76.0,0.0,early,66,36,up
+31,James Marsden,Mike & Nick & Nick & Alice,0.008377634605623473,0,0,11006.0,https://image.tmdb.org/t/p/w185/gmM9kCBzMeSGmkVXJGAkm25i9pe.jpg,0,0,0,0,0,0,78.0,0.0,early,71,40,up
+32,Paterson Joseph,They Will Kill You,0.006091906471689301,0,0,19868.0,https://image.tmdb.org/t/p/w185/7CIVAl4HiuWrmp4r8Jk09sqxTBy.jpg,0,0,0,0,0,0,63.0,0.0,early,58,26,up
+33,Jason Statham,Shelter,0.006091906471689301,0,0,976.0,https://image.tmdb.org/t/p/w185/pXGSq2UpcDE2NMF8LR56QZf5U1q.jpg,0,0,0,0,0,0,65.0,0.0,early,57,24,up
+34,Sky Yang,Whistle,0.006091906471689301,0,0,2388828.0,https://image.tmdb.org/t/p/w185/vOkkOgn7CrSHY1pecVr5p8ZHIcB.jpg,0,0,0,0,0,0,64.0,0.0,early,62,28,up
+35,Christian Bale,The Bride!,0.0013847903264558208,2,0,3894.0,https://image.tmdb.org/t/p/w185/7Pxez9J8fuPd2Mn9kex13YALrCQ.jpg,0,0,0,0,0,0,57.0,55.0,early,72,37,up
+36,Tom Blyth,People We Meet on Vacation,0.0004037018985915454,0,0,1524100.0,https://image.tmdb.org/t/p/w185/q8bkN1GvXqjs1ZGFYWViH9o2WDq.jpg,0,0,0,0,0,0,76.0,50.0,early,73,37,up
+37,Ryan Gosling,Project Hail Mary,0.0003418108126052736,2,0,30614.0,https://image.tmdb.org/t/p/w185/lyUyVARQKhGxaxy0FbPJCQRpiaW.jpg,0,0,0,0,0,0,94.0,77.0,early,75,38,up
+38,Matt Damon,The Rip,0.0003125298528815403,2,0,1892.0,https://image.tmdb.org/t/p/w185/At3JgvaNeEN4Z4ESKlhhes85Xo3.jpg,0,0,0,0,0,0,79.0,63.0,early,74,36,up

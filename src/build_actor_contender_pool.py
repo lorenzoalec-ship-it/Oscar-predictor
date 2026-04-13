@@ -46,12 +46,20 @@ def _determine_forecast_season(year: int) -> str:
 
 
 def load_film_pool(year: int) -> pd.DataFrame:
-    """Load the Best Picture prediction pool as the base film set."""
+    """Load the Best Picture prediction pool as the base film set.
+
+    Filters to the top 40 films by BP probability to keep the actor pool clean
+    and focused on genuine prestige contenders.
+    """
     path = OUTPUT_DIR / f"future_best_picture_predictions_{year}.csv"
     if not path.exists():
         print(f"[actor] No BP pool at {path}, returning empty DataFrame")
         return pd.DataFrame(columns=["tmdb_id", "title", "tomatometer_rating", "metacritic_score"])
     df = pd.read_csv(path)
+    # Sort by BP probability and keep top 40 prestige contenders
+    if "best_picture_probability" in df.columns:
+        df = df.sort_values("best_picture_probability", ascending=False).head(40)
+        print(f"[actor] Filtered film pool to top {len(df)} prestige contenders.")
     return df[["tmdb_id", "title", "tomatometer_rating", "metacritic_score"]].copy()
 
 

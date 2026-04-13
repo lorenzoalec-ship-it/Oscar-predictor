@@ -134,6 +134,22 @@ def pull_credits_for_year(year: int):
     if "tmdb_id" not in movies_df.columns or "title" not in movies_df.columns:
         raise ValueError(f"Expected columns 'tmdb_id' and 'title' in {movies_path}")
 
+    # Prefer to pull credits only for the scored BP predictions pool (higher quality filter).
+    # Fall back to raw movies CSV if predictions file doesn't exist yet.
+    predictions_path = ROOT / "output" / f"future_best_picture_predictions_{year}.csv"
+    if predictions_path.exists():
+        preds_df = pd.read_csv(predictions_path)
+        # Only pull credits for films with a meaningful prestige score (top 40 or >1% BP prob)
+        if "best_picture_probability" in preds_df.columns:
+            preds_df = preds_df.sort_values("best_picture_probability", ascending=False)
+            threshold = max(preds_df["best_picture_probability"].iloc[39] if len(preds_df) > 40 else 0, 0.01)
+            preds_df = preds_df[preds_df["best_picture_probability"] >= threshold]
+        eligible_ids = set(preds_df["tmdb_id"].astype(int).tolist())
+        movies_df = movies_df[movies_df["tmdb_id"].astype(int).isin(eligible_ids)]
+        print(f"[tmdb_credits] Filtered to {len(movies_df)} prestige-eligible films from predictions pool.")
+    else:
+        print(f"[tmdb_credits] No predictions file found — pulling credits for all {len(movies_df)} films.")
+
     print(f"[tmdb_credits] Pulling credits for {len(movies_df)} films (year={year})...")
 
     records = []
