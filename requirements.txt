@@ -3,3 +3,4 @@ pandas>=2.0
 scikit-learn>=1.5
 scipy>=1.13
 anthropic>=0.25
+requests>=2.31
