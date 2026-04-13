@@ -584,7 +584,8 @@ main {
   padding: 16px;
 }
 
-.contender-rank {
+/* BP board big rank badge — scoped to contender-card only */
+.contender-card .contender-rank {
   display: grid;
   place-items: center;
   width: 72px;
@@ -1304,64 +1305,72 @@ main {
   border-radius: 10px;
 }
 
-.contender-rank {
+/* Live board row rank — clean, no background */
+.contender-row .contender-rank {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 2.25rem;
-  width: 2.25rem;
+  min-width: 2.5rem;
+  width: 2.5rem;
   flex-shrink: 0;
   text-align: center;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  height: auto;
 }
 
 .rank-num {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: var(--oxblood);
+  color: var(--ink);
   line-height: 1;
   font-family: "Baskerville", "Iowan Old Style", serif;
 }
 
 .rank-delta {
-  font-size: 0.68rem;
-  font-weight: 600;
-  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+  letter-spacing: 0.01em;
 }
 
-.rank-delta.up { color: var(--green, #247a58); }
-.rank-delta.down { color: var(--scarlet, #b82649); }
-.rank-delta.new { color: var(--gold, #c9a227); }
-.rank-delta.same { color: var(--ink-muted, #7b6c69); }
+.rank-delta.up   { color: #1a8a5a; }
+.rank-delta.down { color: #b82649; }
+.rank-delta.new  { color: #c79a4e; }
+.rank-delta.same { color: #9e8e8b; }
 
 .contender-profile {
   flex-shrink: 0;
 }
 
+/* Actor/category live board photos — portrait style */
 .contender-profile-img {
-  width: 64px;
-  height: 64px;
-  border-radius: 10px;
+  width: 56px;
+  height: 72px;
+  border-radius: 8px;
   object-fit: cover;
   object-position: top center;
   flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  display: block;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .contender-profile-placeholder {
-  width: 64px;
-  height: 64px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--oxblood), var(--scarlet));
+  width: 56px;
+  height: 72px;
+  border-radius: 8px;
+  background: linear-gradient(160deg, var(--oxblood-deep), var(--scarlet));
   color: var(--paper-soft);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-family: "Baskerville", "Iowan Old Style", serif;
   flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .contender-body {

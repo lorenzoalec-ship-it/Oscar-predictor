@@ -255,10 +255,21 @@ def run(year: int):
     scored["rank"] = range(1, len(scored) + 1)
     scored["forecast_season"] = _determine_forecast_season(year)
 
-    # Compute rank movement (compare to previous output if exists)
+    # Compute rank movement — compare to a stable "previous" snapshot so that
+    # a full pool rebuild doesn't wipe all movement history.
     out_path = OUTPUT_DIR / f"future_actor_predictions_{year}.csv"
+    prev_path = OUTPUT_DIR / f"future_actor_predictions_{year}_prev.csv"
+
+    # Save current file as prev snapshot BEFORE overwriting, but only if it
+    # contains a meaningfully different pool (avoids overwriting prev with same data).
     if out_path.exists():
-        prev = pd.read_csv(out_path)
+        import shutil
+        shutil.copy(out_path, prev_path)
+
+    # Load prev snapshot for movement comparison
+    snap_path = prev_path if prev_path.exists() else out_path
+    if snap_path.exists():
+        prev = pd.read_csv(snap_path)
         prev_ranks = dict(zip(prev["name"].str.upper(), prev["rank"]))
         deltas = []
         movements = []
