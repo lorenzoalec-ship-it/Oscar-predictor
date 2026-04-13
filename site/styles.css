@@ -79,6 +79,29 @@ body::before {
   gap: 24px;
   margin-bottom: 18px;
   animation: rise-in 550ms ease both;
+  flex-wrap: wrap;
+}
+
+.site-updated {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  text-align: right;
+  flex-shrink: 0;
+  align-self: flex-end;
+  padding-bottom: 2px;
+}
+
+.updated-label {
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  font-size: 0.65rem;
+  color: var(--gold);
+  margin-right: 0.25rem;
+}
+
+.updated-date {
+  font-weight: 500;
 }
 
 .section-tabs {
@@ -1285,21 +1308,25 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 2.5rem;
+  justify-content: center;
+  min-width: 2.25rem;
+  width: 2.25rem;
   flex-shrink: 0;
+  text-align: center;
 }
 
 .rank-num {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--ink, #161013);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--oxblood);
   line-height: 1;
+  font-family: "Baskerville", "Iowan Old Style", serif;
 }
 
 .rank-delta {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
 }
 
 .rank-delta.up { color: var(--green, #247a58); }
@@ -1312,25 +1339,29 @@ main {
 }
 
 .contender-profile-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
   object-fit: cover;
+  object-position: top center;
   flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
 }
 
 .contender-profile-placeholder {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--gold-gradient, linear-gradient(135deg, #b8860b, #ffd700));
-  color: #1a1a2e;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--oxblood), var(--scarlet));
+  color: var(--paper-soft);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-family: "Baskerville", "Iowan Old Style", serif;
   flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
 }
 
 .contender-body {

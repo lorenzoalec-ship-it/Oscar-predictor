@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
 
 TMDB_BASE = "https://api.themoviedb.org/3"
-TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w185"
+TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w300"
 RATE_LIMIT_DELAY = 0.25  # seconds between requests
 MAX_RETRIES = 3
 TOP_CAST_N = 5  # Only look at top N billed cast members

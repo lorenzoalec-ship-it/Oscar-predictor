@@ -775,7 +775,7 @@ function renderCategoryLiveNotice(categoryData, noticeId) {
 }
 
 function renderCategoryLiveBoard(categoryData, category) {
-  const contenders = categoryData.live_contenders ?? [];
+  const contenders = (categoryData.live_contenders ?? []).slice(0, 20);
   if (!contenders.length) return;
 
   // Find the panel in the correct tab
@@ -1137,11 +1137,23 @@ function renderSignalMatrix(cards) {
 // Main
 // ---------------------------------------------------------------------------
 
+function renderLastUpdated(meta) {
+  const el = document.getElementById("site-updated");
+  if (!el || !meta?.generated_at) return;
+  const d = new Date(meta.generated_at);
+  const formatted = d.toLocaleDateString("en-US", {
+    month: "short", day: "numeric", year: "numeric",
+    hour: "numeric", minute: "2-digit", timeZoneName: "short",
+  });
+  el.innerHTML = `<span class="updated-label">Updated</span> <span class="updated-date">${formatted}</span>`;
+}
+
 async function main() {
   initTabs();
   try {
     const data = await loadSiteData();
     const sections = [
+      () => renderLastUpdated(data.meta),
       () => renderHero(data),
       () => renderContenders(data.forecast_cards ?? []),
       () => renderDonut(data.forecast_cards ?? []),
