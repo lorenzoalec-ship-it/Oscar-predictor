@@ -50,12 +50,38 @@ def load_film_pool(year: int) -> pd.DataFrame:
 
     Filters to the top 40 films by BP probability to keep the actor pool clean
     and focused on genuine prestige contenders.
+
+    Exclusions applied:
+    - Animation (genre 16): voice roles do not qualify for acting awards
+    - Documentary (genre 99): non-fiction films are not eligible for acting Oscars
+    - Music/Concert (genre 10402): concert films and music docs are excluded
     """
+    # Genre IDs that disqualify a film from actor award contention
+    EXCLUDED_GENRES = {
+        16,     # Animation — voice roles
+        99,     # Documentary — non-fiction, not eligible for acting Oscars
+        10402,  # Music / Concert film
+    }
+
     path = OUTPUT_DIR / f"future_best_picture_predictions_{year}.csv"
     if not path.exists():
         print(f"[actor] No BP pool at {path}, returning empty DataFrame")
         return pd.DataFrame(columns=["tmdb_id", "title", "tomatometer_rating", "metacritic_score"])
     df = pd.read_csv(path)
+
+    # Filter out ineligible genres
+    if "genre_ids" in df.columns:
+        def _is_eligible(genre_str):
+            if pd.isna(genre_str) or not str(genre_str).strip():
+                return True
+            genres = {int(g.strip()) for g in str(genre_str).split(",") if g.strip().isdigit()}
+            return not genres.intersection(EXCLUDED_GENRES)
+        before = len(df)
+        df = df[df["genre_ids"].apply(_is_eligible)].copy()
+        removed = before - len(df)
+        if removed:
+            print(f"[actor] Excluded {removed} films with Animation/Documentary/Music genres.")
+
     # Sort by BP probability and keep top 40 prestige contenders
     if "best_picture_probability" in df.columns:
         df = df.sort_values("best_picture_probability", ascending=False).head(40)
@@ -117,6 +143,14 @@ def load_current_precursors(year: int, category: str = "actor") -> pd.DataFrame:
         result[col] = result[col].fillna(0).astype(int)
 
     return result
+
+
+# Actors who are deceased or otherwise ineligible for acting awards.
+# The genre filter handles most cases (e.g. concert films), but this list
+# catches edge cases like archival footage compilations.
+INELIGIBLE_ACTORS = {
+    "ELVIS PRESLEY",           # Deceased; appears via concert/archive films
+}
 
 
 def build_actor_pool(year: int) -> pd.DataFrame:
@@ -225,6 +259,13 @@ def build_actor_pool(year: int) -> pd.DataFrame:
         return pd.DataFrame()
 
     pool_df = pd.DataFrame(candidates).drop_duplicates(subset=["name", "film"]).reset_index(drop=True)
+
+    # Remove ineligible actors (deceased, non-performing credits, etc.)
+    before = len(pool_df)
+    pool_df = pool_df[~pool_df["name"].str.upper().isin(INELIGIBLE_ACTORS)].reset_index(drop=True)
+    removed = before - len(pool_df)
+    if removed:
+        print(f"[actor] Removed {removed} ineligible actor(s) from pool.")
 
     # Merge precursor signals
     precursors = load_current_precursors(year, "actor")
