@@ -31,6 +31,26 @@ from train_model import (
 
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def build_oscar_acting_lookup() -> dict:
+    """
+    Returns {normalized_name: {"nominations": N, "wins": W}}
+    for Best Actor in a Leading Role from the Oscar CSV.
+    """
+    try:
+        df = pd.read_csv(ROOT / "data" / "raw" / "the_oscar_award.csv")
+        leading = df[df["category"].str.upper().str.contains("ACTOR IN A LEADING ROLE", na=False)]
+        lookup = {}
+        for name, grp in leading.groupby("name"):
+            key = " ".join(str(name).upper().split())
+            lookup[key] = {
+                "nominations": int(len(grp)),
+                "wins": int(grp["winner"].sum()),
+            }
+        return lookup
+    except Exception:
+        return {}
 OUTPUT_DIR = ROOT / "output"
 SITE_DATA_PATH = ROOT / "site" / "data" / "site_data.json"
 SITE_DATA_JS_PATH = ROOT / "site" / "data" / "site_data.js"
@@ -700,6 +720,59 @@ def generate_movement_blurbs(cards: list[dict]) -> list[dict]:
     return enriched
 
 
+def generate_actor_movement_blurbs(contenders: list[dict], existing_blurbs: dict) -> list[dict]:
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
+        # Restore preserved blurbs
+        for c in contenders:
+            c["movement_blurb"] = existing_blurbs.get(c.get("name", ""), "")
+        return contenders
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=api_key)
+    except ImportError:
+        return contenders
+
+    for c in contenders:
+        try:
+            noms = c.get("oscar_nominations", 0)
+            wins = c.get("oscar_wins", 0)
+            hist = f"{wins} Oscar win(s), {noms} nomination(s)" if noms else "no prior Oscar nominations"
+            precursors = []
+            if c.get("sag_win"): precursors.append("SAG winner")
+            elif c.get("sag_nom"): precursors.append("SAG nominee")
+            if c.get("globe_win"): precursors.append("Globe winner")
+            elif c.get("globe_nom"): precursors.append("Globe nominee")
+            if c.get("bafta_win"): precursors.append("BAFTA winner")
+            elif c.get("bafta_nom"): precursors.append("BAFTA nominee")
+            precursor_str = ", ".join(precursors) if precursors else "no precursor wins yet"
+            mvmt = c.get("movement", "new")
+            delta = c.get("rank_delta", 0) or 0
+            mvmt_str = f"moved up {abs(delta)}" if mvmt == "up" else f"dropped {abs(delta)}" if mvmt == "down" else "new entry" if mvmt == "new" else "holding"
+
+            prompt = (
+                f"Actor: {c['name']}, Film: {c['film']}, "
+                f"Rank: #{c['rank']} ({mvmt_str}), "
+                f"Win probability: {round(c.get('win_probability', 0) * 100)}%, "
+                f"Oscar history: {hist}, "
+                f"Precursors: {precursor_str}, "
+                f"Tomatometer: {int(c.get('tomatometer_rating') or 0)}%, "
+                f"Metacritic: {int(c.get('metacritic_score') or 0)}. "
+                f"Write a single sharp sentence (max 25 words) explaining their standing."
+            )
+            msg = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=80,
+                system="You are a terse awards-season analyst writing single-sentence blurbs for a live Oscar contender board. No fluff. Max 25 words.",
+                messages=[{"role": "user", "content": prompt}],
+            )
+            c["movement_blurb"] = msg.content[0].text.strip()
+        except Exception:
+            c["movement_blurb"] = existing_blurbs.get(c.get("name", ""), "")
+
+    return contenders
+
+
 def build_category_payload(category: str) -> dict:
     """
     Run the walk-forward backtest for 'actor', 'actress', or 'director' and
@@ -767,6 +840,10 @@ def build_category_payload(category: str) -> dict:
     live_contenders = []
     if category == "actor" and live_path.exists():
         live_df = pd.read_csv(live_path)
+        # Sort by win_probability descending and cap at top 20 for the live board
+        if "win_probability" in live_df.columns:
+            live_df = live_df.sort_values("win_probability", ascending=False).head(20).reset_index(drop=True)
+            live_df["rank"] = live_df.index + 1
         for _, row in live_df.iterrows():
             lc = {
                 "rank": int(row.get("rank", 0)),
@@ -790,6 +867,27 @@ def build_category_payload(category: str) -> dict:
                 "movement": str(row.get("movement", "new")),
             }
             live_contenders.append(lc)
+
+    if category == "actor" and live_contenders:
+        oscar_lookup = build_oscar_acting_lookup()
+        for lc in live_contenders:
+            key = " ".join(lc["name"].upper().split())
+            hist = oscar_lookup.get(key, {"nominations": 0, "wins": 0})
+            lc["oscar_nominations"] = hist["nominations"]
+            lc["oscar_wins"] = hist["wins"]
+
+    if category == "actor" and live_contenders:
+        # Preserve existing blurbs before regenerating
+        existing_blurbs = {}
+        try:
+            with open(SITE_DATA_PATH) as f:
+                prev = json.load(f)
+                for lc in prev.get("actor_data", {}).get("live_contenders", []):
+                    if lc.get("movement_blurb"):
+                        existing_blurbs[lc["name"]] = lc["movement_blurb"]
+        except Exception:
+            pass
+        live_contenders = generate_actor_movement_blurbs(live_contenders, existing_blurbs)
 
     return {
         "label": label,

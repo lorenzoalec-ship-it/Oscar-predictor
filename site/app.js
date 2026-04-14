@@ -393,6 +393,60 @@ const SIGNAL_GROUPS = [
   },
 ];
 
+const ACTOR_SIGNAL_GROUPS = [
+  {
+    group: "Oscar Pedigree",
+    signals: [
+      { label: "Prior Leading-Role Nominations", desc: "Number of previous Best Actor/Actress Oscar nominations. One of the two strongest predictors — the Academy rewards returning nominees." },
+      { label: "Prior Oscar Wins", desc: "Past Best Actor/Actress wins. Previous winners face mixed momentum: the Academy sometimes avoids back-to-back, but win pedigree lifts baseline probability." },
+    ],
+  },
+  {
+    group: "Precursor Awards",
+    signals: [
+      { label: "SAG Nomination", desc: "Screen Actors Guild nomination for Outstanding Performance by a Male Actor in a Leading Role. Voted entirely by fellow actors — the most peer-reviewed signal." },
+      { label: "SAG Win", desc: "SAG win in the leading actor category. The single strongest in-season predictor for Best Actor. SAG and Oscar voters share the largest overlap of any guild." },
+      { label: "Golden Globe Nomination", desc: "Globe nomination in the Drama or Comedy/Musical category. Useful early signal before SAG and BAFTA ballots close." },
+      { label: "Golden Globe Win", desc: "Globe win. Drama category winners convert to Oscar wins at a meaningfully higher rate than Comedy/Musical winners." },
+      { label: "BAFTA Nomination", desc: "BAFTA nomination for Best Actor in a Leading Role. Strong overlap with Oscar nominators, particularly for international and prestige arthouse films." },
+      { label: "BAFTA Win", desc: "BAFTA win is one of the clearest Oscar leading indicators — roughly 60% of BAFTA Best Actor winners go on to win the Oscar in the modern era." },
+    ],
+  },
+  {
+    group: "Film Quality",
+    signals: [
+      { label: "Rotten Tomatoes Score", desc: "Tomatometer rating for the film. Critics' reception signals whether the performance is being recognized alongside a strong film — key in early season." },
+      { label: "Metacritic Score", desc: "Weighted average of critic reviews. Metacritic scores correlate more with awards-voter tastes than Tomatometer, particularly for prestige dramas." },
+    ],
+  },
+];
+
+const DIRECTOR_SIGNAL_GROUPS = [
+  {
+    group: "Oscar Pedigree",
+    signals: [
+      { label: "Prior Directing Nominations", desc: "Previous Best Director Oscar nominations. The Academy rarely gives the award to a first-time nominee — pedigree matters." },
+      { label: "Prior Directing Wins", desc: "Past Best Director wins. Back-to-back wins are rare but not unprecedented (Spielberg, Bigelow)." },
+    ],
+  },
+  {
+    group: "Guild & Precursor Awards",
+    signals: [
+      { label: "DGA Nomination", desc: "Directors Guild nomination. DGA and Oscar Best Director align more than 80% of the time in the modern era — the strongest single predictor for this category." },
+      { label: "DGA Win", desc: "DGA win. When the DGA and Oscar disagree, it's news. Since 2000, DGA winners have taken the Oscar roughly 85% of the time." },
+      { label: "Golden Globe Win", desc: "Globe Best Director win. Drama category is the relevant signal." },
+      { label: "BAFTA Win", desc: "BAFTA Best Director win. Strong overlap with Oscar director voters." },
+    ],
+  },
+  {
+    group: "Film Quality",
+    signals: [
+      { label: "Rotten Tomatoes Score", desc: "Critical reception of the film. Directors are judged on the whole film, so overall critical consensus matters more here than in acting categories." },
+      { label: "Metacritic Score", desc: "Weighted average of critic reviews. Prestige drama directors benefit most from strong Metacritic scores with awards-focused outlets." },
+    ],
+  },
+];
+
 function renderMetrics(data) {
   const metrics = data.metrics;
   const stack = document.getElementById("metric-stack");
@@ -835,7 +889,16 @@ function renderCategoryLiveBoard(categoryData, category) {
             <strong class="contender-name">${escapeHtml(c.name)}</strong>
             <span class="contender-film">${escapeHtml(c.film)}</span>
           </div>
+          ${(() => {
+            const noms = c.oscar_nominations ?? 0;
+            const wins = c.oscar_wins ?? 0;
+            if (noms === 0) return '';
+            const label = wins > 0 ? `${wins}× win${wins > 1 ? 's' : ''}` : `${noms}× nom${noms > 1 ? 's' : ''}`;
+            const cls = wins > 0 ? 'oscar-badge oscar-badge--win' : 'oscar-badge oscar-badge--nom';
+            return `<span class="${cls}">🏆 ${label}</span>`;
+          })()}
           ${badgesHtml}
+          ${c.movement_blurb ? `<p class="actor-blurb">${escapeHtml(c.movement_blurb)}</p>` : ""}
           ${probBarMarkup(c.win_probability)}
         </div>
         <div class="contender-pct">${pct}%</div>
@@ -862,6 +925,24 @@ function renderCategoryTable(categoryData, tableId) {
     .join("");
 }
 
+function renderCategorySignals(category) {
+  const groups = category === "actor" || category === "actress" ? ACTOR_SIGNAL_GROUPS : DIRECTOR_SIGNAL_GROUPS ?? ACTOR_SIGNAL_GROUPS;
+  const containerId = `${category}-signals-list`;
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = groups.map(group => `
+    <div class="signal-group">
+      <p class="signal-group-label">${group.group}</p>
+      ${group.signals.map(s => `
+        <div class="signal-row">
+          <span class="signal-name">${s.label}</span>
+          <span class="signal-desc">${s.desc}</span>
+        </div>
+      `).join("")}
+    </div>
+  `).join("");
+}
+
 function renderCategoryBoard(data, category) {
   const key = `${category}_data`;
   const categoryData = data[key];
@@ -871,6 +952,7 @@ function renderCategoryBoard(data, category) {
   renderCategoryAccuracyStrip(categoryData, `${category}-accuracy-strip`);
   renderCategoryLiveNotice(categoryData, `${category}-live-notice`);
   renderCategoryTable(categoryData, `${category}-history-table`);
+  renderCategorySignals(category);
 }
 
 // ---------------------------------------------------------------------------
