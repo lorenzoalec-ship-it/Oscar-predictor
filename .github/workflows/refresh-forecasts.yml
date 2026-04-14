@@ -60,6 +60,12 @@ jobs:
       - name: Score Best Actor contenders
         run: python src/build_actor_contender_pool.py --year $ELIGIBILITY_YEAR
 
+      - name: Score Best Actress contenders
+        run: python src/build_actress_contender_pool.py --year $ELIGIBILITY_YEAR
+
+      - name: Score Best Director contenders
+        run: python src/build_director_contender_pool.py --year $ELIGIBILITY_YEAR
+
       - name: Rebuild site data
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -69,7 +75,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add output/future_best_picture_predictions_*.csv output/future_actor_predictions_*.csv output/future_actor_predictions_*_prev.csv data/raw/tmdb_credits_*.csv data/raw/tmdb_movies_*.csv data/raw/manual_festival_flags.csv site/data/site_data.json site/data/site_data.js
+          git add output/future_best_picture_predictions_*.csv output/future_actor_predictions_*.csv output/future_actor_predictions_*_prev.csv output/future_actress_predictions_*.csv output/future_actress_predictions_*_prev.csv output/future_director_predictions_*.csv output/future_director_predictions_*_prev.csv data/raw/tmdb_credits_*.csv data/raw/tmdb_movies_*.csv data/raw/manual_festival_flags.csv site/data/site_data.json site/data/site_data.js
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

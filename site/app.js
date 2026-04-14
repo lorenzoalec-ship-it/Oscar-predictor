@@ -863,10 +863,15 @@ function renderCategoryLiveBoard(categoryData, category) {
     const arrowClass = mvmt === "up" ? "up" : mvmt === "down" ? "down" : mvmt === "new" ? "new" : "same";
     const pct = Math.round((c.win_probability ?? 0) * 100);
 
-    // Build precursor badges
+    // Build precursor badges — directors use DGA instead of SAG
     const badges = [];
-    if (c.sag_win) badges.push('<span class="award-badge win">★ SAG</span>');
-    else if (c.sag_nom) badges.push('<span class="award-badge nom">SAG</span>');
+    if (category === "director") {
+      if (c.dga_win) badges.push('<span class="award-badge win">★ DGA</span>');
+      else if (c.dga_nom) badges.push('<span class="award-badge nom">DGA</span>');
+    } else {
+      if (c.sag_win) badges.push('<span class="award-badge win">★ SAG</span>');
+      else if (c.sag_nom) badges.push('<span class="award-badge nom">SAG</span>');
+    }
     if (c.globe_win) badges.push('<span class="award-badge win">★ Globe</span>');
     else if (c.globe_nom) badges.push('<span class="award-badge nom">Globe</span>');
     if (c.bafta_win) badges.push('<span class="award-badge win">★ BAFTA</span>');

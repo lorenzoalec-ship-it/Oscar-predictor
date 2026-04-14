@@ -33,16 +33,16 @@ from train_model import (
 ROOT = Path(__file__).resolve().parent.parent
 
 
-def build_oscar_acting_lookup() -> dict:
+def build_oscar_acting_lookup(oscar_category: str = "ACTOR IN A LEADING ROLE") -> dict:
     """
     Returns {normalized_name: {"nominations": N, "wins": W}}
-    for Best Actor in a Leading Role from the Oscar CSV.
+    for the given Oscar category (e.g. ACTOR IN A LEADING ROLE, ACTRESS IN A LEADING ROLE, DIRECTING).
     """
     try:
         df = pd.read_csv(ROOT / "data" / "raw" / "the_oscar_award.csv")
-        leading = df[df["category"].str.upper().str.contains("ACTOR IN A LEADING ROLE", na=False)]
+        filtered = df[df["category"].str.upper().str.contains(oscar_category.upper(), na=False)]
         lookup = {}
-        for name, grp in leading.groupby("name"):
+        for name, grp in filtered.groupby("name"):
             key = " ".join(str(name).upper().split())
             lookup[key] = {
                 "nominations": int(len(grp)),
@@ -835,59 +835,86 @@ def build_category_payload(category: str) -> dict:
     # Jan-Mar = Oscar window for prior year's films
     if month <= 3:
         year = year - 1
-    live_path = ROOT / "output" / f"future_actor_predictions_{year}.csv"
+
+    # Map category → CSV filename and precursor signal columns
+    CATEGORY_LIVE_CONFIG = {
+        "actor": {
+            "csv": f"future_actor_predictions_{year}.csv",
+            "precursor_cols": ["sag_nom", "sag_win", "globe_nom", "globe_win", "bafta_nom", "bafta_win"],
+            "oscar_category": "ACTOR IN A LEADING ROLE",
+            "data_key": "actor_data",
+        },
+        "actress": {
+            "csv": f"future_actress_predictions_{year}.csv",
+            "precursor_cols": ["sag_nom", "sag_win", "globe_nom", "globe_win", "bafta_nom", "bafta_win"],
+            "oscar_category": "ACTRESS IN A LEADING ROLE",
+            "data_key": "actress_data",
+        },
+        "director": {
+            "csv": f"future_director_predictions_{year}.csv",
+            "precursor_cols": ["dga_nom", "dga_win", "globe_nom", "globe_win", "bafta_nom", "bafta_win"],
+            "oscar_category": "DIRECTING",
+            "data_key": "director_data",
+        },
+    }
 
     live_contenders = []
-    if category == "actor" and live_path.exists():
-        live_df = pd.read_csv(live_path)
-        # Sort by win_probability descending and cap at top 20 for the live board
-        if "win_probability" in live_df.columns:
-            live_df = live_df.sort_values("win_probability", ascending=False).head(20).reset_index(drop=True)
-            live_df["rank"] = live_df.index + 1
-        for _, row in live_df.iterrows():
-            lc = {
-                "rank": int(row.get("rank", 0)),
-                "name": str(row.get("name", "")),
-                "film": str(row.get("film", "")),
-                "win_probability": float(row.get("win_probability", 0)),
-                "prior_nominations": int(row.get("prior_nominations", 0)),
-                "prior_wins": int(row.get("prior_wins", 0)),
-                "profile_url": str(row.get("profile_url", "") or ""),
-                "sag_nom": int(row.get("sag_nom", 0)),
-                "sag_win": int(row.get("sag_win", 0)),
-                "globe_nom": int(row.get("globe_nom", 0)),
-                "globe_win": int(row.get("globe_win", 0)),
-                "bafta_nom": int(row.get("bafta_nom", 0)),
-                "bafta_win": int(row.get("bafta_win", 0)),
-                "tomatometer_rating": float(row.get("tomatometer_rating", 0)),
-                "metacritic_score": float(row.get("metacritic_score", 0)),
-                "forecast_season": str(row.get("forecast_season", "early")),
-                "previous_rank": int(row["previous_rank"]) if pd.notna(row.get("previous_rank")) else None,
-                "rank_delta": int(row["rank_delta"]) if pd.notna(row.get("rank_delta")) else None,
-                "movement": str(row.get("movement", "new")),
-            }
-            live_contenders.append(lc)
+    if category in CATEGORY_LIVE_CONFIG:
+        cfg = CATEGORY_LIVE_CONFIG[category]
+        live_path = ROOT / "output" / cfg["csv"]
+        precursor_cols = cfg["precursor_cols"]
 
-    if category == "actor" and live_contenders:
-        oscar_lookup = build_oscar_acting_lookup()
-        for lc in live_contenders:
-            key = " ".join(lc["name"].upper().split())
-            hist = oscar_lookup.get(key, {"nominations": 0, "wins": 0})
-            lc["oscar_nominations"] = hist["nominations"]
-            lc["oscar_wins"] = hist["wins"]
+        if live_path.exists():
+            live_df = pd.read_csv(live_path)
+            # Sort by win_probability descending and cap at top 20
+            if "win_probability" in live_df.columns:
+                live_df = live_df.sort_values("win_probability", ascending=False).head(20).reset_index(drop=True)
+                live_df["rank"] = live_df.index + 1
+            for _, row in live_df.iterrows():
+                lc = {
+                    "rank": int(row.get("rank", 0)),
+                    "name": str(row.get("name", "")),
+                    "film": str(row.get("film", "")),
+                    "win_probability": float(row.get("win_probability", 0)),
+                    "prior_nominations": int(row.get("prior_nominations", 0) or 0),
+                    "prior_wins": int(row.get("prior_wins", 0) or 0),
+                    "profile_url": str(row.get("profile_url", "") or ""),
+                    "tomatometer_rating": float(row.get("tomatometer_rating", 0) or 0),
+                    "metacritic_score": float(row.get("metacritic_score", 0) or 0),
+                    "forecast_season": str(row.get("forecast_season", "early")),
+                    "previous_rank": int(row["previous_rank"]) if pd.notna(row.get("previous_rank")) else None,
+                    "rank_delta": int(row["rank_delta"]) if pd.notna(row.get("rank_delta")) else None,
+                    "movement": str(row.get("movement", "new")),
+                    "oscar_nominations": 0,
+                    "oscar_wins": 0,
+                    "movement_blurb": "",
+                }
+                # Add precursor signal columns
+                for col in precursor_cols:
+                    lc[col] = int(row.get(col, 0) or 0)
+                live_contenders.append(lc)
 
-    if category == "actor" and live_contenders:
-        # Preserve existing blurbs before regenerating
-        existing_blurbs = {}
-        try:
-            with open(SITE_DATA_PATH) as f:
-                prev = json.load(f)
-                for lc in prev.get("actor_data", {}).get("live_contenders", []):
-                    if lc.get("movement_blurb"):
-                        existing_blurbs[lc["name"]] = lc["movement_blurb"]
-        except Exception:
-            pass
-        live_contenders = generate_actor_movement_blurbs(live_contenders, existing_blurbs)
+        # Oscar history badges
+        if live_contenders:
+            oscar_lookup = build_oscar_acting_lookup(cfg["oscar_category"])
+            for lc in live_contenders:
+                key = " ".join(lc["name"].upper().split())
+                hist = oscar_lookup.get(key, {"nominations": 0, "wins": 0})
+                lc["oscar_nominations"] = hist["nominations"]
+                lc["oscar_wins"] = hist["wins"]
+
+        # AI movement blurbs (actor only for now; expand to actress/director later)
+        if category == "actor" and live_contenders:
+            existing_blurbs = {}
+            try:
+                with open(SITE_DATA_PATH) as f:
+                    prev = json.load(f)
+                    for lc in prev.get("actor_data", {}).get("live_contenders", []):
+                        if lc.get("movement_blurb"):
+                            existing_blurbs[lc["name"]] = lc["movement_blurb"]
+            except Exception:
+                pass
+            live_contenders = generate_actor_movement_blurbs(live_contenders, existing_blurbs)
 
     return {
         "label": label,
