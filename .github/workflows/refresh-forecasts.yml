@@ -44,6 +44,9 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: python src/pull_future_movies.py --year $ELIGIBILITY_YEAR
 
+      - name: Pull festival selections
+        run: python src/pull_festival_selections.py --year $ELIGIBILITY_YEAR
+
       - name: Score future contenders
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
@@ -66,7 +69,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add output/future_best_picture_predictions_*.csv output/future_actor_predictions_*.csv output/future_actor_predictions_*_prev.csv data/raw/tmdb_credits_*.csv data/raw/tmdb_movies_*.csv site/data/site_data.json site/data/site_data.js
+          git add output/future_best_picture_predictions_*.csv output/future_actor_predictions_*.csv output/future_actor_predictions_*_prev.csv data/raw/tmdb_credits_*.csv data/raw/tmdb_movies_*.csv data/raw/manual_festival_flags.csv site/data/site_data.json site/data/site_data.js
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
