@@ -19,6 +19,267 @@
   --border-strong: rgba(102, 21, 42, 0.24);
   --shadow: 0 28px 70px rgba(78, 35, 39, 0.14);
   --shadow-strong: 0 34px 90px rgba(66, 19, 29, 0.26);
+
+  /* Dark mode transition */
+  --theme-transition: background 240ms ease, color 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+
+/* ── Dark Mode ─────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --paper: #0e0b0d;
+  --paper-soft: #1a1418;
+  --paper-deep: #090709;
+  --ink: #f0e6de;
+  --ink-soft: #c4b0aa;
+  --ink-muted: #8a7470;
+  --oxblood: #d4607a;
+  --oxblood-deep: #b84060;
+  --scarlet: #e0547a;
+  --blush: #c97070;
+  --gold: #d4a85a;
+  --gold-soft: #f0d898;
+  --green: #3aaa78;
+  --surface: rgba(28, 20, 24, 0.95);
+  --surface-strong: #221820;
+  --surface-muted: rgba(38, 28, 34, 0.95);
+  --border: rgba(212, 96, 122, 0.16);
+  --border-strong: rgba(212, 96, 122, 0.3);
+  --shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
+  --shadow-strong: 0 34px 90px rgba(0, 0, 0, 0.65);
+}
+
+[data-theme="dark"] html,
+[data-theme="dark"] body {
+  color-scheme: dark;
+}
+
+/* Dark mode body background */
+[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at top left, rgba(184, 64, 96, 0.12), transparent 22%),
+    radial-gradient(circle at top right, rgba(212, 168, 90, 0.08), transparent 20%),
+    linear-gradient(180deg, #0f0b0e 0%, #0d0a0c 38%, #0b080a 100%);
+}
+
+[data-theme="dark"] body::before {
+  background:
+    linear-gradient(90deg, transparent 0, transparent 84px, rgba(212, 96, 122, 0.04) 84px, rgba(212, 96, 122, 0.04) 86px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 16%);
+}
+
+[data-theme="dark"] html {
+  background: #0b080a;
+}
+
+/* Dark mode panels */
+[data-theme="dark"] .panel {
+  background: rgba(26, 18, 22, 0.96);
+}
+
+[data-theme="dark"] .panel::before {
+  background: linear-gradient(90deg, var(--oxblood-deep), var(--gold), rgba(212, 168, 90, 0.06));
+}
+
+[data-theme="dark"] .panel-head {
+  border-bottom-color: rgba(212, 96, 122, 0.1);
+}
+
+/* Dark mode section tabs */
+[data-theme="dark"] .section-tab {
+  background: rgba(28, 18, 24, 0.92);
+  border-color: rgba(212, 96, 122, 0.18);
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .section-tab:hover {
+  border-color: rgba(212, 96, 122, 0.36);
+  color: var(--oxblood);
+}
+
+[data-theme="dark"] .section-tab.is-active {
+  background: linear-gradient(135deg, rgba(180, 40, 70, 0.96), rgba(212, 96, 122, 0.9));
+}
+
+/* Dark mode hero film card */
+[data-theme="dark"] .hero-film {
+  background: linear-gradient(180deg, rgba(30, 20, 26, 0.98), rgba(22, 14, 18, 0.97));
+  border-color: rgba(212, 168, 90, 0.18);
+}
+
+[data-theme="dark"] .hero-film::after {
+  background: radial-gradient(circle, rgba(212, 168, 90, 0.08), transparent 66%);
+}
+
+[data-theme="dark"] .rank-badge {
+  background: rgba(212, 96, 122, 0.14);
+  color: var(--oxblood);
+}
+
+/* Dark mode contender cards */
+[data-theme="dark"] .contender-card {
+  background: linear-gradient(180deg, rgba(30, 20, 26, 0.98), rgba(24, 16, 20, 0.96));
+  border-color: rgba(212, 96, 122, 0.12);
+}
+
+[data-theme="dark"] .contender-card:hover {
+  border-color: rgba(212, 96, 122, 0.28);
+}
+
+[data-theme="dark"] .contender-row {
+  border-bottom-color: rgba(212, 96, 122, 0.08);
+}
+
+/* Dark mode stat stack / metric chips */
+[data-theme="dark"] .stat-item {
+  background: rgba(28, 18, 24, 0.8);
+  border-color: rgba(212, 96, 122, 0.12);
+}
+
+[data-theme="dark"] .metric-chip {
+  border-color: rgba(212, 168, 90, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Dark mode history table */
+[data-theme="dark"] .history-table {
+  background: transparent;
+}
+
+[data-theme="dark"] .history-table th {
+  background: rgba(20, 14, 18, 0.98);
+  border-bottom-color: rgba(212, 96, 122, 0.18);
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .history-table td {
+  border-bottom-color: rgba(212, 96, 122, 0.08);
+}
+
+[data-theme="dark"] .history-table tr:hover td {
+  background: rgba(212, 96, 122, 0.04);
+}
+
+/* Dark mode placeholder card */
+[data-theme="dark"] .placeholder-card {
+  background: linear-gradient(180deg, rgba(26, 18, 22, 0.98), rgba(20, 14, 18, 0.98));
+  border-color: rgba(212, 96, 122, 0.12);
+}
+
+/* Dark mode footer */
+[data-theme="dark"] .site-footer {
+  background: rgba(10, 7, 9, 0.8);
+  border-top-color: rgba(212, 96, 122, 0.12);
+}
+
+/* Dark mode scope pill */
+[data-theme="dark"] .scope-pill {
+  background: rgba(212, 96, 122, 0.1);
+  border-color: rgba(212, 96, 122, 0.18);
+}
+
+/* Dark mode critic strip */
+[data-theme="dark"] .critic-strip span,
+[data-theme="dark"] .critic-strip-hero span {
+  background: rgba(212, 96, 122, 0.08);
+}
+
+/* Dark mode signal matrix / season mode grid */
+[data-theme="dark"] .signal-cell {
+  border-color: rgba(212, 96, 122, 0.1);
+}
+
+[data-theme="dark"] .signal-cell.signal-hit {
+  background: rgba(58, 170, 120, 0.2);
+  border-color: rgba(58, 170, 120, 0.3);
+}
+
+[data-theme="dark"] .season-mode-card {
+  background: rgba(28, 18, 24, 0.85);
+  border-color: rgba(212, 96, 122, 0.14);
+}
+
+/* Dark mode accuracy strip */
+[data-theme="dark"] .accuracy-year {
+  background: rgba(28, 18, 24, 0.9);
+  border-color: rgba(212, 96, 122, 0.12);
+}
+
+/* Dark mode year-race items */
+[data-theme="dark"] .year-race-item {
+  border-bottom-color: rgba(212, 96, 122, 0.08);
+}
+
+/* Dark mode signals engine */
+[data-theme="dark"] .signal-group {
+  background: rgba(22, 14, 18, 0.8);
+  border-color: rgba(212, 96, 122, 0.12);
+}
+
+[data-theme="dark"] .signal-item {
+  border-bottom-color: rgba(212, 96, 122, 0.07);
+}
+
+/* ── Dark Mode Toggle Button ───────────────────────────────────────────── */
+.dark-mode-toggle {
+  appearance: none;
+  background: rgba(102, 21, 42, 0.08);
+  border: 1px solid rgba(102, 21, 42, 0.16);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+  flex-shrink: 0;
+}
+
+.dark-mode-toggle:hover {
+  background: rgba(102, 21, 42, 0.14);
+  border-color: rgba(102, 21, 42, 0.28);
+  color: var(--oxblood);
+}
+
+[data-theme="dark"] .dark-mode-toggle {
+  background: rgba(212, 96, 122, 0.1);
+  border-color: rgba(212, 96, 122, 0.22);
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .dark-mode-toggle:hover {
+  background: rgba(212, 96, 122, 0.18);
+  border-color: rgba(212, 96, 122, 0.36);
+  color: var(--oxblood);
+}
+
+.dark-mode-toggle .toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Global smooth transition for theme switching */
+body,
+.panel,
+.section-tab,
+.hero-film,
+.contender-card,
+.contender-row,
+.stat-item,
+.history-table th,
+.history-table td,
+.site-footer,
+.scope-pill,
+.accuracy-year,
+.season-mode-card,
+.signal-group,
+.placeholder-card {
+  transition: var(--theme-transition);
 }
 
 * {
@@ -82,13 +343,18 @@ body::before {
   flex-wrap: wrap;
 }
 
+.site-masthead-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
 .site-updated {
   font-size: 0.72rem;
   color: var(--ink-muted);
   text-align: right;
-  flex-shrink: 0;
-  align-self: flex-end;
-  padding-bottom: 2px;
 }
 
 .updated-label {

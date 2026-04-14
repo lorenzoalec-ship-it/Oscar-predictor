@@ -1274,3 +1274,38 @@ async function main() {
 
 main();
 
+// ── Dark Mode Toggle ────────────────────────────────────────────────────
+(function initDarkMode() {
+  const STORAGE_KEY = "rcs-theme";
+  const root = document.documentElement;
+  const btn = document.getElementById("dark-mode-toggle");
+  const icon = document.getElementById("toggle-icon");
+  const label = document.getElementById("toggle-label");
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    if (icon) icon.textContent = theme === "dark" ? "☀️" : "🌙";
+    if (label) label.textContent = theme === "dark" ? "Light" : "Dark";
+    try { localStorage.setItem(STORAGE_KEY, theme); } catch (_) {}
+  }
+
+  // Load saved preference, or default to system preference
+  const saved = (() => { try { return localStorage.getItem(STORAGE_KEY); } catch (_) { return null; } })();
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(saved || (prefersDark ? "dark" : "light"));
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+  }
+
+  // Sync if system preference changes and user hasn't manually toggled
+  window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    try {
+      if (!localStorage.getItem(STORAGE_KEY)) applyTheme(e.matches ? "dark" : "light");
+    } catch (_) {}
+  });
+})();
+
