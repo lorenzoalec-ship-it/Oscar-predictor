@@ -14,6 +14,7 @@ OUTPUT_PATH_TEMPLATE = "output/future_best_picture_predictions_{year}.csv"
 FESTIVAL_METACRITIC_SUMMARY_PATH = Path("data/raw/festival_metacritic_summary.csv")
 FUTURE_CONTENDER_ENRICHMENT_PATH = Path("data/raw/future_contender_enrichment.csv")
 RT_RECENT_SUMMARY_PATH = Path("data/raw/rotten_tomatoes_recent_summary.csv")
+MANUAL_FESTIVAL_FLAGS_PATH = Path("data/raw/manual_festival_flags.csv")
 
 TMDB_DRAMA_ID = "18"
 TMDB_HISTORY_ID = "36"
@@ -167,6 +168,26 @@ def add_common_features(df: pd.DataFrame) -> pd.DataFrame:
     enriched["manual_contender_flag"] = parse_numeric(
         get_series(enriched, "manual_contender_flag")
     ).fillna(0).astype(int)
+
+    # Apply manual festival flags — only for live pool data (has "title" column).
+    # Overrides Wikipedia-scraped values so known premieres are never missed.
+    title_col = "title" if "title" in enriched.columns else ("film" if "film" in enriched.columns else None)
+    year_col  = "year_film" if "year_film" in enriched.columns else ("year" if "year" in enriched.columns else None)
+    if MANUAL_FESTIVAL_FLAGS_PATH.exists() and title_col == "title":
+        mf = pd.read_csv(MANUAL_FESTIVAL_FLAGS_PATH)
+        flag_cols = ["sundance_flag", "cannes_flag", "venice_flag", "tiff_flag", "telluride_flag", "sxsw_flag"]
+        mf["title_key"] = mf["title"].str.strip().str.lower().str.replace(r"[^a-z0-9 ]", "", regex=True)
+        enriched["title_key"] = enriched[title_col].astype(str).str.strip().str.lower().str.replace(r"[^a-z0-9 ]", "", regex=True)
+        for _, mrow in mf.iterrows():
+            yr_match = (enriched[year_col] == mrow["year_film"]) if year_col else True
+            mask = (enriched["title_key"] == mrow["title_key"]) & yr_match
+            if mask.any():
+                for fc in flag_cols:
+                    if fc in mrow and pd.notna(mrow[fc]) and mrow[fc]:
+                        enriched.loc[mask, fc] = max(enriched.loc[mask, fc].values[0], int(mrow[fc]))
+        enriched = enriched.drop(columns=["title_key"], errors="ignore")
+        print(f"[festival] Applied manual festival flags from {MANUAL_FESTIVAL_FLAGS_PATH}")
+
     enriched["festival_presence_score"] = (
         enriched["cannes_flag"]
         + enriched["venice_flag"]
