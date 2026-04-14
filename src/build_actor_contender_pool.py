@@ -145,11 +145,13 @@ def load_current_precursors(year: int, category: str = "actor") -> pd.DataFrame:
     return result
 
 
-# Actors who are deceased or otherwise ineligible for acting awards.
-# The genre filter handles most cases (e.g. concert films), but this list
-# catches edge cases like archival footage compilations.
+# Actors to explicitly exclude regardless of genre filter.
+# NOTE: Being deceased does NOT automatically disqualify an actor — Peter Finch
+# won Best Actor posthumously for Network (1977), and the Academy has nominated
+# deceased performers before. This list is only for cases where the "performance"
+# is archival footage or a non-acting credit (e.g. a concert film not caught by genre).
 INELIGIBLE_ACTORS = {
-    "ELVIS PRESLEY",           # Deceased; appears via concert/archive films
+    "ELVIS PRESLEY",  # Appears only via archival concert footage, not a new acting role
 }
 
 
