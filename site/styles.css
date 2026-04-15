@@ -2350,14 +2350,10 @@ main {
     gap: 22px;
   }
 
-  /* hero-copy first, hero-panel second (natural DOM order) */
-  .hero-copy {
-    order: 1;
-  }
-
+  /* On mobile the hero-panel (projected winner card) repeats the h1 film name —
+     hide it since the headline + metric chips already communicate the same info */
   .hero-panel {
-    order: 2;
-    justify-content: flex-start;
+    display: none;
   }
 
   .hero h1 {
