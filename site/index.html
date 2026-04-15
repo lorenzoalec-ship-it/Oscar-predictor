@@ -110,76 +110,88 @@
             </section>
           </section>
 
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Precursor Signal Matrix</p>
               <h2>Who Has Won What</h2>
             </div>
-            <div id="signal-matrix"></div>
+            <div class="panel-collapse-body">
+              <div id="signal-matrix"></div>
+            </div>
           </section>
 
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Season Modes</p>
               <h2>How The Best Picture Board Evolves</h2>
             </div>
-            <p class="method-copy" id="season-mode-summary"></p>
-            <div class="season-mode-grid" id="season-mode-grid"></div>
+            <div class="panel-collapse-body">
+              <p class="method-copy" id="season-mode-summary"></p>
+              <div class="season-mode-grid" id="season-mode-grid"></div>
+            </div>
           </section>
 
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Best Picture Race Lab</p>
               <h2>Explore A Specific Best Picture Year</h2>
             </div>
-            <div class="history-controls">
-              <label for="year-select">Film Year</label>
-              <select id="year-select"></select>
+            <div class="panel-collapse-body">
+              <div class="history-controls">
+                <label for="year-select">Film Year</label>
+                <select id="year-select"></select>
+              </div>
+              <div class="history-year-summary" id="history-year-summary"></div>
+              <div class="year-race-list" id="year-race-list"></div>
             </div>
-            <div class="history-year-summary" id="history-year-summary"></div>
-            <div class="year-race-list" id="year-race-list"></div>
           </section>
 
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Recent Best Picture Races</p>
               <h2>How The Model Read The Last 10 Years</h2>
             </div>
-            <div class="race-grid" id="recent-races"></div>
+            <div class="panel-collapse-body">
+              <div class="race-grid" id="recent-races"></div>
+            </div>
           </section>
 
           <section class="dashboard-grid">
-            <section class="panel panel-wide">
+            <section class="panel panel-wide panel-collapsible">
               <div class="panel-head">
                 <p class="eyebrow">Backtest</p>
                 <h2>Extended Validation</h2>
               </div>
-              <div id="accuracy-strip"></div>
-              <div class="history-table-wrap">
-                <table class="history-table">
-                  <thead>
-                    <tr>
-                      <th>Year</th>
-                      <th>Model</th>
-                      <th>Actual</th>
-                      <th>Baseline</th>
-                      <th>Confidence</th>
-                      <th>Result</th>
-                    </tr>
-                  </thead>
-                  <tbody id="history-table"></tbody>
-                </table>
+              <div class="panel-collapse-body">
+                <div id="accuracy-strip"></div>
+                <div class="history-table-wrap">
+                  <table class="history-table">
+                    <thead>
+                      <tr>
+                        <th>Year</th>
+                        <th>Model</th>
+                        <th>Actual</th>
+                        <th>Baseline</th>
+                        <th>Confidence</th>
+                        <th>Result</th>
+                      </tr>
+                    </thead>
+                    <tbody id="history-table"></tbody>
+                  </table>
+                </div>
               </div>
             </section>
 
-            <section class="panel">
+            <section class="panel panel-collapsible">
               <div class="panel-head">
                 <p class="eyebrow">Signals Engine</p>
                 <h2>What Powers The Best Picture Board</h2>
               </div>
-              <p class="method-copy" id="method-headline"></p>
-              <div id="signals-engine-list"></div>
-              <ul class="method-list" id="method-list"></ul>
+              <div class="panel-collapse-body">
+                <p class="method-copy" id="method-headline"></p>
+                <div id="signals-engine-list"></div>
+                <ul class="method-list" id="method-list"></ul>
+              </div>
             </section>
           </section>
         </main>
@@ -195,33 +207,37 @@
             <div id="actor-accuracy-strip"></div>
             <div id="actor-live-notice" class="category-live-notice"></div>
           </section>
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Best Actor · Walk-Forward Backtest</p>
               <h2>How The Model Read Each Race</h2>
             </div>
-            <div class="history-table-wrap">
-              <table class="history-table">
-                <thead>
-                  <tr>
-                    <th>Year</th>
-                    <th>Model Pick</th>
-                    <th>Film</th>
-                    <th>Actual Winner</th>
-                    <th>Signals</th>
-                    <th>Result</th>
-                  </tr>
-                </thead>
-                <tbody id="actor-history-table"></tbody>
-              </table>
+            <div class="panel-collapse-body">
+              <div class="history-table-wrap">
+                <table class="history-table">
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Model Pick</th>
+                      <th>Film</th>
+                      <th>Actual Winner</th>
+                      <th>Signals</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody id="actor-history-table"></tbody>
+                </table>
+              </div>
             </div>
           </section>
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Model Intelligence</p>
               <h2>What Signals Drive Best Actor</h2>
             </div>
-            <div id="actor-signals-list" class="signals-list"></div>
+            <div class="panel-collapse-body">
+              <div id="actor-signals-list" class="signals-list"></div>
+            </div>
           </section>
         </main>
       </section>
@@ -236,33 +252,37 @@
             <div id="actress-accuracy-strip"></div>
             <div id="actress-live-notice" class="category-live-notice"></div>
           </section>
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Best Actress · Walk-Forward Backtest</p>
               <h2>How The Model Read Each Race</h2>
             </div>
-            <div class="history-table-wrap">
-              <table class="history-table">
-                <thead>
-                  <tr>
-                    <th>Year</th>
-                    <th>Model Pick</th>
-                    <th>Film</th>
-                    <th>Actual Winner</th>
-                    <th>Signals</th>
-                    <th>Result</th>
-                  </tr>
-                </thead>
-                <tbody id="actress-history-table"></tbody>
-              </table>
+            <div class="panel-collapse-body">
+              <div class="history-table-wrap">
+                <table class="history-table">
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Model Pick</th>
+                      <th>Film</th>
+                      <th>Actual Winner</th>
+                      <th>Signals</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody id="actress-history-table"></tbody>
+                </table>
+              </div>
             </div>
           </section>
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Model Intelligence</p>
               <h2>What Signals Drive Best Actress</h2>
             </div>
-            <div id="actress-signals-list" class="signals-list"></div>
+            <div class="panel-collapse-body">
+              <div id="actress-signals-list" class="signals-list"></div>
+            </div>
           </section>
         </main>
       </section>
@@ -277,33 +297,37 @@
             <div id="director-accuracy-strip"></div>
             <div id="director-live-notice" class="category-live-notice"></div>
           </section>
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Best Director · Walk-Forward Backtest</p>
               <h2>How The Model Read Each Race</h2>
             </div>
-            <div class="history-table-wrap">
-              <table class="history-table">
-                <thead>
-                  <tr>
-                    <th>Year</th>
-                    <th>Model Pick</th>
-                    <th>Film</th>
-                    <th>Actual Winner</th>
-                    <th>Signals</th>
-                    <th>Result</th>
-                  </tr>
-                </thead>
-                <tbody id="director-history-table"></tbody>
-              </table>
+            <div class="panel-collapse-body">
+              <div class="history-table-wrap">
+                <table class="history-table">
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Model Pick</th>
+                      <th>Film</th>
+                      <th>Actual Winner</th>
+                      <th>Signals</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody id="director-history-table"></tbody>
+                </table>
+              </div>
             </div>
           </section>
-          <section class="panel panel-tall">
+          <section class="panel panel-tall panel-collapsible">
             <div class="panel-head">
               <p class="eyebrow">Model Intelligence</p>
               <h2>What Signals Drive Best Director</h2>
             </div>
-            <div id="director-signals-list" class="signals-list"></div>
+            <div class="panel-collapse-body">
+              <div id="director-signals-list" class="signals-list"></div>
+            </div>
           </section>
         </main>
       </section>

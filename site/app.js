@@ -1274,6 +1274,53 @@ async function main() {
 
 main();
 
+// ── Mobile Collapsible Panels ───────────────────────────────────────────
+(function initCollapsiblePanels() {
+  function setup() {
+    if (window.innerWidth > 768) return; // desktop: no collapsing
+
+    document.querySelectorAll(".panel-collapsible").forEach((panel) => {
+      const head = panel.querySelector(".panel-head");
+      const body = panel.querySelector(".panel-collapse-body");
+      if (!head || !body) return;
+
+      // Skip if already initialized
+      if (head.dataset.collapsible) return;
+      head.dataset.collapsible = "1";
+
+      // Start collapsed if panel is not the first in the tab
+      const siblings = Array.from(panel.parentElement?.children ?? []).filter(
+        (el) => el.classList.contains("panel-collapsible")
+      );
+      if (siblings.indexOf(panel) > 0) {
+        panel.classList.add("is-collapsed");
+      }
+
+      head.addEventListener("click", () => {
+        panel.classList.toggle("is-collapsed");
+      });
+    });
+  }
+
+  // Run on load after DOM is ready, and on tab switch
+  document.addEventListener("DOMContentLoaded", setup);
+  setTimeout(setup, 800); // after main() renders content
+
+  // Re-check on resize crossing the 768px threshold
+  let wasMobile = window.innerWidth <= 768;
+  window.addEventListener("resize", () => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile && !wasMobile) setup();
+    if (!isMobile) {
+      // Remove collapsed state on desktop
+      document.querySelectorAll(".panel-collapsible.is-collapsed").forEach((p) => {
+        p.classList.remove("is-collapsed");
+      });
+    }
+    wasMobile = isMobile;
+  });
+})();
+
 // ── Dark Mode Toggle ────────────────────────────────────────────────────
 (function initDarkMode() {
   const STORAGE_KEY = "rcs-theme";
