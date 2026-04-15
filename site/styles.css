@@ -25,13 +25,21 @@
 }
 
 /* ── Dark Mode ─────────────────────────────────────────────────────────── */
+/*
+   WCAG 2.1 AA contrast targets (≥ 4.5:1 normal text, ≥ 3:1 large/UI):
+   --ink        #f0e6de on #0e0b0d  → 15.93:1  ✓
+   --ink-soft   #c4b0aa on #0e0b0d  →  9.45:1  ✓
+   --ink-muted  #a89490 on #0e0b0d  →  6.81:1  ✓  (was #8a7470 → 4.49 FAIL)
+   --oxblood    #d4607a on #0e0b0d  →  5.37:1  ✓
+   --gold       #d4a85a on #0e0b0d  →  8.90:1  ✓
+*/
 [data-theme="dark"] {
   --paper: #0e0b0d;
   --paper-soft: #1a1418;
   --paper-deep: #090709;
   --ink: #f0e6de;
   --ink-soft: #c4b0aa;
-  --ink-muted: #8a7470;
+  --ink-muted: #a89490;   /* Fixed: was #8a7470 (4.49:1, WCAG fail) → 6.81:1 ✓ */
   --oxblood: #d4607a;
   --oxblood-deep: #b84060;
   --scarlet: #e0547a;
@@ -46,6 +54,12 @@
   --border-strong: rgba(212, 96, 122, 0.3);
   --shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
   --shadow-strong: 0 34px 90px rgba(0, 0, 0, 0.65);
+
+  /* WCAG-compliant rank delta colors for dark surfaces */
+  --rank-up:   #34b878;  /* 7.15:1 on dark surface ✓ */
+  --rank-down: #e06080;  /* 5.74:1 on dark surface ✓ */
+  --rank-new:  #d4a85a;  /* 8.25:1 on dark surface ✓ (reuse gold) */
+  --rank-same: #9e8e8b;  /* 5.79:1 on dark surface ✓ */
 }
 
 [data-theme="dark"] html,
@@ -217,6 +231,44 @@
 
 [data-theme="dark"] .signal-item {
   border-bottom-color: rgba(212, 96, 122, 0.07);
+}
+
+/* Fix award-badge.nom on dark backgrounds — surface-strong token handles bg,
+   but the border uses border-strong which is already updated by the token */
+[data-theme="dark"] .award-badge.nom {
+  background: rgba(212, 96, 122, 0.12);
+  border-color: rgba(212, 96, 122, 0.28);
+  color: var(--ink-soft);
+}
+
+/* Focus styles for keyboard accessibility (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] :focus-visible {
+  outline-color: var(--gold);
+}
+
+/* Contender row: ensure dark background is explicit (avoids invisible text) */
+[data-theme="dark"] .contender-row {
+  background: rgba(28, 20, 24, 0.96);
+  border-color: rgba(212, 96, 122, 0.14);
+}
+
+/* Oscar badge: ensure readable in dark mode */
+[data-theme="dark"] .oscar-badge--win {
+  background: linear-gradient(135deg, rgba(212, 168, 90, 0.25), rgba(240, 216, 152, 0.18));
+  border-color: rgba(212, 168, 90, 0.4);
+  color: var(--gold-soft);
+}
+
+[data-theme="dark"] .oscar-badge--nom {
+  background: rgba(168, 148, 144, 0.15);
+  border-color: rgba(168, 148, 144, 0.3);
+  color: var(--ink-muted);
 }
 
 /* ── Dark Mode Toggle Button ───────────────────────────────────────────── */
@@ -730,14 +782,14 @@ body::before {
 
 .critic-source {
   font-size: 0.68rem;
-  color: var(--muted, #888);
+  color: var(--ink-muted);
   letter-spacing: 0.04em;
   text-decoration: none;
-  opacity: 0.7;
+  /* No opacity — color token handles contrast in both light and dark mode */
 }
 
 a.critic-source:hover {
-  opacity: 1;
+  color: var(--oxblood);
   text-decoration: underline;
 }
 
@@ -1629,10 +1681,10 @@ main {
   letter-spacing: 0.01em;
 }
 
-.rank-delta.up   { color: #1a8a5a; }
-.rank-delta.down { color: #b82649; }
-.rank-delta.new  { color: #c79a4e; }
-.rank-delta.same { color: #9e8e8b; }
+.rank-delta.up   { color: var(--rank-up, #1a8a5a); }
+.rank-delta.down { color: var(--rank-down, #b82649); }
+.rank-delta.new  { color: var(--rank-new, #c79a4e); }
+.rank-delta.same { color: var(--rank-same, #9e8e8b); }
 
 .contender-profile {
   flex-shrink: 0;
@@ -2059,4 +2111,469 @@ main {
   color: var(--ink-muted);
   opacity: 0.6;
   margin: 0;
+}
+
+/* ================================================================
+   RESPONSIVE — Tablet (≤ 900px)
+   Collapse two-column grids one step earlier than desktop breakpoint
+   ================================================================ */
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .viz-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================================================
+   RESPONSIVE — Mobile (≤ 768px)
+   Full mobile layout pass — layout only, no color overrides
+   Works in both light and dark mode automatically
+   ================================================================ */
+@media (max-width: 768px) {
+
+  /* ── Page shell ─────────────────────────────────────────────── */
+  .page-shell {
+    width: calc(100% - 24px);
+    padding-top: 16px;
+    padding-bottom: 40px;
+  }
+
+  /* ── Site masthead: stack vertically ────────────────────────── */
+  .site-masthead {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  /* Brand stays as a row (logo + text side by side) */
+  .site-brand {
+    align-items: center;
+  }
+
+  .site-brand-mark {
+    width: 56px;
+    height: 56px;
+  }
+
+  .site-brand-name {
+    font-size: 1.45rem;
+  }
+
+  .site-brand-tag {
+    font-size: 0.82rem;
+  }
+
+  /* Scope pill: left-aligned below brand */
+  .site-scope {
+    justify-items: start;
+    text-align: left;
+  }
+
+  /* Right-side controls: row (timestamp + toggle side by side) */
+  .site-masthead-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .site-updated {
+    text-align: left;
+    font-size: 0.7rem;
+  }
+
+  .dark-mode-toggle {
+    padding: 8px 12px;
+    font-size: 0.72rem;
+  }
+
+  /* ── Section tabs ───────────────────────────────────────────── */
+  .section-tabs {
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+
+  .section-tab {
+    padding: 9px 12px;
+    font-size: 0.69rem;
+    letter-spacing: 0.08em;
+    /* Ensure tappable minimum size */
+    min-height: 40px;
+  }
+
+  /* ── Hero ───────────────────────────────────────────────────── */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 22px 18px;
+    border-radius: 26px;
+    gap: 22px;
+  }
+
+  /* hero-copy first, hero-panel second (natural DOM order) */
+  .hero-copy {
+    order: 1;
+  }
+
+  .hero-panel {
+    order: 2;
+    justify-content: flex-start;
+  }
+
+  .hero h1 {
+    /* clamp lower bound already at 3.1rem — pull it down more */
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+    max-width: 100%;
+    line-height: 0.95;
+  }
+
+  .hero-summary {
+    font-size: 0.94rem;
+    margin: 14px 0 18px;
+  }
+
+  .hero-metrics {
+    gap: 8px;
+  }
+
+  .metric-chip {
+    min-width: 0;
+    flex: 1 1 calc(50% - 4px);
+    padding: 11px 12px;
+    border-radius: 14px;
+  }
+
+  /* ── Hero film layout: single column ───────────────────────── */
+  .hero-film-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .hero-poster {
+    width: 96px;
+    border-radius: 16px;
+  }
+
+  .hero-film strong {
+    font-size: 1.7rem;
+  }
+
+  .hero-film {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  /* ── Panels ─────────────────────────────────────────────────── */
+  .panel {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .panel-tall {
+    padding-bottom: 20px;
+  }
+
+  .panel h2 {
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+  }
+
+  /* ── Dashboard grid: single column ─────────────────────────── */
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* ── Contender cards (Best Picture board) ───────────────────── */
+  /* Collapse 4-col to 3-col: rank + poster + body (drop probability to new row) */
+  .contender-card {
+    grid-template-columns: 60px 76px 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .contender-card .contender-rank {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    font-size: 1.4rem;
+  }
+
+  .poster-frame {
+    width: 76px;
+  }
+
+  .contender-probability {
+    grid-column: 2 / 4;
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .contender-probability strong {
+    font-size: 1.2rem;
+  }
+
+  /* ── Contender rows (actor/actress/director boards) ─────────── */
+  .contender-row {
+    gap: 0.6rem;
+    padding: 0.6rem 0.75rem;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  /* Rank column: tighten */
+  .contender-row .contender-rank {
+    min-width: 2rem;
+    width: 2rem;
+  }
+
+  .rank-num {
+    font-size: 1.25rem;
+  }
+
+  .rank-delta {
+    font-size: 0.65rem;
+  }
+
+  /* Profile photo: slightly smaller but still visible */
+  .contender-profile-img,
+  .contender-profile-placeholder {
+    width: 48px;
+    height: 62px;
+    border-radius: 6px;
+  }
+
+  .contender-name {
+    font-size: 0.92rem;
+  }
+
+  .contender-film {
+    font-size: 0.78rem;
+  }
+
+  .contender-pct {
+    font-size: 0.95rem;
+    min-width: 2.6rem;
+  }
+
+  /* ── Viz grid: single column ────────────────────────────────── */
+  .viz-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* SVG containers: constrain width so they don't overflow */
+  .donut-wrap,
+  .gauge-wrap {
+    padding: 0.25rem 0 0.75rem;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .donut-layout {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .donut-legend {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* ── History table: horizontal scroll ───────────────────────── */
+  .history-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Subtle visual hint that it scrolls */
+    border-radius: 8px;
+  }
+
+  .history-table {
+    min-width: 480px;
+  }
+
+  /* ── Season mode grid: single column ───────────────────────── */
+  .season-mode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Race grid: single column ───────────────────────────────── */
+  .race-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .race-card {
+    grid-template-columns: 72px 1fr;
+    gap: 12px;
+  }
+
+  .race-poster,
+  .year-race-poster {
+    width: 72px;
+    border-radius: 13px;
+  }
+
+  /* ── Year race cards ────────────────────────────────────────── */
+  .year-race-card {
+    grid-template-columns: 72px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .year-race-probability {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  /* ── History controls ───────────────────────────────────────── */
+  .history-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .history-controls select {
+    min-width: 0;
+    flex: 1 1 140px;
+  }
+
+  /* ── Signal matrix ──────────────────────────────────────────── */
+  .matrix-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── Signals list (details panel) ──────────────────────────── */
+  .signals-list {
+    max-height: none;
+  }
+
+  /* ── Accuracy strip ─────────────────────────────────────────── */
+  .accuracy-strip {
+    gap: 4px;
+  }
+
+  /* ── Footer ─────────────────────────────────────────────────── */
+  .site-footer {
+    padding: 1.5rem 1rem 2rem;
+  }
+}
+
+/* ================================================================
+   RESPONSIVE — Small mobile (≤ 480px)
+   Extra adjustments for very narrow screens (375–480px)
+   ================================================================ */
+@media (max-width: 480px) {
+
+  /* Even tighter page margins */
+  .page-shell {
+    width: calc(100% - 16px);
+  }
+
+  /* Brand: tighten logo + name */
+  .site-brand {
+    gap: 11px;
+  }
+
+  .site-brand-mark {
+    width: 48px;
+    height: 48px;
+  }
+
+  .site-brand-name {
+    font-size: 1.25rem;
+  }
+
+  .site-brand-tag,
+  .scope-copy {
+    font-size: 0.76rem;
+  }
+
+  /* Tabs: allow two per row at smallest sizes */
+  .section-tabs {
+    gap: 6px;
+  }
+
+  .section-tab {
+    padding: 8px 10px;
+    font-size: 0.64rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* Hero: tightest layout */
+  .hero {
+    padding: 18px 14px;
+    border-radius: 22px;
+    gap: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 8vw, 2.8rem);
+  }
+
+  /* Metric chips: full width at very small screens */
+  .metric-chip {
+    flex: 1 1 100%;
+  }
+
+  /* Panels */
+  .panel {
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  /* Contender cards: simplify to rank + body only */
+  .contender-card {
+    grid-template-columns: 52px 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  /* Hide poster frame at very small widths to avoid crowding */
+  .contender-card .poster-frame {
+    display: none;
+  }
+
+  .contender-card .contender-rank {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    font-size: 1.2rem;
+  }
+
+  .contender-probability {
+    grid-column: 2 / 3;
+  }
+
+  /* Actor rows: tightest */
+  .contender-profile-img,
+  .contender-profile-placeholder {
+    width: 42px;
+    height: 54px;
+  }
+
+  .contender-name {
+    font-size: 0.88rem;
+  }
+
+  .contender-film {
+    font-size: 0.74rem;
+  }
+
+  /* Race cards: stack poster on top */
+  .race-card,
+  .year-race-card {
+    grid-template-columns: 1fr;
+  }
+
+  .race-poster,
+  .year-race-poster {
+    width: 80px;
+  }
 }
