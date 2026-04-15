@@ -23,6 +23,17 @@ MODEL_DATA_PATH = ROOT / "output" / "model_data.csv"
 
 MIN_TRAIN_YEARS = 8  # fewer than Best Picture since acting categories have deeper data
 
+# Modern era training cutoff — only train on years where precursor signals are meaningful.
+# Pre-cutoff years (no SAG, limited Globe/BAFTA) are mostly noise and hurt model accuracy.
+#   Actor/Actress: SAG Awards began in 1994 (covering 1993 films) — all 3 signals present.
+#   Director: DGA data in our CSVs starts at 2005; Globe+BAFTA go back to ~1950/1969.
+#             Using 1979 keeps enough training history while excluding the pre-BAFTA era.
+MODERN_ERA_START = {
+    "actor": 1993,
+    "actress": 1993,
+    "director": 1979,
+}
+
 # ---------------------------------------------------------------------------
 # Category configuration
 # ---------------------------------------------------------------------------
@@ -63,10 +74,12 @@ DIRECTOR_FEATURES = [
     "metacritic_score",
 ]
 
-# Recent backfill files (2020-2024 data not in the original CSVs)
-SAG_ACTOR_RECENT_PATH = ROOT / "data" / "raw" / "sag_actor_recent.csv"
-GLOBE_ACTOR_RECENT_PATH = ROOT / "data" / "raw" / "globe_actor_recent.csv"
-BAFTA_ACTOR_RECENT_PATH = ROOT / "data" / "raw" / "bafta_actor_recent.csv"
+# Recent backfill files (2020-2024 data not in the original CSVs).
+# Pattern: data/raw/sag_{actor|actress}_recent.csv etc.
+# Actress files are created separately; missing files are handled gracefully.
+def _recent_path(award: str, gender: str) -> Path:
+    suffix = "actor" if gender == "male" else "actress"
+    return ROOT / "data" / "raw" / f"{award}_{suffix}_recent.csv"
 
 # Extended feature set including nomination signals
 ACTOR_FEATURES_EXTENDED = [
@@ -228,12 +241,11 @@ def load_film_scores() -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 def load_sag_acting_recent(gender: str) -> pd.DataFrame:
-    """Load the 2020+ SAG acting backfill. Returns year_film, name_key, sag_nom, sag_win."""
-    if gender != "male":
+    """Load the 2020+ SAG acting backfill for male or female. Returns year_film, name_key, sag_nom, sag_win."""
+    path = _recent_path("sag", gender)
+    if not path.exists():
         return pd.DataFrame(columns=["year_film", "name_key", "sag_nom", "sag_win"])
-    if not SAG_ACTOR_RECENT_PATH.exists():
-        return pd.DataFrame(columns=["year_film", "name_key", "sag_nom", "sag_win"])
-    df = pd.read_csv(SAG_ACTOR_RECENT_PATH)
+    df = pd.read_csv(path)
     df["name_key"] = df["name"].apply(_norm_name)
     df["sag_nom"] = df["sag_nom"].fillna(0).astype(int)
     df["sag_win"] = df["sag_win"].fillna(0).astype(int)
@@ -241,12 +253,11 @@ def load_sag_acting_recent(gender: str) -> pd.DataFrame:
 
 
 def load_globe_acting_recent(gender: str) -> pd.DataFrame:
-    """Load the 2020+ Globe acting backfill. Returns year_film, name_key, globe_nom, globe_win."""
-    if gender != "male":
+    """Load the 2020+ Globe acting backfill for male or female. Returns year_film, name_key, globe_nom, globe_win."""
+    path = _recent_path("globe", gender)
+    if not path.exists():
         return pd.DataFrame(columns=["year_film", "name_key", "globe_nom", "globe_win"])
-    if not GLOBE_ACTOR_RECENT_PATH.exists():
-        return pd.DataFrame(columns=["year_film", "name_key", "globe_nom", "globe_win"])
-    df = pd.read_csv(GLOBE_ACTOR_RECENT_PATH)
+    df = pd.read_csv(path)
     df["name_key"] = df["name"].apply(_norm_name)
     df["globe_nom"] = df["globe_nom"].fillna(0).astype(int)
     df["globe_win"] = df["globe_win"].fillna(0).astype(int)
@@ -254,12 +265,11 @@ def load_globe_acting_recent(gender: str) -> pd.DataFrame:
 
 
 def load_bafta_acting_recent(gender: str) -> pd.DataFrame:
-    """Load the 2020+ BAFTA acting backfill. Returns year_film, name_key, bafta_nom, bafta_win."""
-    if gender != "male":
+    """Load the 2020+ BAFTA acting backfill for male or female. Returns year_film, name_key, bafta_nom, bafta_win."""
+    path = _recent_path("bafta", gender)
+    if not path.exists():
         return pd.DataFrame(columns=["year_film", "name_key", "bafta_nom", "bafta_win"])
-    if not BAFTA_ACTOR_RECENT_PATH.exists():
-        return pd.DataFrame(columns=["year_film", "name_key", "bafta_nom", "bafta_win"])
-    df = pd.read_csv(BAFTA_ACTOR_RECENT_PATH)
+    df = pd.read_csv(path)
     df["name_key"] = df["name"].apply(_norm_name)
     df["bafta_nom"] = df["bafta_nom"].fillna(0).astype(int)
     df["bafta_win"] = df["bafta_win"].fillna(0).astype(int)
@@ -368,12 +378,14 @@ def build_category_dataset(category: str) -> pd.DataFrame:
         nominees["globe_nom"] = 0
         nominees["bafta_nom"] = 0
 
-        if category == "actor":
-            # Load and merge recent backfill data (fills the 2020-2024 gap)
+        # Load and merge recent backfill data for both actor and actress.
+        # Files are gender-specific (sag_actor_recent.csv / sag_actress_recent.csv).
+        # Missing files return empty DataFrames and are skipped gracefully.
+        if category in ("actor", "actress"):
             for loader_fn, nom_col, win_col in [
-                (lambda: load_sag_acting_recent("male"), "sag_nom", "sag_win"),
-                (lambda: load_globe_acting_recent("male"), "globe_nom", "globe_win"),
-                (lambda: load_bafta_acting_recent("male"), "bafta_nom", "bafta_win"),
+                (lambda g=gender: load_sag_acting_recent(g), "sag_nom", "sag_win"),
+                (lambda g=gender: load_globe_acting_recent(g), "globe_nom", "globe_win"),
+                (lambda g=gender: load_bafta_acting_recent(g), "bafta_nom", "bafta_win"),
             ]:
                 recent = loader_fn()
                 if recent.empty:
@@ -427,14 +439,20 @@ def build_category_dataset(category: str) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 def _build_model():
+    # Tuned for a small modern-era dataset (~150–200 rows, ~30 years).
+    # Shallower trees (max_leaf_nodes=8) and stronger regularization prevent
+    # overfitting on the limited sample; early_stopping guards against over-training.
     return HistGradientBoostingClassifier(
         learning_rate=0.05,
-        max_iter=200,
-        max_leaf_nodes=15,
-        min_samples_leaf=3,
-        l2_regularization=0.1,
+        max_iter=300,
+        max_leaf_nodes=8,
+        min_samples_leaf=5,
+        l2_regularization=0.5,
         random_state=42,
         class_weight="balanced",
+        early_stopping=True,
+        n_iter_no_change=20,
+        validation_fraction=0.15,
     )
 
 
@@ -485,11 +503,17 @@ def backtest_category(category: str) -> pd.DataFrame:
     For each year with sufficient prior data, train on all prior years,
     score that year's nominees, pick the top probability as predicted winner.
 
+    Training is restricted to MODERN_ERA_START[category] onwards so the model
+    learns from years where precursor signals (SAG, Globe, BAFTA, DGA) are
+    actually populated — pre-era years are noise that hurts accuracy.
+
     Returns a DataFrame with columns:
       year_film, predicted_winner, actual_winner, correct,
       predicted_probability, runner_up
     """
     df = build_category_dataset(category)
+    era_start = MODERN_ERA_START.get(category, 0)
+    df = df[df["year_film"] >= era_start].copy()
     features = _features_for(category)
 
     years = sorted(df["year_film"].dropna().unique().astype(int))
@@ -577,6 +601,8 @@ def score_category_year(
       win_probability, prior_nominations, prior_wins
     """
     hist_df = build_category_dataset(category)
+    era_start = MODERN_ERA_START.get(category, 0)
+    hist_df = hist_df[hist_df["year_film"] >= era_start].copy()
     train_df = hist_df[hist_df["year_film"] < year_film].copy()
 
     if train_df["winner"].sum() == 0 or len(train_df["year_film"].unique()) < MIN_TRAIN_YEARS:

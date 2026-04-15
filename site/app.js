@@ -948,6 +948,45 @@ function renderCategorySignals(category) {
   `).join("");
 }
 
+function renderCategoryRecentRaces(categoryData, category) {
+  const container = document.getElementById(`${category}-recent-races`);
+  if (!container) return;
+  const races = (categoryData.recent_races ?? []).slice().reverse();
+  if (!races.length) {
+    container.innerHTML = `<p class="method-copy">No recent race data available yet.</p>`;
+    return;
+  }
+
+  const precursorLabel = category === "director" ? "DGA" : "SAG";
+  const precursorKey  = category === "director" ? "dga_win" : "sag_win";
+
+  container.innerHTML = races.map(race => {
+    const signals = [];
+    if (race[precursorKey] === 1) signals.push(`${precursorLabel} ✓`);
+    if (race.globe_win === 1) signals.push("Globe ✓");
+    if (race.bafta_win === 1) signals.push("BAFTA ✓");
+
+    return `
+      <article class="race-card">
+        <div class="race-card-copy">
+          <p class="eyebrow">${race.year_film} Film Year</p>
+          <h3>${escapeHtml(race.predicted_winner ?? "—")}</h3>
+          <p class="race-card-film"><em>${escapeHtml(race.predicted_film ?? "")}</em></p>
+          <p>Predicted with <strong>${formatPercent(race.predicted_probability)}</strong> win share.
+            Runner-up: <strong>${escapeHtml(race.runner_up ?? "—")}</strong>
+            ${race.runner_up_probability != null ? `at ${formatPercent(race.runner_up_probability)}` : ""}.
+          </p>
+          ${signals.length ? `<p class="race-card-signals">Signals: ${signals.join(" · ")}</p>` : ""}
+          <p>Actual winner: <strong>${escapeHtml(race.actual_winner ?? "—")}</strong>
+            ${race.actual_film ? `<em>(${escapeHtml(race.actual_film)})</em>` : ""}</p>
+          <span class="result ${race.correct ? "correct" : "miss"}">
+            ${race.correct ? "Correct Call" : "Missed Call"}
+          </span>
+        </div>
+      </article>`;
+  }).join("");
+}
+
 function renderCategoryBoard(data, category) {
   const key = `${category}_data`;
   const categoryData = data[key];
@@ -957,6 +996,7 @@ function renderCategoryBoard(data, category) {
   renderCategoryAccuracyStrip(categoryData, `${category}-accuracy-strip`);
   renderCategoryLiveNotice(categoryData, `${category}-live-notice`);
   renderCategoryTable(categoryData, `${category}-history-table`);
+  renderCategoryRecentRaces(categoryData, category);
   renderCategorySignals(category);
 }
 

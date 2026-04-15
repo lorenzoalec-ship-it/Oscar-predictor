@@ -903,18 +903,40 @@ def build_category_payload(category: str) -> dict:
                 lc["oscar_nominations"] = hist["nominations"]
                 lc["oscar_wins"] = hist["wins"]
 
-        # AI movement blurbs (actor only for now; expand to actress/director later)
-        if category == "actor" and live_contenders:
+        # AI movement blurbs — runs for actor, actress, and director
+        if live_contenders:
+            data_key = CATEGORY_LIVE_CONFIG[category]["data_key"]
             existing_blurbs = {}
             try:
                 with open(SITE_DATA_PATH) as f:
                     prev = json.load(f)
-                    for lc in prev.get("actor_data", {}).get("live_contenders", []):
+                    for lc in prev.get(data_key, {}).get("live_contenders", []):
                         if lc.get("movement_blurb"):
                             existing_blurbs[lc["name"]] = lc["movement_blurb"]
             except Exception:
                 pass
             live_contenders = generate_actor_movement_blurbs(live_contenders, existing_blurbs)
+
+    # Recent races — last 10 backtest years, newest first, for the UI race grid
+    recent_race_rows = summary.sort_values("year_film").tail(10)
+    recent_races = []
+    for _, rr in recent_race_rows.iterrows():
+        recent_races.append({
+            "year_film": int(rr["year_film"]),
+            "predicted_winner": rr.get("predicted_winner"),
+            "predicted_film": rr.get("predicted_film"),
+            "predicted_probability": float(rr.get("predicted_probability", 0)),
+            "actual_winner": rr.get("actual_winner"),
+            "actual_film": rr.get("actual_film"),
+            "correct": bool(rr.get("correct", False)),
+            "runner_up": rr.get("runner_up"),
+            "runner_up_film": rr.get("runner_up_film"),
+            "runner_up_probability": float(rr["runner_up_probability"]) if pd.notna(rr.get("runner_up_probability")) else None,
+            "sag_win": int(rr["sag_win"]) if pd.notna(rr.get("sag_win")) else None,
+            "dga_win": int(rr["dga_win"]) if pd.notna(rr.get("dga_win")) else None,
+            "globe_win": int(rr.get("globe_win", 0)),
+            "bafta_win": int(rr.get("bafta_win", 0)),
+        })
 
     return {
         "label": label,
@@ -925,6 +947,7 @@ def build_category_payload(category: str) -> dict:
         "first_year": int(summary["year_film"].min()),
         "last_year": int(summary["year_film"].max()),
         "live_contenders": live_contenders,
+        "recent_races": recent_races,
     }
 
 
