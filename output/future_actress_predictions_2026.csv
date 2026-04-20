@@ -1,40 +1,30 @@
 rank,name,film,win_probability,prior_nominations,prior_wins,tmdb_person_id,profile_url,sag_nom,sag_win,globe_nom,globe_win,bafta_nom,bafta_win,tomatometer_rating,metacritic_score,forecast_season,previous_rank,rank_delta,movement
-1,Dafne Keen,Whistle,0.0666455404186702,0,0,1464650.0,https://image.tmdb.org/t/p/w185/34BhddK5z2YHjfppOleezVrQ7Jt.jpg,0,0,0,0,0,0,64.0,0.0,early,,,new
-2,Andrea Riseborough,Good Boy,0.06444147042377127,1,0,127558.0,https://image.tmdb.org/t/p/w185/dQzAXj6R8cTRqTwGzxUgegXbV13.jpg,0,0,0,0,0,0,87.0,0.0,early,,,new
-3,Georgina Campbell,Cold Storage,0.0607003655750765,0,0,1335315.0,https://image.tmdb.org/t/p/w185/kgXHKjI728Nv7FLVf38S9QzHU2n.jpg,0,0,0,0,0,0,80.0,0.0,early,,,new
-4,Rachel McAdams,Send Help,0.05927140593672292,0,0,53714.0,https://image.tmdb.org/t/p/w185/2zyOjda95OfAAsJvuwTV0UaznPZ.jpg,0,0,0,0,0,0,93.0,0.0,early,,,new
-5,Rebecca Ferguson,Peaky Blinders: The Immortal Man,0.05216563740888656,0,0,933238.0,https://image.tmdb.org/t/p/w185/lJloTOheuQSirSLXNA3JHsrMNfH.jpg,0,0,0,0,0,0,90.0,0.0,early,,,new
-6,Halle Berry,Crime 101,0.04805526440278188,1,1,4587.0,https://image.tmdb.org/t/p/w185/wtFetpWV8kjBsvzYKN9uEEmPdpy.jpg,0,0,0,0,0,0,89.0,0.0,early,,,new
-7,Virginia Gardner,F Valentine's Day,0.0442810157597137,0,0,1279279.0,https://image.tmdb.org/t/p/w185/wD0Ib0AqzfIxBL9X0x8YDbKoI2E.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-8,Phoebe Dynevor,Thrash,0.0442810157597137,0,0,1232756.0,https://image.tmdb.org/t/p/w185/cviluUTn94TaPy9rlVSkHpgGxRR.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-9,Amélie Hoeferle,One Mile: Chapter Two,0.0442810157597137,0,0,2333351.0,https://image.tmdb.org/t/p/w185/7As5CmmphS4xXVkoIkVApFlxzXV.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-10,Mia Jenkins,Love Me Love Me,0.0442810157597137,0,0,1867690.0,https://image.tmdb.org/t/p/w185/qlFJG7THmA04TOCntAXtHmOL0J2.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-11,Cameron Diaz,Outcome,0.0442810157597137,0,0,6941.0,https://image.tmdb.org/t/p/w185/d4f4cQ9EiYuvNMjT1IB2h06KoRx.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-12,Scottie Thompson,Hellfire,0.0442810157597137,0,0,128628.0,https://image.tmdb.org/t/p/w185/fx7b87WwORTZxzq8qWvPZS78phg.jpg,0,0,0,0,0,0,0.0,0.0,early,,,new
-13,Myha'la,Dead Man's Wire,0.03684371055903678,0,0,2673750.0,https://image.tmdb.org/t/p/w185/hRc3igngt5dkpM08i0a3z7gkYWa.jpg,0,0,0,0,0,0,92.0,0.0,early,,,new
-14,Erin Kellyman,28 Years Later: The Bone Temple,0.03684371055903678,0,0,1672504.0,https://image.tmdb.org/t/p/w185/f7XXomAaSRxE3h5NT0sAlcQTjPL.jpg,0,0,0,0,0,0,92.0,0.0,early,,,new
-15,Zazie Beetz,They Will Kill You,0.034682386090159126,0,0,1545693.0,https://image.tmdb.org/t/p/w185/sgxzT54GnvgeMnOZgpQQx9csAdd.jpg,0,0,0,0,0,0,63.0,0.0,early,,,new
-16,Margot Robbie,"""Wuthering Heights""",0.021592980262041032,1,0,234352.0,https://image.tmdb.org/t/p/w185/8LqG2N6j98lFGMpuYsRUAhOunSd.jpg,0,0,0,0,0,0,58.0,0.0,early,,,new
-17,Alicia Vikander,The Wizard of the Kremlin,0.02112481042551773,0,0,227454.0,https://image.tmdb.org/t/p/w185/9pmHTbXeRxUF51jJKthmHI49u9z.jpg,0,0,0,0,0,0,52.0,0.0,early,,,new
-18,Nina Kiri,undertone,0.020658459879257466,0,0,1603514.0,https://image.tmdb.org/t/p/w185/hCELEsasRGhIsS7oRfdhfK3d1Jc.jpg,0,0,0,0,0,0,73.0,0.0,early,,,new
-19,Priyanka Chopra Jonas,The Bluff,0.019683241863616883,0,0,77234.0,https://image.tmdb.org/t/p/w185/9n2n3fUFI553HKH0CEAb2TPLtCx.jpg,0,0,0,0,0,0,54.0,0.0,early,,,new
-20,Bodhi Rae Breathnach,Shelter,0.01773816223773057,0,0,4088089.0,https://image.tmdb.org/t/p/w185/sONxErk3r0xfoESAmU3GVTxoPDe.jpg,0,0,0,0,0,0,65.0,0.0,early,,,new
-21,Amber Reign Smith,Joe's College Road Trip,0.014556013038748272,0,0,2627621.0,https://image.tmdb.org/t/p/w185/3YMyankl95BdQe183GZohfdloAL.jpg,0,0,0,0,0,0,42.0,0.0,early,,,new
-22,Kate McKinnon,In the Blink of an Eye,0.014556013038748272,0,0,1240487.0,https://image.tmdb.org/t/p/w185/2cNetzianFcxPQbyOQnkAIkKUZE.jpg,0,0,0,0,0,0,16.0,0.0,early,,,new
-23,Neve Campbell,Scream 7,0.014556013038748272,0,0,9206.0,https://image.tmdb.org/t/p/w185/zQzNg6Kiufj2VCltprI6jilNtl3.jpg,0,0,0,0,0,0,30.0,0.0,early,,,new
-24,Kelly Rowland,Relationship Goals,0.014556013038748272,0,0,93527.0,https://image.tmdb.org/t/p/w185/kos2E1Ecv6aH66UJYJT04VqEAYX.jpg,0,0,0,0,0,0,19.0,0.0,early,,,new
-25,Willa Holland,The Mortuary Assistant,0.014556013038748272,0,0,1223171.0,https://image.tmdb.org/t/p/w185/1GS8AZcIYHoShxaClaHBIelCMBd.jpg,0,0,0,0,0,0,37.0,0.0,early,,,new
-26,Catherine Lough Haggquist,Bodycam,0.011721784380690126,0,0,77622.0,https://image.tmdb.org/t/p/w185/3q6uhNYa7Dapl09YtqVrwndmj1l.jpg,0,0,0,0,0,0,88.0,0.0,early,,,new
-27,Daisy Ridley,We Bury the Dead,0.011721784380690126,0,0,1315036.0,https://image.tmdb.org/t/p/w185/iVboQmgPC3tYFjezBjrVECJRS8n.jpg,0,0,0,0,0,0,88.0,0.0,early,,,new
-28,Michaela McManus,Redux Redux,0.011446083309156745,0,0,210126.0,https://image.tmdb.org/t/p/w185/4BfCVZlnaGeMUNO9WeRMyZjX45x.jpg,0,0,0,0,0,0,97.0,0.0,early,,,new
-29,Juno Temple,"Good Luck, Have Fun, Don't Die",0.010918278427035695,0,0,36594.0,https://image.tmdb.org/t/p/w185/n20TNExAma6q9iVcWtPRxLl7pEc.jpg,0,0,0,0,0,0,83.0,0.0,early,,,new
-30,Meaghan Rath,Untitled Home Invasion Romance,0.007447789202968816,0,0,303020.0,https://image.tmdb.org/t/p/w185/3RJVUYErS4hwCVOpMNEtTMUJ1PA.jpg,0,0,0,0,0,0,77.0,0.0,early,,,new
-31,Zendaya,The Drama,0.007447789202968816,0,0,505710.0,https://image.tmdb.org/t/p/w185/3WdOloHpjtjL96uVOhFRRCcYSwq.jpg,0,0,0,0,0,0,76.0,0.0,early,,,new
-32,Lulu Wilson,Pizza Movie,0.007447789202968816,0,0,1883866.0,https://image.tmdb.org/t/p/w185/7qqMBuvdZoayPVmVZKHBLqUgKiJ.jpg,0,0,0,0,0,0,78.0,0.0,early,,,new
-33,Johnny Sequoyah,Primate,0.007447789202968816,0,0,1295282.0,https://image.tmdb.org/t/p/w185/taFfjOB4lPAx75kJo9yFylKT1ek.jpg,0,0,0,0,0,0,78.0,0.0,early,,,new
-34,Eiza González,Mike & Nick & Nick & Alice,0.007447789202968816,0,0,1222992.0,https://image.tmdb.org/t/p/w185/9kwfAiMeRUGR6cpZyY8FCuP5MSX.jpg,0,0,0,0,0,0,78.0,0.0,early,,,new
-35,Morena Baccarin,The Wrecking Crew,0.007447789202968816,0,0,54882.0,https://image.tmdb.org/t/p/w185/kBSKKaOtsqIzZPhtEeHfCBmhWl9.jpg,0,0,0,0,0,0,75.0,0.0,early,,,new
-36,Teyana Taylor,The Rip,0.0037716590149726626,0,0,964679.0,https://image.tmdb.org/t/p/w185/5b2dAuTsBejBsdm9SkWX4F7jG9w.jpg,0,0,0,0,0,0,79.0,63.0,early,,,new
-37,Jessie Buckley,The Bride!,0.002927049349228675,0,0,1498158.0,https://image.tmdb.org/t/p/w185/qbz9175DERSqsCQeYWGJWwqb38z.jpg,0,0,0,0,0,0,57.0,55.0,early,,,new
-38,Sandra Hüller,Project Hail Mary,0.0019677885238911924,1,0,7152.0,https://image.tmdb.org/t/p/w185/t7wGqC2dRwTEnt9Fk5pxQ0uXTqs.jpg,0,0,0,0,0,0,94.0,77.0,early,,,new
-39,Emily Bader,People We Meet on Vacation,0.0019255316021924386,0,0,1902689.0,https://image.tmdb.org/t/p/w185/54vsruCMlY2QymN950QoMtINNFA.jpg,0,0,0,0,0,0,76.0,50.0,early,,,new
+1,Nina Kiri,undertone,0.3309949444446509,0,0,1603514.0,https://image.tmdb.org/t/p/w300/hCELEsasRGhIsS7oRfdhfK3d1Jc.jpg,0,0,0,0,0,0,73.0,0.0,early,18.0,17.0,up
+2,Zazie Beetz,They Will Kill You,0.05419844676912484,0,0,1545693.0,https://image.tmdb.org/t/p/w300/sgxzT54GnvgeMnOZgpQQx9csAdd.jpg,0,0,0,0,0,0,63.0,0.0,early,15.0,13.0,up
+3,Bodhi Rae Breathnach,Shelter,0.05419844676912484,0,0,4088089.0,https://image.tmdb.org/t/p/w300/sONxErk3r0xfoESAmU3GVTxoPDe.jpg,0,0,0,0,0,0,65.0,0.0,early,20.0,17.0,up
+4,Priyanka Chopra Jonas,The Bluff,0.05419844676912484,0,0,77234.0,https://image.tmdb.org/t/p/w300/9n2n3fUFI553HKH0CEAb2TPLtCx.jpg,0,0,0,0,0,0,54.0,0.0,early,19.0,15.0,up
+5,Rachel McAdams,Send Help,0.0381800128466241,0,0,53714.0,https://image.tmdb.org/t/p/w300/vDUGcy0sdqHx76VWkoemy9n4waT.jpg,0,0,0,0,0,0,93.0,0.0,early,4.0,-1.0,down
+6,Erin Kellyman,28 Years Later: The Bone Temple,0.0381800128466241,0,0,1672504.0,https://image.tmdb.org/t/p/w300/f7XXomAaSRxE3h5NT0sAlcQTjPL.jpg,0,0,0,0,0,0,92.0,0.0,early,14.0,8.0,up
+7,Myha'la,Dead Man's Wire,0.0381800128466241,0,0,2673750.0,https://image.tmdb.org/t/p/w300/hRc3igngt5dkpM08i0a3z7gkYWa.jpg,0,0,0,0,0,0,92.0,0.0,early,13.0,6.0,up
+8,Grace Glowicki,Honey Bunch,0.0381800128466241,0,0,1199952.0,https://image.tmdb.org/t/p/w300/4SbxF12ARtTqL6xfbIn8fT0w7HL.jpg,0,0,0,0,0,0,93.0,0.0,early,,,new
+9,Margot Robbie,"""Wuthering Heights""",0.03397528669450912,1,0,234352.0,https://image.tmdb.org/t/p/w300/8LqG2N6j98lFGMpuYsRUAhOunSd.jpg,0,0,0,0,0,0,58.0,0.0,early,16.0,7.0,up
+10,Scottie Thompson,Hellfire,0.032855720811146474,0,0,128628.0,https://image.tmdb.org/t/p/w300/fx7b87WwORTZxzq8qWvPZS78phg.jpg,0,0,0,0,0,0,0.0,0.0,early,12.0,2.0,up
+11,Kate McKinnon,In the Blink of an Eye,0.032855720811146474,0,0,1240487.0,https://image.tmdb.org/t/p/w300/2cNetzianFcxPQbyOQnkAIkKUZE.jpg,0,0,0,0,0,0,16.0,0.0,early,22.0,11.0,up
+12,Mia Jenkins,Love Me Love Me,0.032855720811146474,0,0,1867690.0,https://image.tmdb.org/t/p/w300/qlFJG7THmA04TOCntAXtHmOL0J2.jpg,0,0,0,0,0,0,0.0,0.0,early,10.0,-2.0,down
+13,Emily Bader,People We Meet on Vacation,0.027240067439110976,0,0,1902689.0,https://image.tmdb.org/t/p/w300/54vsruCMlY2QymN950QoMtINNFA.jpg,0,0,0,0,0,0,76.0,50.0,early,39.0,26.0,up
+14,Zendaya,The Drama,0.027240067439110976,0,0,505710.0,https://image.tmdb.org/t/p/w300/3WdOloHpjtjL96uVOhFRRCcYSwq.jpg,0,0,0,0,0,0,76.0,0.0,early,31.0,17.0,up
+15,Morena Baccarin,The Wrecking Crew,0.027240067439110976,0,0,54882.0,https://image.tmdb.org/t/p/w300/kBSKKaOtsqIzZPhtEeHfCBmhWl9.jpg,0,0,0,0,0,0,75.0,0.0,early,35.0,20.0,up
+16,Sandra Hüller,Project Hail Mary,0.02373039166439361,1,0,7152.0,https://image.tmdb.org/t/p/w300/jQfKXVCPTH9KEnzHHU4QemCnlMe.jpg,0,0,0,0,0,0,94.0,77.0,early,38.0,22.0,up
+17,Jessie Buckley,The Bride!,0.022406860348730195,1,1,1498158.0,https://image.tmdb.org/t/p/w300/qbz9175DERSqsCQeYWGJWwqb38z.jpg,0,0,0,0,0,0,57.0,55.0,early,37.0,20.0,up
+18,Teyana Taylor,The Rip,0.012456863818616727,0,0,964679.0,https://image.tmdb.org/t/p/w300/5b2dAuTsBejBsdm9SkWX4F7jG9w.jpg,0,0,0,0,0,0,79.0,63.0,early,36.0,18.0,up
+19,Georgina Campbell,Cold Storage,0.011937003114930313,0,0,1335315.0,https://image.tmdb.org/t/p/w300/kgXHKjI728Nv7FLVf38S9QzHU2n.jpg,0,0,0,0,0,0,80.0,0.0,early,3.0,-16.0,down
+20,Juno Temple,"Good Luck, Have Fun, Don't Die",0.011937003114930313,0,0,36594.0,https://image.tmdb.org/t/p/w300/n20TNExAma6q9iVcWtPRxLl7pEc.jpg,0,0,0,0,0,0,83.0,0.0,early,29.0,9.0,up
+21,Rebecca Ferguson,Peaky Blinders: The Immortal Man,0.009045961612463141,0,0,933238.0,https://image.tmdb.org/t/p/w300/lJloTOheuQSirSLXNA3JHsrMNfH.jpg,0,0,0,0,0,0,90.0,0.0,early,5.0,-16.0,down
+22,Johnny Sequoyah,Primate,0.008793620871370382,0,0,1295282.0,https://image.tmdb.org/t/p/w300/taFfjOB4lPAx75kJo9yFylKT1ek.jpg,0,0,0,0,0,0,78.0,0.0,early,33.0,11.0,up
+23,Lulu Wilson,Pizza Movie,0.008793620871370382,0,0,1883866.0,https://image.tmdb.org/t/p/w300/7qqMBuvdZoayPVmVZKHBLqUgKiJ.jpg,0,0,0,0,0,0,78.0,0.0,early,32.0,9.0,up
+24,Meaghan Rath,Untitled Home Invasion Romance,0.008793620871370382,0,0,303020.0,https://image.tmdb.org/t/p/w300/3RJVUYErS4hwCVOpMNEtTMUJ1PA.jpg,0,0,0,0,0,0,77.0,0.0,early,30.0,6.0,up
+25,Eiza González,Mike & Nick & Nick & Alice,0.008793620871370382,0,0,1222992.0,https://image.tmdb.org/t/p/w300/9kwfAiMeRUGR6cpZyY8FCuP5MSX.jpg,0,0,0,0,0,0,78.0,0.0,early,34.0,9.0,up
+26,Daisy Ridley,We Bury the Dead,0.0032362075572339236,0,0,1315036.0,https://image.tmdb.org/t/p/w300/iVboQmgPC3tYFjezBjrVECJRS8n.jpg,0,0,0,0,0,0,88.0,0.0,early,27.0,1.0,up
+27,Catherine Lough Haggquist,Bodycam,0.0032362075572339236,0,0,77622.0,https://image.tmdb.org/t/p/w300/3q6uhNYa7Dapl09YtqVrwndmj1l.jpg,0,0,0,0,0,0,88.0,0.0,early,26.0,-1.0,down
+28,Halle Berry,Crime 101,0.003133015071091583,1,1,4587.0,https://image.tmdb.org/t/p/w300/wtFetpWV8kjBsvzYKN9uEEmPdpy.jpg,0,0,0,0,0,0,89.0,0.0,early,6.0,-22.0,down
+29,Andrea Riseborough,Good Boy,0.003133015071091583,1,0,127558.0,https://image.tmdb.org/t/p/w300/dQzAXj6R8cTRqTwGzxUgegXbV13.jpg,0,0,0,0,0,0,87.0,0.0,early,2.0,-27.0,down
