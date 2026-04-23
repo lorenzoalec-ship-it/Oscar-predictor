@@ -39,7 +39,10 @@ REQUEST_HEADERS = {"User-Agent": "OscarPredictor/1.0 (festival-scraper; educatio
 REQUEST_TIMEOUT = 20
 MAX_RETRIES = 3
 
-FLAG_COLS = ["sundance_flag", "cannes_flag", "venice_flag", "tiff_flag", "telluride_flag", "sxsw_flag"]
+FLAG_COLS = [
+    "sundance_flag", "berlin_flag", "sxsw_flag", "cannes_flag",
+    "venice_flag", "telluride_flag", "tiff_flag", "nyff_flag", "afi_flag",
+]
 
 # Venice uses edition numbers, not years. 2025 = 82nd, so 2026 = 83rd, etc.
 VENICE_BASE_YEAR = 2025
@@ -58,11 +61,14 @@ def festival_wikipedia_titles(year: int) -> list[dict]:
     venice_edition = VENICE_BASE_EDITION + (year - VENICE_BASE_YEAR)
     return [
         {"flag": "sundance_flag",  "title": f"{year} Sundance Film Festival"},
+        {"flag": "berlin_flag",    "title": f"{year} Berlin International Film Festival"},
         {"flag": "sxsw_flag",      "title": f"{year} South by Southwest"},
         {"flag": "cannes_flag",    "title": f"{year} Cannes Film Festival"},
         {"flag": "venice_flag",    "title": f"{ordinal(venice_edition)} Venice International Film Festival"},
         {"flag": "telluride_flag", "title": f"{year} Telluride Film Festival"},
         {"flag": "tiff_flag",      "title": f"{year} Toronto International Film Festival"},
+        {"flag": "nyff_flag",      "title": f"{year} New York Film Festival"},
+        {"flag": "afi_flag",       "title": f"AFI Fest {year}"},
     ]
 
 

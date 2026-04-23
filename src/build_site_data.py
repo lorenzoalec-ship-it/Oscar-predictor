@@ -148,6 +148,133 @@ def _safe_int_col(row, col):
         return 0
 
 
+# ---------------------------------------------------------------------------
+# Festival Watch configuration
+# ---------------------------------------------------------------------------
+
+# Dates are approximate and updated annually. Status (upcoming/active/completed)
+# is computed at build time against the current date.
+FESTIVAL_CONFIG = {
+    2026: [
+        {"key": "sundance",  "name": "Sundance Film Festival",            "flag": "sundance_flag", "start": "2026-01-22", "end": "2026-02-01", "location": "Park City, UT",    "oscar_note": "Breakout indie contenders"},
+        {"key": "berlin",    "name": "Berlin International Film Festival","flag": "berlin_flag",   "start": "2026-02-13", "end": "2026-02-23", "location": "Berlin, Germany",   "oscar_note": "International & art-house pipeline"},
+        {"key": "sxsw",     "name": "SXSW Film Festival",                "flag": "sxsw_flag",     "start": "2026-03-13", "end": "2026-03-21", "location": "Austin, TX",        "oscar_note": "Emerging US filmmakers"},
+        {"key": "cannes",    "name": "Cannes Film Festival",              "flag": "cannes_flag",   "start": "2026-05-13", "end": "2026-05-24", "location": "Cannes, France",    "oscar_note": "Palme d'Or winners often contend"},
+        {"key": "venice",    "name": "Venice Film Festival",              "flag": "venice_flag",   "start": "2026-08-26", "end": "2026-09-05", "location": "Venice, Italy",     "oscar_note": "Strong Oscar track record"},
+        {"key": "telluride", "name": "Telluride Film Festival",           "flag": "telluride_flag","start": "2026-08-28", "end": "2026-09-01", "location": "Telluride, CO",     "oscar_note": "First look at fall frontrunners"},
+        {"key": "tiff",      "name": "Toronto International Film Festival","flag": "tiff_flag",    "start": "2026-09-10", "end": "2026-09-20", "location": "Toronto, Canada",   "oscar_note": "Audience Award a BP bellwether"},
+        {"key": "nyff",      "name": "New York Film Festival",            "flag": "nyff_flag",     "start": "2026-09-25", "end": "2026-10-11", "location": "New York, NY",      "oscar_note": "Prestige art-house showcase"},
+        {"key": "afi",       "name": "AFI Fest",                          "flag": "afi_flag",      "start": "2026-10-15", "end": "2026-10-19", "location": "Los Angeles, CA",   "oscar_note": "Studio awards plays premiere here"},
+    ],
+}
+
+
+def build_festival_watch_payload(year: int) -> list[dict]:
+    """
+    Build the festival watch payload for the given eligibility year.
+    Each festival entry includes:
+      - Status: upcoming / active / completed
+      - confirmed_films: films flagged as attending this festival (from manual_festival_flags.csv)
+      - on_our_radar: top-10 BP contenders not yet confirmed at any major festival
+    """
+    from datetime import date
+
+    festivals = FESTIVAL_CONFIG.get(year, [])
+    if not festivals:
+        return []
+
+    today = date.today()
+
+    # Load BP predictions for Oscar probability and film metadata
+    bp_path = OUTPUT_DIR / f"future_best_picture_predictions_{year}.csv"
+    if not bp_path.exists():
+        return []
+    bp_df = pd.read_csv(bp_path)
+
+    # Load confirmed festival flags
+    flags_path = ROOT / "data" / "raw" / "manual_festival_flags.csv"
+    flags_df = pd.read_csv(flags_path) if flags_path.exists() else pd.DataFrame()
+    if not flags_df.empty:
+        flags_df = flags_df[flags_df["year_film"] == year].copy()
+
+    # Build a lookup: title → BP row (probability + metadata)
+    bp_lookup = {}
+    for _, row in bp_df.iterrows():
+        bp_lookup[str(row["title"]).strip().lower()] = row
+
+    def _film_card(title, bp_row=None):
+        if bp_row is None:
+            bp_row = bp_lookup.get(str(title).strip().lower(), {})
+        prob = float(bp_row.get("best_picture_probability", 0)) if hasattr(bp_row, "get") else 0
+        return {
+            "title": title,
+            "probability": round(prob, 4),
+            "poster_url": bp_row.get("poster_url") if hasattr(bp_row, "get") else None,
+            "overview": str(bp_row.get("overview", ""))[:200] if hasattr(bp_row, "get") else "",
+            "tomatometer_rating": float(bp_row.get("tomatometer_rating", 0) or 0) if hasattr(bp_row, "get") else 0,
+            "metacritic_score": float(bp_row.get("metacritic_score", 0) or 0) if hasattr(bp_row, "get") else 0,
+        }
+
+    # Determine which films are already confirmed at any festival
+    all_flag_cols = [f["flag"] for f in festivals if f["flag"] in (flags_df.columns if not flags_df.empty else [])]
+    confirmed_titles = set()
+    if not flags_df.empty and all_flag_cols:
+        confirmed_mask = flags_df[all_flag_cols].sum(axis=1) > 0
+        confirmed_titles = set(flags_df[confirmed_mask]["title"].str.lower().str.strip())
+
+    # "On Our Radar": top-10 BP contenders not confirmed at any festival yet
+    radar_df = bp_df.copy()
+    radar_df["_title_low"] = radar_df["title"].str.lower().str.strip()
+    radar_df = radar_df[~radar_df["_title_low"].isin(confirmed_titles)]
+    radar_df = radar_df.sort_values("best_picture_probability", ascending=False).head(10)
+    on_our_radar = [_film_card(row["title"], row) for _, row in radar_df.iterrows()]
+
+    result = []
+    for fest in festivals:
+        start = date.fromisoformat(fest["start"])
+        end = date.fromisoformat(fest["end"])
+
+        if today < start:
+            status = "upcoming"
+            days_until = (start - today).days
+        elif today <= end:
+            status = "active"
+            days_until = 0
+        else:
+            status = "completed"
+            days_until = None
+
+        # Confirmed films for this festival
+        flag_col = fest["flag"]
+        confirmed_films = []
+        if not flags_df.empty and flag_col in flags_df.columns:
+            flagged = flags_df[flags_df[flag_col] == 1].copy()
+            flagged["_title_low"] = flagged["title"].str.lower().str.strip()
+            # Sort by BP probability descending
+            rows_with_prob = []
+            for _, row in flagged.iterrows():
+                bp_row = bp_lookup.get(row["_title_low"])
+                prob = float(bp_row.get("best_picture_probability", 0)) if bp_row is not None else 0
+                rows_with_prob.append((prob, row["title"], bp_row))
+            rows_with_prob.sort(reverse=True)
+            confirmed_films = [_film_card(t, r) for _, t, r in rows_with_prob]
+
+        result.append({
+            "key": fest["key"],
+            "name": fest["name"],
+            "location": fest["location"],
+            "oscar_note": fest["oscar_note"],
+            "start_date": fest["start"],
+            "end_date": fest["end"],
+            "status": status,
+            "days_until": days_until,
+            "confirmed_films": confirmed_films,
+            "on_our_radar": on_our_radar if status == "upcoming" else [],
+        })
+
+    return result
+
+
 def load_forecast_cards(path: Path, limit: int = 12):
     df = pd.read_csv(path).head(limit).copy()
     cards = []
@@ -1112,6 +1239,7 @@ def build_payload():
             "current_forecast_season": hero.get("forecast_season"),
         },
         "recent_races": recent_races,
+        "festival_watch": build_festival_watch_payload(forecast_year),
         "season_modes": season_modes,
         "actual_winners": build_actual_winners(model_df, start_year=SITE_HISTORY_START_YEAR),
         "actor_data": build_category_payload("actor"),
