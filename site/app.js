@@ -574,6 +574,69 @@ function renderSeasonModes(data) {
     .join("");
 }
 
+function renderFestivalWatch(festivals) {
+  const container = document.getElementById("festival-watch");
+  if (!container) return;
+  if (!festivals || !festivals.length) {
+    container.innerHTML = `<p class="method-copy">Festival data not available yet.</p>`;
+    return;
+  }
+
+  const statusBadge = (f) => {
+    if (f.status === "active")    return `<span class="fest-badge fest-live">🔴 Live Now</span>`;
+    if (f.status === "upcoming")  return `<span class="fest-badge fest-upcoming">📅 ${f.days_until}d away</span>`;
+    return `<span class="fest-badge fest-done">✓ Completed</span>`;
+  };
+
+  const filmCard = (film, showProb = true) => `
+    <div class="fest-film-card">
+      ${film.poster_url
+        ? `<img class="fest-film-poster" src="${film.poster_url}" alt="${escapeHtml(film.title)}" loading="lazy">`
+        : `<div class="fest-film-poster fest-film-poster--empty"></div>`}
+      <div class="fest-film-info">
+        <p class="fest-film-title">${escapeHtml(film.title)}</p>
+        ${showProb && film.probability > 0
+          ? `<p class="fest-film-prob">${formatPercent(film.probability)} BP odds</p>`
+          : ""}
+        ${film.tomatometer_rating > 0
+          ? `<p class="fest-film-rt">🍅 ${Math.round(film.tomatometer_rating)}%</p>`
+          : ""}
+      </div>
+    </div>`;
+
+  const cards = festivals.map(f => {
+    const confirmedSection = f.confirmed_films.length
+      ? `<div class="fest-section-label">Confirmed Selections</div>
+         <div class="fest-film-row">${f.confirmed_films.map(m => filmCard(m)).join("")}</div>`
+      : (f.status === "completed"
+          ? `<p class="fest-empty-note">No selections matched our tracked pool.</p>`
+          : "");
+
+    const radarSection = f.status === "upcoming" && f.on_our_radar.length
+      ? `<div class="fest-section-label">On Our Radar <span class="fest-radar-note">Films our model is tracking as potential selections</span></div>
+         <div class="fest-film-row">${f.on_our_radar.map(m => filmCard(m)).join("")}</div>`
+      : "";
+
+    return `
+      <div class="fest-card fest-card--${f.status}">
+        <div class="fest-card-header">
+          <div class="fest-card-meta">
+            <h3 class="fest-name">${escapeHtml(f.name)}</h3>
+            <p class="fest-dates">${f.start_date} → ${f.end_date} · ${escapeHtml(f.location)}</p>
+            <p class="fest-note">${escapeHtml(f.oscar_note)}</p>
+          </div>
+          ${statusBadge(f)}
+        </div>
+        <div class="fest-card-body">
+          ${confirmedSection}
+          ${radarSection}
+          ${!confirmedSection && !radarSection ? `<p class="fest-empty-note">Lineup not yet announced.</p>` : ""}
+        </div>
+      </div>`;
+  });
+  container.innerHTML = `<div class="festival-grid">${cards.join("")}</div>`;
+}
+
 function renderRecentRaces(races) {
   const container = document.getElementById("recent-races");
   container.innerHTML = races
@@ -1286,6 +1349,7 @@ async function main() {
       () => renderDonut(data.forecast_cards ?? []),
       () => renderGauge(data.forecast_cards ?? []),
       () => renderSignalMatrix(data.forecast_cards ?? []),
+      () => renderFestivalWatch(data.festival_watch ?? []),
       () => renderMetrics(data),
       () => renderSeasonModes(data),
       () => renderHistoricalYearControls(data),

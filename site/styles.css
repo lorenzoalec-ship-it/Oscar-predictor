@@ -2706,3 +2706,223 @@ main {
     width: 80px;
   }
 }
+
+/* =========================================================
+   FESTIVAL WATCH
+   ========================================================= */
+
+.festival-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.fest-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  transition: box-shadow 0.2s;
+}
+
+.fest-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.fest-card--active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.fest-card--completed {
+  opacity: 0.8;
+}
+
+.fest-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1rem 0.5rem;
+}
+
+.fest-card-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.fest-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.2rem;
+}
+
+.fest-dates {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.25rem;
+}
+
+.fest-note {
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-style: italic;
+  margin: 0;
+}
+
+.fest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fest-badge.fest-live {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+.fest-badge.fest-upcoming {
+  background: color-mix(in srgb, var(--text-secondary) 12%, transparent);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.fest-badge.fest-done {
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  color: #16a34a;
+  border: 1px solid color-mix(in srgb, #22c55e 30%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .fest-badge.fest-done {
+    color: #4ade80;
+  }
+}
+
+body.dark .fest-badge.fest-done {
+  color: #4ade80;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.fest-card-body {
+  padding: 0.75rem 1rem 1rem;
+}
+
+.fest-section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin: 0.75rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.fest-section-label:first-child {
+  margin-top: 0;
+}
+
+.fest-film-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fest-film-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 8px;
+  background: var(--surface-alt, color-mix(in srgb, var(--text-primary) 4%, transparent));
+  transition: background 0.15s;
+}
+
+.fest-film-card:hover {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.fest-film-poster {
+  width: 32px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  background: var(--border);
+}
+
+.fest-film-poster--empty {
+  width: 32px;
+  height: 48px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--text-secondary) 15%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.fest-film-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.fest-film-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.fest-film-prob {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0.1rem 0 0;
+}
+
+.fest-film-rt {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.fest-radar-note {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.fest-empty-note {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 0.5rem 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .festival-grid {
+    grid-template-columns: 1fr;
+  }
+}
