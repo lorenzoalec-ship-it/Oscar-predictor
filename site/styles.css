@@ -2901,6 +2901,12 @@ body.dark .fest-badge.fest-done {
   margin: 0.1rem 0 0;
 }
 
+.fest-film-prob--buzz {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-style: italic;
+}
+
 .fest-film-rt {
   font-size: 0.7rem;
   color: var(--text-secondary);

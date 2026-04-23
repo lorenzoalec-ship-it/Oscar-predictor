@@ -588,21 +588,26 @@ function renderFestivalWatch(festivals) {
     return `<span class="fest-badge fest-done">✓ Completed</span>`;
   };
 
-  const filmCard = (film) => `
+  const filmCard = (film) => {
+    const probLine = film.pre_release
+      ? `<p class="fest-film-prob fest-film-prob--buzz">🎬 Festival premiere · pre-release</p>`
+      : film.probability > 0
+        ? `<p class="fest-film-prob">${formatPercent(film.probability)} BP odds</p>`
+        : "";
+    const rtLine = film.tomatometer_rating > 0
+      ? `<p class="fest-film-rt">🍅 ${Math.round(film.tomatometer_rating)}%</p>`
+      : "";
+    return `
     <div class="fest-film-card">
       ${film.poster_url
         ? `<img class="fest-film-poster" src="${film.poster_url}" alt="${escapeHtml(film.title)}" loading="lazy">`
         : `<div class="fest-film-poster--empty">🎬</div>`}
       <div class="fest-film-info">
         <p class="fest-film-title">${escapeHtml(film.title)}</p>
-        ${film.probability > 0
-          ? `<p class="fest-film-prob">${formatPercent(film.probability)} BP odds</p>`
-          : ""}
-        ${film.tomatometer_rating > 0
-          ? `<p class="fest-film-rt">🍅 ${Math.round(film.tomatometer_rating)}%</p>`
-          : ""}
+        ${probLine}${rtLine}
       </div>
     </div>`;
+  };
 
   const cards = festivals.map(f => {
     let bodyHtml = "";

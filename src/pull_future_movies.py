@@ -46,20 +46,37 @@ FUTURE_MOVIE_COLUMNS = [
     "no_of_persons_voted",
     "popularity",
     "adult",
+    "pre_release",
 ]
 
 
-def fetch_page(api_key: str, year: int, page: int, *, sort_by: str, min_vote_count: int = None) -> dict:
+def fetch_page(
+    api_key: str,
+    year: int,
+    page: int,
+    *,
+    sort_by: str,
+    min_vote_count: int = None,
+    date_gte: str = None,
+    date_lte: str = None,
+) -> dict:
     params = {
         "api_key": api_key,
         "include_adult": "false",
         "include_video": "false",
         "language": "en-US",
         "page": page,
-        "primary_release_year": year,
         "sort_by": sort_by,
         "with_original_language": "en",
     }
+    if date_gte or date_lte:
+        # Date-range mode — don't use primary_release_year so we can target future dates
+        if date_gte:
+            params["primary_release_date.gte"] = date_gte
+        if date_lte:
+            params["primary_release_date.lte"] = date_lte
+    else:
+        params["primary_release_year"] = year
     if min_vote_count is not None:
         params["vote_count.gte"] = min_vote_count
     url = f"{TMDB_BASE_URL}?{urlencode(params)}"
@@ -67,14 +84,27 @@ def fetch_page(api_key: str, year: int, page: int, *, sort_by: str, min_vote_cou
         return json.loads(response.read().decode("utf-8"))
 
 
-def normalize_results(results: list[dict], year: int) -> pd.DataFrame:
+def normalize_results(results: list[dict], year: int, pre_release: bool = False) -> pd.DataFrame:
+    today = date.today()
     rows = []
     for item in results:
-        release_date = item.get("release_date") or None
+        release_date_str = item.get("release_date") or None
+        # Determine pre_release flag: no release date yet, or release date is in the future
+        if pre_release:
+            is_pre = 1
+        elif release_date_str:
+            try:
+                rd = date.fromisoformat(release_date_str)
+                is_pre = 1 if rd > today else 0
+            except ValueError:
+                is_pre = 0
+        else:
+            is_pre = 1  # No release date = not yet out
+
         rows.append(
             {
                 "title": item.get("title"),
-                "release_date": release_date,
+                "release_date": release_date_str,
                 "year": year,
                 "tmdb_id": item.get("id"),
                 "overview": item.get("overview"),
@@ -96,6 +126,7 @@ def normalize_results(results: list[dict], year: int) -> pd.DataFrame:
                 "no_of_persons_voted": item.get("vote_count"),
                 "popularity": item.get("popularity"),
                 "adult": item.get("adult"),
+                "pre_release": is_pre,
             }
         )
 
@@ -117,13 +148,27 @@ def normalize_results(results: list[dict], year: int) -> pd.DataFrame:
     return df
 
 
-def fetch_all_results(api_key: str, year: int, *, sort_by: str, min_vote_count: int = None) -> list[dict]:
-    first_page = fetch_page(api_key, year, page=1, sort_by=sort_by, min_vote_count=min_vote_count)
+def fetch_all_results(
+    api_key: str,
+    year: int,
+    *,
+    sort_by: str,
+    min_vote_count: int = None,
+    date_gte: str = None,
+    date_lte: str = None,
+) -> list[dict]:
+    first_page = fetch_page(
+        api_key, year, page=1, sort_by=sort_by,
+        min_vote_count=min_vote_count, date_gte=date_gte, date_lte=date_lte,
+    )
     all_results = list(first_page.get("results", []))
     total_pages = min(first_page.get("total_pages", 1), 500)  # TMDb caps at 500 pages
     for page in range(2, total_pages + 1):
         time.sleep(_PAGE_DELAY)
-        payload = fetch_page(api_key, year, page=page, sort_by=sort_by, min_vote_count=min_vote_count)
+        payload = fetch_page(
+            api_key, year, page=page, sort_by=sort_by,
+            min_vote_count=min_vote_count, date_gte=date_gte, date_lte=date_lte,
+        )
         all_results.extend(payload.get("results", []))
     return all_results
 
@@ -133,43 +178,56 @@ def pull_tmdb_movies(year: int) -> pd.DataFrame:
     if not api_key:
         raise EnvironmentError("TMDB_API_KEY is not set.")
 
-    attempts = [
-        {
-            "label": "vote-screened release-date query",
-            "sort_by": "primary_release_date.asc",
-            "min_vote_count": 5,
-        }
-    ]
-    if year >= date.today().year + 1:
-        attempts.extend(
-            [
-                {
-                    "label": "release-date fallback without vote filter",
-                    "sort_by": "primary_release_date.asc",
-                    "min_vote_count": None,
-                },
-                {
-                    "label": "popularity fallback without vote filter",
-                    "sort_by": "popularity.desc",
-                    "min_vote_count": None,
-                },
-            ]
-        )
+    today = date.today()
 
-    for attempt in attempts:
-        all_results = fetch_all_results(
-            api_key,
-            year,
-            sort_by=attempt["sort_by"],
-            min_vote_count=attempt["min_vote_count"],
-        )
-        if all_results:
-            if attempt["label"] != attempts[0]["label"]:
-                print(f"TMDb fallback used for {year}: {attempt['label']}.")
-            return normalize_results(all_results, year)
+    # --- Pass 1: Already-released films (vote_count >= 5 ensures real screenings) ---
+    released_results = fetch_all_results(
+        api_key, year,
+        sort_by="primary_release_date.asc",
+        min_vote_count=5,
+    )
+    released_df = normalize_results(released_results, year)
+    print(f"Pass 1 (released, vote≥5): {len(released_df)} films")
 
-    print(f"TMDb returned no discover results for {year} across all query variants.")
-    return normalize_results([], year)
+    # --- Pass 2: Upcoming films releasing later this year (no vote filter) ---
+    # Captures announced titles not yet in wide release — festival premiere candidates.
+    # Only run for the current or next eligibility year; historical years are complete.
+    upcoming_df = pd.DataFrame(columns=FUTURE_MOVIE_COLUMNS)
+    if year >= today.year:
+        date_gte = max(today.isoformat(), f"{year}-01-01")
+        date_lte = f"{year}-12-31"
+        upcoming_results = fetch_all_results(
+            api_key, year,
+            sort_by="popularity.desc",
+            min_vote_count=None,
+            date_gte=date_gte,
+            date_lte=date_lte,
+        )
+        upcoming_df = normalize_results(upcoming_results, year, pre_release=True)
+        print(f"Pass 2 (upcoming, no vote filter): {len(upcoming_df)} films")
+
+    # --- Merge: keep released records; add upcoming films not already captured ---
+    if released_df.empty and upcoming_df.empty:
+        print(f"TMDb returned no results for {year}.")
+        return normalize_results([], year)
+
+    if released_df.empty:
+        return upcoming_df
+    if upcoming_df.empty:
+        return released_df
+
+    released_keys = set(released_df["title"].str.strip().str.lower().dropna())
+    new_upcoming = upcoming_df[
+        ~upcoming_df["title"].str.strip().str.lower().isin(released_keys)
+    ].copy()
+    print(f"Adding {len(new_upcoming)} net-new upcoming films to pool")
+
+    combined = pd.concat([released_df, new_upcoming], ignore_index=True)
+    combined = combined.sort_values(
+        ["pre_release", "release_date", "no_of_persons_voted"],
+        ascending=[True, True, False],
+    )
+    return combined
 
 
 def output_path_for_year(year: int) -> Path:
