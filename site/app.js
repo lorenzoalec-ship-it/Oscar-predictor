@@ -588,14 +588,14 @@ function renderFestivalWatch(festivals) {
     return `<span class="fest-badge fest-done">✓ Completed</span>`;
   };
 
-  const filmCard = (film, showProb = true) => `
+  const filmCard = (film) => `
     <div class="fest-film-card">
       ${film.poster_url
         ? `<img class="fest-film-poster" src="${film.poster_url}" alt="${escapeHtml(film.title)}" loading="lazy">`
-        : `<div class="fest-film-poster fest-film-poster--empty"></div>`}
+        : `<div class="fest-film-poster--empty">🎬</div>`}
       <div class="fest-film-info">
         <p class="fest-film-title">${escapeHtml(film.title)}</p>
-        ${showProb && film.probability > 0
+        ${film.probability > 0
           ? `<p class="fest-film-prob">${formatPercent(film.probability)} BP odds</p>`
           : ""}
         ${film.tomatometer_rating > 0
@@ -605,17 +605,23 @@ function renderFestivalWatch(festivals) {
     </div>`;
 
   const cards = festivals.map(f => {
-    const confirmedSection = f.confirmed_films.length
-      ? `<div class="fest-section-label">Confirmed Selections</div>
-         <div class="fest-film-row">${f.confirmed_films.map(m => filmCard(m)).join("")}</div>`
-      : (f.status === "completed"
-          ? `<p class="fest-empty-note">No selections matched our tracked pool.</p>`
-          : "");
+    let bodyHtml = "";
 
-    const radarSection = f.status === "upcoming" && f.on_our_radar.length
-      ? `<div class="fest-section-label">On Our Radar <span class="fest-radar-note">Films our model is tracking as potential selections</span></div>
-         <div class="fest-film-row">${f.on_our_radar.map(m => filmCard(m)).join("")}</div>`
-      : "";
+    if (f.confirmed_films.length) {
+      const label = f.status === "completed"
+        ? "Oscar Contenders From This Lineup"
+        : "Top Oscar Buzz From Confirmed Lineup";
+      bodyHtml = `
+        <div class="fest-section-label">${label}</div>
+        <div class="fest-film-row">${f.confirmed_films.map(filmCard).join("")}</div>`;
+    } else {
+      const emptyMsg = f.status === "upcoming"
+        ? `Lineup not yet announced — check back closer to ${f.start_date}`
+        : f.status === "active"
+          ? "Lineup announced but no tracked films confirmed yet"
+          : "No tracked films confirmed from this lineup";
+      bodyHtml = `<p class="fest-empty-note">${emptyMsg}</p>`;
+    }
 
     return `
       <div class="fest-card fest-card--${f.status}">
@@ -627,11 +633,7 @@ function renderFestivalWatch(festivals) {
           </div>
           ${statusBadge(f)}
         </div>
-        <div class="fest-card-body">
-          ${confirmedSection}
-          ${radarSection}
-          ${!confirmedSection && !radarSection ? `<p class="fest-empty-note">Lineup not yet announced.</p>` : ""}
-        </div>
+        <div class="fest-card-body">${bodyHtml}</div>
       </div>`;
   });
   container.innerHTML = `<div class="festival-grid">${cards.join("")}</div>`;

@@ -202,32 +202,29 @@ def build_festival_watch_payload(year: int) -> list[dict]:
     for _, row in bp_df.iterrows():
         bp_lookup[str(row["title"]).strip().lower()] = row
 
+    def _buzz_score(bp_row):
+        """Composite buzz score: BP probability (primary) + critical reception signals."""
+        if bp_row is None:
+            return 0.0
+        prob = float(bp_row.get("best_picture_probability", 0) or 0)
+        rt = float(bp_row.get("tomatometer_rating", 0) or 0) / 100
+        mc = float(bp_row.get("metacritic_score", 0) or 0) / 100
+        return prob * 0.60 + rt * 0.25 + mc * 0.15
+
     def _film_card(title, bp_row=None):
         if bp_row is None:
             bp_row = bp_lookup.get(str(title).strip().lower(), {})
         prob = float(bp_row.get("best_picture_probability", 0)) if hasattr(bp_row, "get") else 0
+        rt = float(bp_row.get("tomatometer_rating", 0) or 0) if hasattr(bp_row, "get") else 0
+        mc = float(bp_row.get("metacritic_score", 0) or 0) if hasattr(bp_row, "get") else 0
         return {
             "title": title,
             "probability": round(prob, 4),
             "poster_url": bp_row.get("poster_url") if hasattr(bp_row, "get") else None,
             "overview": str(bp_row.get("overview", ""))[:200] if hasattr(bp_row, "get") else "",
-            "tomatometer_rating": float(bp_row.get("tomatometer_rating", 0) or 0) if hasattr(bp_row, "get") else 0,
-            "metacritic_score": float(bp_row.get("metacritic_score", 0) or 0) if hasattr(bp_row, "get") else 0,
+            "tomatometer_rating": rt,
+            "metacritic_score": mc,
         }
-
-    # Determine which films are already confirmed at any festival
-    all_flag_cols = [f["flag"] for f in festivals if f["flag"] in (flags_df.columns if not flags_df.empty else [])]
-    confirmed_titles = set()
-    if not flags_df.empty and all_flag_cols:
-        confirmed_mask = flags_df[all_flag_cols].sum(axis=1) > 0
-        confirmed_titles = set(flags_df[confirmed_mask]["title"].str.lower().str.strip())
-
-    # "On Our Radar": top-10 BP contenders not confirmed at any festival yet
-    radar_df = bp_df.copy()
-    radar_df["_title_low"] = radar_df["title"].str.lower().str.strip()
-    radar_df = radar_df[~radar_df["_title_low"].isin(confirmed_titles)]
-    radar_df = radar_df.sort_values("best_picture_probability", ascending=False).head(10)
-    on_our_radar = [_film_card(row["title"], row) for _, row in radar_df.iterrows()]
 
     result = []
     for fest in festivals:
@@ -244,20 +241,20 @@ def build_festival_watch_payload(year: int) -> list[dict]:
             status = "completed"
             days_until = None
 
-        # Confirmed films for this festival
+        # Confirmed films for this festival — ranked by buzz, capped at 5
         flag_col = fest["flag"]
         confirmed_films = []
         if not flags_df.empty and flag_col in flags_df.columns:
             flagged = flags_df[flags_df[flag_col] == 1].copy()
             flagged["_title_low"] = flagged["title"].str.lower().str.strip()
-            # Sort by BP probability descending
-            rows_with_prob = []
+            rows_with_buzz = []
             for _, row in flagged.iterrows():
                 bp_row = bp_lookup.get(row["_title_low"])
-                prob = float(bp_row.get("best_picture_probability", 0)) if bp_row is not None else 0
-                rows_with_prob.append((prob, row["title"], bp_row))
-            rows_with_prob.sort(reverse=True)
-            confirmed_films = [_film_card(t, r) for _, t, r in rows_with_prob]
+                buzz = _buzz_score(bp_row)
+                rows_with_buzz.append((buzz, row["title"], bp_row))
+            rows_with_buzz.sort(reverse=True)
+            # Top 5 by buzz score — these are the films worth watching from the lineup
+            confirmed_films = [_film_card(t, r) for _, t, r in rows_with_buzz[:5]]
 
         result.append({
             "key": fest["key"],
@@ -269,7 +266,6 @@ def build_festival_watch_payload(year: int) -> list[dict]:
             "status": status,
             "days_until": days_until,
             "confirmed_films": confirmed_films,
-            "on_our_radar": on_our_radar if status == "upcoming" else [],
         })
 
     return result
