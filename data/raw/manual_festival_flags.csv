@@ -1,5 +1,27 @@
-year_film,title,sundance_flag,cannes_flag,venice_flag,tiff_flag,telluride_flag,sxsw_flag,notes
-2026,In the Blink of an Eye,1,0,0,0,0,0,Auto-detected from Wikipedia festival page
-2026,Queen of Chess,1,0,0,0,0,0,Auto-detected from Wikipedia festival page
-2026,The Moment,1,0,0,0,0,0,Auto-detected from Wikipedia festival page
-2026,undertone,1,0,0,0,0,0,Auto-detected from Wikipedia festival page
+year_film,title,sundance_flag,berlin_flag,sxsw_flag,cannes_flag,venice_flag,telluride_flag,tiff_flag,nyff_flag,afi_flag,notes
+2026,A Man of His Time,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,A Woman's Life,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,All of a Sudden,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Another Day,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Bitter Christmas,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Coward,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Fatherland,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Fjord,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Gentle Monster,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Hope,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,In the Blink of an Eye,1,0,0,0,0,0,0,0,0,Auto-detected from Wikipedia festival page
+2026,Minotaur,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Moulin,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Nagi Notes,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Paper Tiger,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Parallel Tales,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,Queen of Chess,1,0,0,0,0,0,0,0,0,Auto-detected from Wikipedia festival page
+2026,Sheep in the Box,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,The Beloved,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,The Birthday Party,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,The Black Ball,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,The Dreamed Adventure,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,The Man I Love,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,The Moment,1,0,0,0,0,0,0,0,0,Auto-detected from Wikipedia festival page
+2026,The Unknown,0,0,0,1,0,0,0,0,0,Cannes 2026 Main Competition
+2026,undertone,1,0,0,0,0,0,0,0,0,Auto-detected from Wikipedia festival page

@@ -217,9 +217,18 @@ def build_festival_watch_payload(year: int) -> list[dict]:
         prob = float(bp_row.get("best_picture_probability", 0)) if hasattr(bp_row, "get") else 0
         rt = float(bp_row.get("tomatometer_rating", 0) or 0) if hasattr(bp_row, "get") else 0
         mc = float(bp_row.get("metacritic_score", 0) or 0) if hasattr(bp_row, "get") else 0
-        # A film is pre-release if it has the flag set, or if it has no RT/MC/votes yet
-        pre_rel_flag = int(bp_row.get("pre_release", 0) or 0) if hasattr(bp_row, "get") else 0
-        votes = float(bp_row.get("no_of_persons_voted", 0) or 0) if hasattr(bp_row, "get") else 0
+        # A film is pre-release if it has the flag set, or has no RT/MC and zero audience votes
+        def _safe_float(val, default=0.0):
+            try:
+                v = float(val)
+                return default if (v != v) else v  # NaN check
+            except (TypeError, ValueError):
+                return default
+
+        pre_rel_flag = _safe_float(bp_row.get("pre_release", 0) if hasattr(bp_row, "get") else 0)
+        votes = _safe_float(bp_row.get("no_of_persons_voted") if hasattr(bp_row, "get") else 0)
+        if votes < 1:
+            votes = _safe_float(bp_row.get("movie_vote_count") if hasattr(bp_row, "get") else 0)
         is_pre_release = bool(pre_rel_flag or (rt == 0 and mc == 0 and votes < 10))
         return {
             "title": title,

@@ -33,6 +33,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
 OUTPUT_PATH = RAW_DIR / "manual_festival_flags.csv"
+ENRICHMENT_PATH = RAW_DIR / "future_contender_enrichment.csv"
 
 WIKIPEDIA_API = "https://en.wikipedia.org/w/api.php"
 REQUEST_HEADERS = {"User-Agent": "OscarPredictor/1.0 (festival-scraper; educational project)"}
@@ -193,54 +194,90 @@ def match_titles_to_pool(
     pool_df: pd.DataFrame,
     flag_col: str,
     year: int,
-) -> list[dict]:
+) -> tuple[list[dict], list[str]]:
     """
     Fuzzy-match extracted festival titles against the TMDb pool.
-    Returns list of matched rows with flag set.
-    """
-    if pool_df.empty:
-        return []
 
-    pool_df = pool_df.copy()
-    pool_df["title_norm"] = pool_df["title"].astype(str).apply(normalize_title)
+    Returns:
+      matched  — list of dicts for films already in the pool
+      new_titles — list of raw title strings NOT in the pool (pre-release picks)
+    """
+    pool_norms: dict[str, str] = {}
+    if not pool_df.empty:
+        pool_df = pool_df.copy()
+        pool_df["title_norm"] = pool_df["title"].astype(str).apply(normalize_title)
+        pool_norms = dict(zip(pool_df["title_norm"], pool_df["title"]))
 
     festival_norm = {normalize_title(t): t for t in festival_titles if t.strip()}
-    matched = []
+    matched: list[dict] = []
+    new_titles: list[str] = []
 
     for norm_ft, raw_ft in festival_norm.items():
         if len(norm_ft) < 3:
             continue
+
+        found_in_pool = False
+
         # Exact match first
-        exact = pool_df[pool_df["title_norm"] == norm_ft]
-        if not exact.empty:
-            for _, row in exact.iterrows():
-                matched.append({
-                    "year_film": year,
-                    "title": row["title"],
-                    flag_col: 1,
-                    "notes": f"Auto-detected from Wikipedia festival page",
-                    "_source_title": raw_ft,
-                })
+        if norm_ft in pool_norms:
+            matched.append({
+                "year_film": year,
+                "title": pool_norms[norm_ft],
+                flag_col: 1,
+                "notes": "Auto-detected from Wikipedia festival page",
+                "_source_title": raw_ft,
+            })
+            found_in_pool = True
             continue
 
-        # Partial match: pool title fully contained in festival title or vice versa
-        for _, row in pool_df.iterrows():
-            pt = row["title_norm"]
-            if len(pt) < 4:
-                continue
-            if pt in norm_ft or norm_ft in pt:
-                # Only accept if the shorter string is at least 70% of the longer
-                ratio = min(len(pt), len(norm_ft)) / max(len(pt), len(norm_ft))
-                if ratio >= 0.7:
-                    matched.append({
-                        "year_film": year,
-                        "title": row["title"],
-                        flag_col: 1,
-                        "notes": f"Auto-detected (partial match: '{raw_ft}')",
-                        "_source_title": raw_ft,
-                    })
+        # Partial match
+        if not pool_df.empty:
+            for _, row in pool_df.iterrows():
+                pt = row["title_norm"]
+                if len(pt) < 4:
+                    continue
+                if pt in norm_ft or norm_ft in pt:
+                    ratio = min(len(pt), len(norm_ft)) / max(len(pt), len(norm_ft))
+                    if ratio >= 0.7:
+                        matched.append({
+                            "year_film": year,
+                            "title": row["title"],
+                            flag_col: 1,
+                            "notes": f"Auto-detected (partial match: '{raw_ft}')",
+                            "_source_title": raw_ft,
+                        })
+                        found_in_pool = True
+                        break
 
-    return matched
+        # Not in pool — record as a new pre-release contender
+        if not found_in_pool:
+            new_titles.append(raw_ft)
+
+    return matched, new_titles
+
+
+def extract_competition_titles(html: str) -> set[str]:
+    """
+    Extract only film titles from wikitable competition sections.
+    Looks for <i> text inside <td> cells — the standard Wikipedia format for film titles.
+    Filters aggressively to avoid noise (director names, awards, countries, etc.).
+    """
+    import html as html_lib
+
+    # Find all wikitable rows
+    td_italic = re.compile(
+        r'<td[^>]*>\s*(?:<[^>]+>\s*)*<i>(?:<[^>]+>)?(.*?)(?:</[^>]+>)?</i>', re.DOTALL
+    )
+    titles: set[str] = set()
+    for m in td_italic.finditer(html):
+        raw = m.group(1)
+        clean = re.sub(r"<[^>]+>", "", raw).strip()
+        clean = html_lib.unescape(clean)
+        # Must look like a film title: 2–80 chars, no newlines, not all caps
+        if 2 <= len(clean) <= 80 and "\n" not in clean and not clean.isupper():
+            titles.add(clean)
+
+    return titles
 
 
 def load_pool(year: int) -> pd.DataFrame:
@@ -270,33 +307,76 @@ def load_existing_flags() -> pd.DataFrame:
     return pd.DataFrame(columns=["year_film", "title"] + FLAG_COLS + ["notes"])
 
 
+def load_existing_enrichment() -> pd.DataFrame:
+    """Load the future contender enrichment file."""
+    if ENRICHMENT_PATH.exists():
+        return pd.read_csv(ENRICHMENT_PATH)
+    return pd.DataFrame(columns=[
+        "year_film", "film", "release_month", "metacritic_score",
+        "cannes_flag", "venice_flag", "tiff_flag", "telluride_flag",
+        "sundance_flag", "sxsw_flag", "manual_contender_flag", "notes", "wikipedia_title",
+    ])
+
+
+# Festival flag → enrichment column name
+_FEST_FLAG_TO_ENRICH_COL = {
+    "sundance_flag":  "sundance_flag",
+    "berlin_flag":    None,               # Berlin not in enrichment schema yet
+    "sxsw_flag":      "sxsw_flag",
+    "cannes_flag":    "cannes_flag",
+    "venice_flag":    "venice_flag",
+    "telluride_flag": "telluride_flag",
+    "tiff_flag":      "tiff_flag",
+    "nyff_flag":      None,
+    "afi_flag":       None,
+}
+
+# Estimated release month for a film premiering at each festival (typical wide-release timing)
+_FEST_TO_RELEASE_MONTH = {
+    "sundance_flag":  2,
+    "berlin_flag":    4,
+    "sxsw_flag":      4,
+    "cannes_flag":    10,
+    "venice_flag":    11,
+    "telluride_flag": 11,
+    "tiff_flag":      11,
+    "nyff_flag":      11,
+    "afi_flag":       11,
+}
+
+
 def pull_festival_selections(year: int):
     print(f"[festivals] Scraping festival Wikipedia pages for {year}...")
 
     pool_df = load_pool(year)
-    if pool_df.empty:
-        print(f"[festivals] No film pool found for {year} — skipping.")
-        return
-
     print(f"[festivals] Pool has {len(pool_df)} films to match against.")
 
     existing = load_existing_flags()
-    # Track what's already confirmed so we don't duplicate
     confirmed_key = set(
         zip(existing["year_film"].astype(str), existing["title"].str.lower().str.strip())
     ) if not existing.empty else set()
 
-    new_rows = []
+    existing_enrich = load_existing_enrichment()
+    enrich_keys = set(
+        existing_enrich[existing_enrich["year_film"] == year]["film"]
+        .str.lower().str.strip()
+    ) if not existing_enrich.empty else set()
+
+    new_flag_rows: list[dict] = []
+    new_enrich_rows: list[dict] = []
 
     for fest in festival_wikipedia_titles(year):
         flag_col = fest["flag"]
         wiki_title = fest["title"]
         print(f"\n[festivals] Checking: {wiki_title}")
 
-        # Try HTML first (richer structure for tables), fall back to plaintext
+        # Try HTML (richer structure), fall back to plaintext
         html = fetch_wikipedia_html(wiki_title)
         if html:
-            titles = extract_film_titles_from_html(html)
+            # Use targeted competition-table extractor first, then broad extractor
+            titles = extract_competition_titles(html)
+            if len(titles) < 3:
+                titles = extract_film_titles_from_html(html)
             print(f"  → Extracted {len(titles)} candidate titles from HTML")
         else:
             text = fetch_wikipedia_text(wiki_title)
@@ -307,20 +387,20 @@ def pull_festival_selections(year: int):
             print(f"  → Page not found or empty (festival may not have announced yet)")
             continue
 
-        matches = match_titles_to_pool(titles, pool_df, flag_col, year)
-        print(f"  → Matched {len(matches)} films in our pool")
+        matched, new_titles = match_titles_to_pool(titles, pool_df, flag_col, year)
+        print(f"  → Matched {len(matched)} in pool, {len(new_titles)} new pre-release films")
 
-        for m in matches:
+        # --- Handle pool-matched films ---
+        for m in matched:
             key = (str(year), m["title"].lower().strip())
             if key not in confirmed_key:
                 print(f"    ✓ {m['title']} ({flag_col})")
                 row = {"year_film": year, "title": m["title"], "notes": m["notes"]}
                 for fc in FLAG_COLS:
                     row[fc] = 1 if fc == flag_col else 0
-                new_rows.append(row)
+                new_flag_rows.append(row)
                 confirmed_key.add(key)
             else:
-                # Update the existing row's flag if not already set
                 mask = (
                     (existing["year_film"] == year)
                     & (existing["title"].str.lower().str.strip() == m["title"].lower().strip())
@@ -329,10 +409,49 @@ def pull_festival_selections(year: int):
                     existing.loc[mask, flag_col] = 1
                     print(f"    ↑ Updated {m['title']} → {flag_col}=1")
 
-        time.sleep(0.5)  # Be polite to Wikipedia
+        # --- Handle pre-release films not yet in pool ---
+        # Add to both flags AND enrichment so they get scored by the BP model
+        for raw_title in new_titles:
+            title_low = raw_title.lower().strip()
+            key = (str(year), title_low)
 
-    if new_rows:
-        new_df = pd.DataFrame(new_rows)
+            # Add to festival flags
+            if key not in confirmed_key:
+                row = {"year_film": year, "title": raw_title, "notes": f"Pre-release — {wiki_title}"}
+                for fc in FLAG_COLS:
+                    row[fc] = 1 if fc == flag_col else 0
+                new_flag_rows.append(row)
+                confirmed_key.add(key)
+                print(f"    🆕 {raw_title} (pre-release, {flag_col})")
+
+            # Add to enrichment so the scoring pipeline can include it
+            enrich_col = _FEST_FLAG_TO_ENRICH_COL.get(flag_col)
+            if enrich_col and title_low not in enrich_keys:
+                enrich_row: dict = {
+                    "year_film": year,
+                    "film": raw_title,
+                    "release_month": _FEST_TO_RELEASE_MONTH.get(flag_col, 10),
+                    "metacritic_score": "",
+                    "cannes_flag": 0,
+                    "venice_flag": 0,
+                    "tiff_flag": 0,
+                    "telluride_flag": 0,
+                    "sundance_flag": 0,
+                    "sxsw_flag": 0,
+                    "manual_contender_flag": 1,
+                    "notes": f"Auto-added from {wiki_title}",
+                    "wikipedia_title": "",
+                }
+                if enrich_col in enrich_row:
+                    enrich_row[enrich_col] = 1
+                new_enrich_rows.append(enrich_row)
+                enrich_keys.add(title_low)
+
+        time.sleep(0.5)
+
+    # --- Write festival flags ---
+    if new_flag_rows:
+        new_df = pd.DataFrame(new_flag_rows)
         for fc in FLAG_COLS:
             if fc not in new_df.columns:
                 new_df[fc] = 0
@@ -340,19 +459,24 @@ def pull_festival_selections(year: int):
     else:
         updated = existing
 
-    # Deduplicate: group by year+title, take max of each flag
     if not updated.empty:
         flag_agg = {fc: "max" for fc in FLAG_COLS}
         flag_agg["notes"] = "last"
-        updated = (
-            updated.groupby(["year_film", "title"], as_index=False)
-            .agg(flag_agg)
-        )
+        updated = updated.groupby(["year_film", "title"], as_index=False).agg(flag_agg)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     updated.to_csv(OUTPUT_PATH, index=False)
     total_flagged = len(updated[updated[FLAG_COLS].sum(axis=1) > 0]) if not updated.empty else 0
-    print(f"\n[festivals] Done. {total_flagged} films flagged. Saved to {OUTPUT_PATH}")
+    print(f"\n[festivals] Flags saved: {total_flagged} films. → {OUTPUT_PATH}")
+
+    # --- Write enrichment ---
+    if new_enrich_rows:
+        enrich_new_df = pd.DataFrame(new_enrich_rows)
+        updated_enrich = pd.concat([existing_enrich, enrich_new_df], ignore_index=True)
+        updated_enrich.to_csv(ENRICHMENT_PATH, index=False)
+        print(f"[festivals] Enrichment saved: {len(new_enrich_rows)} new films. → {ENRICHMENT_PATH}")
+    else:
+        print(f"[festivals] No new enrichment entries.")
 
 
 def main():
